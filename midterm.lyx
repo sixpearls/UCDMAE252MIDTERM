@@ -812,7 +812,7 @@ key "walters2011long"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "refs"
-options "IEEEtran"
+options "IEEEtranS"
 
 \end_inset
 
