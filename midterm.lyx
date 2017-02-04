@@ -715,8 +715,63 @@ Our proposed work plan contains parallel and consecutive activities to maximize
  will be dedicated to analysis.
  Lastly, three weeks were allocated for the final report and should be adequate
  time for a thoughtful analysis and discussion of results.
- The table below contains the high-level work plan timeline (a more detailed
- version can be found in supplemental information(?)).
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Proposed-Work-Plan"
+
+\end_inset
+
+ shows the high-level work plan timeline
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ (a more detailed version can be found in supplemental information(?))
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename workplan.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proposed Work Plan: Activities in green are completed and blue activities
+ indicate future work or in progress.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Proposed-Work-Plan"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
