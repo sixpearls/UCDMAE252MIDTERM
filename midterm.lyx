@@ -879,11 +879,19 @@ COMPANION is based on the
  such as respecting personal space and passing on one side in addition to
  dynamic considerations such as time travelled, distance travelled, and
  control energy expended.
- On physical systems, paths generated would need to be tracked using a lower-lev
-el controller.
- In our simulation, we will ignore this but it should be noted that this
- adds another level of complexity.
  [Cite two 2009 conf papers and/or thesis, original A* paper]
+\end_layout
+
+\begin_layout Standard
+Generally, A* is not well suited for real-time navigation due to .
+ Additionally On physical systems, paths generated would need to be tracked
+ using a lower-level controller In our simulation, we will ignore this but
+ it should be noted that this adds another level of complexity.
+ The variations from A* that Kirby propose attempt to address these issues.
+ However, there are additional challenges such as aligning the grids, determinin
+g (partial) occupancy in large grid cells, and additional complexity of
+ including dynamics in the state.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -891,7 +899,29 @@ Artificial Potential Field
 \end_layout
 
 \begin_layout Standard
-APF 
+APF is a reactive navigation method that models the robot as particle driven
+ by a potential field.
+ In APF, a potential field is mapped onto the environment based on the position
+ of goals and obstacles.
+ Goals are incorporated as negative (attractive) potentials, while obstacles
+ have associated positive (repulsive) potentials.
+ Then, the desired acceleration of the robot is set as a modeled force equal
+ to the negative deriative of the potential field.
+ In this way, the robot drives away from obstacles and towards the goal.
+ This method is relatively simple to implement and is well suited for real-time
+ navigation.
+ The main drawback is limitations due to the locality of the behavior, which
+ lead to issues like becoming trapped in a local minima rather than continuing
+ to move toward the target.
+ In order to address this issue, it is possible to introduce noise into
+ the controller to naturally explore out of local minima, which has the
+ drawback of reducing time at the global minimum.
+ Another possible solution is to have a heirarchical supervisor that switches
+ to another navigation method if it detects the APF controller has become
+ caught at a local minima, which has the main drawback of added complexity.
+ Additionally, the APF method cannot provide any gaurantee of global optimality,
+ since the control scheme is inherently local.
+ 
 \end_layout
 
 \begin_layout Section
