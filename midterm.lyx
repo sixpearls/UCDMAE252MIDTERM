@@ -767,8 +767,131 @@ Problem Formulation
 \end_layout
 
 \begin_layout Standard
-Based on what you write here (final version), I can add to the list of assumptio
-ns and features to exclude in the following section.
+Path planning generally uses either a global, hierarchical search or a local,
+ reactive method.
+ To incorporate human-awareness and increase human comfort, these methods
+ are modified to include a consideration based on the distance and orientation
+ from humans in the environment
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ However, much human-aware path planning is focused on a global, heirarchical
+ approach
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ For example, Kirby et.
+\begin_inset space ~
+\end_inset
+
+al have proposed a path planning scheme called COMPANION, which uses a modified
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search based algorithm with a proxemic cost
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+ Kirby showed that this formulation demonstrates social behaviors, such
+ as passing on one side and respecting personal space.
+ We want to compare the COMPANION results with a reactive architecture based
+ on an artificial potential field (APF) that incorporates an equivalent
+ proxemic map.
+ In so doing, we hope to explore the question
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+Is the architecture (heirarchical or reactive) or formulation more important
+ for human-aware path planning?
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+Is a global/heirarhical path planning architecture necessary for human-aware
+ path planning?
+\end_layout
+
+\begin_layout Standard
+Global optimization methods can find globally optimal paths, but are often
+ slow and require modification to be used for real-time navigation in dynamic
+ environments.
+ In contrast, reactive methods are simple and well suited to real-time control
+ but may perform non-optimally.
+ The most common local, reactive technique is based on APF which may stop
+ moving towards the target due to local minima in the potential field.
+ However, in human-aware path planning, this may cause social behaviors
+ such as waiting at a blocked pathway.
+ In the following subsections, we describe the formulation for the two path
+ planning methods we will be comparing.
+\end_layout
+
+\begin_layout Subsection
+COMPANION
+\end_layout
+
+\begin_layout Standard
+COMPANION is based on the 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search algorithm.
+ For navigation applications of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, positions in the environment are mapped to nodes on a graph, with connections
+ to the neighboring positions, that can be traversed by taking an action
+ with an associated cost.
+ The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+  algorithm uses a heuristic search technique to find an optimal set of
+ actions to move from the starting node to the goal node.
+ COMPANION incorporates a few modifications to standard 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ based naviagation.
+ First, they use a variable grid to increase position resolution in the
+ graph near the robot and decrease the resolution further from the robot
+ which reduces the time needed to perform the search.
+ Second, they include a representation of moving obstacles (i.e., humans)
+ and robot velocity as part of the state associated with each node to account
+ for dynamics in the path planning.
+ Finally, they incorporate cost functions representing social behaviors
+ such as respecting personal space and passing on one side in addition to
+ dynamic considerations such as time travelled, distance travelled, and
+ control energy expended.
+ On physical systems, paths generated would need to be tracked using a lower-lev
+el controller.
+ In our simulation, we will ignore this but it should be noted that this
+ adds another level of complexity.
+ [Cite two 2009 conf papers and/or thesis, original A* paper]
+\end_layout
+
+\begin_layout Subsection
+Artificial Potential Field
+\end_layout
+
+\begin_layout Standard
+APF 
 \end_layout
 
 \begin_layout Section
@@ -1025,6 +1148,13 @@ The questions listed above will be applied to each proxemics distance model
  and the results compared to each other.
  The resulting discussion will also address tradeoffs between human acceptance
  and robot motion efficiency, and compare our results to previous studies.
+\end_layout
+
+\begin_layout Standard
+Overall, we want to compare quantitative metrics from the COMPANION optimization
+ function as well as qualitative results about the sociability of the generated
+ paths.
+ What happens when a human is blocking the path of the robot? 
 \end_layout
 
 \begin_layout Section
