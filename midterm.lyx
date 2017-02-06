@@ -345,7 +345,7 @@ status open
 
 
 \begin_inset Flex Author Affiliation
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Department of Mechanical and Aerospace Engineering
@@ -357,15 +357,10 @@ University of California, Davis
 \end_inset
 
 Davis, CA 95616 USA
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Flex Author Affiliation
-status open
-
-\begin_layout Plain Layout
 \begin_inset Flex Author Mark
 status open
 
@@ -375,16 +370,7 @@ status open
 
 \end_inset
 
-someara@ucdavis.edu
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex Author Affiliation
-status open
-
-\begin_layout Plain Layout
+someara@ucdavis.edu 
 \begin_inset Flex Author Mark
 status open
 
@@ -394,16 +380,7 @@ status open
 
 \end_inset
 
-mcocon@ucdavis.edu
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex Author Affiliation
-status open
-
-\begin_layout Plain Layout
+mcocon@ucdavis.edu 
 \begin_inset Flex Author Mark
 status open
 
@@ -457,9 +434,12 @@ The technological advances in robotics is leading towards increased prevalence
  human-aware navigation) of an autonomous robot, like Astrobee.
  While our interest focuses on space exploration, human-aware navigation
  can be applied across a variety of contexts.
- Proxemic distance, or personal space, in the context of Human-Robotics
- Interaction (HRI) is founded on the characterization of human-human interaction
- by Hall
+\end_layout
+
+\begin_layout Standard
+Proxemic distance, or personal space, in the context of Human-Robotics Interacti
+on (HRI) is founded on the characterization of human-human interaction by
+ Hall
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hall1966hidden"
@@ -485,12 +465,29 @@ key "kruse2013human"
  This relatively novel field contains many unanswered questions, but has
  produced a generalized observation across the literature that humans tend
  to interact with robots as if they were humans.
- A brief review of the literature and areas for future work will be discussed
+ 
+\end_layout
+
+\begin_layout Standard
+A brief review of the literature and areas for future work will be discussed
  in the following sections.
+ Next, we will describe our simulation that compares an A* based graph search
+ path planning algorithm and a reactive artificial potential field (APF)
+ navigation scheme for a free-flying robot avoiding human obstacles and
+ exhibiting sociable behavior using proxemic distance on the international
+ space station.
+ We will describe a simulation based on the Astrobee small satellite for
+ IVAs on the ISS, we will discuss simplifications due to time constraints,
+ and we will present goals for future extensions to the simulation should
+ time permit them.
 \end_layout
 
 \begin_layout Section
 Literature Review
+\end_layout
+
+\begin_layout Subsection
+Human-Robot Interaction
 \end_layout
 
 \begin_layout Standard
@@ -559,9 +556,12 @@ ly with robots in certain contexts.
 tive relationship may have been lost.
  For our purposes, the results of the study indicate that a subordinate
  robot, like Astrobee, should tend to maintain a farther distance.
- Other studies have examined the approach of a robot to a human or vice
- versa, and measured the minimum resulting distance where the participants
- felt comfortable.
+\end_layout
+
+\begin_layout Standard
+Other studies have examined the approach of a robot to a human or vice versa,
+ and measured the minimum resulting distance where the participants felt
+ comfortable.
  Torta et al.
  varied the approach angle (0˚ or head-on to 70˚) and the body position
  of the participant (sitting versus standing)
@@ -665,7 +665,11 @@ key "kirby2009companion"
 \end_inset
 
 .
- Returning to the context of this project, some factors are more relevant
+ 
+\end_layout
+
+\begin_layout Standard
+Returning to the context of this project, some factors are more relevant
  for the application of an autonomous robot onboard the ISS (International
  Space Station) for monitoring tasks.
  The robot would take on a subordinate position, would not gaze, have a
@@ -681,6 +685,81 @@ key "kirby2009companion"
  While an interesting question, it would not be appropriate to tackle in
  this project due to time constraints and the experimental setup (simulation),
  so must be left to future researchers.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+MOLLY: Should/will add why it's important to have autonomous robotics helping
+ with human spaceflight (frees up valuable man hours, can help with dangerous
+ tasks, inspection)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Humans, Robots, and Space
+\end_layout
+
+\begin_layout Subsubsection
+The technologies exist: safe & reliable propulsion,
+\end_layout
+
+\begin_layout Standard
+The SPHERES (Smart Synchronized Position Hold, Engage, Reorient, Experimental
+ Satellite) platform is a system of three free-flying small satellites (roughly
+ comparable to the size and mass of a bowling ball) that have been operating
+ out of the Japanese Experimental Module since 2006.
+ First developed as a class project at MIT, the platform, through its ability
+ to upload guest software, has become a primary source of research in autonomous
+ controls for free-flying spacecraft.
+ The satellites enabled the development of a safe and stable cold-gas CO2
+ propulsion system.
+ After the satellites capability to use smartphone technology for experiments
+ in 2011, the new Smart SPHERES’ telerobotic capabilities allowed for the
+ rapid advancement of autonomous relative navigation and computer vision
+ algorithms on small satellites.[SPHERES website] 
+\end_layout
+
+\begin_layout Subsubsection
+Satellites designed to help people: motivations (PSA and Astrobee)
+\end_layout
+
+\begin_layout Standard
+NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
+ a free-flying [] scheduled to be launched in 2017, based directly on the
+ knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
+ Assistant) program.
+ As the immediate future of small satellites for IVAs, we focus on Astrobee.
+ [PSA]
+\end_layout
+
+\begin_layout Standard
+Astrobee has computer vision navigation system and a depth sensor.
+ It also does this, this, and this.
+ [M1] It has these three architectures [M2]
+\end_layout
+
+\begin_layout Standard
+Astrobee’s current plans operate only semi-autonomously in coordination
+ with the ground crew.
+ Given a goal, Astrobee follows a pre-programmed path using its computer
+ vision navigation system.
+ When Astrobee encounters an obstacle, whether an unexpected object or a
+ human, it currently slows down, stops, and waits for redirection, waits
+ for a ground controller to tele-navigate Astrobee around the obstacle,
+ or waits for the obstacle to leave its planned path.
+ [M1] While the method avoids unintended collisions, its reliance on ground
+ crews or a clearing environment could prove impractical for longer-duration
+ missions such as planned trips to Mars, when communications between the
+ robot and a ground crew could easily exceed ten minutes.
+ [any kind of Mars reference; does this count as common knowledge?] As a
+ result, Astrobee would clearly benefit from fully autonomous navigation.
+ As its primary purpose is to help humans, it makes sense for it to navigate
+ with human comfort in mind; its established technologies and its as a result,
+ it lends itself perfectly to our research simulation
 \end_layout
 
 \begin_layout Section
@@ -694,6 +773,124 @@ ns and features to exclude in the following section.
 
 \begin_layout Section
 Proposed Simulation
+\end_layout
+
+\begin_layout Standard
+We have chosen to investigate our research question in the previously-identified
+ context of HRI in spaceflight.
+ Here’s why:
+\end_layout
+
+\begin_layout Itemize
+Up and coming, something we need to understand for future spaceflight -
+ Right now free-flying robotic assistants can be controlled by ground crew,
+ but that is impractical in future, long-duration missions with a signal
+ time lag 
+\end_layout
+
+\begin_layout Itemize
+Stringent safety concerns mean simulations are a really good idea [M1, ??]
+ 
+\end_layout
+
+\begin_layout Standard
+2D simplification, robot and human(s) in space station module(s)
+\end_layout
+
+\begin_layout Subsection
+Robot Model
+\end_layout
+
+\begin_layout Standard
+12”x12” square, has starting position, moves in any direction.
+ Assume perfect localization and map, computer vision for locating position
+ and orientation of humans.
+ For reach goal, assume perfect interpretation of physiological signals
+ to adjust size and shape of proxemic cost/potential field
+\end_layout
+
+\begin_layout Standard
+As motion specifics are not currently publicly available for the proposed
+ Astrobee satellite, we will use the mobility specifications of SPHERES
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+July 30, 2015 TABLE 4.1 SPHERES quantitative operational requirements Item
+ Requirement Translation (1m start to stop) 5s Rotation (360° start to stop)
+ 5s Translation accuracy 0.5cm Rotation accuracy 2.5° Propulsion lifetime
+ 20s Power lifetime 90min Mass (all units + consumables) 24.5 kg Processing
+ Power 23 MFLOPS Communications Data Rate 40kbps TABLE 4.2 SPHERES satellite
+ properties Diameter 0.25 m Mass (w/tank & batteries) 4.0 kg Max linear accelerati
+on 0.17 m/s2 Max angular acceleration 3.5 rad/s2 Power consumption 15 W Battery
+ lifetime 2 h
+\end_layout
+
+\end_inset
+
+, which Astrobee is an extrapolation of anyway, as listed in July of 2015
+\end_layout
+
+\begin_layout Standard
+In order to acquire meaningful results, we intend to create a preliminary
+ working 2D model based on a roughly approximated rectangular cross-section
+ of a module of the ISS USOS, which we can extend to include multiple modules
+ once a successful simulation has been created with the simpler geometry.
+ 
+\end_layout
+
+\begin_layout Standard
+The free-flying robot, which would ordinarily have 6-DOF holonomic motion,
+ will reduce to 3-DOF holonomic motion for the 2D simulation.
+\end_layout
+
+\begin_layout Subsection
+Human Model
+\end_layout
+
+\begin_layout Standard
+Humans and their associated proxemics can be roughly represented as cross-sectio
+ns of a z-symmetric human “cylinder,” with an assigned position, forwards
+ orientation, and associated elliptical z-symmetric proxemics.
+ [Although in reality proxemics would vary with z-position, we will ignore
+ this as it is irrelevant in a 2D simulation.
+ We will treat this study as a proof-of-concept, acknowledging that further
+ improvements, including z-varying proxemics*, would need to be made before
+ any results were applied to a practical situation] *from Kirby paper[S5]
+\end_layout
+
+\begin_layout Subsection
+Module Model
+\end_layout
+
+\begin_layout Standard
+scale of dimension in general and at entrances/exits?
+\end_layout
+
+\begin_layout Standard
+To properly provide conclusions a solution applicable to the ISS, additional
+ degrees of freedom that come with microgravity mean that we cannot assume
+ symmetry and therefore ignore 
+\end_layout
+
+\begin_layout Subsection
+Test Scenarios
+\end_layout
+
+\begin_layout Standard
+Test in different scenarios: n humans in m modules, humans don’t move (arbitrari
+ly placed, or placed intentionally to create challenging scenarios.
+ 
+\end_layout
+
+\begin_layout Standard
+reach 1: n’ humans in m’ modules, humans moves (again either arbitrary placement
+ + paths, or designed to create challenging scenarios)
+\end_layout
+
+\begin_layout Standard
+reach 2: n’’ humans in m’’ modules, humans move and have changing proxemic
+ fields to represent changing affective states 
 \end_layout
 
 \begin_layout Section
@@ -724,7 +921,7 @@ reference "fig:Proposed-Work-Plan"
 
  shows the high-level work plan timeline
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
  (a more detailed version can be found in supplemental information(?))
@@ -797,10 +994,17 @@ key "kruse2013human"
  to answer the following questions:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 How long did it take for the robot to complete the task? What was the average
- velocity? What was the distance travelled by the robot during the task?
- What was the instantaneous distance between the robot and the human? How
+ velocity?
+\end_layout
+
+\begin_layout Itemize
+What was the distance travelled by the robot during the task?
+\end_layout
+
+\begin_layout Itemize
+What was the instantaneous distance between the robot and the human? How
  much time and distance did the robot spend within human-human interaction
  proxemics distance categories established by Hall
 \begin_inset CommandInset citation
@@ -809,8 +1013,11 @@ key "hall1966hidden"
 
 \end_inset
 
-? What was the minimum distance? Were there any collisions and if so, how
- many?
+? What was the minimum distance?
+\end_layout
+
+\begin_layout Itemize
+Were there any collisions and if so, how many?
 \end_layout
 
 \begin_layout Standard
@@ -860,14 +1067,24 @@ key "walters2011long"
  Incorporation of physiological signals will require collaboration across
  disciplines, like physiology and machine learning, and is expected to improve
  HRI.
- 
+\end_layout
+
+\begin_layout Standard
+[Extra emotion recognition sources] suggest a way to quantify and detect
+ - Make sure I’m not repeating something that Sarah has already covered
+\end_layout
+
+\begin_layout Standard
+Human motion “Regardful navigation” Incorporate reasonable human motion
+ (would have to look into human responses to robot motion - suggested through
+ inverse reinforcement learning) [M4]
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "refs"
-options "IEEEtranS"
+options "IEEEtran"
 
 \end_inset
 
