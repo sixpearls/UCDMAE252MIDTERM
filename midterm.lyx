@@ -713,12 +713,15 @@ The SPHERES platform is a system of three free-flying small satellites (roughly
  First developed as a class project at MIT, the platform, through its ability
  to upload guest software, has become a primary source of research in autonomous
  controls for free-flying spacecraft.
- The satellites enabled the development of a safe and stable cold-gas CO2
+ The satellites enabled the development of a safe and stable cold-gas 
+\begin_inset Formula $\mathrm{CO_{2}}$
+\end_inset
+
  propulsion system.
- After the satellites capability to use smartphone technology for experiments
- in 2011, the new Smart SPHERES’ telerobotic capabilities allowed for the
- rapid advancement of autonomous relative navigation and computer vision
- algorithms on small satellites
+ After the development of the capability for the satellites to use smartphone
+ technology for experiments in 2011, the new Smart SPHERES’ telerobotic
+ capabilities allowed for the rapid advancement of autonomous relative navigatio
+n and computer vision algorithms on small satellites
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spheresweb"
@@ -744,13 +747,35 @@ key "bualat2015astrobee"
 
 .
  PSA was originally designed with the goals of increasing crew productivity
- by taking over mundane and repetitive tasks, and reducing risk onboard
- the spacecraft, by providing an interface for logistical management, astronaut
+ by taking over mundane and repetitive tasks and reducing risk onboard the
+ spacecraft by providing an interface for logistical management, astronaut
  performance monitoring and feedback, and just-in-time training, and by
  monitoring air and system quality, isolating faults, and providing a backup
- sensor system to those already onboard the ISS.
- [PSA] Although the PSA was never fully realized in its projected role on
- the ISS, Astrobee has taken over its original goals of increasing productivity
+ sensor system to those already onboard the ISS
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+THIS IS A REALLY LONG RUN ON SENTENCE AND I JUST WANTED TO POINT IT OUT
+ TO YOU SO YOU COULD FIX IT I HOPE THATS OKAY AND YES I WROTE THIS HOLDING
+ SHIFT INSTEAD OF HITTING CAPS LOCK.
+\end_layout
+
+\end_inset
+
+.
+ [PSA]
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+why is this [PSA] here?
+\end_layout
+
+\end_inset
+
+ Although the PSA has never fully realized in its projected role on the
+ ISS, Astrobee has taken over its original goals of increasing productivity
  and safety, as well as continuing on SPHERES’ role as a microgravity research
  laboratory for robotics
 \begin_inset CommandInset citation
@@ -765,14 +790,14 @@ key "bualat2015astrobee"
 \end_layout
 
 \begin_layout Standard
-Astrobee’s current plans operate will operate only semi-autonomously in
- coordination with the ground crew.
+Astrobee’s currently will operate only semi-autonomously in coordination
+ with the ground crew.
  Given a goal, Astrobee follows a pre-programmed path using its computer
  vision navigation system.
  When Astrobee encounters an obstacle, whether an unexpected object or a
- human, it currently slows down, stops, and waits for redirection, waits
- for a ground controller to tele-navigate Astrobee around the obstacle,
- or waits for the obstacle to leave its planned path
+ human, it currently slows down, stops, and waits for either a ground controller
+ to tele-navigate Astrobee around the obstacle or for the obstacle to leave
+ its planned path
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -796,7 +821,17 @@ status open
  As a result, Astrobee would clearly benefit from fully autonomous navigation.
  As its primary purpose is to help humans, it makes sense for it to navigate
  with human comfort in mind; its established technologies and its as a result,
- it lends itself perfectly to our research simulation.
+ it lends itself perfectly to our research simulation
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+nice
+\end_layout
+
+\end_inset
+
+.
  Astrobee is also an ideal candidate for robotic simulation research, rather
  than physical testing.
  As Astrobee interacts directly with astronauts and with life-supporting
@@ -822,8 +857,8 @@ Problem Formulation
 Path planning generally uses either a global, hierarchical search or a local,
  reactive method.
  To incorporate human-awareness and increase human comfort, these methods
- are modified to include a consideration based on the distance and orientation
- from humans in the environment
+ are modified to include a consideration based on the proxemic distance
+ from humans in the environment as described above
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -882,8 +917,8 @@ Global optimization methods can find globally optimal paths, but are often
  environments.
  In contrast, reactive methods are simple and well suited to real-time control
  but may perform non-optimally.
- The most common local, reactive technique is based on APF which may stop
- moving towards the target due to local minima in the potential field.
+ Most local, reactive techniques are based on APF which may stop moving
+ towards the target due to local minima in the potential field.
  However, in human-aware path planning, this may cause social behaviors
  such as waiting at a blocked pathway.
  In the following subsections, we describe the formulation for the two path
@@ -929,7 +964,7 @@ COMPANION is based on the
  dynamic considerations such as time travelled, distance travelled, and
  control energy expended.
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 [Cite two 2009 conf papers and/or thesis, original A* paper]
@@ -941,14 +976,16 @@ status open
 \end_layout
 
 \begin_layout Standard
-Generally, A* is not well suited for real-time navigation due to .
- Additionally On physical systems, paths generated would need to be tracked
- using a lower-level controller In our simulation, we will ignore this but
- it should be noted that this adds another level of complexity.
+Generally, A* is not well suited for real-time navigation because it does
+ not incorporate dynamics of the robot or environment and may not be able
+ to re-plan fast enough to update based on those changes.
  The variations from A* that Kirby propose attempt to address these issues.
  However, there are additional challenges such as aligning the grids, determinin
 g (partial) occupancy in large grid cells, and additional complexity of
  including dynamics in the state.
+ Additionally on physical systems, paths generated would need to be tracked
+ using a lower-level controller In our simulation, we will ignore this but
+ it should be noted that this adds another level of complexity.
  
 \end_layout
 
@@ -1213,7 +1250,7 @@ Our proposed work plan contains parallel and consecutive activities to maximize
  as expected, and allows for corrections.
  It is expected that once the simulation is finalized; the simulation of
  the use cases and data collection will be rapid.
- Therefore, the majoring of the time in phase 6.0 Collect and Analyze Data
+ Therefore, the majority of the time in phase 6.0 Collect and Analyze Data
  will be dedicated to analysis.
  Lastly, three weeks were allocated for the final report and should be adequate
  time for a thoughtful analysis and discussion of results.
@@ -1333,10 +1370,11 @@ The questions listed above will be applied to each proxemics distance model
 \end_layout
 
 \begin_layout Standard
-Overall, we want to compare quantitative metrics from the COMPANION optimization
- function as well as qualitative results about the sociability of the generated
- paths.
- What happens when a human is blocking the path of the robot? 
+Overall, the objective function laid out in the COMPANION optimization function
+ will provide a good basis for quantitative comparison between the methods.
+ In addition, we will perform a qualitative comparison to evaluate gross
+ differences in the sociability of the generated paths in different scenarios.
+ 
 \end_layout
 
 \begin_layout Section
