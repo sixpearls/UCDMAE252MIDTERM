@@ -350,13 +350,14 @@ status open
 \end_inset
 
 
-\begin_inset Flex Author Affiliation
-status open
-
-\begin_layout Plain Layout
-\begin_inset VSpace defskip
+\begin_inset Newline newline
 \end_inset
 
+
+\begin_inset Flex Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
 Department of Mechanical and Aerospace Engineering
 \begin_inset Newline newline
 \end_inset
