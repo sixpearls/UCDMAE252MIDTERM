@@ -13,7 +13,7 @@
 \usepackage{environ}
 \RenewEnviron{comment}{\pdfcomment{\BODY}}
 \end_preamble
-\options conference
+\options comsoc 
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -1203,6 +1203,53 @@ Test Scenarios
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename tasktype.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Illustration of paths for three tasks without inclusion of obstacles, where
+ the blue rectangle represents the module boundaries, the yellow square
+ is the simulated Astrobee, and the dotted line is a possible path: A) Task
+ 1 is direct navigation from one end of module to the other, B) Task 2 involves
+ consecutive inspection of four waypoints, C) Monitoring task (3) of the
+ module perimeter and returning to the start point.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Illustration-of-paths"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 Test in different scenarios: n humans in m modules, humans don’t move (arbitrari
 ly placed, or placed intentionally to create challenging scenarios.
  
@@ -1215,7 +1262,18 @@ reach 1: n’ humans in m’ modules, humans moves (again either arbitrary place
 
 \begin_layout Standard
 reach 2: n’’ humans in m’’ modules, humans move and have changing proxemic
- fields to represent changing affective states 
+ fields to represent changing affective states
+\end_layout
+
+\begin_layout Standard
+We can refer to to Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Illustration-of-paths"
+
+\end_inset
+
+ like this!
 \end_layout
 
 \begin_layout Section
@@ -1258,12 +1316,13 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename workplan.png
+	lyxscale 25
 	width 3.5in
 
 \end_inset
