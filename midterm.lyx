@@ -1085,6 +1085,10 @@ key "spheresweb"
 \begin_inset Newline newline
 \end_inset
 
+
+\begin_inset Newline newline
+\end_inset
+
 Translation 1m start to stop: 5s 
 \begin_inset Newline newline
 \end_inset
@@ -1101,6 +1105,10 @@ Rotation accuracy: 2.5°
 \begin_inset Newline newline
 \end_inset
 
+
+\begin_inset Newline newline
+\end_inset
+
 We will treat the propulsion and battery lifetimes as irrelevant given the
  scope of our experiment.
  
@@ -1113,7 +1121,7 @@ We are making some significant assumptions with respect to the capabilities
  that Astrobee be able to accurately detect humans and their associated
  orientations with omnipotence, in all directions at all times.
  Thanks to Astrobee's payload ports for additional software, we shall assume
- that, with additional computer vision research or through the use of other
+ that, with additional computer vision software or through the use of other
  sensors, Astrobee could have this information available to it.
  
 \end_layout
