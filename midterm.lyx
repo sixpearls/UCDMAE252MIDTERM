@@ -63,8 +63,8 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -434,7 +434,7 @@ ed Position Hold, Engage, Reorient, Experimental Satellites), to work with
 \begin_layout Standard
 Proxemic distance, or personal space, in the context of Human-Robotics Interacti
 on (HRI) is founded on the characterization of human-human interaction by
- Hall
+ Hall 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hall1966hidden"
@@ -449,7 +449,7 @@ key "hall1966hidden"
 d.
  In a review of human-aware robot navigation, a search of the literature
  revealed that the topic seemed to generate interest in 2001 and the number
- of publications has increased over the years
+ of publications has increased over the years 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -490,14 +490,14 @@ Human-Robot Interaction
 
 \begin_layout Standard
 Proxemic distance in HRI may be influenced by a variety of factors, such
- as task and social relationship
+ as task and social relationship 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kim2014social"
 
 \end_inset
 
-, direction and body positioning
+, direction and body positioning 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -511,14 +511,14 @@ key "walters2011long"
 
 \end_inset
 
-, personal experience, personality, and gaze
+, personal experience, personality, and gaze 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "takayama2009influences"
 
 \end_inset
 
-, and more
+, and more 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human,walters2009empirical"
@@ -528,7 +528,7 @@ key "kruse2013human,walters2009empirical"
 .
  In a study by Kim and Mutlu, proxemic distance is examined in conjunction
  with task distance (collaborative versus competitive) and power distance
- (supervisor versus subordinate)
+ (supervisor versus subordinate) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kim2014social"
@@ -538,7 +538,7 @@ key "kim2014social"
 .
  In this card matching task, participants performed better with a greater
  physical distance (120 cm versus 46 cm) and reported a more positive experience
- with a subordinate robot when it kept a greater physical distance
+ with a subordinate robot when it kept a greater physical distance 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kim2014social"
@@ -562,7 +562,7 @@ Other studies have examined the approach of a robot to a human or vice versa,
  comfortable.
  Torta et al.
  varied the approach angle (0˚ or head-on to 70˚) and the body position
- of the participant (sitting versus standing)
+ of the participant (sitting versus standing) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -581,7 +581,7 @@ should this be proxemic distance or proxemics distance?
 
 \end_inset
 
- was larger than that measured in human-human interaction
+ was larger than that measured in human-human interaction 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -591,7 +591,7 @@ key "torta2013design"
 .
  Proxemic distance changed for sitting participants, where the preferred
  distance increased from side to center (i.e.
- minimum proxemic distance at 70˚)
+ minimum proxemic distance at 70˚) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -612,7 +612,7 @@ I'm not sure what this means
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -622,7 +622,7 @@ key "walters2011long"
 .
  While the distance did decrease, the adaptation occurred in the first two
  sessions, remained constant for the following four weeks, and were comparable
- with HHI distances
+ with HHI distances 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -631,7 +631,7 @@ key "walters2011long"
 
 .
  Another study sought to examine the effect of personal experience on the
- proxemics distance
+ proxemics distance 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "takayama2009influences"
@@ -643,7 +643,7 @@ key "takayama2009influences"
  had smaller minimum proxemics distances.
  Interestingly, there was a gender effect when the robot gazed at the participan
 ts’ faces, where it resulted in a shorter distance for men and a greater
- distance for women
+ distance for women 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -653,7 +653,7 @@ key "walters2011long"
 .
  There are other factors to considered, such as mechanoid versus humanoid,
  and Walters et.
- al
+ al 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2009empirical"
@@ -661,7 +661,7 @@ key "walters2009empirical"
 \end_inset
 
  provide a convenient table summary and Kruse et.
- al
+ al 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -673,7 +673,7 @@ key "kruse2013human"
  to find relevant simulation studies to date.
  Kirby et.
  al conducted a simulation study and provide a framework upon which this
- project will be based
+ project will be based 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion"
@@ -721,7 +721,7 @@ The SPHERES platform is a system of three free-flying small satellites (roughly
  After the development of the capability for the satellites to use smartphone
  technology for experiments in 2011, the new Smart SPHERES’ telerobotic
  capabilities allowed for the rapid advancement of autonomous relative navigatio
-n and computer vision algorithms on small satellites
+n and computer vision algorithms on small satellites 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spheresweb"
@@ -738,7 +738,7 @@ NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
  the ISS.
  It is scheduled to be launched in 2017, and it is based directly on the
  knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
- Assistant) program
+ Assistant) program 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -777,7 +777,7 @@ why is this [PSA] here?
  Although the PSA has never fully realized in its projected role on the
  ISS, Astrobee has taken over its original goals of increasing productivity
  and safety, as well as continuing on SPHERES’ role as a microgravity research
- laboratory for robotics
+ laboratory for robotics 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -797,7 +797,7 @@ Astrobee’s currently will operate only semi-autonomously in coordination
  When Astrobee encounters an obstacle, whether an unexpected object or a
  human, it currently slows down, stops, and waits for either a ground controller
  to tele-navigate Astrobee around the obstacle or for the obstacle to leave
- its planned path
+ its planned path 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -836,7 +836,7 @@ nice
  than physical testing.
  As Astrobee interacts directly with astronauts and with life-supporting
  systems, it is subject to stringent safety measures applied to any ISS
- payload
+ payload 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -858,7 +858,7 @@ Path planning generally uses either a global, hierarchical search or a local,
  reactive method.
  To incorporate human-awareness and increase human comfort, these methods
  are modified to include a consideration based on the proxemic distance
- from humans in the environment as described above
+ from humans in the environment as described above 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -868,7 +868,7 @@ key "kruse2013human"
 .
  However, much human-aware path planning is focused on a global, heirarchical
  approach; in the human-aware navigation survey by Kruse, reactive methods
- are not considerd
+ are not considerd 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -885,7 +885,7 @@ al have proposed a path planning scheme called COMPANION, which uses a modified
 \begin_inset Formula $A^{*}$
 \end_inset
 
- graph-search based algorithm with a proxemic cost
+ graph-search based algorithm with a proxemic cost 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion"
@@ -995,7 +995,7 @@ Artificial Potential Field
 
 \begin_layout Standard
 APF is a reactive navigation method that models the robot as particle driven
- by a potential field
+ by a potential field 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ge2002dynamic"
@@ -1042,7 +1042,7 @@ The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell.
  a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
  airflow, a computer-vision-based navigational system, HD camera, fisheye
  camera, depth sensor, perching arm, 2DOF robotic arm with gripper, and
- two payload ports that provide potential for additional sensors
+ two payload ports that provide potential for additional sensors 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spheresweb,yoo2015avionics"
@@ -1058,7 +1058,7 @@ Astrobee is designed to navigate around the ISS USOS (U.S.
  Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
  Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
 se Module, Cupola, and the U.S.
- Airlock
+ Airlock 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bualat2015astrobee"
@@ -1111,7 +1111,7 @@ on 0.17 m/s2 Max angular acceleration 3.5 rad/s2 Power consumption 15 W Battery
 
 \end_inset
 
-,as publicized on July 30, 2015
+,as publicized on July 30, 2015 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spheresweb"
@@ -1180,7 +1180,7 @@ To properly provide conclusions a solution applicable to the ISS, additional
  As a result, if time allows, we hope to extrapolate our simulation to three
  dimensions.
  Considering a human model in cylindrical coordinates independently from
- its environment, proxemics would vary with z-position
+ its environment, proxemics would vary with z-position 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kirby2009companion"
@@ -1366,7 +1366,7 @@ The proposed project aims to understand the effect of proxemics distance
  As the project is done in a simulation and leverages past research for
  empirical models of proxemics distance with no human feedback, the analysis
  will not include the subjective measures typically included in proxemics
- (comfort, naturalness, sociability, etc.)
+ (comfort, naturalness, sociability, etc.) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -1390,7 +1390,7 @@ What was the distance travelled by the robot during the task?
 \begin_layout Itemize
 What was the instantaneous distance between the robot and the human? How
  much time and distance did the robot spend within human-human interaction
- proxemics distance categories established by Hall
+ proxemics distance categories established by Hall 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hall1966hidden"
@@ -1438,7 +1438,7 @@ aires (e.g.
  Therefore, it would be desirable to translate physiological signals (measured
  in a way that is not invasive) to emotional states, primarily discomfort.
  Chandler briefly reviewed various options, where the galvanic skin response
- and facial expression reading appear the most promising
+ and facial expression reading appear the most promising 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "best2016clustering"
@@ -1448,7 +1448,7 @@ key "best2016clustering"
 .
  Best et.
  al describe the use of a machine learning algorithm to discern the likely
- emotional state from cues (physiological signals)
+ emotional state from cues (physiological signals) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -1469,7 +1469,7 @@ key "walters2011long"
 \begin_layout Standard
 Human motion “Regardful navigation” Incorporate reasonable human motion
  (would have to look into human responses to robot motion - suggested through
- inverse reinforcement learning)
+ inverse reinforcement learning) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "weinrich2013prediction"
