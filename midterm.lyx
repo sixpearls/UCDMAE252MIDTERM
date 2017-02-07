@@ -351,9 +351,12 @@ status open
 
 
 \begin_inset Flex Author Affiliation
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
 Department of Mechanical and Aerospace Engineering
 \begin_inset Newline newline
 \end_inset
@@ -405,9 +408,9 @@ bwmargolis@ucdavis.edu
 \end_layout
 
 \begin_layout Abstract
-BLAHAs robots become increasingly prevelant in environments with humans
- across contexts, such as social and work, there is a need to understand
- human-robotics integration (HRI) to build strong and effective relationships.
+As robots become increasingly prevelant in environments with humans across
+ contexts, such as social and work, there is a need to understand human-robotics
+ integration (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
  collaboration between robots and crew in space, as crew time is the most
  precious resource and offloading tasks to a robot partner would be invaluable.
@@ -422,6 +425,13 @@ BLAHAs robots become increasingly prevelant in environments with humans
  clustering, and randomly generated).
  The evaluation criteria will examine the trade off between efficiency and
  human comfort.
+\end_layout
+
+\begin_layout Abstract
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
@@ -508,12 +518,117 @@ Literature Review
 \end_layout
 
 \begin_layout Subsection
+Humans, Robots, and Space
+\end_layout
+
+\begin_layout Standard
+The SPHERES platform is a system of three free-flying small satellites (roughly
+ comparable to the size and mass of a bowling ball) that have been operating
+ out of the Japanese Experimental Module since 2006.
+ First developed as a class project at MIT (Massachusetts Institute of Technolog
+y), the platform, through its ability to upload guest software, has become
+ a primary source of research in autonomous controls for free-flying spacecraft.
+ For example, this satellite research platform enabled the development of
+ a safe and stable cold-gas C O 2 propulsion system.
+ After the development of the capability for the satellites to use smartphone
+ technology for experiments in 2011, the new Smart SPHERES’ telerobotic
+ capabilities allowed for the rapid advancement of autonomous relative navigatio
+n and computer vision algorithms on small satellites
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
+ a free-flying robot designed for Intravehicular Activity (IVA) onboard
+ the ISS.
+ It is scheduled to be launched in 2017, and it is based directly on the
+ knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
+ Assistant) program
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ PSA was originally designed with the goals of 1) increasing crew productivity
+ by taking over mundane and repetitive tasks, 2) reducing risk onboard the
+ spacecraft by providing an interface for logistical management, 3) astronaut
+ (a.k.a.
+ crew) performance monitoring and feedback, 4) just-in-time training, and
+ 5) monitoring air and system quality, isolating faults, and providing a
+ backup sensor system to those already onboard the ISS.
+ [PSA] Although the PSA has never fully realized in its projected role on
+ the ISS, Astrobee has taken over its original goals of increasing productivity
+ and safety, as well as continuing on SPHERES’ role as a microgravity research
+ laboratory for robotics
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ As the immediate future of small satellites for IVAs, we focus on Astrobee
+ for the purposes of our simulation.
+ Astrobee currently will operate only semi-autonomously in coordination
+ with the ground crew.
+ Given a goal, Astrobee follows a pre-programmed path using its computer
+ vision navigation system.
+ When Astrobee encounters an obstacle, whether an unexpected object or a
+ human, it currently slows down, stops, and waits for either a ground controller
+ to telenavigate Astrobee around the obstacle or for the obstacle to leave
+ its planned path
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ While the method avoids unintended collisions, its reliance on ground crews
+ or waiting for an environment to clear could prove impractical for longer-durat
+ion missions, such as planned trips to Mars, when communications between
+ the robot and a ground crew could easily exceed ten minutes.
+ 
+\end_layout
+
+\begin_layout Standard
+Astrobee would clearly benefit from fully autonomous, human-aware navigation.
+ With a primary purpose to help crew while working in the same environment,
+ human-aware navigation is the logical development path.
+ Astrobee is also an ideal candidate for robotic simulation research, prior
+ to physical testing.
+ As Astrobee interacts directly with crew and with life-supporting systems,
+ it is subject to stringent safety measures applied to any ISS payload
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ Rigorous testing through robotic simulation rather than immediately switching
+ to the physical world provides an opportunity for risk-free development.
+ In conjunction with Astrobee’s evolution history, established technologies,
+ and intended application, it lends itself perfectly to our research simulation
+ that will focus on one aspect of human-aware navigation: proxemics.
+\end_layout
+
+\begin_layout Subsection
 Human-Robot Interaction
 \end_layout
 
 \begin_layout Standard
-Proxemic distance in HRI may be influenced by a variety of factors, such
- as task and social relationship 
+Proxemics in HRI may be influenced by a variety of factors, such as task
+ and social relationship 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kim2014social"
@@ -549,9 +664,9 @@ key "kruse2013human,walters2009empirical"
 \end_inset
 
 .
- In a study by Kim and Mutlu, proxemic distance is examined in conjunction
- with task distance (collaborative versus competitive) and power distance
- (supervisor versus subordinate) 
+ In a study by Kim and Mutlu, proxemic distance, or physical distance, is
+ examined in conjunction with task distance (collaborative versus competitive)
+ and power distance (supervisor versus subordinate) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kim2014social"
@@ -569,9 +684,9 @@ key "kim2014social"
 \end_inset
 
 .
- While most of the human-human interaction based hypothesis found support,
- some has no support and may be an indication that humans may interact different
-ly with robots in certain contexts.
+ While most of the human-human interaction (HHI) based hypotheses found
+ support, some has no support and may be an indication that humans may interact
+ differently with robots in certain contexts.
  However, the experimental design may not have used a complicated enough
  task, particularly for examining power distance and the benefits of a collabora
 tive relationship may have been lost.
@@ -594,18 +709,8 @@ key "torta2013design"
 
 .
  Overall, participants preferred a head-on approach, a rightward versus
- leftward, and the proxemic distance
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-should this be proxemic distance or proxemics distance? proxemics or proxemic
- distance
-\end_layout
-
-\end_inset
-
- was larger than that measured in human-human interaction (HHI) 
+ leftward, and the proxemic distance was larger than that measured in HHI
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -624,19 +729,10 @@ key "torta2013design"
 
 .
  The authors suggested that the robot, which is relatively short, may have
- caused the deviation from human-human interaction distances.
- Another study investigated the relationship between length of relationship
- between the human and the robot and the comfortable, physical distance
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-I'm not sure what this means
-\end_layout
-
-\end_inset
-
- 
+ caused the deviation from HHI distances.
+ Another study investigated the change in proxemic distance with repeated
+ interactions between the human and the robot, and hypothesized that exposure
+ over multiple weeks would continuously decrease the proxemic distance 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -670,6 +766,24 @@ ts’ faces, where it resulted in a shorter distance for men and a greater
  distance for women 
 \begin_inset CommandInset citation
 LatexCommand citep
+key "takayama2009influences"
+
+\end_inset
+
+.
+ In most of these studies, preference and proxemic distance were considered.
+ A preference does not necessarily translate into a shorter proxemic distance,
+ as seen where a head-on approach is the most preferred and results in the
+ greatest proxemic distance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "torta2013design"
+
+\end_inset
+
+, or in the study with gender differences
+\begin_inset CommandInset citation
+LatexCommand cite
 key "takayama2009influences"
 
 \end_inset
@@ -726,153 +840,6 @@ Some proxemic distance factors are more relevant for the application of
  so must be left to future researchers.
 \end_layout
 
-\begin_layout Subsection
-Humans, Robots, and Space
-\end_layout
-
-\begin_layout Standard
-The SPHERES platform is a system of three free-flying small satellites (roughly
- comparable to the size and mass of a bowling ball) that have been operating
- out of the Japanese Experimental Module since 2006.
- First developed as a class project at MIT, the platform, through its ability
- to upload guest software, has become a primary source of research in autonomous
- controls for free-flying spacecraft.
- The satellites enabled the development of a safe and stable cold-gas 
-\begin_inset Formula $\mathrm{CO_{2}}$
-\end_inset
-
- propulsion system.
- After the development of the capability for the satellites to use smartphone
- technology for experiments in 2011, the new Smart SPHERES’ telerobotic
- capabilities allowed for the rapid advancement of autonomous relative navigatio
-n and computer vision algorithms on small satellites 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "spheresweb"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
- a free-flying robot designed for Intravehicular Activity (IVA) onboard
- the ISS.
- It is scheduled to be launched in 2017, and it is based directly on the
- knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
- Assistant) program 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bualat2015astrobee"
-
-\end_inset
-
-.
- PSA was originally designed with the goals of increasing crew productivity
- by taking over mundane and repetitive tasks and reducing risk onboard the
- spacecraft by providing an interface for logistical management, astronaut
- performance monitoring and feedback, and just-in-time training, and by
- monitoring air and system quality, isolating faults, and providing a backup
- sensor system to those already onboard the ISS
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-THIS IS A REALLY LONG RUN ON SENTENCE AND I JUST WANTED TO POINT IT OUT
- TO YOU SO YOU COULD FIX IT I HOPE THATS OKAY AND YES I WROTE THIS HOLDING
- SHIFT INSTEAD OF HITTING CAPS LOCK.
-\end_layout
-
-\end_inset
-
-.
- [PSA]
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-why is this [PSA] here?
-\end_layout
-
-\end_inset
-
- Although the PSA has never fully realized in its projected role on the
- ISS, Astrobee has taken over its original goals of increasing productivity
- and safety, as well as continuing on SPHERES’ role as a microgravity research
- laboratory for robotics 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bualat2015astrobee"
-
-\end_inset
-
-.
- As the immediate future of small satellites for IVAs, we focus on Astrobee
- for the purposes of our simulation.
-\end_layout
-
-\begin_layout Standard
-Astrobee’s currently will operate only semi-autonomously in coordination
- with the ground crew.
- Given a goal, Astrobee follows a pre-programmed path using its computer
- vision navigation system.
- When Astrobee encounters an obstacle, whether an unexpected object or a
- human, it currently slows down, stops, and waits for either a ground controller
- to tele-navigate Astrobee around the obstacle or for the obstacle to leave
- its planned path 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bualat2015astrobee"
-
-\end_inset
-
-.
- While the method avoids unintended collisions, its reliance on ground crews
- or a clearing environment could prove impractical for longer-duration missions
- such as planned trips to Mars, when communications between the robot and
- a ground crew could easily exceed ten minutes.
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
- [any kind of Mars reference; does this count as common knowledge?]
-\end_layout
-
-\end_inset
-
- As a result, Astrobee would clearly benefit from fully autonomous navigation.
- As its primary purpose is to help humans, it makes sense for it to navigate
- with human comfort in mind; its established technologies and its as a result,
- it lends itself perfectly to our research simulation
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-nice
-\end_layout
-
-\end_inset
-
-.
- Astrobee is also an ideal candidate for robotic simulation research, rather
- than physical testing.
- As Astrobee interacts directly with astronauts and with life-supporting
- systems, it is subject to stringent safety measures applied to any ISS
- payload 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bualat2015astrobee"
-
-\end_inset
-
-.
- Rigorous testing through robotic simulation rather than immediately switching
- to the physical world provides an opportunity for risk-free development.
- 
-\end_layout
-
 \begin_layout Section
 Problem Formulation 
 \end_layout
@@ -891,8 +858,8 @@ key "kruse2013human"
 
 .
  However, much human-aware path planning is focused on a global, heirarchical
- approach; in the human-aware navigation survey by Kruse, reactive methods
- are not considerd 
+ approach; in the human-aware navigation survey by Kruse et.
+ al, reactive methods are not considerd 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -909,7 +876,7 @@ al have proposed a path planning scheme called COMPANION, which uses a modified
 \begin_inset Formula $A^{*}$
 \end_inset
 
- graph-search based algorithm with a proxemic cost 
+ graph-search based algorithm with a proxemic cost function 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion"
@@ -917,10 +884,11 @@ key "kirby2009companion"
 \end_inset
 
 .
- Kirby showed that this formulation demonstrates social behaviors, such
- as passing on one side and respecting personal space.
- We want to compare the COMPANION results with a reactive architecture based
- on an artificial potential field (APF) that incorporates an equivalent
+ Kirby et.
+ al showed that this formulation demonstrates social behaviors, such as
+ passing on one side and respecting personal space.
+ We want to compare the results from COMPANION with a reactive architecture
+ based on an artificial potential field (APF) that incorporates an equivalent
  proxemic map, such as those shown in Figures 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -939,14 +907,15 @@ reference "fig:pass_left_prox"
  We are particularly interested in exploring whether a heirarchical architecture
  is necessary for human-aware path planning, because the literature seems
  focused on global search methods.
- To that end, we hope to explore the question
+ To that end, we hope to explore the question:
 \end_layout
 
 \begin_layout Quote
 
 \series bold
-How do the COMPANION and APF architectures compare for proxemic path-planning
- around human obstacles in an enclosed area? 
+How do the COMPANION and APF architectures balance efficiency versus human
+ comfort during autonomous, human-aware naviagtion in an enclosed area?
+ 
 \end_layout
 
 \begin_layout Standard
@@ -955,7 +924,7 @@ Global optimization methods can find globally optimal paths, but are often
  environments.
  In contrast, reactive methods are simple and well suited to real-time control
  but may perform non-optimally.
- Most local, reactive techniques are based on APF which may stop moving
+ Most local, reactive techniques are based on APF, which may stop moving
  towards the target due to local minima in the potential field.
  However, in human-aware path planning, this may cause social behaviors
  such as waiting at a blocked pathway.
@@ -1665,13 +1634,11 @@ reference "fig:Proposed-Work-Plan"
 
 \end_inset
 
- shows the high-level work plan timeline
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
- (a more detailed version can be found in supplemental information(?))
-\end_layout
+ shows the high-level work plan timeline, and a more detailed version can
+ be found in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Detailed-list-of"
 
 \end_inset
 
@@ -1718,14 +1685,55 @@ name "fig:Proposed-Work-Plan"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Detailed list of proposed work plan activities.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Detailed-list-of"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename workplan2.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Evaluation of Results 
 \end_layout
 
 \begin_layout Standard
-The proposed project aims to understand the effect of proxemics distance
- models (cost-based and potential field) on the path planning and execution
- of an autonomous robotic.
+The proposed project aims to understand the effect of proxemic distance
+ models (cost function and APF) on the path planning and execution of autonomous
+, human-aware navigation by Astrobee.
  As the project is done in a simulation and leverages past research for
  empirical models of proxemics distance with no human feedback, the analysis
  will not include the subjective measures typically included in proxemics
@@ -1768,8 +1776,9 @@ Were there any collisions and if so, how many?
 \end_layout
 
 \begin_layout Standard
-The questions listed above will be applied to each proxemics distance model
- and the results compared to each other.
+The questions listed above will be applied to each proxemic distance model,
+ and the results compared to each other to ascertain if there is evidence
+ to support use of one architecture over the other.
  The resulting discussion will also address tradeoffs between human acceptance
  and robot motion efficiency, and compare our results to previous studies.
 \end_layout
