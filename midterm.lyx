@@ -403,7 +403,28 @@ bwmargolis@ucdavis.edu
 \end_layout
 
 \begin_layout Abstract
-Abstract
+As robots become increasingly prevelant in environments with humans across
+ contexts, such as social and work, there is a need to understand human-robotics
+ integration (HRI) to build strong and effective relationships.
+ The motivation for this project stems from the existing and projected future
+ collaboration between robots and crew in space, as crew time is the most
+ precious resource and offloading tasks to a robot partner would be invaluable.
+ There are several aspects of HRI and the focus of this paper will be the
+ relationship between path planning and proxemics, or social distance, which
+ is the comfortable, physical distance between two parties.
+ This project will simulate an autnomous, monitoring robot to investigate
+ aspects of path planning and execution when proxemics are considered.
+ The three factorial experimental design encompasses path planning (cost
+ function, artificial potential field), task type (direct path, waypoints,
+ monitoring), and crew configuration (one person, two opposing, four with
+ clustering, and randomly generated).
+ The evaluation criteria will examine the trade off between efficiency and
+ human comfort.
+\end_layout
+
+\begin_layout Abstract
+Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Potential
+ Field, Cost Function
 \end_layout
 
 \begin_layout Section
@@ -571,17 +592,18 @@ key "torta2013design"
 
 .
  Overall, participants preferred a head-on approach, a rightward versus
- leftward, and the proxemics distance
+ leftward, and the proxemic distance
 \begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
-should this be proxemic distance or proxemics distance?
+should this be proxemic distance or proxemics distance? proxemics or proxemic
+ distance
 \end_layout
 
 \end_inset
 
- was larger than that measured in human-human interaction
+ was larger than that measured in human-human interaction (HHI)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -600,7 +622,7 @@ key "torta2013design"
 
 .
  The authors suggested that the robot, which is relatively short, may have
- caused the deviation from human-human interaction (HHI) distances.
+ caused the deviation from human-human interaction distances.
  Another study investigated the relationship between length of relationship
  between the human and the robot and the comfortable, physical distance
 \begin_inset Note Comment
@@ -645,8 +667,8 @@ key "takayama2009influences"
 ts’ faces, where it resulted in a shorter distance for men and a greater
  distance for women
 \begin_inset CommandInset citation
-LatexCommand cite
-key "walters2011long"
+LatexCommand citep
+key "takayama2009influences"
 
 \end_inset
 
@@ -1199,7 +1221,7 @@ key "kirby2009companion"
 \end_layout
 
 \begin_layout Subsection
-Test Scenarios
+Test Scenarios - Don't worry, I'm making these better
 \end_layout
 
 \begin_layout Standard
@@ -1381,22 +1403,38 @@ aires (e.g.
  Chandler briefly reviewed various options, where the galvanic skin response
  and facial expression reading appear the most promising
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
+key "chandler2012biometric"
+
+\end_inset
+
+.
+ Research in affect recognition has sought to evaluate classifier accuracy
+ across a variety of supervised machine learning algorithms and physiological
+ signals
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kulic2007affective,rani2006empirical"
+
+\end_inset
+
+.
+ As an alterantive to phsyiological signals, Best et.
+ al describe the use of a machine learning algorithm to discern the likely
+ social signal (e.g.
+ angry) from social cues, such as head movement and gait
+\begin_inset CommandInset citation
+LatexCommand citep
 key "best2016clustering"
 
 \end_inset
 
 .
- Best et.
- al describe the use of a machine learning algorithm to discern the likely
- emotional state from cues (physiological signals)
-\begin_inset CommandInset citation
-LatexCommand cite
-key "walters2011long"
-
-\end_inset
-
-.
+ Social cues may be interesting to investigate as another input source,
+ but the classification accuracy was lower as several social cues appeared
+ across social signals.
+ Physiological signals appears better suited for the next step in this research
+ to achieve the desired application.
  Incorporation of physiological signals will require collaboration across
  disciplines, like physiology and machine learning, and is expected to improve
  HRI.
@@ -1417,7 +1455,7 @@ key "weinrich2013prediction"
 
 \end_inset
 
-
+[MOLLY WAS GOING TO ADD IN A PARAGRAPH HERE]
 \end_layout
 
 \begin_layout Standard
