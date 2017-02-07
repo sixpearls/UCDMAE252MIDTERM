@@ -8,6 +8,10 @@
 \begin_preamble
 % for subfigures/subtables
 \usepackage[caption=false,font=footnotesize]{subfig}
+
+\usepackage{pdfcomment}
+\usepackage{environ}
+\RenewEnviron{comment}{\pdfcomment{\BODY}}
 \end_preamble
 \options conference
 \use_default_options false
@@ -59,8 +63,8 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type numerical
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -404,16 +408,6 @@ Abstract
 
 \begin_layout Section
 Introduction
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(need to be added to by each person to address the range of topics) 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -685,8 +679,8 @@ Returning to the context of this project, some factors are more relevant
  While an interesting question, it would not be appropriate to tackle in
  this project due to time constraints and the experimental setup (simulation),
  so must be left to future researchers.
-\begin_inset Note Note
-status collapsed
+\begin_inset Note Comment
+status open
 
 \begin_layout Plain Layout
 MOLLY: Should/will add why it's important to have autonomous robotics helping
@@ -720,7 +714,15 @@ The SPHERES (Smart Synchronized Position Hold, Engage, Reorient, Experimental
  After the satellites capability to use smartphone technology for experiments
  in 2011, the new Smart SPHERES’ telerobotic capabilities allowed for the
  rapid advancement of autonomous relative navigation and computer vision
- algorithms on small satellites.[SPHERES website] 
+ algorithms on small satellites
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -729,37 +731,89 @@ Satellites designed to help people: motivations (PSA and Astrobee)
 
 \begin_layout Standard
 NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
- a free-flying [] scheduled to be launched in 2017, based directly on the
+ a free-flying robot designed for Intravehicular Activity (IVA) onboard
+ the ISS.
+ It is scheduled to be launched in 2017,, and it is based directly on the
  knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
- Assistant) program.
- As the immediate future of small satellites for IVAs, we focus on Astrobee.
- [PSA]
+ Assistant) program
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ PSA was originally designed with the goals of increasing crew productivity
+ by taking over mundane and repetitive tasks, and reducing risk onboard
+ the spacecraft, by providing an interface for logistical management, astronaut
+ performance monitoring and feedback, and just-in-time training, and by
+ monitoring air and system quality, isolating faults, and providing a backup
+ sensor system to those already onboard the ISS.
+ [PSA] Although the PSA was never fully realized in its projected role on
+ the ISS, Astrobee has taken over its original goals of increasing productivity
+ and safety, as well as continuing on SPHERES’ role as a microgravity research
+ laboratory for robotics
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Astrobee has computer vision navigation system and a depth sensor.
- It also does this, this, and this.
- [M1] It has these three architectures [M2]
+As the immediate future of small satellites for IVAs, we focus on Astrobee
+ for the purposes of our simulation.
 \end_layout
 
 \begin_layout Standard
-Astrobee’s current plans operate only semi-autonomously in coordination
- with the ground crew.
+Astrobee’s current plans operate will operate only semi-autonomously in
+ coordination with the ground crew.
  Given a goal, Astrobee follows a pre-programmed path using its computer
  vision navigation system.
  When Astrobee encounters an obstacle, whether an unexpected object or a
  human, it currently slows down, stops, and waits for redirection, waits
  for a ground controller to tele-navigate Astrobee around the obstacle,
- or waits for the obstacle to leave its planned path.
- [M1] While the method avoids unintended collisions, its reliance on ground
- crews or a clearing environment could prove impractical for longer-duration
- missions such as planned trips to Mars, when communications between the
- robot and a ground crew could easily exceed ten minutes.
- [any kind of Mars reference; does this count as common knowledge?] As a
- result, Astrobee would clearly benefit from fully autonomous navigation.
+ or waits for the obstacle to leave its planned path
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ While the method avoids unintended collisions, its reliance on ground crews
+ or a clearing environment could prove impractical for longer-duration missions
+ such as planned trips to Mars, when communications between the robot and
+ a ground crew could easily exceed ten minutes.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+ [any kind of Mars reference; does this count as common knowledge?]
+\end_layout
+
+\end_inset
+
+ As a result, Astrobee would clearly benefit from fully autonomous navigation.
  As its primary purpose is to help humans, it makes sense for it to navigate
  with human comfort in mind; its established technologies and its as a result,
- it lends itself perfectly to our research simulation
+ it lends itself perfectly to our research simulation.
+ Astrobee is also an ideal candidate for robotic simulation research, rather
+ than physical testing.
+ As Astrobee interacts directly with astronauts and with life-supporting
+ systems, it is subject to stringent safety measures.
+ While
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+ Rigorous testing through robotic simulation rather than immediately switching
+ to the physical world provides an opportunity for risk-free development.
+ 
 \end_layout
 
 \begin_layout Section
@@ -780,7 +834,8 @@ key "kruse2013human"
 
 .
  However, much human-aware path planning is focused on a global, heirarchical
- approach
+ approach; in the human-aware navigation survey by Kruse, reactive methods
+ are not considerd
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -810,7 +865,9 @@ key "kirby2009companion"
  We want to compare the COMPANION results with a reactive architecture based
  on an artificial potential field (APF) that incorporates an equivalent
  proxemic map.
- In so doing, we hope to explore the question
+ We are particularly interested in exploring whether the architecture (heirarchi
+cal or reactive) is necessary for a In so doing, we hope to explore the
+ question
 \end_layout
 
 \begin_layout Quote
@@ -879,7 +936,16 @@ COMPANION is based on the
  such as respecting personal space and passing on one side in addition to
  dynamic considerations such as time travelled, distance travelled, and
  control energy expended.
- [Cite two 2009 conf papers and/or thesis, original A* paper]
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+[Cite two 2009 conf papers and/or thesis, original A* paper]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -900,7 +966,14 @@ Artificial Potential Field
 
 \begin_layout Standard
 APF is a reactive navigation method that models the robot as particle driven
- by a potential field.
+ by a potential field
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ge2002dynamic"
+
+\end_inset
+
+.
  In APF, a potential field is mapped onto the environment based on the position
  of goals and obstacles.
  Goals are incorporated as negative (attractive) potentials, while obstacles
@@ -919,13 +992,21 @@ APF is a reactive navigation method that models the robot as particle driven
  Another possible solution is to have a heirarchical supervisor that switches
  to another navigation method if it detects the APF controller has become
  caught at a local minima, which has the main drawback of added complexity.
- Additionally, the APF method cannot provide any gaurantee of global optimality,
+ Additionally, the APF method cannot provide any guarantee of global optimality,
  since the control scheme is inherently local.
  
 \end_layout
 
 \begin_layout Section
 Proposed Simulation
+\end_layout
+
+\begin_layout Standard
+We have chosen to investigate our research question in the previously-identified
+ context of HRI in spaceflight.
+ In the interest of acquiring meaningful results in a limited time-frame,
+ some assumptions and simplifications will be made.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -942,12 +1023,53 @@ Up and coming, something we need to understand for future spaceflight -
 \end_layout
 
 \begin_layout Itemize
-Stringent safety concerns mean simulations are a really good idea [M1, ??]
- 
+Stringent safety concerns mean simulations are a really good idea
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+[others??]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-2D simplification, robot and human(s) in space station module(s)
+2D simplification, robot and human(s) in space station module(s).
+\end_layout
+
+\begin_layout Standard
+The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell.
+ It will be powered by lithium ion rechargeable batteries, and it will house
+ a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
+ airflow, a computer-vision-based navigational system, HD camera, fisheye
+ camera, depth sensor, perching arm, 2DOF robotic arm with gripper, and
+ two payload ports that provide potential for additional sensors
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb,yoo2015avionics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Astrobee is designed to navigate around the ISS USOS (U.S.
+ Oribital Segment), which consists of 9 modules: the U.S.
+ Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
+ Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
+se Module, Cupola, and the U.S.
+ Airlock.
 \end_layout
 
 \begin_layout Subsection
@@ -965,7 +1087,7 @@ Robot Model
 \begin_layout Standard
 As motion specifics are not currently publicly available for the proposed
  Astrobee satellite, we will use the mobility specifications of SPHERES
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -981,7 +1103,17 @@ on 0.17 m/s2 Max angular acceleration 3.5 rad/s2 Power consumption 15 W Battery
 
 \end_inset
 
-, which Astrobee is an extrapolation of anyway, as listed in July of 2015
+,as publicized on July 30, 2015
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb"
+
+\end_inset
+
+: Translation 1m start to stop: 5s Rotation 360° start to stop: 5s Translation
+ accuracy: 0.5cm Rotation accuracy: 2.5° We will ignore the propulsion lifetime
+ and battery lifetime as irrelevant given the scope of our experiment.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1005,7 +1137,10 @@ Human Model
 Humans and their associated proxemics can be roughly represented as cross-sectio
 ns of a z-symmetric human “cylinder,” with an assigned position, forwards
  orientation, and associated elliptical z-symmetric proxemics.
- [Although in reality proxemics would vary with z-position, we will ignore
+\end_layout
+
+\begin_layout Standard
+[Although in reality proxemics would vary with z-position, we will ignore
  this as it is irrelevant in a 2D simulation.
  We will treat this study as a proof-of-concept, acknowledging that further
  improvements, including z-varying proxemics*, would need to be made before
@@ -1073,7 +1208,7 @@ reference "fig:Proposed-Work-Plan"
 \end_inset
 
  shows the high-level work plan timeline
-\begin_inset Note Note
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -1086,7 +1221,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1237,7 +1372,14 @@ key "walters2011long"
 \begin_layout Standard
 Human motion “Regardful navigation” Incorporate reasonable human motion
  (would have to look into human responses to robot motion - suggested through
- inverse reinforcement learning) [M4]
+ inverse reinforcement learning)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weinrich2013prediction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
