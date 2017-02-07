@@ -1033,47 +1033,7 @@ Proposed Simulation
 \begin_layout Standard
 We have chosen to investigate our research question in the previously-identified
  context of HRI in spaceflight.
- In the interest of acquiring meaningful results in a limited time-frame,
- some assumptions and simplifications will be made.
  
-\end_layout
-
-\begin_layout Standard
-We have chosen to investigate our research question in the previously-identified
- context of HRI in spaceflight.
- Here’s why:
-\end_layout
-
-\begin_layout Itemize
-Up and coming, something we need to understand for future spaceflight -
- Right now free-flying robotic assistants can be controlled by ground crew,
- but that is impractical in future, long-duration missions with a signal
- time lag 
-\end_layout
-
-\begin_layout Itemize
-Stringent safety concerns mean simulations are a really good idea
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bualat2015astrobee"
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-[others??]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-2D simplification, robot and human(s) in space station module(s).
 \end_layout
 
 \begin_layout Standard
@@ -1108,17 +1068,18 @@ key "bualat2015astrobee"
 .
 \end_layout
 
+\begin_layout Standard
+In the interest of acquiring meaningful results in a limited time-frame,
+ we will make some assumptions and simplifications, which we describe below.
+ 
+\end_layout
+
 \begin_layout Subsection
 Robot Model
 \end_layout
 
 \begin_layout Standard
-Simplified Model
-\end_layout
-
-\begin_layout Standard
-In order to acquire meaningful results within our given time constraints,
- we intend to create a simulation within a simplified 2D model.
+We intend to create our initial simulation within a simplified 2D model.
  Our environment will be an approximated rectangular cross-section of a
  module of the ISS USOS, which we can extend to include multiple modules
  once a successful simulation has been created with the simpler geometry.
@@ -1157,27 +1118,45 @@ key "spheresweb"
 
 \end_inset
 
-: Translation 1m start to stop: 5s Rotation 360° start to stop: 5s Translation
- accuracy: 0.5cm Rotation accuracy: 2.5° We will treat the propulsion and
- battery lifetimes as irrelevant given the scope of our experiment.
+: 
+\begin_inset Newline newline
+\end_inset
+
+Translation 1m start to stop: 5s 
+\begin_inset Newline newline
+\end_inset
+
+Rotation 360° start to stop: 5s 
+\begin_inset Newline newline
+\end_inset
+
+Translation accuracy: 0.5cm 
+\begin_inset Newline newline
+\end_inset
+
+Rotation accuracy: 2.5° 
+\begin_inset Newline newline
+\end_inset
+
+We will treat the propulsion and battery lifetimes as irrelevant given the
+ scope of our experiment.
  
 \end_layout
 
 \begin_layout Standard
-In order to acquire meaningful results, we intend to create a preliminary
- working 2D model based on a roughly approximated rectangular cross-section
- of a module of the ISS USOS, which we can extend to include multiple modules
- once a successful simulation has been created with the simpler geometry.
+We are making some significant assumptions with respect to the capabilities
+ of Astrobee itself.
+ In order to test the robotic architectures and algorithms, it is necessary
+ that Astrobee be able to accurately detect humans and their associated
+ orientations with omnipotence, in all directions at all times.
+ Thanks to Astrobee's payload ports for additional software, we shall assume
+ that, with additional computer vision research or through the use of other
+ sensors, Astrobee could have this information available to it.
  
-\end_layout
-
-\begin_layout Standard
-The free-flying robot, which would ordinarily have 6-DOF holonomic motion,
- will reduce to 3-DOF holonomic motion for the 2D simulation.
 \end_layout
 
 \begin_layout Subsection
-Human Model
+Environment and Human Obstacles
 \end_layout
 
 \begin_layout Standard
@@ -1188,31 +1167,27 @@ ns of a z-symmetric human “cylinder,” with an assigned position, forwards
 
 \begin_layout Standard
 To properly provide conclusions a solution applicable to the ISS, additional
- degrees of freedom that come with microgravity mean that we cannot assume
- symmetry and therefore ignore the 3-dimensionality.
- As a result, if time allows, we hope to extrapolate to three dimensions
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Having some generic dimensions would be helpful
-\end_layout
+ degrees of freedom and asymmetry that come with a microgravity environment
+ mean that we cannot ignore the 3-dimensionality.
+ As a result, if time allows, we hope to extrapolate our simulation to three
+ dimensions.
+ Considering a human model in cylindrical coordinates independently from
+ its environment, proxemics would vary with z-position
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kirby2009companion"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-[Although in reality proxemics would vary with z-position, we will ignore
- this as it is irrelevant in a 2D simulation.
- We will treat this study as a proof-of-concept, acknowledging that further
- improvements, including z-varying proxemics*, would need to be made before
- any results were applied to a practical situation] *from Kirby paper[S5]
-\end_layout
-
-\begin_layout Subsection
-Module Model
+.
+ While we can ignore this variation as irrelevant in a 2D simulation (We
+ are treating all human obstacles as if at a uniform height), it would prove
+ an inaccurate representation of a 3D world.
+ We must therefore treat our study as a proof-of-concept, acknowledging
+ that further improvements, including z-varying proxemics and three additional
+ degrees of freedom in our simulated robot movement, would need to be made
+ before any results could be applied to a practical situation.
+ 
 \end_layout
 
 \begin_layout Subsection
