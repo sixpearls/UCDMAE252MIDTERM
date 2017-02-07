@@ -350,14 +350,13 @@ status open
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset Flex Author Affiliation
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
 Department of Mechanical and Aerospace Engineering
 \begin_inset Newline newline
 \end_inset
@@ -586,7 +585,14 @@ key "bualat2015astrobee"
  When Astrobee encounters an obstacle, whether an unexpected object or a
  human, it currently slows down, stops, and waits for either a ground controller
  to telenavigate Astrobee around the obstacle or for the obstacle to leave
- its planned path
+ its planned path (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Concept-of-Astrobee"
+
+\end_inset
+
+)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -599,6 +605,55 @@ key "bualat2015astrobee"
 ion missions, such as planned trips to Mars, when communications between
  the robot and a ground crew could easily exceed ten minutes.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename astrobee.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Concept of Astrobee on ISS with commands from ground crew.
+ Modified from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Concept-of-Astrobee"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1569,18 +1624,12 @@ name "fig:configurations"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
+\begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename TestTable.png
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -1599,6 +1648,16 @@ name "fig:TestTable"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename TestTable.png
+	width 3.5in
 
 \end_inset
 
