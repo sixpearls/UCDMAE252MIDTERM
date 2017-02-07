@@ -1069,7 +1069,14 @@ Astrobee is designed to navigate around the ISS USOS (U.S.
  Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
  Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
 se Module, Cupola, and the U.S.
- Airlock.
+ Airlock
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bualat2015astrobee"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1077,11 +1084,22 @@ Robot Model
 \end_layout
 
 \begin_layout Standard
-12”x12” square, has starting position, moves in any direction.
- Assume perfect localization and map, computer vision for locating position
- and orientation of humans.
- For reach goal, assume perfect interpretation of physiological signals
- to adjust size and shape of proxemic cost/potential field
+Simplified Model
+\end_layout
+
+\begin_layout Standard
+In order to acquire meaningful results within our given time constraints,
+ we intend to create a simulation within a simplified 2D model.
+ Our environment will be an approximated rectangular cross-section of a
+ module of the ISS USOS, which we can extend to include multiple modules
+ once a successful simulation has been created with the simpler geometry.
+ 
+\end_layout
+
+\begin_layout Standard
+Astrobee itself will be represented by a 12”x12” square, capable of 3-DOF
+ holonomic motion (x translation, y translation, and xy rotation).
+ 
 \end_layout
 
 \begin_layout Standard
