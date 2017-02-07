@@ -416,11 +416,12 @@ The technological advances in robotics is leading towards increased prevalence
  space exploration, military, search and rescue) to social ones (e.g.
  healthcare, companionship).
  NASA (National Aeronautics and Space Administration) is developing and
- deploying robots, such as Robonaut, Astrobee, Valkyrie, and Spheres, to
- work with and/or in the same environment as astronauts.
+ deploying robots, such as Robonaut, Astrobee, Valkyrie, and SPHERES (Synchroniz
+ed Position Hold, Engage, Reorient, Experimental Satellites), to work with
+ and/or in the same environment as astronauts.
  Robots like Astrobee will perform tedious, daily monitoring tasks and will
- need to navigate the space in ISS (International Space Stations) without
- adversely affecting astronaut activities.
+ need to navigate the compartments in ISS (International Space Station)
+ without adversely affecting astronaut activities.
  Therefore, these monitoring robots will need to understand and adhere to
  rules governing personal and work space.
  The aim of this simulation project is to investigate existing models of
@@ -465,15 +466,18 @@ key "kruse2013human"
 \begin_layout Standard
 A brief review of the literature and areas for future work will be discussed
  in the following sections.
- Next, we will describe our simulation that compares an A* based graph search
- path planning algorithm and a reactive artificial potential field (APF)
- navigation scheme for a free-flying robot avoiding human obstacles and
- exhibiting sociable behavior using proxemic distance on the international
+ Next, we will describe our simulation that compares an 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ based graph search path planning algorithm and a reactive artificial potential
+ field (APF) navigation scheme for a free-flying robot avoiding human obstacles
+ and exhibiting sociable behavior using proxemic distance on the international
  space station.
  We will describe a simulation based on the Astrobee small satellite for
- IVAs on the ISS, we will discuss simplifications due to time constraints,
- and we will present goals for future extensions to the simulation should
- time permit them.
+ Intravehicular Activities (IVAs) on the ISS, we will discuss simplifications
+ due to time constraints, and we will present goals for future extensions
+ to the simulation should time permit them.
 \end_layout
 
 \begin_layout Section
@@ -507,7 +511,7 @@ key "walters2011long"
 
 \end_inset
 
-, personal experience, personality, and gaze 
+, personal experience, personality, and gaze
 \begin_inset CommandInset citation
 LatexCommand cite
 key "takayama2009influences"
@@ -522,7 +526,7 @@ key "kruse2013human,walters2009empirical"
 \end_inset
 
 .
- In a study by Kim and Mutlu, proxemics distance is examined in conjunction
+ In a study by Kim and Mutlu, proxemic distance is examined in conjunction
  with task distance (collaborative versus competitive) and power distance
  (supervisor versus subordinate)
 \begin_inset CommandInset citation
@@ -567,8 +571,17 @@ key "torta2013design"
 
 .
  Overall, participants preferred a head-on approach, a rightward versus
- leftward, and the proxemics distance was larger than that measured in human-hum
-an interaction
+ leftward, and the proxemics distance
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+should this be proxemic distance or proxemics distance?
+\end_layout
+
+\end_inset
+
+ was larger than that measured in human-human interaction
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -576,7 +589,7 @@ key "torta2013design"
 \end_inset
 
 .
- Proexmic distance changed for sitting participants, where the preferred
+ Proxemic distance changed for sitting participants, where the preferred
  distance increased from side to center (i.e.
  minimum proxemic distance at 70˚)
 \begin_inset CommandInset citation
@@ -588,9 +601,18 @@ key "torta2013design"
 .
  The authors suggested that the robot, which is relatively short, may have
  caused the deviation from human-human interaction (HHI) distances.
- Another approach study investigated the relationship between length of
- relationship between the human and the robot and the comfortable, physical
- distance
+ Another study investigated the relationship between length of relationship
+ between the human and the robot and the comfortable, physical distance
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+I'm not sure what this means
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -620,8 +642,8 @@ key "takayama2009influences"
  Here, personal experience and participants with agreeable personalities
  had smaller minimum proxemics distances.
  Interestingly, there was a gender effect when the robot gazed at the participan
-ts’face, where it resulted in a shorter distance for men and a greater distance
- for women
+ts’ faces, where it resulted in a shorter distance for men and a greater
+ distance for women
 \begin_inset CommandInset citation
 LatexCommand cite
 key "walters2011long"
@@ -663,9 +685,8 @@ key "kirby2009companion"
 \end_layout
 
 \begin_layout Standard
-Returning to the context of this project, some factors are more relevant
- for the application of an autonomous robot onboard the ISS (International
- Space Station) for monitoring tasks.
+Some proxemic distance factors are more relevant for the application of
+ an autonomous robot onboard the ISS for monitoring tasks.
  The robot would take on a subordinate position, would not gaze, have a
  collaborative-type task, have a long-term relationship, and could approach
  from multiple directions in 3D space.
@@ -702,8 +723,7 @@ The technologies exist: safe & reliable propulsion,
 \end_layout
 
 \begin_layout Standard
-The SPHERES (Smart Synchronized Position Hold, Engage, Reorient, Experimental
- Satellite) platform is a system of three free-flying small satellites (roughly
+The SPHERES platform is a system of three free-flying small satellites (roughly
  comparable to the size and mass of a bowling ball) that have been operating
  out of the Japanese Experimental Module since 2006.
  First developed as a class project at MIT, the platform, through its ability
