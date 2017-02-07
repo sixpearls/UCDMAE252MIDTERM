@@ -407,7 +407,7 @@ Abstract
 \end_layout
 
 \begin_layout Section
-Introduction Hello
+Introduction
 \end_layout
 
 \begin_layout Standard
@@ -420,8 +420,8 @@ The technological advances in robotics is leading towards increased prevalence
 ed Position Hold, Engage, Reorient, Experimental Satellites), to work with
  and/or in the same environment as astronauts.
  Robots like Astrobee will perform tedious, daily monitoring tasks and will
- need to navigate the compartments in ISS (International Space Station)
- without adversely affecting astronaut activities.
+ need to navigate the modules in the ISS (International Space Station) without
+ adversely affecting astronaut activities.
  Therefore, these monitoring robots will need to understand and adhere to
  rules governing personal and work space.
  The aim of this simulation project is to investigate existing models of
@@ -700,26 +700,10 @@ Some proxemic distance factors are more relevant for the application of
  While an interesting question, it would not be appropriate to tackle in
  this project due to time constraints and the experimental setup (simulation),
  so must be left to future researchers.
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-MOLLY: Should/will add why it's important to have autonomous robotics helping
- with human spaceflight (frees up valuable man hours, can help with dangerous
- tasks, inspection)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 Humans, Robots, and Space
-\end_layout
-
-\begin_layout Subsubsection
-The technologies exist: safe & reliable propulsion,
 \end_layout
 
 \begin_layout Standard
@@ -745,15 +729,11 @@ key "spheresweb"
  
 \end_layout
 
-\begin_layout Subsubsection
-Satellites designed to help people: motivations (PSA and Astrobee)
-\end_layout
-
 \begin_layout Standard
 NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
  a free-flying robot designed for Intravehicular Activity (IVA) onboard
  the ISS.
- It is scheduled to be launched in 2017,, and it is based directly on the
+ It is scheduled to be launched in 2017, and it is based directly on the
  knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
  Assistant) program
 \begin_inset CommandInset citation
@@ -780,10 +760,7 @@ key "bualat2015astrobee"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-As the immediate future of small satellites for IVAs, we focus on Astrobee
+ As the immediate future of small satellites for IVAs, we focus on Astrobee
  for the purposes of our simulation.
 \end_layout
 
@@ -823,14 +800,15 @@ status open
  Astrobee is also an ideal candidate for robotic simulation research, rather
  than physical testing.
  As Astrobee interacts directly with astronauts and with life-supporting
- systems, it is subject to stringent safety measures.
- While
+ systems, it is subject to stringent safety measures applied to any ISS
+ payload
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
 
 \end_inset
 
+.
  Rigorous testing through robotic simulation rather than immediately switching
  to the physical world provides an opportunity for risk-free development.
  
