@@ -1129,8 +1129,8 @@ key "spheresweb"
 \end_inset
 
 : Translation 1m start to stop: 5s Rotation 360° start to stop: 5s Translation
- accuracy: 0.5cm Rotation accuracy: 2.5° We will ignore the propulsion lifetime
- and battery lifetime as irrelevant given the scope of our experiment.
+ accuracy: 0.5cm Rotation accuracy: 2.5° We will treat the propulsion and
+ battery lifetimes as irrelevant given the scope of our experiment.
  
 \end_layout
 
@@ -1158,6 +1158,23 @@ ns of a z-symmetric human “cylinder,” with an assigned position, forwards
 \end_layout
 
 \begin_layout Standard
+To properly provide conclusions a solution applicable to the ISS, additional
+ degrees of freedom that come with microgravity mean that we cannot assume
+ symmetry and therefore ignore the 3-dimensionality.
+ As a result, if time allows, we hope to extrapolate to three dimensions
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Having some generic dimensions would be helpful
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 [Although in reality proxemics would vary with z-position, we will ignore
  this as it is irrelevant in a 2D simulation.
  We will treat this study as a proof-of-concept, acknowledging that further
@@ -1167,16 +1184,6 @@ ns of a z-symmetric human “cylinder,” with an assigned position, forwards
 
 \begin_layout Subsection
 Module Model
-\end_layout
-
-\begin_layout Standard
-scale of dimension in general and at entrances/exits?
-\end_layout
-
-\begin_layout Standard
-To properly provide conclusions a solution applicable to the ISS, additional
- degrees of freedom that come with microgravity mean that we cannot assume
- symmetry and therefore ignore 
 \end_layout
 
 \begin_layout Subsection
