@@ -405,9 +405,9 @@ bwmargolis@ucdavis.edu
 \end_layout
 
 \begin_layout Abstract
-As robots become increasingly prevelant in environments with humans across
- contexts, such as social and work, there is a need to understand human-robotics
- integration (HRI) to build strong and effective relationships.
+BLAHAs robots become increasingly prevelant in environments with humans
+ across contexts, such as social and work, there is a need to understand
+ human-robotics integration (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
  collaboration between robots and crew in space, as crew time is the most
  precious resource and offloading tasks to a robot partner would be invaluable.
@@ -1358,19 +1358,82 @@ Environment and Human Obstacles
 \end_layout
 
 \begin_layout Standard
-Humans and their associated proxemics can be roughly represented as cross-sectio
-ns of a z-symmetric human “cylinder,” with an assigned position, forwards
- orientation, and associated elliptical z-symmetric proxemics.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProxModel.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simplified illustration of simulation for A) APS and B) COMPANION for one
+ crew and agnostic of task type (1, 2, or 3).
+ Higher repulsive forces or costs shown for area in front of crew.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:proxemicsmodel"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-To properly provide conclusions a solution applicable to the ISS, additional
+In our two-dimensional environment, humans and their associated proxemics
+ can be roughly represented as a circle with an assigned position, forwards
+ orientation, and associated elliptical z-symmetric proxemics (See Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proxemicsmodel"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In creating our simulations, we will be simulating all humans with equal
+ proxemics.
+ This is a simplification, as studies show that proxemics vary between people
+ and across cultures.
+ [REFERENCE]
+\end_layout
+
+\begin_layout Standard
+To properly provide conclusions a solution applicable to the ISS, the additional
  degrees of freedom and asymmetry that come with a microgravity environment
- mean that we cannot ignore the 3-dimensionality.
+ mean that we cannot ignore the effect of the system's 3-dimensionality
+ on our path planning algorithms.
  As a result, if time allows, we hope to extrapolate our simulation to three
  dimensions.
- Considering a human model in cylindrical coordinates independently from
- its environment, proxemics would vary with z-position 
+ Considering a human model as a cylinder, the associated proxemics would
+ vary with z-position 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kirby2009companion"
@@ -1390,6 +1453,54 @@ key "kirby2009companion"
 
 \begin_layout Subsection
 Test Scenarios - Don't worry, I'm making these better
+\end_layout
+
+\begin_layout Standard
+For each of our algorithms, COMPANION and APF, we will run identical testing
+ scenarios for each of several configurations.
+ Configurations will be designed to test the versatility of each algorithm,
+ including navigation around a single human, navigation between two humans,
+ navigation around a cluster of humans, and navigation around several randomly
+ generated numbers (up to six, the maximum capacity of the ISS), positions,
+ and orientations of humans (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:configurations"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+In each scenario, we direct Astrobee to perform three tasks (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Illustration-of-paths"
+
+\end_inset
+
+).
+ The first task is a simple travelling task from one end of the module to
+ the next.
+ The second task involves stopping at several points around the walls of
+ the module.
+ This simulates Astrobee's versatility in performing IVAs at specific points
+ within a module.
+ The third task will send Astrobee out along one wall and have it return
+ along the opposite, testing its ability to navigate obstacles along a more
+ prescriptive path.
+ 
+\end_layout
+
+\begin_layout Standard
+Early in the design process, we will intentionally create additional scenarios
+ to test known weaknesses of each algorithm, such as net zero cost for COMPANION
+, and local maxima or minima for APF.
+ We will investigate the use of our locational uncertainties to evade these
+ problems, simulating noise by randomly selecting an absolute orientation
+ and position within the margin of error.
 \end_layout
 
 \begin_layout Standard
@@ -1436,30 +1547,96 @@ name "fig:Illustration-of-paths"
 
 \end_inset
 
-Test in different scenarios: n humans in m modules, humans don’t move (arbitrari
-ly placed, or placed intentionally to create challenging scenarios.
- 
-\end_layout
 
-\begin_layout Standard
-reach 1: n’ humans in m’ modules, humans moves (again either arbitrary placement
- + paths, or designed to create challenging scenarios)
-\end_layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
-\begin_layout Standard
-reach 2: n’’ humans in m’’ modules, humans move and have changing proxemic
- fields to represent changing affective states
-\end_layout
-
-\begin_layout Standard
-We can refer to to Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Illustration-of-paths"
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename configurations.png
 
 \end_inset
 
- like this!
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example of possible crew configurations: A) Crew located in direct path
+ of shortest distance (Crew Config.
+ 1), B) Two crew members on opposing sides of module (Crew Config.
+ 2), C) Cluster of crew members opposite from single crew (Crew Config.
+ 3), and D) Random position and orientation of four crew members; the black
+ arrows indicate the direction of highest repulsive force or cost (Crew
+ Config.
+ 4).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:configurations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename TestTable.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Table of experimental conditions for three factors (path planning, task
+ type, and crew configuration) for a total of 24 simulations.
+ A use case is comprised of a sequence of factor designations, such as COM-T01-C
+C1 (COMPANION algorithm for end-to-end module navigation with one crew member
+ present).
+ Selected abbreviations: COM = COMPANION, T01 = Task 1, CC1 = Crew Configuration
+ 1.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TestTable"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
