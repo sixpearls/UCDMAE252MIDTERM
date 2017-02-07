@@ -564,9 +564,16 @@ key "bualat2015astrobee"
  (a.k.a.
  crew) performance monitoring and feedback, 4) just-in-time training, and
  5) monitoring air and system quality, isolating faults, and providing a
- backup sensor system to those already onboard the ISS.
- [PSA] Although the PSA has never fully realized in its projected role on
- the ISS, Astrobee has taken over its original goals of increasing productivity
+ backup sensor system to those already onboard the ISS
+\begin_inset CommandInset citation
+LatexCommand cite
+key "psa"
+
+\end_inset
+
+.
+ Although the PSA has never fully realized in its projected role on the
+ ISS, Astrobee has taken over its original goals of increasing productivity
  and safety, as well as continuing on SPHERES’ role as a microgravity research
  laboratory for robotics
 \begin_inset CommandInset citation
@@ -1390,8 +1397,15 @@ reference "fig:proxemicsmodel"
 In creating our simulations, we will be simulating all humans with equal
  proxemics.
  This is a simplification, as studies show that proxemics vary between people
- and across cultures.
- [REFERENCE]
+ and across cultures 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "joosse"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1420,8 +1434,23 @@ key "kirby2009companion"
  
 \end_layout
 
+\begin_layout Standard
+We have intentionally chosen not to model human motion.
+ Although it is relevant to the field and research has been done in this
+ area 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weinrich2013prediction"
+
+\end_inset
+
+, literature has shown that humans change their patterns of motion in response
+ to a moving robot.
+ The added complexity is out of the scope of this project.
+\end_layout
+
 \begin_layout Subsection
-Test Scenarios - Don't worry, I'm making these better
+Test Scenarios
 \end_layout
 
 \begin_layout Standard
@@ -1847,24 +1876,6 @@ key "best2016clustering"
  Incorporation of physiological signals will require collaboration across
  disciplines, like physiology and machine learning, and is expected to improve
  HRI.
-\end_layout
-
-\begin_layout Standard
-[Extra emotion recognition sources] suggest a way to quantify and detect
- - Make sure I’m not repeating something that Sarah has already covered
-\end_layout
-
-\begin_layout Standard
-Human motion “Regardful navigation” Incorporate reasonable human motion
- (would have to look into human responses to robot motion - suggested through
- inverse reinforcement learning) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "weinrich2013prediction"
-
-\end_inset
-
-[MOLLY WAS GOING TO ADD IN A PARAGRAPH HERE]
 \end_layout
 
 \begin_layout Standard
