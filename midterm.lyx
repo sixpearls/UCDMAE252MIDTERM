@@ -9,6 +9,8 @@
 % for subfigures/subtables
 \usepackage[caption=false,font=footnotesize]{subfig}
 
+% \g@addto@macro\maketitle{\thispagestyle{plain}}
+
 \usepackage{pdfcomment}
 \usepackage{environ}
 \RenewEnviron{comment}{\pdfcomment{\BODY}}
@@ -897,7 +899,21 @@ key "kirby2009companion"
  as passing on one side and respecting personal space.
  We want to compare the COMPANION results with a reactive architecture based
  on an artificial potential field (APF) that incorporates an equivalent
- proxemic map.
+ proxemic map, such as those shown in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:moving_human_prox"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pass_left_prox"
+
+\end_inset
+
+.
  We are particularly interested in exploring whether a heirarchical architecture
  is necessary for human-aware path planning, because the literature seems
  focused on global search methods.
@@ -923,6 +939,103 @@ Global optimization methods can find globally optimal paths, but are often
  such as waiting at a blocked pathway.
  In the following subsections, we describe the formulation for the two path
  planning methods we will be comparing.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename moving_proxemic_map.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graphical representation of the cost or repulsive potential associated
+ with a moving human.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:moving_human_prox"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pass_on_right_proxemic_map.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graphical representation of the cost or potential associated with the
+ social cue to pass on the left.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pass_left_prox"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -963,11 +1076,66 @@ COMPANION is based on the
  such as respecting personal space and passing on one side in addition to
  dynamic considerations such as time travelled, distance travelled, and
  control energy expended.
+ A path generated on the variable-sized grid is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:plan_var_grid"
+
+\end_inset
+
+.
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
 [Cite two 2009 conf papers and/or thesis, original A* paper]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename path_var_grid.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A visualization of path-planning on a variable-sized grid.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:plan_var_grid"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1241,10 +1409,6 @@ name "fig:Illustration-of-paths"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
