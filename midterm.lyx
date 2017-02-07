@@ -865,23 +865,17 @@ key "kirby2009companion"
  We want to compare the COMPANION results with a reactive architecture based
  on an artificial potential field (APF) that incorporates an equivalent
  proxemic map.
- We are particularly interested in exploring whether the architecture (heirarchi
-cal or reactive) is necessary for a In so doing, we hope to explore the
- question
+ We are particularly interested in exploring whether a heirarchical architecture
+ is necessary for human-aware path planning, because the literature seems
+ focused on global search methods.
+ To that end, we hope to explore the question
 \end_layout
 
 \begin_layout Quote
 
 \series bold
-Is the architecture (heirarchical or reactive) or formulation more important
- for human-aware path planning?
-\end_layout
-
-\begin_layout Quote
-
-\series bold
-Is a global/heirarhical path planning architecture necessary for human-aware
- path planning?
+How do the COMPANION and APF architectures compare for proxemic path-planning
+ around human obstacles in an enclosed area? 
 \end_layout
 
 \begin_layout Standard
