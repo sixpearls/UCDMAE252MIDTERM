@@ -154,7 +154,7 @@ http://mirror.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf
 \end_layout
 
 \begin_layout Title
-Comparing Heirarchical and Reactive Architectures for Human-Aware Navigation
+Comparing Hierarchical and Reactive Architectures for Human-Aware Navigation
 \end_layout
 
 \begin_layout Author
@@ -409,7 +409,7 @@ bwmargolis@ucdavis.edu
 \end_layout
 
 \begin_layout Abstract
-As robots become increasingly prevelant in environments with humans across
+As robots become increasingly prevalant in environments with humans across
  contexts, such as social and work, there is a need to understand human-robotics
  integration (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
@@ -1139,16 +1139,6 @@ reference "fig:plan_var_grid"
 \end_inset
 
 .
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-[Cite two 2009 conf papers and/or thesis, original A* paper]
-\end_layout
-
-\end_inset
-
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -1317,24 +1307,8 @@ Astrobee itself will be represented by a 12”x12” square, capable of 3-DOF
 
 \begin_layout Standard
 As motion specifics are not currently publicly available for the proposed
- Astrobee satellite, we will use the mobility specifications of SPHERES
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-July 30, 2015 TABLE 4.1 SPHERES quantitative operational requirements Item
- Requirement Translation (1m start to stop) 5s Rotation (360° start to stop)
- 5s Translation accuracy 0.5cm Rotation accuracy 2.5° Propulsion lifetime
- 20s Power lifetime 90min Mass (all units + consumables) 24.5 kg Processing
- Power 23 MFLOPS Communications Data Rate 40kbps TABLE 4.2 SPHERES satellite
- properties Diameter 0.25 m Mass (w/tank & batteries) 4.0 kg Max linear accelerati
-on 0.17 m/s2 Max angular acceleration 3.5 rad/s2 Power consumption 15 W Battery
- lifetime 2 h
-\end_layout
-
-\end_inset
-
-,as publicized on July 30, 2015 
+ Astrobee satellite, we will use the mobility specifications of SPHERES,
+ as publicized on July 30, 2015 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spheresweb"
@@ -1410,7 +1384,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Simplified illustration of simulation for A) APS and B) COMPANION for one
+Simplified illustration of simulation for A) APF and B) COMPANION for one
  crew and agnostic of task type (1, 2, or 3).
  Higher repulsive forces or costs shown for area in front of crew.
 \begin_inset CommandInset label
