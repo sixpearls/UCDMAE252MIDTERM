@@ -1007,9 +1007,9 @@ reference "fig:pass_left_prox"
 \begin_layout Quote
 
 \series bold
-How do the COMPANION and APF architectures balance efficiency versus human
- comfort during autonomous, human-aware naviagtion in an enclosed area?
- 
+How do the output paths of the COMPANION and APF architectures react to
+ the introduction of proxemics during autonomous navigation in an enclosed
+ area? 
 \end_layout
 
 \begin_layout Standard
