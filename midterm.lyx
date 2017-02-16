@@ -409,8 +409,8 @@ bwmargolis@ucdavis.edu
 \end_layout
 
 \begin_layout Abstract
-As robots become increasingly prevalant in environments with humans across
- contexts, such as social and work, there is a need to understand human-robotics
+As robots become increasingly prevalent in environments with humans across
+ contexts, whether social or work, there is a need to understand human-robotics
  integration (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
  collaboration between robots and crew in space, as crew time is the most
@@ -418,12 +418,12 @@ As robots become increasingly prevalant in environments with humans across
  There are several aspects of HRI and the focus of this paper will be the
  relationship between path planning and proxemics, or social distance, which
  is the comfortable, physical distance between two parties.
- This project will simulate an autnomous, monitoring robot to investigate
- aspects of path planning and execution when proxemics are considered.
- The three factorial experimental design encompasses path planning (cost
+ This project will investigate aspects of path planning and execution when
+ proxemics are considered by simulating an autnomous, monitoring robot.
+ The three-factorial experimental design encompasses path planning (cost
  function, artificial potential field), task type (direct path, waypoints,
  monitoring), and crew configuration (one person, two opposing, four with
- clustering, and randomly generated).
+ clustering, and random generation).
  The evaluation criteria will examine the trade off between efficiency and
  human comfort.
 \end_layout
@@ -436,8 +436,8 @@ As robots become increasingly prevalant in environments with humans across
 \end_layout
 
 \begin_layout Abstract
-Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Potential
- Field, Cost Function
+Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Artificial
+ Potential Field, Cost Function
 \end_layout
 
 \begin_layout Section
@@ -498,20 +498,20 @@ key "kruse2013human"
 \end_layout
 
 \begin_layout Standard
-A brief review of the literature and areas for future work will be discussed
- in the following sections.
- Next, we will describe our simulation that compares an 
+The following sections will briefly review the literature and areas for
+ future work.
+ Next, we will describe our simulation, which compares an 
 \begin_inset Formula $A^{*}$
 \end_inset
 
- based graph search path planning algorithm and a reactive artificial potential
- field (APF) navigation scheme for a free-flying robot avoiding human obstacles
- and exhibiting sociable behavior using proxemic distance on the international
- space station.
+ based graph search path-planning algorithm and a reactive artificial potential
+ field (APF) navigation scheme, for a free-flying robot avoiding human obstacles
+ and exhibiting sociable behavior using proxemic distance on the International
+ Space Station.
  We will describe a simulation based on the Astrobee small satellite for
- Intravehicular Activities (IVAs) on the ISS, we will discuss simplifications
- due to time constraints, and we will present goals for future extensions
- to the simulation should time permit them.
+ Intravehicular Activities (IVAs) on the ISS, discuss simplifications due
+ to time constraints, and present goals for future extensions to the simulation
+ should time permit them.
 \end_layout
 
 \begin_layout Section
@@ -546,12 +546,12 @@ key "spheresweb"
 \end_layout
 
 \begin_layout Standard
-NASA’s Human Exploration Telerobotics 2 (HET2) project is developing Astrobee,
- a free-flying robot designed for Intravehicular Activity (IVA) onboard
- the ISS.
+NASA’s Human Exploration Telerobotics 2 (HET2) project is currently developing
+ Astrobee, a free-flying robot designed for Intravehicular Activity (IVA)
+ onboard the ISS.
  It is scheduled to be launched in 2017, and it is based directly on the
  knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
- Assistant) program
+ Assistant) program 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -559,13 +559,29 @@ key "bualat2015astrobee"
 \end_inset
 
 .
- PSA was originally designed with the goals of 1) increasing crew productivity
- by taking over mundane and repetitive tasks, 2) reducing risk onboard the
- spacecraft by providing an interface for logistical management, 3) astronaut
- (a.k.a.
- crew) performance monitoring and feedback, 4) just-in-time training, and
- 5) monitoring air and system quality, isolating faults, and providing a
- backup sensor system to those already onboard the ISS
+ The PSA satellite was originally designed with the goals of 
+\end_layout
+
+\begin_layout Enumerate
+Increasing crew productivity by taking over mundane and repetitive tasks
+\end_layout
+
+\begin_layout Enumerate
+Reducing risk onboard the spacecraft by providing an interface for logistical
+ management
+\end_layout
+
+\begin_layout Enumerate
+Crew (astronaut) performance monitoring and feedback 
+\end_layout
+
+\begin_layout Enumerate
+Just-in-time training
+\end_layout
+
+\begin_layout Enumerate
+Monitoring air and system quality, isolating faults, and providing a backup
+ sensor system to those already onboard the ISS 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "psa"
@@ -573,21 +589,35 @@ key "psa"
 \end_inset
 
 .
- Although the PSA has never fully realized in its projected role on the
- ISS, Astrobee has taken over its original goals of increasing productivity
- and safety, as well as continuing on SPHERES’ role as a microgravity research
- laboratory for robotics
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although PSA never fully realized in its projected role on the ISS, Astrobee
+ has taken over its original goals of increasing productivity and safety,
+ as well as continuing and improving upon SPHERES’ role as a microgravity
+ research laboratory for robotics 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "bualat2015astrobee"
+key "smartspheres,bualat2015astrobee"
 
 \end_inset
 
 .
  As the immediate future of small satellites for IVAs, we focus on Astrobee
  for the purposes of our simulation.
- Astrobee currently will operate only semi-autonomously in coordination
- with the ground crew.
+\end_layout
+
+\begin_layout Standard
+In its current projection, Astrobee will operate only semi-autonomously
+ in coordination with the ground crew.
  Given a goal, Astrobee follows a pre-programmed path using its computer
  vision navigation system.
  When Astrobee encounters an obstacle, whether an unexpected object or a
