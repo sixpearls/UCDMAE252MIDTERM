@@ -97,7 +97,7 @@
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
@@ -419,7 +419,7 @@ As robots become increasingly prevalent in environments with humans across
  relationship between path planning and proxemics, or social distance, which
  is the comfortable, physical distance between two parties.
  This project will investigate aspects of path planning and execution when
- proxemics are considered by simulating an autnomous, monitoring robot.
+ proxemics are considered by simulating an autonomous, monitoring robot.
  The three-factorial experimental design encompasses path planning (cost
  function, artificial potential field), task type (direct path, waypoints,
  monitoring), and crew configuration (one person, two opposing, four with
@@ -1002,12 +1002,12 @@ key "kruse2013human"
 \end_inset
 
 .
- However, much human-aware path planning is focused on a global, heirarchical
+ However, much human-aware path planning is focused on a global, hierarchical
  approach; in the human-aware navigation survey by Kruse et.
 \begin_inset space ~
 \end_inset
 
-al, reactive methods are not considerd 
+al, reactive methods are not considered 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -1051,7 +1051,7 @@ reference "fig:pass_left_prox"
 \end_inset
 
 .
- We are particularly interested in exploring whether a heirarchical architecture
+ We are particularly interested in exploring whether a hierarchical architecture
  is necessary for human-aware path planning, because the literature seems
  focused on global search methods.
  To that end, we hope to explore the question:
@@ -1275,7 +1275,7 @@ key "khatib1986real"
  Goals are incorporated as negative (attractive) potentials, while obstacles
  have associated positive (repulsive) potentials.
  Then, the desired acceleration of the robot is set as a modeled force equal
- to the negative deriative of the potential field.
+ to the negative derivative of the potential field.
  In this way, the robot drives away from obstacles and towards the goal.
  This method is relatively simple to implement and is well suited for real-time
  navigation.
@@ -1295,7 +1295,7 @@ key "koren1991potential"
 .
  The APF method cannot provide any guarantee of global optimality, since
  the control scheme is inherently local.
- In order to address these challenges, one may try to carefuly formulate
+ In order to address these challenges, one may try to carefully formulate
  the potentials associated with obstacles and goal position 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1346,7 +1346,7 @@ key "spheresweb,yoo2015avionics"
 
 \begin_layout Standard
 Astrobee is designed to navigate around the ISS USOS (U.S.
- Oribital Segment), which consists of 9 modules: the U.S.
+ Orbital Segment), which consists of 9 modules: the U.S.
  Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
  Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
 se Module, Cupola, and the U.S.
@@ -1451,7 +1451,7 @@ We are making some significant assumptions with respect to the capabilities
 
 \begin_layout Standard
 The primary experiment concerning computer vision based navigation for satellite
-s onboard the ISS is MIT's SPHEHRES VERTIGO (acronym) goggles.
+s onboard the ISS is MIT's SPHERES VERTIGO (acronym) goggles.
  [VERTIGO IS GOOD].
 \end_layout
 
@@ -1633,7 +1633,7 @@ reference "fig:Illustration-of-paths"
 \end_inset
 
 ).
- The first task is a simple travelling task from one end of the module to
+ The first task is a simple traveling task from one end of the module to
  the next.
  The second task involves stopping at several points around the walls of
  the module.
@@ -1936,8 +1936,8 @@ We will write a custom, abstract simulator in Python.
  packages would distract from our problem of interest, which is focused
  on the social affect of the path planning method and parameters.
  Our simulation software will represent basic position and embodiment of
- the robot, humans (represented in two dimensions as elipses), and the module
- walls.
+ the robot, humans (represented in two dimensions as ellipses), and the
+ module walls.
  We will be assuming the robot can determine the location of the walls,
  and the location and orientation of the people.
  
@@ -2001,7 +2001,7 @@ The questions listed above will be applied to each proxemic distance model,
 \end_layout
 
 \begin_layout Standard
-The primary point of comparision between previous studies described in the
+The primary point of comparison between previous studies described in the
  brief literature review and the proposed one will be the instantaneous
  distance between the robot and the human.
  There are references 
@@ -2024,7 +2024,7 @@ key "kirby2009companion,takayama2009influences,walters2011long,torta2013design,k
  height, pet experience), in this simulation, but it may be possible to
  make recommendations or pose questions for further investigation.
  Hypothetically, if one architecture plans a path that tends to be closer
- to the human, that architeture may be more suitable when the humans have
+ to the human, that architecture may be more suitable when the humans have
  a smaller proxemic distance (e.g.
  prior experience with pets 
 \begin_inset CommandInset citation
@@ -2082,7 +2082,7 @@ key "kulic2007affective,rani2006empirical"
 \end_inset
 
 .
- As an alterantive to phsyiological signals, Best et.
+ As an alternative to physiological signals, Best et.
  al describe the use of a machine learning algorithm to discern the likely
  social signal (e.g.
  angry) from social cues, such as head movement and gait 
