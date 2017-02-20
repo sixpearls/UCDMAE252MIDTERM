@@ -900,7 +900,14 @@ key "kruse2013human"
 
 \end_inset
 
- have a more in-depth discussion of factors.
+ have a more in-depth discussion of factors (See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-HRI"
+
+\end_inset
+
+for brief comparison of studies reviewed here).
  Most work reviewed was not conducted in a simulation, and it has been difficult
  to find relevant simulation studies to date.
  Kirby et.
@@ -914,6 +921,50 @@ key "kirby2009companion"
 
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of HRI Experimental Designs
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparison-of-HRI"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lit review compare.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1748,7 +1799,7 @@ name "fig:TestTable"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename TestTable.png
+	filename TestTable2.png
 	width 3.5in
 
 \end_inset
@@ -1947,6 +1998,44 @@ The questions listed above will be applied to each proxemic distance model,
  to support use of one architecture over the other.
  The resulting discussion will also address tradeoffs between human acceptance
  and robot motion efficiency, and compare our results to previous studies.
+\end_layout
+
+\begin_layout Standard
+The primary point of comparision between previous studies described in the
+ brief literature review and the proposed one will be the instantaneous
+ distance between the robot and the human.
+ There are references 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human,walters2009empirical"
+
+\end_inset
+
+and studies 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion,takayama2009influences,walters2011long,torta2013design,kim2014social"
+
+\end_inset
+
+ documenting the proxemic distance across multiple factors.
+ It is not possible to include many factors, in particular those pertaining
+ to humans (e.g.
+ height, pet experience), in this simulation, but it may be possible to
+ make recommendations or pose questions for further investigation.
+ Hypothetically, if one architecture plans a path that tends to be closer
+ to the human, that architeture may be more suitable when the humans have
+ a smaller proxemic distance (e.g.
+ prior experience with pets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "takayama2009influences"
+
+\end_inset
+
+).
+ Even though this simulation does not include real-time human behavior,
+ it may provide valuable insights by comparing with other human studies.
 \end_layout
 
 \begin_layout Standard
