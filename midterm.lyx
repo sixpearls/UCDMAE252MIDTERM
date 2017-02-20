@@ -414,7 +414,7 @@ As robots become increasingly prevalent in environments with humans across
  integration (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
  collaboration between robots and crew in space, as crew time is the most
- precious resource and offloading tasks to a robot partner would be invaluable.
+ precious resource, and offloading tasks to a robot partner would be invaluable.
  There are several aspects of HRI and the focus of this paper will be the
  relationship between path planning and proxemics, or social distance, which
  is the comfortable, physical distance between two parties.
@@ -1023,24 +1023,25 @@ key "kruse2013human"
 \begin_inset space ~
 \end_inset
 
-al have proposed a path planning scheme called COMPANION, which uses a modified
- 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- graph-search based algorithm with a proxemic cost function 
+al 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion"
 
 \end_inset
 
-.
+ have proposed a path planning scheme called COMPANION, which uses a modified
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search based algorithm with a proxemic cost function.
  Kirby et.al showed that this formulation demonstrates social behaviors,
  such as passing on one side and respecting personal space.
- We want to compare the results from COMPANION with a reactive architecture
- based on an artificial potential field (APF) that incorporates an equivalent
- proxemic map, such as those shown in Figures 
+ We wish to compare the results from COMPANION-style architecture with a
+ reactive architecture based on an artificial potential field (APF) that
+ incorporates an equivalent proxemic map, such as those shown in Figures
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:moving_human_prox"
@@ -1078,16 +1079,21 @@ Global optimization methods can find globally optimal paths, but are often
  environments.
  In contrast, reactive methods are simple and well suited to real-time control
  but may perform non-optimally.
- Most local, reactive techniques are based on APF, which may stop moving
- towards the target due to local minima in the potential field.
- However, in human-aware path planning, this may cause social behaviors
- such as waiting at a blocked pathway.
- For both control methods, we will compare the planned paths using standard
- cost functions and potential fields for obstacle avoidance and cost functions
- and potential fields based on proxemic models.
- Neither will use hard-constraints in order to avoid collisions.
-  In the following subsections, we describe the formulation for the two
- path planning methods we will be comparing.
+ Most local, reactive techniques are based on APF, which may cause the robot
+ to stop moving towards the target due to local minima in the potential
+ field.
+ Overweighted obstacles can also overwhelm the attraction to the target
+ and cause navigational errors.
+ While these could be considered flaws, in human-aware path planning, these
+ errors may cause desirable social behaviors such as waiting at a blocked
+ pathway or avoiding a human collision.
+ For both path planning methods, we will compare the robot's trajectory
+ with and without proxemics.
+ Soft constraints will be used for human avoidance, although hard constraints
+ will be included to provent collisions with the environment's walls as
+ applicable.
+ In the following subsections, we describe the formulation for the two path
+ planning methods we will be comparing.
  
 \begin_inset Float figure
 wide false
@@ -1201,7 +1207,7 @@ The
 \begin_inset Formula $A^{*}$
 \end_inset
 
- graph search method, introduced by Hall in 1968, uses a heuristic cost
+ graph search method, introduced by Hart in 1968, uses a heuristic cost
  approximation to find optimal paths between nodes on a graph 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1210,13 +1216,13 @@ key "hart1968formal"
 \end_inset
 
 .
- For navigation applications of 
+ For navigational applications of 
 \begin_inset Formula $A^{*}$
 \end_inset
 
-, positions in the environment discretized and mapped to nodes on a graph,
- with connections to the neighboring positions, that can be traversed by
- taking an action with an associated cost.
+, positions in the environment are discretized and mapped to nodes on a
+ graph, with connections to the neighboring positions.
+ Nodes can be traversed by taking an action with an associated cost.
  The 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -1232,8 +1238,8 @@ Generally,
 \end_inset
 
  is not well suited for real-time navigation because it does not incorporate
- dynamics of the robot or environment and may not be able to re-plan fast
- enough to update based on those changes.
+ dynamics of the robot or its environment and may not be able to replan
+ quickly enough to update based on those changes.
  Additionally on physical systems, paths generated by 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -1244,7 +1250,7 @@ Generally,
 \end_inset
 
  and other algorithms based on similar principles have been used to address
- some of those challenges (for example, 
+ some of those challenges (Refer to 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion,stentz1994d,koenig2004lifelong"
@@ -1272,14 +1278,14 @@ key "khatib1986real"
 \end_inset
 
 .
- APF is a reactive navigation method that models the robot as particle driven
- by a potential field .
+ APF is a reactive navigation method that models the robot as a particle
+ driven by a potential field.
  In APF, a potential field is mapped onto the environment based on the position
  of goals and obstacles.
  Goals are incorporated as negative (attractive) potentials, while obstacles
  have associated positive (repulsive) potentials.
  Then, the desired acceleration of the robot is set as a modeled force equal
- to the negative derivative of the potential field.
+ to the negative gradient of the potential field.
  In this way, the robot drives away from obstacles and towards the goal.
  This method is relatively simple to implement and is well suited for real-time
  navigation.
@@ -1300,7 +1306,7 @@ key "koren1991potential"
  The APF method cannot provide any guarantee of global optimality, since
  the control scheme is inherently local.
  In order to address these challenges, one may try to carefully formulate
- the potentials associated with obstacles and goal position 
+ the potentials associated with obstacles and goal positions 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ge2000new"
@@ -1446,10 +1452,10 @@ Sensors
 We are making some significant assumptions with respect to the capabilities
  of Astrobee itself.
  In order to test the robotic architectures and algorithms, it is necessary
- that Astrobee be able to accurately detect humans and their associated
- orientations with omnipotence, in all directions at all times.
- Astrobee's current sensors, however, are only placed on four faces of the
- satellite [CITE - new astrobee paper].
+ that Astrobee accurately detect humans and their associated orientations
+ with omnipotence, in all directions at all times.
+ Astrobee's current vision sensors, however, are only placed on four faces
+ of the satellite [CITE - new astrobee paper].
  
 \end_layout
 
@@ -1460,20 +1466,20 @@ s onboard the ISS is MIT's SPHERES VERTIGO (acronym) goggles.
 \end_layout
 
 \begin_layout Standard
-Due to the demonstrated feasibility of computer vision based navigation
+Due to the demonstrated feasibility of computer vision-based navigation
  for satellites on the ISS and the scope of our proposed investigation,
  we will not include the limitations of sensors in our simulation.
  We recognize that sensors have limitations, such as noise and errors at
  small or large distances; in order for simulation results to be directly
  applied to a physical situation involving Astrobee, these limitations would
  need to be included in a final simulation.
- However, thanks to Astrobee's payload ports for additional software, the
- sensors onboard Astrobee are highly customizable.
- Since our investigation focuses on the effects of proxemics on the effectivenes
-s of our path-planning algorithms, it remains more useful if it stays in
- a generalized form, which could be modified appropriately to an individually-se
-lected sensor system.
- We shall assume that, with additional computer vision software or through
+ However, thanks to Astrobee's payload ports for additional software[CITE],
+ the sensors onboard Astrobee are highly customizable.
+ Since our investigation focuses on the effects of proxemics on our path-plannin
+g algorithms, it remains more useful if the simulation stays in a generalized
+ form, which could be modified appropriately to an individually-selected
+ sensor system.
+ We shall assume that with additional computer vision software or through
  the use of other sensors, Astrobee could have all needed information available
  to it at all times.
  
@@ -1581,9 +1587,10 @@ key "kirby2009companion"
  are treating all human obstacles as if at a uniform height), it would prove
  an inaccurate representation of a 3D world.
  We must therefore treat our study as a proof-of-concept, acknowledging
- that further improvements, including z-varying proxemics and three additional
- degrees of freedom in our simulated robot movement, would need to be made
- before any results could be applied to a practical situation.
+ that further improvements, including z-varying proxemics, three additional
+ degrees of freedom in our simulated robot movement, sensor limitations,
+ and a more complex environment, would need to be made before any results
+ could be applied to a practical situation.
  
 \end_layout
 
@@ -1651,7 +1658,7 @@ reference "fig:Illustration-of-paths"
 
 \begin_layout Standard
 Our first test for each task and scenario will be to run each path-planning
- algorithm without the use of proxemics to provide a point of baseline compariso
+ algorithm without the use of proxemics to provide a baseline point of compariso
 n for proxemic simulations.
  To do so while still maintaining collision avoidance, we will weight humans
  with a cost or potential field strength inversely proportional to the robot's
@@ -1759,10 +1766,6 @@ name "fig:configurations"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1780,8 +1783,8 @@ status open
 \begin_layout Plain Layout
 Table of experimental conditions for three factors (path planning, task
  type, and crew configuration) for a total of 24 simulations.
- A use case is comprised of a sequence of factor designations, such as COM-T01-C
-C1 (
+ A use case is comprised of a sequence of factor designations, such as A*-T01-CC
+1 (
 \begin_inset Formula $A^{*}$
 \end_inset
 
@@ -1814,6 +1817,24 @@ name "fig:TestTable"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Software Implementation
+\end_layout
+
+\begin_layout Standard
+We will write a custom, abstract simulator in Python.
+ We have chosen to write a custom simulator so that we can implement our
+ desired levels of abstraction.
+ Existing simulators like Gazebo and V-Rep are focused on physical realism.
+ We determined that the high-fidelity physical simulation used in existing
+ packages would distract from our problem of interest, which is focused
+ on the social effect of the path planning method and parameters.
+ Our simulation software will represent basic position and embodiment of
+ the robot, humans (represented in two dimensions as ellipses), and the
+ module walls.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1931,22 +1952,6 @@ name "tab:Detailed-list-of"
 
 \end_layout
 
-\begin_layout Standard
-We will write a custom, abstract simulator in Python.
- We have chosen to write a custom simulator so that we can implement our
- desired levels of abstraction.
- Existing simulators like Gazebo and V-Rep are focused on physical realism.
- We determined that the high-fidelity physical simulation used in existing
- packages would distract from our problem of interest, which is focused
- on the social affect of the path planning method and parameters.
- Our simulation software will represent basic position and embodiment of
- the robot, humans (represented in two dimensions as ellipses), and the
- module walls.
- We will be assuming the robot can determine the location of the walls,
- and the location and orientation of the people.
- 
-\end_layout
-
 \begin_layout Section
 Evaluation of Results 
 \end_layout
@@ -2005,9 +2010,18 @@ The questions listed above will be applied to each proxemic distance model,
 \end_layout
 
 \begin_layout Standard
-The primary point of comparison between previous studies described in the
- brief literature review and the proposed one will be the instantaneous
- distance between the robot and the human.
+In the studies we reviewed, none closely matched our experimental design
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-HRI"
+
+\end_inset
+
+), therefore they cannot provide a direct comparison.
+ The primary point of comparison between previous studies described in the
+ literature review and our proposed one will be the instantaneous distance
+ between the robot and the human.
  There are references 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2028,7 +2042,7 @@ key "kirby2009companion,takayama2009influences,walters2011long,torta2013design,k
  height, pet experience), in this simulation, but it may be possible to
  make recommendations or pose questions for further investigation.
  Hypothetically, if one architecture plans a path that tends to be closer
- to the human, that architecture may be more suitable when the humans have
+ to humans, that architecture may be more suitable when the humans have
  a smaller proxemic distance (e.g.
  prior experience with pets 
 \begin_inset CommandInset citation
@@ -2038,15 +2052,9 @@ key "takayama2009influences"
 \end_inset
 
 ).
- Even though this simulation does not include real-time human behavior,
- it may provide valuable insights by comparing with other human studies.
-\end_layout
-
-\begin_layout Standard
-Overall, the objective function laid out in the COMPANION optimization function
- will provide a good basis for quantitative comparison between the methods.
- In addition, we will perform a qualitative comparison to evaluate gross
- differences in the sociability of the generated paths in different scenarios.
+ Even though this simulation does not accomodate feedback regarding human
+ acceptance of the robot, it may provide valuable insights by comparing
+ with other human studies.
 \end_layout
 
 \begin_layout Section
