@@ -13,7 +13,7 @@
 
 \usepackage{pdfcomment}
 \usepackage{environ}
-\RenewEnviron{comment}{\pdfcomment{\BODY}}
+%\RenewEnviron{comment}{\pdfcomment{\BODY}}
 \end_preamble
 \options comsoc 
 \use_default_options false
@@ -953,7 +953,10 @@ key "kruse2013human"
 .
  However, much human-aware path planning is focused on a global, heirarchical
  approach; in the human-aware navigation survey by Kruse et.
- al, reactive methods are not considerd 
+\begin_inset space ~
+\end_inset
+
+al, reactive methods are not considerd 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -978,9 +981,8 @@ key "kirby2009companion"
 \end_inset
 
 .
- Kirby et.
- al showed that this formulation demonstrates social behaviors, such as
- passing on one side and respecting personal space.
+ Kirby et.al showed that this formulation demonstrates social behaviors,
+ such as passing on one side and respecting personal space.
  We want to compare the results from COMPANION with a reactive architecture
  based on an artificial potential field (APF) that incorporates an equivalent
  proxemic map, such as those shown in Figures 
@@ -1007,9 +1009,12 @@ reference "fig:pass_left_prox"
 \begin_layout Quote
 
 \series bold
-How do the output paths of the COMPANION and APF architectures react to
- the introduction of proxemics during autonomous navigation in an enclosed
- area? 
+How do the output paths of the 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and APF architectures react to the introduction of proxemics during autonomous
+ navigation in an enclosed area? 
 \end_layout
 
 \begin_layout Standard
@@ -1022,12 +1027,17 @@ Global optimization methods can find globally optimal paths, but are often
  towards the target due to local minima in the potential field.
  However, in human-aware path planning, this may cause social behaviors
  such as waiting at a blocked pathway.
- In the following subsections, we describe the formulation for the two path
- planning methods we will be comparing.
+ For both control methods, we will compare the planned paths using standard
+ cost functions and potential fields for obstacle avoidance and cost functions
+ and potential fields based on proxemic models.
+ Neither will use hard-constraints in order to avoid collisions.
+  In the following subsections, we describe the formulation for the two
+ path planning methods we will be comparing.
+ 
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1124,111 +1134,73 @@ name "fig:pass_left_prox"
 \end_layout
 
 \begin_layout Subsection
-COMPANION
-\end_layout
-
-\begin_layout Standard
-COMPANION is based on the 
+Heuristic Graph Search For Path Planning 
 \begin_inset Formula $A^{*}$
 \end_inset
 
- graph-search algorithm.
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph search method, introduced by Hall in 1968, uses a heuristic cost
+ approximation to find optimal paths between nodes on a graph
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hart1968formal"
+
+\end_inset
+
+.
  For navigation applications of 
 \begin_inset Formula $A^{*}$
 \end_inset
 
-, positions in the environment are mapped to nodes on a graph, with connections
- to the neighboring positions, that can be traversed by taking an action
- with an associated cost.
+, positions in the environment discretized and mapped to nodes on a graph,
+ with connections to the neighboring positions, that can be traversed by
+ taking an action with an associated cost.
  The 
 \begin_inset Formula $A^{*}$
 \end_inset
 
-  algorithm uses a heuristic search technique to find an optimal set of
- actions to move from the starting node to the goal node.
- COMPANION incorporates a few modifications to standard 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- based naviagation.
- First, they use a variable grid to increase position resolution in the
- graph near the robot and decrease the resolution further from the robot
- which reduces the time needed to perform the search.
- Second, they include a representation of moving obstacles (i.e., humans)
- and robot velocity as part of the state associated with each node to account
- for dynamics in the path planning.
- Finally, they incorporate cost functions representing social behaviors
- such as respecting personal space and passing on one side in addition to
- dynamic considerations such as time travelled, distance travelled, and
- control energy expended.
- A path generated on the variable-sized grid is shown in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:plan_var_grid"
-
-\end_inset
-
-.
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename path_var_grid.png
-	lyxscale 25
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-A visualization of path-planning on a variable-sized grid.
- Figure taken from Kirby 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirbythesis"
-
-\end_inset
-
-.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:plan_var_grid"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ algorithm uses a heuristic search technique to find an optimal set of actions
+ to move from the starting node to the goal node.
+ 
 \end_layout
 
 \begin_layout Standard
-Generally, A* is not well suited for real-time navigation because it does
- not incorporate dynamics of the robot or environment and may not be able
- to re-plan fast enough to update based on those changes.
- The variations from A* that Kirby propose attempt to address these issues.
- However, there are additional challenges such as aligning the grids, determinin
-g (partial) occupancy in large grid cells, and additional complexity of
- including dynamics in the state.
- Additionally on physical systems, paths generated would need to be tracked
- using a lower-level controller In our simulation, we will ignore this but
- it should be noted that this adds another level of complexity.
+Generally, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is not well suited for real-time navigation because it does not incorporate
+ dynamics of the robot or environment and may not be able to re-plan fast
+ enough to update based on those changes.
+ Additionally on physical systems, paths generated by 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ would need to be tracked using a lower-level controller.
+ Variations on 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and other algorithms based on similar principles have been used to address
+ some of those challenges (for example, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion,stentz1994d,koenig2004lifelong"
+
+\end_inset
+
+), but 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is still considered a standard technique for path planning.
  
 \end_layout
 
@@ -1237,15 +1209,16 @@ Artificial Potential Field
 \end_layout
 
 \begin_layout Standard
-APF is a reactive navigation method that models the robot as particle driven
- by a potential field 
+The APF method for robot navigation was introduced by Khatib in the 1980's
 \begin_inset CommandInset citation
 LatexCommand cite
-key "ge2002dynamic"
+key "khatib1986real"
 
 \end_inset
 
 .
+ APF is a reactive navigation method that models the robot as particle driven
+ by a potential field .
  In APF, a potential field is mapped onto the environment based on the position
  of goals and obstacles.
  Goals are incorporated as negative (attractive) potentials, while obstacles
@@ -1255,17 +1228,41 @@ key "ge2002dynamic"
  In this way, the robot drives away from obstacles and towards the goal.
  This method is relatively simple to implement and is well suited for real-time
  navigation.
- The main drawback is limitations due to the locality of the behavior, which
- lead to issues like becoming trapped in a local minima rather than continuing
- to move toward the target.
- In order to address this issue, it is possible to introduce noise into
- the controller to naturally explore out of local minima, which has the
- drawback of reducing time at the global minimum.
- Another possible solution is to have a heirarchical supervisor that switches
+ 
+\end_layout
+
+\begin_layout Standard
+The main limitations of APF  come from the locality of the behavior, such
+ as becoming trapped in local minima or oscillating near obstacles due to
+ local extremum
+\begin_inset CommandInset citation
+LatexCommand cite
+key "koren1991potential"
+
+\end_inset
+
+.
+ The APF method cannot provide any guarantee of global optimality, since
+ the control scheme is inherently local.
+ In order to address these challenges, one may try to carefuly formulate
+ the potentials associated with obstacles and goal position
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ge2000new"
+
+\end_inset
+
+.
+ Another approach is to incorporate a heirarchical supervisor that switches
  to another navigation method if it detects the APF controller has become
- caught at a local minima, which has the main drawback of added complexity.
- Additionally, the APF method cannot provide any guarantee of global optimality,
- since the control scheme is inherently local.
+ caught at a local minima, which has the main drawback of added complexity
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yun1997wall,mabrouk2008solving"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -1414,8 +1411,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Simplified illustration of simulation for A) APF and B) COMPANION for one
- crew and agnostic of task type (1, 2, or 3).
+Simplified illustration of simulation for A) APF and B) 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ for one crew and agnostic of task type (1, 2, or 3).
  Higher repulsive forces or costs shown for area in front of crew.
 \begin_inset CommandInset label
 LatexCommand label
@@ -1515,8 +1515,12 @@ Test Scenarios
 \end_layout
 
 \begin_layout Standard
-For each of our algorithms, COMPANION and APF, we will run identical testing
- scenarios for each of several configurations.
+For each of our algorithms, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and APF, we will run identical testing scenarios for each of several configurat
+ions.
  Configurations will be designed to test the versatility of each algorithm,
  including navigation around a single human, navigation between two humans,
  navigation around a cluster of humans, and navigation around several randomly
@@ -1555,7 +1559,10 @@ reference "fig:Illustration-of-paths"
 
 \begin_layout Standard
 Early in the design process, we will intentionally create additional scenarios
- to test known weaknesses of each algorithm, such as net zero cost for COMPANION
+ to test known weaknesses of each algorithm, such as net zero cost for 
+\begin_inset Formula $A^{*}$
+\end_inset
+
 , and local maxima or minima for APF.
  We will investigate the use of our locational uncertainties to evade these
  problems, simulating noise by randomly selecting an absolute orientation
@@ -1670,10 +1677,12 @@ status open
 Table of experimental conditions for three factors (path planning, task
  type, and crew configuration) for a total of 24 simulations.
  A use case is comprised of a sequence of factor designations, such as COM-T01-C
-C1 (COMPANION algorithm for end-to-end module navigation with one crew member
- present).
- Selected abbreviations: COM = COMPANION, T01 = Task 1, CC1 = Crew Configuration
- 1.
+C1 (
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm for end-to-end module navigation with one crew member present).
+ Selected abbreviations: T01 = Task 1, CC1 = Crew Configuration 1.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:TestTable"
@@ -1741,7 +1750,7 @@ reference "tab:Detailed-list-of"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1778,13 +1787,10 @@ name "fig:Proposed-Work-Plan"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1819,6 +1825,22 @@ name "tab:Detailed-list-of"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We will write a custom, abstract simulator in Python.
+ We have chosen to write a custom simulator so that we can implement our
+ desired levels of abstraction.
+ Existing simulators like Gazebo and V-Rep are focused on physical realism.
+ We determined that the high-fidelity physical simulation used in existing
+ packages would distract from our problem of interest, which is focused
+ on the social affect of the path planning method and parameters.
+ Our simulation software will represent basic position and embodiment of
+ the robot, humans (represented in two dimensions as elipses), and the module
+ walls.
+ We will be assuming the robot can determine the location of the walls,
+ and the location and orientation of the people.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1883,7 +1905,6 @@ Overall, the objective function laid out in the COMPANION optimization function
  will provide a good basis for quantitative comparison between the methods.
  In addition, we will perform a qualitative comparison to evaluate gross
  differences in the sociability of the generated paths in different scenarios.
- 
 \end_layout
 
 \begin_layout Section
