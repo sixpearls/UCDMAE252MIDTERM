@@ -530,7 +530,11 @@ The SPHERES platform is a system of three free-flying small satellites (roughly
 y), the platform, through its ability to upload guest software, has become
  a primary source of research in autonomous controls for free-flying spacecraft.
  For example, this satellite research platform enabled the development of
- a safe and stable cold-gas C O 2 propulsion system.
+ a safe and stable cold-gas CO
+\begin_inset Formula $_{2}$
+\end_inset
+
+ propulsion system.
  After the development of the capability for the satellites to use smartphone
  technology for experiments in 2011, the new Smart SPHERES’ telerobotic
  capabilities allowed for the rapid advancement of autonomous relative navigatio
