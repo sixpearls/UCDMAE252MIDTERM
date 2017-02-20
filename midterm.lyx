@@ -1061,7 +1061,7 @@ reference "fig:pass_left_prox"
 
 \series bold
 How do the output paths of the 
-\begin_inset Formula $A^{*}$
+\begin_inset Formula $\mathbf{A^{*}}$
 \end_inset
 
  and APF architectures react to the introduction of proxemics during autonomous
@@ -1198,7 +1198,7 @@ The
 \end_inset
 
  graph search method, introduced by Hall in 1968, uses a heuristic cost
- approximation to find optimal paths between nodes on a graph
+ approximation to find optimal paths between nodes on a graph 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hart1968formal"
@@ -1285,7 +1285,7 @@ key "khatib1986real"
 \begin_layout Standard
 The main limitations of APF  come from the locality of the behavior, such
  as becoming trapped in local minima or oscillating near obstacles due to
- local extremum
+ local extrema 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "koren1991potential"
@@ -1296,7 +1296,7 @@ key "koren1991potential"
  The APF method cannot provide any guarantee of global optimality, since
  the control scheme is inherently local.
  In order to address these challenges, one may try to carefuly formulate
- the potentials associated with obstacles and goal position
+ the potentials associated with obstacles and goal position 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ge2000new"
@@ -1307,6 +1307,7 @@ key "ge2000new"
  Another approach is to incorporate a heirarchical supervisor that switches
  to another navigation method if it detects the APF controller has become
  caught at a local minima, which has the main drawback of added complexity
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "yun1997wall,mabrouk2008solving"
@@ -1426,6 +1427,10 @@ We will treat the propulsion and battery lifetimes as irrelevant given the
  
 \end_layout
 
+\begin_layout Subsection
+Sensors
+\end_layout
+
 \begin_layout Standard
 We are making some significant assumptions with respect to the capabilities
  of Astrobee itself.
@@ -1434,8 +1439,12 @@ We are making some significant assumptions with respect to the capabilities
  orientations with omnipotence, in all directions at all times.
  Thanks to Astrobee's payload ports for additional software, we shall assume
  that, with additional computer vision software or through the use of other
- sensors, Astrobee could have this information available to it.
+ sensors, Astrobee could have this information available to it at all times.
  
+\end_layout
+
+\begin_layout Standard
+The primary example of 
 \end_layout
 
 \begin_layout Subsection
@@ -1605,6 +1614,18 @@ reference "fig:Illustration-of-paths"
  The third task will send Astrobee out along one wall and have it return
  along the opposite, testing its ability to navigate obstacles along a more
  prescriptive path.
+ 
+\end_layout
+
+\begin_layout Standard
+Our first test for each task and scenario will be to run each path-planning
+ algorithm without the use of proxemics to provide a point of baseline compariso
+n for proxemic simulations.
+ To do so while still maintaining collision avoidance, we will weight humans
+ with a cost or potential field strength inversely proportional to the robot's
+ distance from the humans, regardless of human orientation.
+ We will then introduce our proxemics model for our cost map and potential
+ field and run each scenario and task again.
  
 \end_layout
 
