@@ -1253,7 +1253,7 @@ key "ge2000new"
 \end_inset
 
 .
- Another approach is to incorporate a heirarchical supervisor that switches
+ Another approach is to incorporate a hierarchical supervisor that switches
  to another navigation method if it detects the APF controller has become
  caught at a local minima, which has the main drawback of added complexity
  
@@ -1324,6 +1324,13 @@ We intend to create our initial simulation within a simplified 2D model.
  Our environment will be an approximated rectangular cross-section of a
  module of the ISS USOS, which we can extend to include multiple modules
  once a successful simulation has been created with the simpler geometry.
+ We are also simulating a clean environment, without non-human obstacles.
+ In reality, the environment could be significantly more cluttered, with
+ experiments and equipment lining the walls.
+ We will be addressing this issue in a simplified manner by adding a hard
+ constraint that does not allow Astrobee to come into physical contact with
+ a small buffer surrounding the module's walls unless directed to do so
+ as part of its task.
  
 \end_layout
 
@@ -1386,14 +1393,35 @@ We are making some significant assumptions with respect to the capabilities
  In order to test the robotic architectures and algorithms, it is necessary
  that Astrobee be able to accurately detect humans and their associated
  orientations with omnipotence, in all directions at all times.
- Thanks to Astrobee's payload ports for additional software, we shall assume
- that, with additional computer vision software or through the use of other
- sensors, Astrobee could have this information available to it at all times.
+ Astrobee's current sensors, however, are only placed on four faces of the
+ satellite [CITE - new astrobee paper].
  
 \end_layout
 
 \begin_layout Standard
-The primary example of 
+The primary experiment concerning computer vision based navigation for satellite
+s onboard the ISS is MIT's SPHEHRES VERTIGO (acronym) goggles.
+ [VERTIGO IS GOOD].
+\end_layout
+
+\begin_layout Standard
+Due to the demonstrated feasibility of computer vision based navigation
+ for satellites on the ISS and the scope of our proposed investigation,
+ we will not include the limitations of sensors in our simulation.
+ We recognize that sensors have limitations, such as noise and errors at
+ small or large distances; in order for simulation results to be directly
+ applied to a physical situation involving Astrobee, these limitations would
+ need to be included in a final simulation.
+ However, thanks to Astrobee's payload ports for additional software, the
+ sensors onboard Astrobee are highly customizable.
+ Since our investigation focuses on the effects of proxemics on the effectivenes
+s of our path-planning algorithms, it remains more useful if it stays in
+ a generalized form, which could be modified appropriately to an individually-se
+lected sensor system.
+ We shall assume that, with additional computer vision software or through
+ the use of other sensors, Astrobee could have all needed information available
+ to it at all times.
+ 
 \end_layout
 
 \begin_layout Subsection
