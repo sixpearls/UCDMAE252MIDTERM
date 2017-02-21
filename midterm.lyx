@@ -410,8 +410,8 @@ bwmargolis@ucdavis.edu
 
 \begin_layout Abstract
 As robots become increasingly prevalent in environments with humans across
- contexts, whether social or work, there is a need to understand human-robotics
- integration (HRI) to build strong and effective relationships.
+ contexts, whether social or work, there is a need to understand human-robot
+ interaction (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
  collaboration between robots and crew in space, as crew time is the most
  precious resource, and offloading tasks to a robot partner would be invaluable.
@@ -466,8 +466,8 @@ ed Position Hold, Engage, Reorient, Experimental Satellites), to work with
 \end_layout
 
 \begin_layout Standard
-Proxemic distance, or personal space, in the context of Human-Robotics Interacti
-on (HRI) is founded on the characterization of human-human interaction by
+Proxemic distance, or personal space, in the context of Human-Robot Interaction
+ (HRI) is founded on the characterization of human-human interaction by
  Hall 
 \begin_inset CommandInset citation
 LatexCommand cite
