@@ -1271,6 +1271,7 @@ Artificial Potential Field
 
 \begin_layout Standard
 The APF method for robot navigation was introduced by Khatib in the 1980's
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "khatib1986real"
@@ -1396,15 +1397,22 @@ We intend to create our initial simulation within a simplified 2D model.
 \end_layout
 
 \begin_layout Standard
-Astrobee itself will be represented by a 12”x12” square, capable of 3-DOF
- holonomic motion (x translation, y translation, and xy rotation).
+Astrobee itself will be represented by a 12”x12” square with a 6kg mass
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+, capable of 3-DOF holonomic motion (x translation, y translation, and xy
+ rotation).
  
 \end_layout
 
 \begin_layout Standard
-As motion specifics are not currently publicly available for the proposed
- Astrobee satellite, we will use the mobility specifications of SPHERES,
- as publicized on July 30, 2015 
+The mobility specifications of SPHERES were publicized on July 30, 2015
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spheresweb"
@@ -1436,9 +1444,26 @@ Rotation accuracy: 2.5°
 \end_inset
 
 
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+Astrobee plans include position estimation to within 20cm of walls, which
+ shall provide the distance for our hard-constraint wall buffers.
+ It is able to internally update its position at ~6Hz, and it has a hardware
+ safety constraint that limits thrust at a maximum of 0.72N 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
 \end_inset
 
+.
+ Our simulated robot's motion shall accomodate these Astrobee constraints,
+ supplementing any lack of available information with comparable specifications
+ from the motion of SPHERES.
+\end_layout
+
+\begin_layout Standard
 We will treat the propulsion and battery lifetimes as irrelevant given the
  scope of our experiment.
  
@@ -1455,14 +1480,35 @@ We are making some significant assumptions with respect to the capabilities
  that Astrobee accurately detect humans and their associated orientations
  with omnipotence, in all directions at all times.
  Astrobee's current vision sensors, however, are only placed on four faces
- of the satellite [CITE - new astrobee paper].
- 
+ of the satellite 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 The primary experiment concerning computer vision based navigation for satellite
-s onboard the ISS is MIT's SPHERES VERTIGO (acronym) goggles.
- [VERTIGO IS GOOD].
+s onboard the ISS is MIT's VERTIGO (Visual Estimation for Relative Tracking
+ and Inspection of Generic Object) goggles, a hardware and software addition
+ to the SPHERES satellites.
+ VERTIGO experiments have demonstrated a successful stereo vision-based
+ orbiting of an unknown object at a close range, using simultaneous location
+ and mapping (SLAM) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TweddleVertigo,fourievertigo"
+
+\end_inset
+
+.
+ The experiments demonstrated the capabilities of a free-flying satellite
+ to use computer vision to navigate the challenges of 6-DOF motion in real
+ time.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1473,15 +1519,21 @@ Due to the demonstrated feasibility of computer vision-based navigation
  small or large distances; in order for simulation results to be directly
  applied to a physical situation involving Astrobee, these limitations would
  need to be included in a final simulation.
- However, thanks to Astrobee's payload ports for additional software[CITE],
- the sensors onboard Astrobee are highly customizable.
+ However, thanks to Astrobee's payload ports for additional software 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew,bualat2015astrobee"
+
+\end_inset
+
+, the sensors onboard Astrobee are highly customizable.
  Since our investigation focuses on the effects of proxemics on our path-plannin
 g algorithms, it remains more useful if the simulation stays in a generalized
  form, which could be modified appropriately to an individually-selected
  sensor system.
  We shall assume that with additional computer vision software or through
- the use of other sensors, Astrobee could have all needed information available
- to it at all times.
+ supplementation with other sensors, Astrobee could have all needed information
+ available to it at all times.
  
 \end_layout
 
@@ -1494,10 +1546,6 @@ Environment and Human Obstacles
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Graphics
