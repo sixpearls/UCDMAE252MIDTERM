@@ -2070,21 +2070,21 @@ reference "tab:Comparison-of-HRI"
  The primary point of comparison between previous studies described in the
  literature review and our proposed one will be the instantaneous distance
  between the robot and the human.
- There are references 
+ There are references (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human,walters2009empirical"
 
 \end_inset
 
-and studies 
+) and studies (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion,takayama2009influences,walters2011long,torta2013design,kim2014social"
 
 \end_inset
 
- documenting the proxemic distance across multiple factors.
+) documenting the proxemic distance across multiple factors.
  It is not possible to include many factors, in particular those pertaining
  to humans (e.g.
  height, pet experience), in this simulation, but it may be possible to
