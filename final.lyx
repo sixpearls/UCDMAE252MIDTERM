@@ -2005,6 +2005,10 @@ Results and Discussion
 Comparison of Non-proxemic and Proxemic AFP Results
 \end_layout
 
+\begin_layout Subsubsection
+Incomplete Missions and Collisions
+\end_layout
+
 \begin_layout Standard
 The APF simulation encompassed a full factorial simulation for mission type,
  crew confirguration, and inclusion of proxemics, which resulted in 24 test
@@ -2040,13 +2044,11 @@ c case.
  crew) was based on (INSERT RK THESIS REF) and the sinks (a.k.a.
  goals) was determined from our analysis.
  Prior to the damping coefficient and sink amplitude analysis, we observed
- that the robot trajectories and mission success varied from our final results.
+ that the robot trajectories, mission success, and collisions varied from
+ our final results.
+ In our final results, there were no collisions with the crew or module.
  A summary of the missed goal zones are provided in Table XX (OR a figure
  with subplots?).
-\end_layout
-
-\begin_layout Subsection
-
 \end_layout
 
 \begin_layout Subsection
