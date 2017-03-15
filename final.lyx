@@ -1360,7 +1360,7 @@ Inertia & 2
 \begin_layout Standard
 In our work, we only cared about a limited number of these (Minimize distance,
  personal space, (to a degree) default velocity).
- s
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2008,7 +2008,7 @@ key "kirby2009companion,stentz1994d,koenig2004lifelong"
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Enumerate
 Search
 \end_layout
 
