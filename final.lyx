@@ -243,7 +243,7 @@ Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Artificial
 \end_layout
 
 \begin_layout Section
-Intro to Problem : Motivation and Past Work
+Introduction
 \end_layout
 
 \begin_layout Standard
@@ -792,7 +792,7 @@ Some proxemic distance factors are more relevant for the application of
 \end_layout
 
 \begin_layout Section
-Specifics of the Problem: Experimental design and proxemic model from COMPANION
+Experimental design
 \end_layout
 
 \begin_layout Subsection
@@ -1252,13 +1252,10 @@ We intend to create our initial simulation within a simplified 2D model.
  a small buffer surrounding the module's walls unless directed to do so
  as part of its task.
  
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1734,6 +1731,10 @@ Techniques and Algorithms
 \end_layout
 
 \begin_layout Subsection
+Artificial Potential Field
+\end_layout
+
+\begin_layout Subsection
 A* Implementation
 \end_layout
 
@@ -1820,6 +1821,180 @@ Heuristic & Weights
 
 \begin_layout Subsubsection*
 Simulation-Specific Constraints & Justification
+\end_layout
+
+\begin_layout Subsection
+Human Avoidance Models
+\end_layout
+
+\begin_layout Standard
+Both 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and APF rely on a model scalar-field of the navigation area representing
+ the cost of being in that position.
+ Both planning methods will use the same proxemic and non-proxemic models
+ of the human obstacles in the scalar-field.
+ 
+\end_layout
+
+\begin_layout Standard
+The non-proxemic model is a symmetric gaussian model defined by
+\begin_inset Formula 
+\[
+U\left(x_{r},y_{r}\right)=\exp\left[-\frac{\left(x_{r}-x_{c}\right)^{2}+\left(y_{r}-y_{c}\right)^{2}}{2\sigma_{N}^{2}}\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{r}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the robot, 
+\begin_inset Formula $x_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{c}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the crew being modeled,
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is an amplitude normalizing constant,
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{N}^{2}$
+\end_inset
+
+ is a width normalizing constant.
+ We set 
+\begin_inset Formula $\sigma_{N}^{2}$
+\end_inset
+
+ to 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+SARAH 
+\end_layout
+
+\end_inset
+
+, so that the cost of a typical shoulder distance is half the cost as the
+ center.
+\end_layout
+
+\begin_layout Standard
+The proxemic model is the asymetric gaussian Kirby used to model personal
+ space, defined as
+\begin_inset Formula 
+\[
+U\left(x_{r},y_{r},\left|v\right|\right)=\exp\left[-\left(\left(\frac{\cos^{2}\theta}{2\sigma_{p}^{2}}+\frac{\sin^{2}\theta}{2\sigma_{s}^{2}}\right)\left(x_{r}-x_{c}\right)^{2}+\left(\frac{\sin2\theta}{4\sigma_{p}^{2}}-\frac{\sin2\theta}{4\sigma_{s}^{2}}\right)\left(x_{r}-x_{c}\right)\left(y_{r}-y_{c}\right)+\left(\frac{\sin^{2}\theta}{2\sigma_{p}^{2}}+\frac{\cos^{2}\theta}{2\sigma_{s}^{2}}\right)\left(y_{r}-y_{c}\right)^{2}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{r}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the robot, 
+\begin_inset Formula $\left|v\right|$
+\end_inset
+
+ is the magnitude of the robot's velocity, 
+\begin_inset Formula $x_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{c}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the crew being modeled, and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the orientation of the crew member.
+ The shape factor here is not a constant with respect to the robot position
+ and velocity.
+ The values are described by
+\begin_inset Formula 
+\begin{align*}
+\sigma_{h} & =\max\left[2\left|v\right|,0.5\right]\\
+\sigma_{s} & =\frac{2}{3}\sigma_{h}\\
+\sigma_{r} & =\frac{1}{2}\sigma_{h}\\
+\sigma_{p} & =\begin{cases}
+\sigma_{h} & \text{ if robot in front of crew}\\
+\sigma_{r} & \text{ if robot behind crew}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+We note that the larger shape factor corresponding to the front of the crew
+ corresponds to a wider cost curve, reflecting the need for more personal
+ space in the forward direction.
+ The smaller shape factor for the rear reflects the need for less personal
+ space.
 \end_layout
 
 \begin_layout Section
