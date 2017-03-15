@@ -440,8 +440,8 @@ Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Artificial
  Potential Field, Cost Function
 \end_layout
 
-\begin_layout Section
-Introduction
+\begin_layout Part
+Intro to Problem : Motivation and Past Work
 \end_layout
 
 \begin_layout Standard
@@ -989,6 +989,10 @@ Some proxemic distance factors are more relevant for the application of
  so must be left to future researchers.
 \end_layout
 
+\begin_layout Part
+Specifics of the Problem: Experimental desgin and proxemic model from COMPANION
+\end_layout
+
 \begin_layout Section
 Problem Formulation 
 \end_layout
@@ -1378,166 +1382,6 @@ In the interest of acquiring meaningful results in a limited time-frame,
 \end_layout
 
 \begin_layout Subsection
-Robot Model
-\end_layout
-
-\begin_layout Standard
-We intend to create our initial simulation within a simplified 2D model.
- Our environment will be an approximated rectangular cross-section of a
- module of the ISS USOS, which we can extend to include multiple modules
- once a successful simulation has been created with the simpler geometry.
- We are also simulating a clean environment, without non-human obstacles.
- In reality, the environment could be significantly more cluttered, with
- experiments and equipment lining the walls.
- We will be addressing this issue in a simplified manner by adding a hard
- constraint that does not allow Astrobee to come into physical contact with
- a small buffer surrounding the module's walls unless directed to do so
- as part of its task.
- 
-\end_layout
-
-\begin_layout Standard
-Astrobee itself will be represented by a 12”x12” square with a 6kg mass
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-, capable of 3-DOF holonomic motion (x translation, y translation, and xy
- rotation).
- 
-\end_layout
-
-\begin_layout Standard
-The mobility specifications of SPHERES were publicized on July 30, 2015
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "spheresweb"
-
-\end_inset
-
-: 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Translation 1m start to stop: 5s 
-\begin_inset Newline newline
-\end_inset
-
-Rotation 360° start to stop: 5s 
-\begin_inset Newline newline
-\end_inset
-
-Translation accuracy: 0.5cm 
-\begin_inset Newline newline
-\end_inset
-
-Rotation accuracy: 2.5° 
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Astrobee plans include position estimation to within 20cm of walls, which
- shall provide the distance for our hard-constraint wall buffers.
- It is able to internally update its position at ~6Hz, and it has a hardware
- safety constraint that limits thrust at a maximum of 0.72N 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-.
- Our simulated robot's motion shall accomodate these Astrobee constraints,
- supplementing any lack of available information with comparable specifications
- from the motion of SPHERES.
-\end_layout
-
-\begin_layout Standard
-We will treat the propulsion and battery lifetimes as irrelevant given the
- scope of our experiment.
- 
-\end_layout
-
-\begin_layout Subsection
-Sensors
-\end_layout
-
-\begin_layout Standard
-We are making some significant assumptions with respect to the capabilities
- of Astrobee itself.
- In order to test the robotic architectures and algorithms, it is necessary
- that Astrobee accurately detect humans and their associated orientations
- with omnipotence, in all directions at all times.
- Astrobee's current vision sensors, however, are only placed on four faces
- of the satellite 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The primary experiment concerning computer vision based navigation for satellite
-s onboard the ISS is MIT's VERTIGO (Visual Estimation for Relative Tracking
- and Inspection of Generic Object) goggles, a hardware and software addition
- to the SPHERES satellites.
- VERTIGO experiments have demonstrated a successful stereo vision-based
- orbiting of an unknown object at a close range, using simultaneous location
- and mapping (SLAM) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "TweddleVertigo,fourievertigo"
-
-\end_inset
-
-.
- The experiments demonstrated the capabilities of a free-flying satellite
- to use computer vision to navigate the challenges of 6-DOF motion in real
- time.
- 
-\end_layout
-
-\begin_layout Standard
-Due to the demonstrated feasibility of computer vision-based navigation
- for satellites on the ISS and the scope of our proposed investigation,
- we will not include the limitations of sensors in our simulation.
- We recognize that sensors have limitations, such as noise and errors at
- small or large distances; in order for simulation results to be directly
- applied to a physical situation involving Astrobee, these limitations would
- need to be included in a final simulation.
- However, thanks to Astrobee's payload ports for additional software 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew,bualat2015astrobee"
-
-\end_inset
-
-, the sensors onboard Astrobee are highly customizable.
- Since our investigation focuses on the effects of proxemics on our path-plannin
-g algorithms, it remains more useful if the simulation stays in a generalized
- form, which could be modified appropriately to an individually-selected
- sensor system.
- We shall assume that with additional computer vision software or through
- supplementation with other sensors, Astrobee could have all needed information
- available to it at all times.
- 
-\end_layout
-
-\begin_layout Subsection
 Environment and Human Obstacles
 \end_layout
 
@@ -1867,137 +1711,254 @@ name "fig:TestTable"
 
 \end_layout
 
+\begin_layout Part
+Simulated Robot
+\end_layout
+
 \begin_layout Subsection
-Software Implementation
+Robot Model
 \end_layout
 
 \begin_layout Standard
-We will write a custom, abstract simulator in Python.
- We have chosen to write a custom simulator so that we can implement our
- desired levels of abstraction.
- Existing simulators like Gazebo and V-Rep are focused on physical realism.
- We determined that the high-fidelity physical simulation used in existing
- packages would distract from our problem of interest, which is focused
- on the social effect of the path planning method and parameters.
- Our simulation software will represent basic position and embodiment of
- the robot, humans (represented in two dimensions as ellipses), and the
- module walls.
+We intend to create our initial simulation within a simplified 2D model.
+ Our environment will be an approximated rectangular cross-section of a
+ module of the ISS USOS, which we can extend to include multiple modules
+ once a successful simulation has been created with the simpler geometry.
+ We are also simulating a clean environment, without non-human obstacles.
+ In reality, the environment could be significantly more cluttered, with
+ experiments and equipment lining the walls.
+ We will be addressing this issue in a simplified manner by adding a hard
+ constraint that does not allow Astrobee to come into physical contact with
+ a small buffer surrounding the module's walls unless directed to do so
+ as part of its task.
  
 \end_layout
 
-\begin_layout Section
-Work Plan 
-\end_layout
-
 \begin_layout Standard
-Our proposed work plan contains parallel and consecutive activities to maximize
- progress, and builds in time for iterations on the simulation build.
- At the time of submission, we have established the problem statement and
- laid out the simulation design.
- Our next phase of work will be to implement our design (3.0 Build Simulation).
- The following phases (4.0 Test Simulation and 5.0 Refine Simulation) provide
- time to assess whether the simulation meets our experimental needs, functions
- as expected, and allows for corrections.
- It is expected that once the simulation is finalized; the simulation of
- the use cases and data collection will be rapid.
- Therefore, the majority of the time in phase 6.0 Collect and Analyze Data
- will be dedicated to analysis.
- Lastly, three weeks were allocated for the final report and should be adequate
- time for a thoughtful analysis and discussion of results.
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Proposed-Work-Plan"
+Astrobee itself will be represented by a 12”x12” square with a 6kg mass
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
 
 \end_inset
 
- shows the high-level work plan timeline, and a more detailed version can
- be found in Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Detailed-list-of"
+, capable of 3-DOF holonomic motion (x translation, y translation, and xy
+ rotation).
+ 
+\end_layout
+
+\begin_layout Standard
+The mobility specifications of SPHERES were publicized on July 30, 2015
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb"
+
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Translation 1m start to stop: 5s 
+\begin_inset Newline newline
+\end_inset
+
+Rotation 360° start to stop: 5s 
+\begin_inset Newline newline
+\end_inset
+
+Translation accuracy: 0.5cm 
+\begin_inset Newline newline
+\end_inset
+
+Rotation accuracy: 2.5° 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Astrobee plans include position estimation to within 20cm of walls, which
+ shall provide the distance for our hard-constraint wall buffers.
+ It is able to internally update its position at ~6Hz, and it has a hardware
+ safety constraint that limits thrust at a maximum of 0.72N 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
 
 \end_inset
 
 .
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename workplan.png
-	lyxscale 25
-	width 3.5in
-
-\end_inset
-
-
+ Our simulated robot's motion shall accomodate these Astrobee constraints,
+ supplementing any lack of available information with comparable specifications
+ from the motion of SPHERES.
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Proposed Work Plan: Activities in green are completed and blue activities
- indicate future work or in progress.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Proposed-Work-Plan"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Detailed list of proposed work plan activities.
+\begin_layout Standard
+We will treat the propulsion and battery lifetimes as irrelevant given the
+ scope of our experiment.
  
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Detailed-list-of"
+\end_layout
 
+\begin_layout Subsection
+Sensors
+\end_layout
+
+\begin_layout Standard
+We are making some significant assumptions with respect to the capabilities
+ of Astrobee itself.
+ In order to test the robotic architectures and algorithms, it is necessary
+ that Astrobee accurately detect humans and their associated orientations
+ with omnipotence, in all directions at all times.
+ Astrobee's current vision sensors, however, are only placed on four faces
+ of the satellite 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The primary experiment concerning computer vision based navigation for satellite
+s onboard the ISS is MIT's VERTIGO (Visual Estimation for Relative Tracking
+ and Inspection of Generic Object) goggles, a hardware and software addition
+ to the SPHERES satellites.
+ VERTIGO experiments have demonstrated a successful stereo vision-based
+ orbiting of an unknown object at a close range, using simultaneous location
+ and mapping (SLAM) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TweddleVertigo,fourievertigo"
+
+\end_inset
+
+.
+ The experiments demonstrated the capabilities of a free-flying satellite
+ to use computer vision to navigate the challenges of 6-DOF motion in real
+ time.
+ 
+\end_layout
+
+\begin_layout Standard
+Due to the demonstrated feasibility of computer vision-based navigation
+ for satellites on the ISS and the scope of our proposed investigation,
+ we will not include the limitations of sensors in our simulation.
+ We recognize that sensors have limitations, such as noise and errors at
+ small or large distances; in order for simulation results to be directly
+ applied to a physical situation involving Astrobee, these limitations would
+ need to be included in a final simulation.
+ However, thanks to Astrobee's payload ports for additional software 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew,bualat2015astrobee"
+
+\end_inset
+
+, the sensors onboard Astrobee are highly customizable.
+ Since our investigation focuses on the effects of proxemics on our path-plannin
+g algorithms, it remains more useful if the simulation stays in a generalized
+ form, which could be modified appropriately to an individually-selected
+ sensor system.
+ We shall assume that with additional computer vision software or through
+ supplementation with other sensors, Astrobee could have all needed information
+ available to it at all times.
+ 
+\end_layout
+
+\begin_layout Part
+Techniques and Algorithms
+\end_layout
+
+\begin_layout Section
+A* Implementation
+\end_layout
+
+\begin_layout Section*
+Earlier:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph search method, introduced by Hart in 1968, uses a heuristic cost
+ approximation to find optimal paths between nodes on a graph 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hart1968formal"
+
+\end_inset
+
+.
+ For navigational applications of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, positions in the environment are discretized and mapped to nodes on a
+ graph, with connections to the neighboring positions.
+ Nodes can be traversed by taking an action with an associated cost.
+ The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm uses a heuristic search technique to find an optimal set of actions
+ to move from the starting node to the goal node.
+ 
+\end_layout
+
+\begin_layout Standard
+Generally, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is not well suited for real-time navigation because it does not incorporate
+ dynamics of the robot or its environment and may not be able to replan
+ quickly enough to update based on those changes.
+ Additionally on physical systems, paths generated by 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ would need to be tracked using a lower-level controller.
+ Variations on 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and other algorithms based on similar principles have been used to address
+ some of those challenges (Refer to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion,stentz1994d,koenig2004lifelong"
+
+\end_inset
+
+), but 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is still considered a standard technique for path planning.
+ 
+\begin_inset Quotes eld
 \end_inset
 
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename workplan2.png
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+\begin_layout Part
+Results and Discussion
 \end_layout
 
 \begin_layout Section
@@ -2105,7 +2066,7 @@ key "takayama2009influences"
  with other human studies.
 \end_layout
 
-\begin_layout Section
+\begin_layout Part
 Future Work
 \end_layout
 
