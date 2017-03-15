@@ -173,7 +173,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Flex Author Name
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Sarah
@@ -226,7 +226,7 @@ and
 
 
 \begin_inset Flex Author Name
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Molly O'Connor
@@ -1162,51 +1162,6 @@ name "fig:pass_left_prox"
 \end_layout
 
 \begin_layout Subsection
-COMPANION Comparison
-\end_layout
-
-\begin_layout Standard
-Kirby et.
-\begin_inset space ~
-\end_inset
-
-al 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
- have proposed a path planning scheme called COMPANION, which uses a modified
- 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- graph-search based algorithm with a proxemic cost function.
- Kirby et.al showed that this formulation demonstrates social behaviors,
- such as passing on one side and respecting personal space.
- We wish to compare the results from COMPANION-style architecture with a
- reactive architecture based on an artificial potential field (APF) that
- incorporates an equivalent proxemic map, such as those shown in Figures
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:moving_human_prox"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:pass_left_prox"
-
-\end_inset
-
-.
- Hello!
-\end_layout
-
-\begin_layout Subsection
 Heuristic Graph Search For Path Planning 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -1334,6 +1289,95 @@ key "ge2000new"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "yun1997wall,mabrouk2008solving"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+COMPANION Comparison
+\end_layout
+
+\begin_layout Standard
+Kirby et.
+\begin_inset space ~
+\end_inset
+
+al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+ proposed a path planning scheme called COMPANION, which uses a modified
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search based algorithm with a proxemic cost function, from which
+ much of our experimental design draws its inspiration.
+ Kirby et.al showed that a heuristic path-planning algorithm could demonstrate
+ social behaviors, such as passing on one side and respecting personal space.
+ 
+\end_layout
+
+\begin_layout Standard
+When determining the heuristic for their A* implementation, Kirby et.
+ al paid attention to the following points: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{cc}
+\textbf{{Constraint\:Name}} & \textbf{Weight (\textit{{w_{c}}})}\\
+Minimize\ distance & 1\\
+Obstacle\ buffer & 1\\
+Personal\ space & 2\\
+Robot\ space & 2\\
+Pass\ on\ right & 3\\
+Default\ velocity & 2\\
+Face\ travel & 2\\
+Inertia & 2
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+In our work, we only cared about a limited number of these (Minimize distance,
+ personal space, (to a degree) default velocity).
+ s
+\end_layout
+
+\begin_layout Standard
+We wish to compare the results from our COMPANION-style architecture with
+ a reactive architecture based on an artificial potential field (APF) that
+ incorporates an equivalent proxemic map, such as those shown in Figures
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:moving_human_prox"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pass_left_prox"
 
 \end_inset
 
