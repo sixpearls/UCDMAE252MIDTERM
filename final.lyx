@@ -990,7 +990,7 @@ Some proxemic distance factors are more relevant for the application of
 \end_layout
 
 \begin_layout Part
-Specifics of the Problem: Experimental desgin and proxemic model from COMPANION
+Specifics of the Problem: Experimental design and proxemic model from COMPANION
 \end_layout
 
 \begin_layout Section
@@ -1019,43 +1019,6 @@ al, reactive methods are not considered
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
-
-\end_inset
-
-.
- For example, Kirby et.
-\begin_inset space ~
-\end_inset
-
-al 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
- have proposed a path planning scheme called COMPANION, which uses a modified
- 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- graph-search based algorithm with a proxemic cost function.
- Kirby et.al showed that this formulation demonstrates social behaviors,
- such as passing on one side and respecting personal space.
- We wish to compare the results from COMPANION-style architecture with a
- reactive architecture based on an artificial potential field (APF) that
- incorporates an equivalent proxemic map, such as those shown in Figures
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:moving_human_prox"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:pass_left_prox"
 
 \end_inset
 
@@ -1196,6 +1159,51 @@ name "fig:pass_left_prox"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+COMPANION Comparison
+\end_layout
+
+\begin_layout Standard
+Kirby et.
+\begin_inset space ~
+\end_inset
+
+al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+ have proposed a path planning scheme called COMPANION, which uses a modified
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search based algorithm with a proxemic cost function.
+ Kirby et.al showed that this formulation demonstrates social behaviors,
+ such as passing on one side and respecting personal space.
+ We wish to compare the results from COMPANION-style architecture with a
+ reactive architecture based on an artificial potential field (APF) that
+ incorporates an equivalent proxemic map, such as those shown in Figures
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:moving_human_prox"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pass_left_prox"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1383,6 +1391,21 @@ In the interest of acquiring meaningful results in a limited time-frame,
 
 \begin_layout Subsection
 Environment and Human Obstacles
+\end_layout
+
+\begin_layout Standard
+We intend to create our initial simulation within a simplified 2D model.
+ Our environment will be an approximated rectangular cross-section of a
+ module of the ISS USOS, which we can extend to include multiple modules
+ once a successful simulation has been created with the simpler geometry.
+ We are also simulating a clean environment, without non-human obstacles.
+ In reality, the environment could be significantly more cluttered, with
+ experiments and equipment lining the walls.
+ We will be addressing this issue in a simplified manner by adding a hard
+ constraint that does not allow Astrobee to come into physical contact with
+ a small buffer surrounding the module's walls unless directed to do so
+ as part of its task.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1720,21 +1743,6 @@ Robot Model
 \end_layout
 
 \begin_layout Standard
-We intend to create our initial simulation within a simplified 2D model.
- Our environment will be an approximated rectangular cross-section of a
- module of the ISS USOS, which we can extend to include multiple modules
- once a successful simulation has been created with the simpler geometry.
- We are also simulating a clean environment, without non-human obstacles.
- In reality, the environment could be significantly more cluttered, with
- experiments and equipment lining the walls.
- We will be addressing this issue in a simplified manner by adding a hard
- constraint that does not allow Astrobee to come into physical contact with
- a small buffer surrounding the module's walls unless directed to do so
- as part of its task.
- 
-\end_layout
-
-\begin_layout Standard
 Astrobee itself will be represented by a 12”x12” square with a 6kg mass
  
 \begin_inset CommandInset citation
@@ -1884,7 +1892,7 @@ A* Implementation
 \end_layout
 
 \begin_layout Section*
-Earlier:
+Earlier (for reference, delete this):
 \end_layout
 
 \begin_layout Standard
@@ -1950,11 +1958,22 @@ key "kirby2009companion,stentz1994d,koenig2004lifelong"
 \end_inset
 
  is still considered a standard technique for path planning.
- 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section*
+Search
+\end_layout
+
+\begin_layout Section*
+Heuristic & Weights
+\end_layout
+
+\begin_layout Section*
+Simulation-Specific Constraints & Justification
 \end_layout
 
 \begin_layout Part
