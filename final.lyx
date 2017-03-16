@@ -2005,6 +2005,11 @@ Results and Discussion
 Comparison of Non-proxemic and Proxemic AFP Results
 \end_layout
 
+\begin_layout Standard
+Main concern = comparison between non-proxemic and proxemic, so analysis
+ done on primarily this factor
+\end_layout
+
 \begin_layout Subsubsection
 Incomplete Missions and Collisions
 \end_layout
@@ -2049,6 +2054,39 @@ c case.
  In our final results, there were no collisions with the crew or module.
  A summary of the missed goal zones are provided in Table XX (OR a figure
  with subplots?).
+\end_layout
+
+\begin_layout Subsubsection
+Distance Traveled and Average Velocity
+\end_layout
+
+\begin_layout Standard
+For the 24 APF test scenarios, the inclusion of proxemics did not appear
+ to affect the distanced traveled.
+ The percent change
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $percent\:change\:=\frac{(proxemic)-(non-proxemic)}{(non-proxemic)}x100\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ in the distance traveled from non-proxemic to proxemic across scenarios
+ is less than or equal to 1.04%.
+ As expected, the distance travaled increased with mission type (direct
+ < waypoints < monitoring) and the range of values appears small, indicating
+ that the crew configuration is not as important (See table XX).
+ It is interesting to note the lower range values were caused by missed
+ goal zones.
+ The average velocity was also consisent between non-proxemic and proxemic
+ scenarios.
+ With the exception of one scenario, the average velocity was wihin 5% of
+ the non-proxemic value
 \end_layout
 
 \begin_layout Subsection
