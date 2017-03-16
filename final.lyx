@@ -2079,7 +2079,7 @@ hard constraints for humans and walls
 
 \begin_layout Standard
 - limited maximum velocity so that it would be able to slow down to a stop
- at each waypoint
+ at each waypoint 
 \end_layout
 
 \begin_layout Subsection
