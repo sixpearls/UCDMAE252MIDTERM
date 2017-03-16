@@ -2161,7 +2161,7 @@ Main concern = comparison between non-proxemic and proxemic, so analysis
  crew config to refer back to, labeled with goal # and crew #; talk about
  (2,2) (1,1) separately; case = path planning x mission x crew; scenario
  = proxemic or non x case; maybe table listing cases and if a metric significant
-ly varied
+ly varied;
 \end_layout
 
 \begin_layout Subsubsection
@@ -2351,6 +2351,10 @@ key "takayama2009influences"
 
 \begin_layout Section
 Discussion
+\end_layout
+
+\begin_layout Standard
+general observations; APF, A*, APF vs A*
 \end_layout
 
 \begin_layout Section
