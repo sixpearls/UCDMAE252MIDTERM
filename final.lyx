@@ -2159,20 +2159,16 @@ status collapsed
 \begin_inset Formula $\sigma_{N}^{2}$
 \end_inset
 
- to 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-SARAH 
-\end_layout
+ to 0.355 , so that the cost of a typical shoulder distance (14 inches) is
+ half the cost as the center
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haslegrave1986characterizing"
 
 \end_inset
 
-, so that the cost of a typical shoulder distance is half the cost as the
- center.
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2405,6 +2401,52 @@ Unique Cases
 
 \begin_layout Subsection
 Comparison of Non-proxemic and Proxemic A* Results
+\end_layout
+
+\begin_layout Subsubsection
+Incomplete Missions and Collisions
+\end_layout
+
+\begin_layout Standard
+The A* simulation included 24 test scenarioes from a full factorial analysis
+ of mission type, crew configuration, and inclusion of proxemics.
+ The robot was unable to navigation to all goal zones successfully in 10
+ scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
+ 0% to 80%.
+ These 10 scenarios occurred across the different combinations of mission
+ type and crew configuration (see table XX??).
+ For the non-proxemic direct mission with one crew, the robot started to
+ navigate around the crew in the same direction as the proxemic scenario,
+ but was unable to continue past a few steps.
+ The opposite case occured for the direct mission with two crew, where the
+ robot completed the non-proxemic scenario and not the proxemic one.
+ In the proxemic scenario, the robot approached the two crew with the maximum
+ allowed velocity (50 cm/s) and started to decrease its velocity at t =
+ 5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
+ functions.
+ The relevant portion of the crew cost functions defined by the asymmetrical
+ Gaussian distribution is sigma_h = 0.5m (FIX).
+ Since the distance between the crew centers is 2.44 m, the crew are facing
+ each other, and the value of a Gaussian distribution is essentially zero
+ (SOMEONE DOUBLE CHECK) after three standard deviations away from the mean
+ (> 1.5 m), the cost functions overlap and may cause an occlusion (BEN–DRAW
+ CONTOURS?).
+\end_layout
+
+\begin_layout Standard
+The A* implementation included restrictions on the total computational time
+ (60 s) and node computational time (0.25 s) for practical purposes.
+ The maximum total computational time was exceeded (> 60 s) by 9 of the
+ 10 scenarios with the node computational time ranging between 0.10 s and
+ 0.21 s.
+ The remaining scenario exceeded the node computational time (> 0.25 s),
+ but was within the maximum computational time (52.82 s) when the simulation
+ ended.
+ The cause of the increased computational times in unclear and would be
+ a point for future investigation.
+ The grid size and computational times were partially investigated, but
+ it was out of the scope of this project to allocated enough resources for
+ a full analysis.
 \end_layout
 
 \begin_layout Subsection
