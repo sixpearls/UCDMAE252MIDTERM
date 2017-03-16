@@ -2146,19 +2146,22 @@ We note that the larger shape factor corresponding to the front of the crew
 \end_layout
 
 \begin_layout Section
-Results and Discussion
+Results
 \end_layout
 
 \begin_layout Subsection
-Comparison of Non-proxemic and Proxemic AFP Results
+Comparison of Non-proxemic and Proxemic APF Results
 \end_layout
 
 \begin_layout Standard
 Main concern = comparison between non-proxemic and proxemic, so analysis
  done on primarily this factor; non-proxemic and proxemic compared within
- a given test scenario (APF x Mission Type x Crew Configuration); robot
- instructed to continue to next goal if v = 0; probably need a figure of
- mission x crew config to refer back to, labeled with goal # and crew #
+ a given case (APF x Mission Type x Crew Configuration); robot instructed
+ to continue to next goal if v = 0; probably need a figure of mission x
+ crew config to refer back to, labeled with goal # and crew #; talk about
+ (2,2) (1,1) separately; case = path planning x mission x crew; scenario
+ = proxemic or non x case; maybe table listing cases and if a metric significant
+ly varied
 \end_layout
 
 \begin_layout Subsubsection
@@ -2212,8 +2215,8 @@ Distance Traveled and Average Velocity
 \end_layout
 
 \begin_layout Standard
-For 23 of 24 APF test scenarios, the inclusion of proxemics did not appear
- to affect the distanced traveled.
+For 10 cases, the distanced traveled was similar between non-proxemic and
+ proxemic scenarios.
  The percent change
 \begin_inset Foot
 status open
@@ -2244,9 +2247,8 @@ status open
 \begin_layout Standard
 The average velocity was also largely consisent between non-proxemic and
  proxemic scenarios.
- With the exception of one scenario, the average velocity was within 5%
- of the non-proxemic value, and ranged between 2.50 cm/s and 8.87 cm/s across
- scenarios.
+ In 9 cases, the average velocity was within 5% of the non-proxemic value,
+ and ranged between 2.50 cm/s and 8.87 cm/s across scenarios.
  During the waypoints mission with the clustered crew, the proxemic case
  saw an increased average velocity (78.19% change or +2.09 cm/s) and a larger
  maximum velocity (7.22% change or +1.94 cm/s) resulting in a faster completion
@@ -2263,64 +2265,40 @@ Maximum Velocity
 \end_layout
 
 \begin_layout Standard
+For non-proxemic and proxemic cases, the maximum velocity tended to reach
+ similar values (within 3.58% of non-proxemic value) ranging between 18.38
+ cm/s and 26.76 cm/s.
+ There were four cases where a larger change in maximum velocity from non-proxem
+ic occured (7.22% to 18.02% change): 1) waypoint mission with two crew, and
+ 2) all monitoring missions with more than one crew.
+ The difference in maximum velocity can be attributed to ??? (WHERE does
+ v max occur on trajectory?).
+ In the 12 scenarios where the maximum velocity was greater than 25 cm/s,
+ the variance of the Gaussian distributions describing the sources (a.k.a.
+ crew) would have increased, resulting in a dynamically changing field during
+ navigation to a goal zone (CONFIRM with max velocity plots).
+ These results confirm that the maximum velocity never exceeded the 50 cm/s
+ constraint for any scenario.
+\end_layout
 
+\begin_layout Subsubsection
+Personal Space Zones and Minimum Distance
+\end_layout
+
+\begin_layout Standard
+blah
+\end_layout
+
+\begin_layout Subsubsection
+Unique Cases
+\end_layout
+
+\begin_layout Subsection
+Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Subsection
 Evaluation of Results 
-\end_layout
-
-\begin_layout Standard
-The proposed project aims to understand the effect of proxemic distance
- models (cost function and APF) on the path planning and execution of autonomous
-, human-aware navigation by Astrobee.
- As the project is done in a simulation and leverages past research for
- empirical models of proxemics distance with no human feedback, the analysis
- will not include the subjective measures typically included in proxemics
- (comfort, naturalness, sociability, etc.) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kruse2013human"
-
-\end_inset
-
-.
- Instead, the analysis will focus on the results of path planning and execution
- to answer the following questions:
-\end_layout
-
-\begin_layout Itemize
-How long did it take for the robot to complete the task? What was the average
- velocity?
-\end_layout
-
-\begin_layout Itemize
-What was the distance travelled by the robot during the task?
-\end_layout
-
-\begin_layout Itemize
-What was the instantaneous distance between the robot and the human? How
- much time and distance did the robot spend within human-human interaction
- proxemics distance categories established by Hall 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hall1966hidden"
-
-\end_inset
-
-? What was the minimum distance?
-\end_layout
-
-\begin_layout Itemize
-Were there any collisions and if so, how many?
-\end_layout
-
-\begin_layout Standard
-The questions listed above will be applied to each proxemic distance model,
- and the results compared to each other to ascertain if there is evidence
- to support use of one architecture over the other.
- The resulting discussion will also address tradeoffs between human acceptance
- and robot motion efficiency, and compare our results to previous studies.
 \end_layout
 
 \begin_layout Standard
@@ -2369,6 +2347,10 @@ key "takayama2009influences"
  Even though this simulation does not accomodate feedback regarding human
  acceptance of the robot, it may provide valuable insights by comparing
  with other human studies.
+\end_layout
+
+\begin_layout Section
+Discussion
 \end_layout
 
 \begin_layout Section
