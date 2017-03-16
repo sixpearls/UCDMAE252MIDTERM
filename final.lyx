@@ -2282,7 +2282,7 @@ Main concern = comparison between non-proxemic and proxemic, so analysis
  crew config to refer back to, labeled with goal # and crew #; talk about
  (2,2) (1,1) separately; case = path planning x mission x crew; scenario
  = proxemic or non x case; maybe table listing cases and if a metric significant
-ly varied
+ly varied; time?
 \end_layout
 
 \begin_layout Subsubsection
@@ -2681,6 +2681,16 @@ Across scenarioes there were no collisions.
 
 \begin_layout Subsubsection
 Distance Traveled and Average Velocity
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2688,21 +2698,94 @@ Unique to the proxemic scenarios is the dependence of the cost function
  on velocity.
  As the A* algorithm iterates through five potential velocities for a node,
  the cost may change for any potential velocities greater than 25 cm/s.
- It was expected for some cases, that this balance would result in the robot
- translating faster over a longer distance 
+ It was expected that this balance would result in the robot translating
+ faster over a longer distance or the inverse.
+ However, for all cases the average velocity was lower for proxemic scenarios
+ (35.89 cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s),
+ yet the change in distance traveled was not consistent.
+ The distance traveled increased for the direct mission with a clustered
+ crew and the waypoints mission with one crew, where in the former case
+ the robot is perturned from the module centerline in the proxemic scenario
+ and for the latter case the robot maintains a farther distance from the
+ crew when crossing in front.
+ In other cases, the proxemic scenario had a smaller average velocity and
+ shorter distance traveled than the non-proxemic one.
+ The first case (direct mission with random crew) has a relatively small
+ difference of 8.28%.
+ The robot appears to stay closer to the centerline and crew # 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-2, 4, 
+fix
 \end_layout
 
 \end_inset
 
-or the inverse.
- However, for all cases the average velocity was lower for proxemic scenarios
- (35.89 cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s),
- yet the change in distance traveled was not consistent.
+ near the goal zone for the proxemic case.
+ Even though the quantity of direction changes in similar (36 for non-proxemic
+ and 35 for proxemic), the robot in the non-proxemic case travels a shorter
+ distance before changing direction with a higher average velocity, which
+ may explain the increased overal distance and shorter completion time.
+ Another case (waypoints mission with clustered crew) follows a similar
+ pattern with a smaller average velocity and distance traveled for the proxemic
+ scenario with the key difference that the simulation ended before reaching
+ the second goal.
+ As expected, the robot maintains a farther distance from the clustered
+ crew causing the shorter distance traveled.
+ The simulations for case # (monitoring mission with random crew) also ended
+ before reaching the fourth goal.
+ The robot approaches closer to the crew clustered by the third goal for
+ the non-proxemic case.
+ Compared to other cases, the percent change in average velocity for this
+ case was relatively small (6.67%) and the decreased velocity for the proxemic
+ scenario appears to be attributed to the effect of the clustered crew by
+ the third goal (see figure velocity color map)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In contrast, there were two cases where the distance traveled was within
+ 0.57% between the applicable non-proxemic scenarios.
+ For the first case (waypoints mission with random crew), the closest crew
+ members to the robot's trajectory are approximately facing 180 degrees
+ away.
+ Therefore, the robot in the proxemic scenario primarily experienced the
+ cost from sigma_r
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ that is closer to the non-proxemic standard deviation 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+evidence for this?
+\end_layout
+
+\end_inset
+
+.
+ For the second case (monitoring mission with one crew), the crew is positioned
+ in the module center while the robot navigates around the perimeter.
+ It appears at this distance that inclusion of the proxemic model does not
+ affect the results, as every metric comparision is within 4.76% of the non-proxe
+mic scenario.
 \end_layout
 
 \begin_layout Subsubsection
