@@ -2289,7 +2289,17 @@ The APF simulation encompassed a full factorial simulation for mission type,
  For the non-proxemic direct mission with 1 crew, the robot came to a stop
  directly in front of the crew member.
  From examining a plot of the potential field, it is clear that the robot
- was pulled into a local minimum (BEN CONFIRM).
+ was pulled into a local minimum
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(BEN CONFIRM) - yes seems right to me
+\end_layout
+
+\end_inset
+
+.
  In the proxemic equivalent, the robot was able to navigate around the crew
  and complete the mission.
  A similar situation occured during the waypoint mission for 2 crew, where
@@ -2310,15 +2320,44 @@ c case.
  a possible path between the two applicable crew members.
  These particular results highlight the challenges of APF-based navigation,
  where the selecting the strength of the sources and sinks affects the outcome.
- As discussed in section XX, the strength of the sources (a.k.a.
- crew) was based on (INSERT RK THESIS REF) and the sinks (a.k.a.
+ As discussed in section XX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, the strength of the sources (a.k.a.
+ crew) was based on RK Thesis
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+citation
+\end_layout
+
+\end_inset
+
+ and the sinks (a.k.a.
  goals) was determined from our analysis.
  Prior to the damping coefficient and sink amplitude analysis, we observed
  that the robot trajectories, mission success, and collisions varied from
  our final results.
  In our final results, there were no collisions with the crew or module.
- A summary of the missed goal zones are provided in Table XX (OR a figure
- with subplots?).
+ A summary of the missed goal zones are provided in Table XX 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix, OR a figure with subplots?)
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2345,7 +2384,17 @@ status open
  is less than or equal to 1.04%.
  As expected, the distance travaled increased with mission type (direct
  < waypoints < monitoring) and the range of values appears small, indicating
- that the crew configuration is not as important (See table XX).
+ that the crew configuration is not as important (See table XX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+).
  It is interesting to note the lower range values were caused by missed
  goal zones.
  In the non-proxemic case of the direct mission with one crew, the robot
@@ -2368,7 +2417,17 @@ The average velocity was also largely consisent between non-proxemic and
  across the clustered crew before reaching a local minimum and continuing
  to the next goal zone.
  This process occured earlier and was of shorter duration in the proxemic
- scenario (A FIGURE WOULD PROBS BE GOOD).
+ scenario 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A figure could be useful
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2382,12 +2441,30 @@ For non-proxemic and proxemic cases, the maximum velocity tended to reach
  There were four cases where a larger change in maximum velocity from non-proxem
 ic occured (7.22% to 18.02% change): 1) waypoint mission with two crew, and
  2) all monitoring missions with more than one crew.
- The difference in maximum velocity can be attributed to ??? (WHERE does
- v max occur on trajectory?).
+ The difference in maximum velocity can be attributed to ???
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+WHERE does v max occur on trajectory?
+\end_layout
+
+\end_inset
+
  In the 12 scenarios where the maximum velocity was greater than 25 cm/s,
  the variance of the Gaussian distributions describing the sources (a.k.a.
  crew) would have increased, resulting in a dynamically changing field during
- navigation to a goal zone (CONFIRM with max velocity plots).
+ navigation to a goal zone 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+CONFIRM with max velocity plots
+\end_layout
+
+\end_inset
+
+.
  These results confirm that the maximum velocity never exceeded the 50 cm/s
  constraint for any scenario.
 \end_layout
@@ -2419,7 +2496,17 @@ The A* simulation included 24 test scenarioes from a full factorial analysis
  scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
  0% to 80%.
  These 10 scenarios occurred across the different combinations of mission
- type and crew configuration (see table XX??).
+ type and crew configuration (see table XX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+add table?
+\end_layout
+
+\end_inset
+
+).
  For the non-proxemic direct mission with one crew, the robot started to
  navigate around the crew in the same direction as the proxemic scenario,
  but was unable to continue past a few steps.
@@ -2447,6 +2534,15 @@ crew numbering
  = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
  is able to reach all goal zones.
  Also, the width of the cost function is smaller behind the crew (sigma_r
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
  approximately 0.25 m while passing) than than non-proxemic width enabling
  the robot to pass in this simulation.
 \end_layout
@@ -2459,12 +2555,21 @@ The opposite case occured for the direct mission with two crew, where the
  5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
  functions.
  The relevant portion of the crew cost functions defined by the asymmetrical
- Gaussian distribution is sigma_h = 0.5m (FIX).
+ Gaussian distribution is sigma_h = 0.5m 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
  Since the distance between the crew centers is 2.44 m, the crew are facing
  each other, and the value of a Gaussian distribution is essentially zero
- (SOMEONE DOUBLE CHECK) after three standard deviations away from the mean
- (> 1.5 m), the cost functions overlap and may cause an occlusion (BEN–DRAW
- CONTOURS?).
+ after three standard deviations away from the mean (> 1.5 m), the cost functions
+ overlap and may cause an occlusion .
 \end_layout
 
 \begin_layout Standard
@@ -2531,7 +2636,7 @@ insert crew id
 status open
 
 \begin_layout Plain Layout
-ben contour plot to confirm
+ben contour plot to confirm - sent
 \end_layout
 
 \end_inset
@@ -2663,6 +2768,8 @@ For time, our
 
  implementation included a time-out if the computations seemed to be taking
  too long.
+ This restriction also reflects patience and timing requirements for use
+ on an actual robot.
  We notice that many cases that would cause APF to become stuck in a local
  minima or to travel excessively slowly due to the shallow gradient, were
  also cases where the computational time for the 
@@ -2696,7 +2803,7 @@ locality
 \end_inset
 
  by using a variable sized grid; this may not be so different from adding
- some global behavior to a local 
+ some global behavior to a local method, as is often done with APF.
 \end_layout
 
 \begin_layout Section
@@ -2758,7 +2865,58 @@ key "best2016clustering"
 \end_layout
 
 \begin_layout Standard
-- Improving A*
+Another important direction for future work in human-aware navigation in
+ the context of space travel is the extension of current proxemic models
+ to three dimensions.
+ Most human-robot proxemic research has used robots that travel on the ground
+ on earth, so proximity has been limited to two dimensions.
+ Work has been done showing how the height of the robot changes the reported
+ comfortable distance.
+ However, it is not clear if or how this would translate to a small robot
+ approaching from different directions.
+ It would be interesting to see compare the proxemic models in three dimensions
+ changes for flying robots on earth to floating robots in space.
+ It is worth noting that the number of people who might interact with a
+ robot in space is limited, and factors that affect proxemic distance may
+ be more homogenous than in the general population (such as experience with
+ robots).
+ Long term space travel would also provide a valuable opportunity to see
+ how comfort changes over time.
+\end_layout
+
+\begin_layout Standard
+More work could also be done to explore our specific research question about
+ the effect of proxemic models on path planning.
+ First, optimizing 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ implementation to see if the computational issues are relieved.
+ If so, then further comparison could be made over a wider range of crew
+ and mission configurations.
+ It would also be interesting to consider the effect of proxemic on hybrid
+ navigation methods.
+ For example, we compare some of the 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ variations for real-time navigation like COMPANION and some APF controllers
+ that incorporate heirarhical switching to avoid local minima.
+\end_layout
+
+\begin_layout Standard
+Finally, we note that before implementation on Astrobee, significant validation
+ in high fidelity simulation would be needed to validate both the control
+ and path planning.
+ As discussed, many simplifying assumpeitons were used in the simulation
+ model to allow us to focus on the research question.
+ In terms of the simulation, extension to three dimensions, a more accurate
+ model of the robot, including anisotropic dynamics and constraints, and
+ more realistic models of the module, including cluttered environment.
+ In terms of the path planning algorithm, it would be important to incorporate
+ models for detecting the environment (including crew position and orientation)
+ using vision, which would introduce noise and error.
+ 
 \end_layout
 
 \begin_layout Standard
