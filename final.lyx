@@ -2150,6 +2150,56 @@ Results and Discussion
 \end_layout
 
 \begin_layout Subsection
+Comparison of Non-proxemic and Proxemic AFP Results
+\end_layout
+
+\begin_layout Subsubsection
+Incomplete Missions and Collisions
+\end_layout
+
+\begin_layout Standard
+The APF simulation encompassed a full factorial simulation for mission type,
+ crew confirguration, and inclusion of proxemics, which resulted in 24 test
+ scenarios.
+ Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
+ (4 non-proxemic, 2 proxemic) due to entrappment in local minima prior to
+ reaching the goal zone.
+ For the non-proxemic direct mission with 1 crew, the robot came to a stop
+ directly in front of the crew member.
+ From examining a plot of the potential field, it is clear that the robot
+ was pulled into a local minimum (BEN CONFIRM).
+ In the proxemic equivalent, the robot was able to navigate around the crew
+ and complete the mission.
+ A similar situation occured during the waypoint mission for 2 crew, where
+ in the non-proxemic case the robot was unable to reach the goal zone.
+ In comparing the potential fields when the robot navigates to the second
+ goal zone, a local minimum occurs just outside the goal zone in the non-proxemi
+c case.
+ However, in the proxemic one, the local minimum occurs just inside the
+ goal zone boundary.
+ In contrast, the configuration of the clustered crew during the waypoint
+ mission blocks the robot's access to the second goal zone for both the
+ non-proxemic and proxemic cases.
+ Similarly, a crew member from the random crew configuration during the
+ monitoring mission creates a local minimum that prevents the robot from
+ continuing to the fourth goal zone for both non-proxemic and proxemic.
+ A plot of the potential fields indicates that the robot could have continued
+ to the fourth goal zone, if released from the local minimum; there was
+ a possible path between the two applicable crew members.
+ These particular results highlight the challenges of APF-based navigation,
+ where the selecting the strength of the sources and sinks affects the outcome.
+ As discussed in section XX, the strength of the sources (a.k.a.
+ crew) was based on (INSERT RK THESIS REF) and the sinks (a.k.a.
+ goals) was determined from our analysis.
+ Prior to the damping coefficient and sink amplitude analysis, we observed
+ that the robot trajectories, mission success, and collisions varied from
+ our final results.
+ In our final results, there were no collisions with the crew or module.
+ A summary of the missed goal zones are provided in Table XX (OR a figure
+ with subplots?).
+\end_layout
+
+\begin_layout Subsection
 Evaluation of Results 
 \end_layout
 
