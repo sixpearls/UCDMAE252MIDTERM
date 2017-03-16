@@ -1755,10 +1755,7 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-If the magnitude of these control forces exceed the maximum thrust of Astrobee,
- they are scaled so that the controlled force magnitude is within the thrust
- constraint, but points in the same direction.
- The motion of robot is then determined by the dynamic and kinematic constraints
+The motion of robot is then determined by the dynamic and kinematic constraints
  for two dimensions 
 \begin_inset Formula 
 \begin{align*}
@@ -2162,16 +2159,20 @@ status collapsed
 \begin_inset Formula $\sigma_{N}^{2}$
 \end_inset
 
- to 0.355 , so that the cost of a typical shoulder distance (14 inches) is
- half the cost as the center
-\begin_inset CommandInset citation
-LatexCommand cite
-key "haslegrave1986characterizing"
+ to 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+SARAH 
+\end_layout
 
 \end_inset
 
-.
- 
+, so that the cost of a typical shoulder distance is half the cost as the
+ center.
 \end_layout
 
 \begin_layout Standard
@@ -2406,157 +2407,6 @@ Unique Cases
 Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
-\begin_layout Subsubsection
-Incomplete Missions and Collisions
-\end_layout
-
-\begin_layout Standard
-The A* simulation included 24 test scenarioes from a full factorial analysis
- of mission type, crew configuration, and inclusion of proxemics.
- The robot was unable to navigation to all goal zones successfully in 10
- scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
- 0% to 80%.
- These 10 scenarios occurred across the different combinations of mission
- type and crew configuration (see table XX??).
- For the non-proxemic direct mission with one crew, the robot started to
- navigate around the crew in the same direction as the proxemic scenario,
- but was unable to continue past a few steps.
- Similarily, in the waypoints mission with two crew the simulation times
- out for the non-proxemic case and the proxemic scenario is able to complete.
- Interestingly, the robot reaches the same coordinates and distance from
- crew en route to the second goal zone for both scenarios in this case.
- At that location, the standard deviation for the non-proxemic and proxemic
- cost functions would be 0.36m and 0.50 m, respectively.
- Yet, the robot has more difficulty navigating around a cost function with
- a smaller width and the cause is unclear.
- For the monitoring mission with two crew, the robot stops 0.72 m away from
- crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-crew numbering
-\end_layout
-
-\end_inset
-
- between the first and second goal zone for the non-proxemic scenario.
- In the proxemic scenario, the robot moves closer to the wall earlier (x
- = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
- is able to reach all goal zones.
- Also, the width of the cost function is smaller behind the crew (sigma_r
- approximately 0.25 m while passing) than than non-proxemic width enabling
- the robot to pass in this simulation.
-\end_layout
-
-\begin_layout Standard
-The opposite case occured for the direct mission with two crew, where the
- robot completed the non-proxemic scenario and not the proxemic one.
- In the proxemic scenario, the robot approached the two crew with the maximum
- allowed velocity (50 cm/s) and started to decrease its velocity at t =
- 5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
- functions.
- The relevant portion of the crew cost functions defined by the asymmetrical
- Gaussian distribution is sigma_h = 0.5m (FIX).
- Since the distance between the crew centers is 2.44 m, the crew are facing
- each other, and the value of a Gaussian distribution is essentially zero
- (SOMEONE DOUBLE CHECK) after three standard deviations away from the mean
- (> 1.5 m), the cost functions overlap and may cause an occlusion (BEN–DRAW
- CONTOURS?).
-\end_layout
-
-\begin_layout Standard
-In some cases, both the non-proxemic and proxemic scenarios failed to reach
- every goal zone.
- In the waypoints mission with clustered crew, three crew members were situated
- in front of the second goal.
- For both non-proxemic and proxemic scenarios, the robot decreased its velocity
- as it approached the crew cluster, was not able to navigate to the second
- goal zone, and the simulation ended.
- As expected, the robot was able to navigate closer to the crew cluster
- in the non-proxemic scenario due to the smaller width of the relevant cost
- function
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Show any numbers or evidence?
-\end_layout
-
-\end_inset
-
-.
- Similarly, the monitoring mission with the random crew fails in the same
- manner for the non-proxemic and proxemic scenarios.
- The robot is able to reach the third goal and has to navigate towards a
- cluster of two crew members facing the robot.
- The robot approaches closer in the non-proxemic case, but ultimately the
- robot cannot navigate past the crew for both scenarios.
- In the monitoring mission with a crew cluster, the non-proxemic and proxemic
- scenarios appear to fail in different ways.
- For the non-proxemic scenario, the robot is unable to pass behind the single
- crew member like the monitoring mission with two crew discussed earlier,
- and fails at a similar location and time.
- This finding is consistent between those two scenarios 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert short hand for scenario ID
-\end_layout
-
-\end_inset
-
-implying that a robot cannot pass behind a crew member facing towards the
- center of the module and 3 ft.
- away from the wall using a non-proxemic model.
- While in the proxemic scenario, the robot is able to navigate behind a
- single crew member positioned close to the wall, the robot cannot pass
- behind the cluster.
- The first crew member encountered leaving the third goal (
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert crew id
-\end_layout
-
-\end_inset
-
-) is oriented so that the robot would have to pass through multiple cost
- functions 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ben contour plot to confirm
-\end_layout
-
-\end_inset
-
-, therefore ??
-\end_layout
-
-\begin_layout Standard
-The A* implementation included restrictions on the total computational time
- (60 s) and node computational time (0.25 s) for practical purposes.
- The maximum total computational time was exceeded (> 60 s) by 9 of the
- 10 scenarios with the node computational time ranging between 0.10 s and
- 0.21 s.
- The remaining scenario exceeded the node computational time (> 0.25 s),
- but was within the maximum computational time (52.82 s) when the simulation
- ended.
- The cause of the increased computational times in unclear and would be
- a point for future investigation.
- The grid size and computational times were partially investigated, but
- it was out of the scope of this project to allocated enough resources for
- a full analysis.
-\end_layout
-
-\begin_layout Standard
-Across scenarioes there were no collisions.
-\end_layout
-
 \begin_layout Subsection
 Evaluation of Results 
 \end_layout
@@ -2611,90 +2461,6 @@ key "takayama2009influences"
 
 \begin_layout Section
 Discussion
-\end_layout
-
-\begin_layout Standard
-Overall, we found that in most situations, APF did not have significant
- differences in the paths generated using the proxemic and non-proxemic
- models.
- However, there were a small number of cases where the proxemic model helped
- avoid the common APF problem of getting stuck in a local minima when the
- goal was on the opposite side of the robot.
- In mission 1, crew configuration 1, the APF was able to navigate around
- the crew member directly in between the robot starting position and the
- goal position.
- This case was likely caused by a combination of the shallow gradient in
- the potential field associated with the asymetric gaussian and numerical
- round-off.
- For a shallow gradient, the numerical round-off acts to introduces noise,
- helping push the robot out of the local minima.
- In contrast, the ability of the APF method to navigate around the crew
- in mission 2, crew configuration 2 is a direct result of the proxemic model
- driving the robot around the back of the crew member.
- By incorporating this social behavior, the APF method avoids the problem
- of local minima in some cases.
-\end_layout
-
-\begin_layout Standard
-In our implemnetaiton of APF and 
-\begin_inset Formula $A^{*}$
-\end_inset
-
-, we also found that 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- was able to plan paths that used much higher velocities.
- Since the proxemic model of human avoidance is dependent on velocity, we
- noticed more that the paths generated tended to plan paths with greater
- distances from the crew so that the path could continue moving at the higher
- velocity without incurring additional cost.
- It is possible that by tuning APF so that it could achieve higher velocities,
- we could see similar increased distances maintained from the crew using
- the proxemic model.
-\end_layout
-
-\begin_layout Standard
-For time, our 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- implementation included a time-out if the computations seemed to be taking
- too long.
- We notice that many cases that would cause APF to become stuck in a local
- minima or to travel excessively slowly due to the shallow gradient, were
- also cases where the computational time for the 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- algorithm took longer than the cutoffs we enforced.
- In paths where this was not an issue, 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- actually completed quite quickly.
- Although as a global search algorithm 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- should be able to find the optimal path for any crew and mission combination
- given enough computational time, our results suggest that challenges for
- using such a method for real-time navigation are actually quite analgous.
- We note that the real-time navigation method proposed by Kirby adds some
- 
-\begin_inset Quotes eld
-\end_inset
-
-locality
-\begin_inset Quotes erd
-\end_inset
-
- to 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- by using a variable sized grid; this may not be so different from adding
- some global behavior to a local 
 \end_layout
 
 \begin_layout Section
