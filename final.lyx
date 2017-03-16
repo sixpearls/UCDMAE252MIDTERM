@@ -2018,9 +2018,11 @@ The path extension step was implemented through consideration of the 9 nearest
  and only added nodes that hadn't been visited on the way to the current
  waypoint, in order to avoid pointless loops.
  Viability of nodes also considered potential robot collision, with hard
- constraints included that removed nodes a distance of the robot's working
- radius, defined as the distance from the center of the robot to a corner
- of the robot, 
+ constraints included that removed nodes that would cause the robot to collide
+ with a human obstacle or the module wall, with a collision being defined
+ as within distance of the robot's working radius, defined as the distance
+ from the center of the robot to a corner of the robot, of the coordinates
+ of the wall or the human's defined area.
 \end_layout
 
 \begin_layout Standard
@@ -2753,6 +2755,10 @@ key "best2016clustering"
  Incorporation of physiological signals will require collaboration across
  disciplines, like physiology and machine learning, and is expected to improve
  HRI.
+\end_layout
+
+\begin_layout Standard
+- Improving A*
 \end_layout
 
 \begin_layout Standard
