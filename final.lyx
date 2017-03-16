@@ -2691,6 +2691,26 @@ key "best2016clustering"
 \end_layout
 
 \begin_layout Standard
+Another important direction for future work in human-aware navigation in
+ the context of space travel is the extension of current proxemic models
+ to three dimensions.
+ Most human-robot proxemic research has used robots that travel on the ground
+ on earth, so proximity has been limited to two dimensions.
+ Work has been done showing how the height of the robot changes the reported
+ comfortable distance.
+ However, it is not clear if or how this would translate to a small robot
+ approaching from different directions.
+ It would be interesting to see compare the proxemic models in three dimensions
+ changes for flying robots on earth to floating robots in space.
+ It is worth noting that the number of people who might interact with a
+ robot in space is limited, and factors that affect proxemic distance may
+ be more homogenous than in the general population (such as experience with
+ robots).
+ Long term space travel would also provide a valuable opportunity to see
+ how comfort changes over time.
+\end_layout
+
+\begin_layout Standard
 - optimize 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -2702,10 +2722,6 @@ key "best2016clustering"
 
  variations for real-time and some APF controllers that incorporate heirarhical
  switching to avoid local minima.
-\end_layout
-
-\begin_layout Standard
-3D proxemic models - in space, nobody can hear you scream.
 \end_layout
 
 \begin_layout Standard
