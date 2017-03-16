@@ -1755,7 +1755,10 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-The motion of robot is then determined by the dynamic and kinematic constraints
+If the magnitude of these control forces exceed the maximum thrust of Astrobee,
+ they are scaled so that the controlled force magnitude is within the thrust
+ constraint, but points in the same direction.
+ The motion of robot is then determined by the dynamic and kinematic constraints
  for two dimensions 
 \begin_inset Formula 
 \begin{align*}
@@ -2418,7 +2421,19 @@ The A* simulation included 24 test scenarioes from a full factorial analysis
  For the non-proxemic direct mission with one crew, the robot started to
  navigate around the crew in the same direction as the proxemic scenario,
  but was unable to continue past a few steps.
- The opposite case occured for the direct mission with two crew, where the
+ Similarily, in the waypoints mission with two crew the simulation times
+ out for the non-proxemic case and the proxemic scenario is able to complete.
+ Interestingly, the robot reaches the same coordinates and distance from
+ crew en route to the second goal zone for both scenarios in this case.
+ At that location, the standard deviation for the non-proxemic and proxemic
+ cost functions would be 0.36m and 0.50 m, respectively.
+ Yet, the robot has more difficulty navigating around a cost function with
+ a smaller width and the cause is unclear.
+ 
+\end_layout
+
+\begin_layout Standard
+The opposite case occured for the direct mission with two crew, where the
  robot completed the non-proxemic scenario and not the proxemic one.
  In the proxemic scenario, the robot approached the two crew with the maximum
  allowed velocity (50 cm/s) and started to decrease its velocity at t =
@@ -2431,6 +2446,30 @@ The A* simulation included 24 test scenarioes from a full factorial analysis
  (SOMEONE DOUBLE CHECK) after three standard deviations away from the mean
  (> 1.5 m), the cost functions overlap and may cause an occlusion (BEN–DRAW
  CONTOURS?).
+\end_layout
+
+\begin_layout Standard
+In some cases, both the non-proxemic and proxemic scenarios failed to reach
+ every goal zone.
+ In the waypoints mission with clustered crew, three crew members were situated
+ in front of the second goal.
+ For both non-proxemic and proxemic scenarios, the robot decreased its velocity
+ as it approached the crew cluster, was not able to navigate to the second
+ goal zone, and the simulation ended.
+ As expected, the robot was able to navigate closer to the crew cluster
+ in the non-proxemic scenario due to the smaller width of the relevant cost
+ function
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Show any numbers or evidence?
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2447,6 +2486,10 @@ The A* implementation included restrictions on the total computational time
  The grid size and computational times were partially investigated, but
  it was out of the scope of this project to allocated enough resources for
  a full analysis.
+\end_layout
+
+\begin_layout Standard
+Across scenarioes there were no collisions.
 \end_layout
 
 \begin_layout Subsection
@@ -2503,6 +2546,90 @@ key "takayama2009influences"
 
 \begin_layout Section
 Discussion
+\end_layout
+
+\begin_layout Standard
+Overall, we found that in most situations, APF did not have significant
+ differences in the paths generated using the proxemic and non-proxemic
+ models.
+ However, there were a small number of cases where the proxemic model helped
+ avoid the common APF problem of getting stuck in a local minima when the
+ goal was on the opposite side of the robot.
+ In mission 1, crew configuration 1, the APF was able to navigate around
+ the crew member directly in between the robot starting position and the
+ goal position.
+ This case was likely caused by a combination of the shallow gradient in
+ the potential field associated with the asymetric gaussian and numerical
+ round-off.
+ For a shallow gradient, the numerical round-off acts to introduces noise,
+ helping push the robot out of the local minima.
+ In contrast, the ability of the APF method to navigate around the crew
+ in mission 2, crew configuration 2 is a direct result of the proxemic model
+ driving the robot around the back of the crew member.
+ By incorporating this social behavior, the APF method avoids the problem
+ of local minima in some cases.
+\end_layout
+
+\begin_layout Standard
+In our implemnetaiton of APF and 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, we also found that 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ was able to plan paths that used much higher velocities.
+ Since the proxemic model of human avoidance is dependent on velocity, we
+ noticed more that the paths generated tended to plan paths with greater
+ distances from the crew so that the path could continue moving at the higher
+ velocity without incurring additional cost.
+ It is possible that by tuning APF so that it could achieve higher velocities,
+ we could see similar increased distances maintained from the crew using
+ the proxemic model.
+\end_layout
+
+\begin_layout Standard
+For time, our 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ implementation included a time-out if the computations seemed to be taking
+ too long.
+ We notice that many cases that would cause APF to become stuck in a local
+ minima or to travel excessively slowly due to the shallow gradient, were
+ also cases where the computational time for the 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm took longer than the cutoffs we enforced.
+ In paths where this was not an issue, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ actually completed quite quickly.
+ Although as a global search algorithm 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ should be able to find the optimal path for any crew and mission combination
+ given enough computational time, our results suggest that challenges for
+ using such a method for real-time navigation are actually quite analgous.
+ We note that the real-time navigation method proposed by Kirby adds some
+ 
+\begin_inset Quotes eld
+\end_inset
+
+locality
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ by using a variable sized grid; this may not be so different from adding
+ some global behavior to a local 
 \end_layout
 
 \begin_layout Section
