@@ -2054,7 +2054,17 @@ At each step, the possible velocities for consideration were determined
 \begin_inset Formula $s=6.72"$
 \end_inset
 
- for next nodes parellel to the module walls, or 
+ for next nodes parellel to the module walls
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+? would like to see a picture for my benefit
+\end_layout
+
+\end_inset
+
+, or 
 \begin_inset Formula $s=9.50"$
 \end_inset
 
@@ -2486,7 +2496,8 @@ Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Standard
-Samer percent difference as APF
+Samer percent difference as APF; within 1% not considered large enough to
+ make statements
 \end_layout
 
 \begin_layout Subsubsection
@@ -2672,6 +2683,28 @@ Across scenarioes there were no collisions.
 Distance Traveled and Average Velocity
 \end_layout
 
+\begin_layout Standard
+Unique to the proxemic scenarios is the dependence of the cost function
+ on velocity.
+ As the A* algorithm iterates through five potential velocities for a node,
+ the cost may change for any potential velocities greater than 25 cm/s.
+ It was expected for some cases, that this balance would result in the robot
+ translating faster over a longer distance 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+2, 4, 
+\end_layout
+
+\end_inset
+
+or the inverse.
+ However, for all cases the average velocity was lower for proxemic scenarios
+ (35.89 cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s),
+ yet the change in distance traveled was not consistent.
+\end_layout
+
 \begin_layout Subsubsection
 Maximum Velocity
 \end_layout
@@ -2703,7 +2736,17 @@ bubbles out
 \begin_inset Quotes erd
 \end_inset
 
- from the crew members to minimize the cost and time.
+ from the crew members to minimize the cost and time
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+is that okay to say?
+\end_layout
+
+\end_inset
+
+.
  As a result, the average velocity and completion time for the proxemic
  scenario are 24.50% lower and 33.86% slower than the proxemic one, respectively.
  Interestingly, the distance traveled in the proxemic case actually decreased
