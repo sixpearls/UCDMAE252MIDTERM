@@ -1755,25 +1755,15 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-The forces are passed through a saturation function so that the vector norm
- of the forces do not exceed the maximum thrust of Astrobee
-\begin_inset Formula 
-\[
-\left[\begin{matrix}T_{x}\\
-T_{y}
-\end{matrix}\right]=\min\left[1,\frac{F_{x}^{2}+F_{y}^{2}}{T_{max}^{2}}\right]\left[\begin{matrix}F_{x}\\
-F_{y}
-\end{matrix}\right]
-\]
-
-\end_inset
-
+If the magnitude of these control forces exceed the maximum thrust of Astrobee,
+ they are scaled so that the controlled force magnitude is within the thrust
+ constraint, but points in the same direction.
  The motion of robot is then determined by the dynamic and kinematic constraints
  for two dimensions 
 \begin_inset Formula 
 \begin{align*}
-\frac{d}{dt}v_{x} & =\frac{1}{m}T_{x}\\
-\frac{d}{dt}v_{y} & =\frac{1}{m}T_{y}\\
+\frac{d}{dt}v_{x} & =\frac{1}{m}F_{x}\\
+\frac{d}{dt}v_{y} & =\frac{1}{m}F_{y}\\
 \frac{d}{dt}x_{r} & =v_{x}\\
 \frac{d}{dt}y_{r} & =v_{y}
 \end{align*}
@@ -1905,12 +1895,41 @@ A* is a modification of Dijkstra's algorithm to find a lowest-cost path
 \end_layout
 
 \begin_layout Standard
-Our general algorithm was implemented using a priority queue.
+Our general algorithm was implemented using a priority queue of potential
+ paths, stored as lists of graph nodes with (x,y) coordinates and an associated
+ velocity.
  As the robot traversed the discretized model, it looked at all possible
- nearest neighbors on the grid, assigning each possible next step a cost
- based on proxemics, the velocity at which the robot travelled to the previous
- node, and the velocity at which .
+ nearest neighbors on the grid and a range of possible next velocities,
+ assigning each possible next step a cost that depends on human proxemics
+ and the robot's locaation and velocity.
+ The cost function is described in more detail in Section 4.3: Human Avoidance
+ Models.
+ After the proxemic cost was calculated for each newest node in a path,
+ each new path was added to the priority queue with 
+\begin_inset Formula $Priority=(Cumulative\ proxemic\ cost)+(Heuristic)$
+\end_inset
+
+, where the heuristic is a function of location and velocity that emphasizes
+ following the shortest path to the goal and travelling at a higher speed
+ with different weights.
+ The heuristic used in our simulations is described below in Section 4.2.1.
+ Once each new potential path was added to the priority queue, the algorithm
+ then selected the path with the lowest priority from the current queue,
+ and it began the same process to extend the newly selected path.
+ The algorithm returned a path when the edge of the robot reaches a distance
+ of 1.2*the grid step size, which allowed the algorithm to recognize when
+ the robot had reached its destination, still allowing for some uncertainty.
  
+\end_layout
+
+\begin_layout Standard
+Djikstra's Algorithm runs in 
+\begin_inset Formula $\mathcal{O}(N^{2})$
+\end_inset
+
+ time [CHECK AND CITE TEXTBOOK], but as the addition of a heuristic allows
+ the algorithm to select the most likely path first, A* can often run in
+ significantly less time.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1920,7 +1939,7 @@ Heuristic and parameter determinations
 \begin_layout Standard
 \begin_inset Formula 
 \[
-Priority=Proxemic\ cost\ +\ \alpha*\left(Distance\ to\ goal\right)\ +\ \beta*\left(\dfrac{1}{New\ velocity}\right)
+Heuristic=\ \alpha*\left(Distance\ to\ goal\right)\ +\ \beta*\left(\dfrac{1}{New\ velocity}\right)
 \]
 
 \end_inset
@@ -1928,8 +1947,56 @@ Priority=Proxemic\ cost\ +\ \alpha*\left(Distance\ to\ goal\right)\ +\ \beta*\le
 
 \end_layout
 
-\begin_layout Subsubsection
-Implementation Details
+\begin_layout Standard
+We selected our heuristic to emphasize following the shortest path to the
+ goal and travelling at a higher velocity, desirable traits that allow the
+ robot to prioritize efficient use of fuel, power, and time.
+ Both quantities were weighted with coefficients 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ following the manner found in Kirby's COMPANION algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+, which allowed us to control the strength with which these priorities competed
+ with the respect of proxemics, which was considered to have a weight of
+ 1 that was contributed by our Gaussian cost function described in 4.3.
+ The weights 
+\begin_inset Formula $\alpha$
+\end_inset
+
+and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ were chosen in a manner similar to the parameter selection in the APF case,
+ where several instances of the same mission/crew combination were compared,
+ and a reasonable answer was selected qualitatively.
+ While more rigorous testing of parameters is recommended in further studies,
+ our method of selection was deemed sufficient given the time limitations
+ and scope of our study.
+ Our results presented in Section 5 were found with weights of 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0.05$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Algorithm Modifications for Embodiment and Situatedness
 \end_layout
 
 \begin_layout Standard
@@ -1945,29 +2012,27 @@ We implemented our A* algorithm on a grid with a mesh size of the module
 \end_layout
 
 \begin_layout Standard
-- Considered 9 nearest nodes, varying velocities, added viable nodes (ones
- we hadn't visited before on that leg of the journey - wanted to avoid loops)
+The path extension step was implemented through consideration of the 9 nearest
+ nodes with varying velocities, described below.
+ Each path kept a list of nodes that had already been visited on the path,
+ and only added nodes that hadn't been visited on the way to the current
+ waypoint, in order to avoid pointless loops.
+ Viability of nodes also considered potential robot collision, with hard
+ constraints included that removed nodes a distance of the robot's working
+ radius, defined as the distance from the center of the robot to a corner
+ of the robot, 
 \end_layout
 
 \begin_layout Standard
-- Added those to priority queue, with cumulative proxemic cost of path +
- heuristic
-\end_layout
+At each step, the possible velocities for consideration were determined
+ by the robot's inertia, maximum thrust, mass, and our hard-coded saftey
+ constraints, which limited the maximum robot velocity to 0.5m/s at all times
+ to protect crew comfort and spacecraft safety.
+ Given a current velocity 
+\begin_inset Formula $v_{0}$
+\end_inset
 
-\begin_layout Standard
-Repeated for lowest priority queue stored
-\end_layout
-
-\begin_layout Standard
-- did this to 
-\end_layout
-
-\begin_layout Paragraph*
-Algorithm Modifications for Embodiment and Situatedness
-\end_layout
-
-\begin_layout Standard
-- At each step, possible velocities determined by 
+, possible velocities were determined by 
 \begin_inset Formula $v_{new}=\sqrt{{v_{0}^{2}\pm2as}}$
 \end_inset
 
@@ -1992,15 +2057,18 @@ Algorithm Modifications for Embodiment and Situatedness
 \end_inset
 
  for diagonal next nodes.
- Velocity range determined by 
-\begin_inset Formula $v_{max}=min(Max\ velocity,Max\ possible\ velocity)$
+ Our considered velocity range was then determined by 
+\begin_inset Formula $v_{max}=min(Absolute\ max\ velocity,Max\ possible\ velocity)$
 \end_inset
 
 , 
 \begin_inset Formula $v_{min}=max(0,Min\ possible\ velocity)$
 \end_inset
 
-
+, and five velocities (limited to mitigate the time taken for the code to
+ run), equally spaced within that range, were considered at each viable
+ next node.
+ 
 \end_layout
 
 \begin_layout Paragraph*
@@ -2012,14 +2080,6 @@ hard constraints for humans and walls
 \begin_layout Standard
 - limited maximum velocity so that it would be able to slow down to a stop
  at each waypoint
-\end_layout
-
-\begin_layout Subsection*
-Heuristic & Weights
-\end_layout
-
-\begin_layout Subsubsection*
-Simulation-Specific Constraints & Justification
 \end_layout
 
 \begin_layout Subsection
@@ -2210,7 +2270,7 @@ Main concern = comparison between non-proxemic and proxemic, so analysis
  crew config to refer back to, labeled with goal # and crew #; talk about
  (2,2) (1,1) separately; case = path planning x mission x crew; scenario
  = proxemic or non x case; maybe table listing cases and if a metric significant
-ly varied;
+ly varied
 \end_layout
 
 \begin_layout Subsubsection
@@ -2486,100 +2546,6 @@ key "takayama2009influences"
 
 \begin_layout Section
 Discussion
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-general observations; APF, A*, APF vs A*
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Overall, we found that in most situations, APF did not have significant
- differences in the paths generated using the proxemic and non-proxemic
- models.
- However, there were a small number of cases where the proxemic model helped
- avoid the common APF problem of getting stuck in a local minima when the
- goal was on the opposite side of the robot.
- In mission 1, crew configuration 1, the APF was able to navigate around
- the crew member directly in between the robot starting position and the
- goal position.
- This case was likely caused by a combination of the shallow gradient in
- the potential field associated with the asymetric gaussian and numerical
- round-off.
- For a shallow gradient, the numerical round-off acts to introduces noise,
- helping push the robot out of the local minima.
- In contrast, the ability of the APF method to navigate around the crew
- in mission 2, crew configuration 2 is a direct result of the proxemic model
- driving the robot around the back of the crew member.
- By incorporating this social behavior, the APF method avoids the problem
- of local minima in some cases.
-\end_layout
-
-\begin_layout Standard
-In our implemnetaiton of APF and 
-\begin_inset Formula $A^{*}$
-\end_inset
-
-, we also found that 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- was able to plan paths that used much higher velocities.
- Since the proxemic model of human avoidance is dependent on velocity, we
- noticed more that the paths generated tended to plan paths with greater
- distances from the crew so that the path could continue moving at the higher
- velocity without incurring additional cost.
- It is possible that by tuning APF so that it could achieve higher velocities,
- we could see similar increased distances maintained from the crew using
- the proxemic model.
-\end_layout
-
-\begin_layout Standard
-For time, our 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- implementation included a time-out if the computations seemed to be taking
- too long.
- We notice that many cases that would cause APF to become stuck in a local
- minima or to travel excessively slowly due to the shallow gradient, were
- also cases where the computational time for the 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- algorithm took longer than the cutoffs we enforced.
- In paths where this was not an issue, 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- actually completed quite quickly.
- Although as a global search algorithm 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- should be able to find the optimal path for any crew and mission combination
- given enough computational time, our results suggest that challenges for
- using such a method for real-time navigation are actually quite analgous.
- We note that the real-time navigation method proposed by Kirby adds some
- 
-\begin_inset Quotes eld
-\end_inset
-
-locality
-\begin_inset Quotes erd
-\end_inset
-
- to 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- by using a variable sized grid; this may not be so different from adding
- some global behavior to a local 
 \end_layout
 
 \begin_layout Section
