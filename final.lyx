@@ -2485,6 +2485,10 @@ Unique Cases
 Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
+\begin_layout Standard
+Samer percent difference as APF
+\end_layout
+
 \begin_layout Subsubsection
 Incomplete Missions and Collisions
 \end_layout
@@ -2662,6 +2666,58 @@ The A* implementation included restrictions on the total computational time
 
 \begin_layout Standard
 Across scenarioes there were no collisions.
+\end_layout
+
+\begin_layout Subsubsection
+Distance Traveled and Average Velocity
+\end_layout
+
+\begin_layout Subsubsection
+Maximum Velocity
+\end_layout
+
+\begin_layout Standard
+Across the 24 scenarios, the maximum allowable velocity (v = 0.5 m/s 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix notation
+\end_layout
+
+\end_inset
+
+) was achieved for 23 scenarios.
+ During the direct mission with random crew, the proxemic scenario had a
+ maximum velocity of 49.14 cm/s.
+ This maximum velocity resulted from the tradeoff between the time penalty
+ and velocity-dependent cost function.
+ The shortest path to the goal zone would bring the robot close to crew
+ members (i.e.
+ higher cost area).
+ Therefore, the robot's trajectory 
+\begin_inset Quotes eld
+\end_inset
+
+bubbles out
+\begin_inset Quotes erd
+\end_inset
+
+ from the crew members to minimize the cost and time.
+ As a result, the average velocity and completion time for the proxemic
+ scenario are 24.50% lower and 33.86% slower than the proxemic one, respectively.
+ Interestingly, the distance traveled in the proxemic case actually decreased
+ by 8.28%.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+would a side by side comparision of the velocity plots be useful?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
