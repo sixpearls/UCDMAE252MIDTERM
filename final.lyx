@@ -2287,7 +2287,17 @@ The APF simulation encompassed a full factorial simulation for mission type,
  For the non-proxemic direct mission with 1 crew, the robot came to a stop
  directly in front of the crew member.
  From examining a plot of the potential field, it is clear that the robot
- was pulled into a local minimum (BEN CONFIRM).
+ was pulled into a local minimum
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ (BEN CONFIRM) - yes seems right to me
+\end_layout
+
+\end_inset
+
+.
  In the proxemic equivalent, the robot was able to navigate around the crew
  and complete the mission.
  A similar situation occured during the waypoint mission for 2 crew, where
@@ -2461,8 +2471,17 @@ The opposite case occured for the direct mission with two crew, where the
  Since the distance between the crew centers is 2.44 m, the crew are facing
  each other, and the value of a Gaussian distribution is essentially zero
  (SOMEONE DOUBLE CHECK) after three standard deviations away from the mean
- (> 1.5 m), the cost functions overlap and may cause an occlusion (BEN–DRAW
- CONTOURS?).
+ (> 1.5 m), the cost functions overlap and may cause an occlusion
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ (BEN–DRAW CONTOURS?) sent
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -2529,7 +2548,7 @@ insert crew id
 status open
 
 \begin_layout Plain Layout
-ben contour plot to confirm
+ben contour plot to confirm - sent
 \end_layout
 
 \end_inset
@@ -2661,6 +2680,8 @@ For time, our
 
  implementation included a time-out if the computations seemed to be taking
  too long.
+ This restriction also reflects patience and timing requirements for use
+ on an actual robot.
  We notice that many cases that would cause APF to become stuck in a local
  minima or to travel excessively slowly due to the shallow gradient, were
  also cases where the computational time for the 
@@ -2776,22 +2797,37 @@ Another important direction for future work in human-aware navigation in
 \end_layout
 
 \begin_layout Standard
-- optimize 
+More work could also be done to explore our specific research question about
+ the effect of proxemic models on path planning.
+ First, optimizing 
 \begin_inset Formula $A^{*}$
 \end_inset
 
  implementation to see if the computational issues are relieved.
- We can also compare some 
+ If so, then further comparison could be made over a wider range of crew
+ and mission configurations.
+ It would also be interesting to consider the effect of proxemic on hybrid
+ navigation methods.
+ For example, we compare some of the 
 \begin_inset Formula $A^{*}$
 \end_inset
 
- variations for real-time and some APF controllers that incorporate heirarhical
- switching to avoid local minima.
+ variations for real-time navigation like COMPANION and some APF controllers
+ that incorporate heirarhical switching to avoid local minima.
 \end_layout
 
 \begin_layout Standard
-Simulation realism - anisotropic dynamics, more cluttered environment, detecting
- environment (including crew) using vision, including noise.
+Finally, we note that before implementation on Astrobee, significant validation
+ in high fidelity simulation would be needed to validate both the control
+ and path planning.
+ As discussed, many simplifying assumpeitons were used in the simulation
+ model to allow us to focus on the research question.
+ In terms of the simulation, extension to three dimensions, a more accurate
+ model of the robot, including anisotropic dynamics and constraints, and
+ more realistic models of the module, including cluttered environment.
+ In terms of the path planning algorithm, it would be important to incorporate
+ models for detecting the environment (including crew position and orientation)
+ using vision, which would introduce noise and error.
 \end_layout
 
 \begin_layout Standard
