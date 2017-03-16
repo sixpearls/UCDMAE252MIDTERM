@@ -1755,12 +1755,25 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-The motion of robot is then determined by the dynamic and kinematic constraints
+The forces are passed through a saturation function so that the vector norm
+ of the forces do not exceed the maximum thrust of Astrobee
+\begin_inset Formula 
+\[
+\left[\begin{matrix}T_{x}\\
+T_{y}
+\end{matrix}\right]=\min\left[1,\frac{F_{x}^{2}+F_{y}^{2}}{T_{max}^{2}}\right]\left[\begin{matrix}F_{x}\\
+F_{y}
+\end{matrix}\right]
+\]
+
+\end_inset
+
+ The motion of robot is then determined by the dynamic and kinematic constraints
  for two dimensions 
 \begin_inset Formula 
 \begin{align*}
-\frac{d}{dt}v_{x} & =\frac{1}{m}F_{x}\\
-\frac{d}{dt}v_{y} & =\frac{1}{m}F_{y}\\
+\frac{d}{dt}v_{x} & =\frac{1}{m}T_{x}\\
+\frac{d}{dt}v_{y} & =\frac{1}{m}T_{y}\\
 \frac{d}{dt}x_{r} & =v_{x}\\
 \frac{d}{dt}y_{r} & =v_{y}
 \end{align*}
@@ -2351,6 +2364,90 @@ key "takayama2009influences"
 
 \begin_layout Section
 Discussion
+\end_layout
+
+\begin_layout Standard
+Overall, we found that in most situations, APF did not have significant
+ differences in the paths generated using the proxemic and non-proxemic
+ models.
+ However, there were a small number of cases where the proxemic model helped
+ avoid the common APF problem of getting stuck in a local minima when the
+ goal was on the opposite side of the robot.
+ In mission 1, crew configuration 1, the APF was able to navigate around
+ the crew member directly in between the robot starting position and the
+ goal position.
+ This case was likely caused by a combination of the shallow gradient in
+ the potential field associated with the asymetric gaussian and numerical
+ round-off.
+ For a shallow gradient, the numerical round-off acts to introduces noise,
+ helping push the robot out of the local minima.
+ In contrast, the ability of the APF method to navigate around the crew
+ in mission 2, crew configuration 2 is a direct result of the proxemic model
+ driving the robot around the back of the crew member.
+ By incorporating this social behavior, the APF method avoids the problem
+ of local minima in some cases.
+\end_layout
+
+\begin_layout Standard
+In our implemnetaiton of APF and 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, we also found that 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ was able to plan paths that used much higher velocities.
+ Since the proxemic model of human avoidance is dependent on velocity, we
+ noticed more that the paths generated tended to plan paths with greater
+ distances from the crew so that the path could continue moving at the higher
+ velocity without incurring additional cost.
+ It is possible that by tuning APF so that it could achieve higher velocities,
+ we could see similar increased distances maintained from the crew using
+ the proxemic model.
+\end_layout
+
+\begin_layout Standard
+For time, our 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ implementation included a time-out if the computations seemed to be taking
+ too long.
+ We notice that many cases that would cause APF to become stuck in a local
+ minima or to travel excessively slowly due to the shallow gradient, were
+ also cases where the computational time for the 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm took longer than the cutoffs we enforced.
+ In paths where this was not an issue, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ actually completed quite quickly.
+ Although as a global search algorithm 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ should be able to find the optimal path for any crew and mission combination
+ given enough computational time, our results suggest that challenges for
+ using such a method for real-time navigation are actually quite analgous.
+ We note that the real-time navigation method proposed by Kirby adds some
+ 
+\begin_inset Quotes eld
+\end_inset
+
+locality
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ by using a variable sized grid; this may not be so different from adding
+ some global behavior to a local 
 \end_layout
 
 \begin_layout Section
