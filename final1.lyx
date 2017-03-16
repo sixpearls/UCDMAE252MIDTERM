@@ -1,0 +1,2536 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass IEEEtran
+\begin_preamble
+% for subfigures/subtables
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+% \g@addto@macro\maketitle{\thispagestyle{plain}}
+
+\usepackage{pdfcomment}
+\usepackage{environ}
+%\RenewEnviron{comment}{\pdfcomment{\BODY}}
+\end_preamble
+\options comsoc 
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\float_placement tbh
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Your Title"
+\pdf_author "Your Name"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Comparing Hierarchical and Reactive Architectures for Human-Aware Navigation
+\end_layout
+
+\begin_layout Author
+\begin_inset Flex Author Name
+status open
+
+\begin_layout Plain Layout
+Sarah
+\begin_inset space ~
+\end_inset
+
+O'Meara
+\begin_inset Flex Author Mark
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+, Molly
+\begin_inset space ~
+\end_inset
+
+O'Connor
+\begin_inset Flex Author Mark
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+, Benjamin
+\begin_inset space ~
+\end_inset
+
+Margolis
+\begin_inset Flex Author Mark
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Author Affiliation
+status open
+
+\begin_layout Plain Layout
+Department of Mechanical and Aerospace Engineering
+\begin_inset Newline newline
+\end_inset
+
+University of California, Davis
+\begin_inset Newline newline
+\end_inset
+
+Davis, CA 95616 USA
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Author Mark
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+someara@ucdavis.edu 
+\begin_inset Flex Author Mark
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+mcocon@ucdavis.edu 
+\begin_inset Flex Author Mark
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+bwmargolis@ucdavis.edu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+As robots become increasingly prevalent in environments with humans across
+ contexts, whether social or work, there is a need to understand human-robot
+ interaction (HRI) to build strong and effective relationships.
+ The motivation for this project stems from the existing and projected future
+ collaboration between robots and crew in space, as crew time is the most
+ precious resource, and offloading tasks to a robot partner would be invaluable.
+ There are several aspects of HRI and the focus of this paper will be the
+ relationship between path planning and proxemics, or social distance, which
+ is the comfortable, physical distance between two parties.
+ This project will investigate aspects of path planning and execution when
+ proxemics are considered by simulating an autonomous, monitoring robot.
+ The three-factorial experimental design encompasses path planning (cost
+ function, artificial potential field), task type (direct path, waypoints,
+ monitoring), and crew configuration (one person, two opposing, four with
+ clustering, and random generation).
+ The evaluation criteria will examine the trade off between efficiency and
+ human comfort.
+\end_layout
+
+\begin_layout Abstract
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Artificial
+ Potential Field, Cost Function
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The technological advances in robotics is leading towards increased prevalence
+ of robots within society ranging from existing roles as work partners (e.g.
+ space exploration, military, search and rescue) to social ones (e.g.
+ healthcare, companionship).
+ NASA (National Aeronautics and Space Administration) is developing and
+ deploying robots, such as Robonaut, Astrobee, Valkyrie, and SPHERES (Synchroniz
+ed Position Hold, Engage, Reorient, Experimental Satellites), to work with
+ and/or in the same environment as astronauts.
+ Robots like Astrobee will perform tedious, daily monitoring tasks and will
+ need to navigate the modules in the ISS (International Space Station) without
+ adversely affecting astronaut activities.
+ Therefore, these monitoring robots will need to understand and adhere to
+ rules governing personal and work space.
+ The aim of this simulation project is to investigate existing models of
+ personal space and their effect on path planning and execution (i.e.
+ human-aware navigation) of an autonomous robot, like Astrobee.
+ While our interest focuses on space exploration, human-aware navigation
+ can be applied across a variety of contexts.
+\end_layout
+
+\begin_layout Standard
+Proxemic distance, or personal space, in the context of Human-Robot Interaction
+ (HRI) is founded on the characterization of human-human interaction by
+ Hall 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hall1966hidden"
+
+\end_inset
+
+.
+ However, the application of these interpersonal distances has been a recent
+ topic of research.
+ Proxemic distance is a relevant topic for autonomous robotics and path
+ planning, as the comfort of humans in the same environment need to be considere
+d.
+ In a review of human-aware robot navigation, a search of the literature
+ revealed that the topic seemed to generate interest in 2001 and the number
+ of publications has increased over the years 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ This relatively novel field contains many unanswered questions, but has
+ produced a generalized observation across the literature that humans tend
+ to interact with robots as if they were humans.
+ 
+\end_layout
+
+\begin_layout Standard
+The following sections will briefly review the literature and areas for
+ future work.
+ Next, we will describe our simulation, which compares an 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ based graph search path-planning algorithm and a reactive artificial potential
+ field (APF) navigation scheme, for a free-flying robot avoiding human obstacles
+ and exhibiting sociable behavior using proxemic distance on the International
+ Space Station.
+ We will describe a simulation based on the Astrobee small satellite for
+ Intravehicular Activities (IVAs) on the ISS, discuss simplifications due
+ to time constraints, and present goals for future extensions to the simulation
+ should time permit them.
+\end_layout
+
+\begin_layout Subsection
+Literature Review
+\end_layout
+
+\begin_layout Subsubsection
+Humans, Robots, and Space
+\end_layout
+
+\begin_layout Standard
+The SPHERES platform is a system of three free-flying small satellites (roughly
+ comparable to the size and mass of a bowling ball) that have been operating
+ out of the Japanese Experimental Module since 2006.
+ First developed as a class project at MIT (Massachusetts Institute of Technolog
+y), the platform, through its ability to upload guest software, has become
+ a primary source of research in autonomous controls for free-flying spacecraft.
+ For example, this satellite research platform enabled the development of
+ a safe and stable cold-gas CO
+\begin_inset Formula $_{2}$
+\end_inset
+
+ propulsion system.
+ After the development of the capability for the satellites to use smartphone
+ technology for experiments in 2011, the new Smart SPHERES’ telerobotic
+ capabilities allowed for the rapid advancement of autonomous relative navigatio
+n and computer vision algorithms on small satellites
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+NASA’s Human Exploration Telerobotics 2 (HET2) project is currently developing
+ Astrobee, a free-flying robot designed for Intravehicular Activity (IVA)
+ onboard the ISS.
+ It is scheduled to be launched in 2017, and it is based directly on the
+ knowledge learned from Smart SPHERES and NASA’s older PSA (Personal Satellite
+ Assistant) program 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ The PSA satellite was originally designed with the goals of 
+\end_layout
+
+\begin_layout Enumerate
+Increasing crew productivity by taking over mundane and repetitive tasks
+\end_layout
+
+\begin_layout Enumerate
+Reducing risk onboard the spacecraft by providing an interface for logistical
+ management
+\end_layout
+
+\begin_layout Enumerate
+Crew (astronaut) performance monitoring and feedback 
+\end_layout
+
+\begin_layout Enumerate
+Just-in-time training
+\end_layout
+
+\begin_layout Enumerate
+Monitoring air and system quality, isolating faults, and providing a backup
+ sensor system to those already onboard the ISS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "psa"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although PSA never fully realized in its projected role on the ISS, Astrobee
+ has taken over its original goals of increasing productivity and safety,
+ as well as continuing and improving upon SPHERES’ role as a microgravity
+ research laboratory for robotics 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "smartspheres,bualat2015astrobee"
+
+\end_inset
+
+.
+ As the immediate future of small satellites for IVAs, we focus on Astrobee
+ for the purposes of our simulation.
+\end_layout
+
+\begin_layout Standard
+In its current projection, Astrobee will operate only semi-autonomously
+ in coordination with the ground crew.
+ Given a goal, Astrobee follows a pre-programmed path using its computer
+ vision navigation system.
+ When Astrobee encounters an obstacle, whether an unexpected object or a
+ human, it currently slows down, stops, and waits for either a ground controller
+ to telenavigate Astrobee around the obstacle or for the obstacle to leave
+ its planned path (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Concept-of-Astrobee"
+
+\end_inset
+
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ While the method avoids unintended collisions, its reliance on ground crews
+ or waiting for an environment to clear could prove impractical for longer-durat
+ion missions, such as planned trips to Mars, when communications between
+ the robot and a ground crew could easily exceed ten minutes.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename astrobee.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Concept of Astrobee on ISS with commands from ground crew.
+ Modified from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Concept-of-Astrobee"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Astrobee would clearly benefit from fully autonomous, human-aware navigation.
+ With a primary purpose to help crew while working in the same environment,
+ human-aware navigation is the logical development path.
+ Astrobee is also an ideal candidate for robotic simulation research, prior
+ to physical testing.
+ As Astrobee interacts directly with crew and with life-supporting systems,
+ it is subject to stringent safety measures applied to any ISS payload
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+ Rigorous testing through robotic simulation rather than immediately switching
+ to the physical world provides an opportunity for risk-free development.
+ In conjunction with Astrobee’s evolution history, established technologies,
+ and intended application, it lends itself perfectly to our research simulation
+ that will focus on one aspect of human-aware navigation: proxemics.
+\end_layout
+
+\begin_layout Subsubsection
+Human-Robot Interaction
+\end_layout
+
+\begin_layout Standard
+Proxemics in HRI may be influenced by a variety of factors, such as task
+ and social relationship 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kim2014social"
+
+\end_inset
+
+, direction and body positioning 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "torta2013design"
+
+\end_inset
+
+, relationship length 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "walters2011long"
+
+\end_inset
+
+, personal experience, personality, and gaze 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "takayama2009influences"
+
+\end_inset
+
+, and more 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human,walters2009empirical"
+
+\end_inset
+
+.
+ In a study by Kim and Mutlu, proxemic distance, or physical distance, is
+ examined in conjunction with task distance (collaborative versus competitive)
+ and power distance (supervisor versus subordinate) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kim2014social"
+
+\end_inset
+
+.
+ In this card matching task, participants performed better with a greater
+ physical distance (120 cm versus 46 cm) and reported a more positive experience
+ with a subordinate robot when it kept a greater physical distance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kim2014social"
+
+\end_inset
+
+.
+ While most of the human-human interaction (HHI) based hypotheses found
+ support, some has no support and may be an indication that humans may interact
+ differently with robots in certain contexts.
+ However, the experimental design may not have used a complicated enough
+ task, particularly for examining power distance and the benefits of a collabora
+tive relationship may have been lost.
+ For our purposes, the results of the study indicate that a subordinate
+ robot, like Astrobee, should tend to maintain a farther distance.
+\end_layout
+
+\begin_layout Standard
+Other studies have examined the approach of a robot to a human or vice versa,
+ and measured the minimum resulting distance where the participants felt
+ comfortable.
+ Torta et al.
+ varied the approach angle (0˚ or head-on to 70˚) and the body position
+ of the participant (sitting versus standing) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "torta2013design"
+
+\end_inset
+
+.
+ Overall, participants preferred a head-on approach, a rightward versus
+ leftward, and the proxemic distance was larger than that measured in HHI
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "torta2013design"
+
+\end_inset
+
+.
+ Proxemic distance changed for sitting participants, where the preferred
+ distance increased from side to center (i.e.
+ minimum proxemic distance at 70˚) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "torta2013design"
+
+\end_inset
+
+.
+ The authors suggested that the robot, which is relatively short, may have
+ caused the deviation from HHI distances.
+ Another study investigated the change in proxemic distance with repeated
+ interactions between the human and the robot, and hypothesized that exposure
+ over multiple weeks would continuously decrease the proxemic distance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "walters2011long"
+
+\end_inset
+
+.
+ While the distance did decrease, the adaptation occurred in the first two
+ sessions, remained constant for the following four weeks, and were comparable
+ with HHI distances 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "walters2011long"
+
+\end_inset
+
+.
+ Another study sought to examine the effect of personal experience on the
+ proxemics distance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "takayama2009influences"
+
+\end_inset
+
+.
+ Here, personal experience and participants with agreeable personalities
+ had smaller minimum proxemics distances.
+ Interestingly, there was a gender effect when the robot gazed at the participan
+ts’ faces, where it resulted in a shorter distance for men and a greater
+ distance for women 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "takayama2009influences"
+
+\end_inset
+
+.
+ In most of these studies, preference and proxemic distance were considered.
+ A preference does not necessarily translate into a shorter proxemic distance,
+ as seen where a head-on approach is the most preferred and results in the
+ greatest proxemic distance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "torta2013design"
+
+\end_inset
+
+, or in the study with gender differences
+\begin_inset CommandInset citation
+LatexCommand cite
+key "takayama2009influences"
+
+\end_inset
+
+.
+ There are other factors to considered, such as mechanoid versus humanoid,
+ and Walters et.
+ al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "walters2009empirical"
+
+\end_inset
+
+ provide a convenient table summary and Kruse et.
+ al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+ have a more in-depth discussion of factors (See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-HRI"
+
+\end_inset
+
+for brief comparison of studies reviewed here).
+ Most work reviewed was not conducted in a simulation, and it has been difficult
+ to find relevant simulation studies to date.
+ Kirby et.
+ al conducted a simulation study and provide a framework upon which this
+ project will be based 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of HRI Experimental Designs
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparison-of-HRI"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lit review compare.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some proxemic distance factors are more relevant for the application of
+ an autonomous robot onboard the ISS for monitoring tasks.
+ The robot would take on a subordinate position, would not gaze, have a
+ collaborative-type task, have a long-term relationship, and could approach
+ from multiple directions in 3D space.
+ Based on the literature review to date, the robot should maintain a farther
+ distance and approach from certain directions (center, then right, then
+ left).
+ What is currently unclear is how the mapping of proxemics distance, such
+ as in a cost-based model, would translate to 3D space.
+ This question would be of significant relevance to understand human-aware
+ navigation onboard the ISS.
+ While an interesting question, it would not be appropriate to tackle in
+ this project due to time constraints and the experimental setup (simulation),
+ so must be left to future researchers.
+\end_layout
+
+\begin_layout Section
+Experimental design
+\end_layout
+
+\begin_layout Subsection
+Problem Formulation 
+\end_layout
+
+\begin_layout Standard
+Path planning generally uses either a global, hierarchical search or a local,
+ reactive method.
+ To incorporate human-awareness and increase human comfort, these methods
+ are modified to include a consideration based on the proxemic distance
+ from humans in the environment as described above 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ However, much human-aware path planning is focused on a global, hierarchical
+ approach; in the human-aware navigation survey by Kruse et.
+\begin_inset space ~
+\end_inset
+
+al, reactive methods are not considered 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ We are particularly interested in exploring whether a hierarchical architecture
+ is necessary for human-aware path planning, because the literature seems
+ focused on global search methods.
+ To that end, we hope to explore the question:
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+How do the output paths of the 
+\begin_inset Formula $\mathbf{A^{*}}$
+\end_inset
+
+ and APF architectures react to the introduction of proxemics during autonomous
+ navigation in an enclosed area? 
+\end_layout
+
+\begin_layout Standard
+Global optimization methods can find globally optimal paths, but are often
+ slow and require modification to be used for real-time navigation in dynamic
+ environments.
+ In contrast, reactive methods are simple and well suited to real-time control
+ but may perform non-optimally.
+ Most local, reactive techniques are based on APF, which may cause the robot
+ to stop moving towards the target due to local minima in the potential
+ field.
+ Overweighted obstacles can also overwhelm the attraction to the target
+ and cause navigational errors.
+ While these could be considered flaws, in human-aware path planning, these
+ errors may cause desirable social behaviors such as waiting at a blocked
+ pathway or avoiding a human collision.
+ For both path planning methods, we will compare the robot's trajectory
+ with and without proxemics.
+ Soft constraints will be used for human avoidance, although hard constraints
+ will be included to provent collisions with the environment's walls as
+ applicable.
+ In the following subsections, we describe the formulation for the two path
+ planning methods we will be comparing.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename moving_proxemic_map.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graphical representation of the cost or repulsive potential associated
+ with a moving human.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:moving_human_prox"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pass_on_right_proxemic_map.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graphical representation of the cost or potential associated with the
+ social cue to pass on the left.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pass_left_prox"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Heuristic Graph Search For Path Planning 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph search method, introduced by Hart in 1968, uses a heuristic cost
+ approximation to find optimal paths between nodes on a graph 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hart1968formal"
+
+\end_inset
+
+.
+ For navigational applications of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, positions in the environment are discretized and mapped to nodes on a
+ graph, with connections to the neighboring positions.
+ Nodes can be traversed by taking an action with an associated cost.
+ The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm uses a heuristic search technique to find an optimal set of actions
+ to move from the starting node to the goal node.
+ 
+\end_layout
+
+\begin_layout Standard
+Generally, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is not well suited for real-time navigation because it does not incorporate
+ dynamics of the robot or its environment and may not be able to replan
+ quickly enough to update based on those changes.
+ Additionally on physical systems, paths generated by 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ would need to be tracked using a lower-level controller.
+ Variations on 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and other algorithms based on similar principles have been used to address
+ some of those challenges (Refer to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion,stentz1994d,koenig2004lifelong"
+
+\end_inset
+
+), but 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is still considered a standard technique for path planning.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Artificial Potential Field
+\end_layout
+
+\begin_layout Standard
+The APF method for robot navigation was introduced by Khatib in the 1980's
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "khatib1986real"
+
+\end_inset
+
+.
+ APF is a reactive navigation method that models the robot as a particle
+ driven by a potential field.
+ In APF, a potential field is mapped onto the environment based on the position
+ of goals and obstacles.
+ Goals are incorporated as negative (attractive) potentials, while obstacles
+ have associated positive (repulsive) potentials.
+ Then, the desired acceleration of the robot is set as a modeled force equal
+ to the negative gradient of the potential field.
+ In this way, the robot drives away from obstacles and towards the goal.
+ This method is relatively simple to implement and is well suited for real-time
+ navigation.
+ 
+\end_layout
+
+\begin_layout Standard
+The main limitations of APF  come from the locality of the behavior, such
+ as becoming trapped in local minima or oscillating near obstacles due to
+ local extrema 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "koren1991potential"
+
+\end_inset
+
+.
+ The APF method cannot provide any guarantee of global optimality, since
+ the control scheme is inherently local.
+ In order to address these challenges, one may try to carefully formulate
+ the potentials associated with obstacles and goal positions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ge2000new"
+
+\end_inset
+
+.
+ Another approach is to incorporate a hierarchical supervisor that switches
+ to another navigation method if it detects the APF controller has become
+ caught at a local minima, which has the main drawback of added complexity
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yun1997wall,mabrouk2008solving"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+COMPANION Comparison
+\end_layout
+
+\begin_layout Standard
+Kirby et.
+\begin_inset space ~
+\end_inset
+
+al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+ proposed a path planning scheme called COMPANION, which uses a modified
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search based algorithm with a proxemic cost function, from which
+ much of our experimental design draws its inspiration.
+ Kirby et.al showed that a heuristic path-planning algorithm could demonstrate
+ social behaviors, such as passing on one side and respecting personal space.
+ 
+\end_layout
+
+\begin_layout Standard
+When determining the heuristic for their A* implementation, Kirby et.
+ al paid attention to the following points: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{cc}
+\textbf{{Constraint\:Name}} & \textbf{Weight (\textit{{w_{c}}})}\\
+Minimize\ distance & 1\\
+Obstacle\ buffer & 1\\
+Personal\ space & 2\\
+Robot\ space & 2\\
+Pass\ on\ right & 3\\
+Default\ velocity & 2\\
+Face\ travel & 2\\
+Inertia & 2
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+In our work, we only cared about a limited number of these (Minimize distance,
+ personal space, (to a degree) default velocity).
+ 
+\end_layout
+
+\begin_layout Standard
+We wish to compare the results from our COMPANION-style architecture with
+ a reactive architecture based on an artificial potential field (APF) that
+ incorporates an equivalent proxemic map, such as those shown in Figures
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:moving_human_prox"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pass_left_prox"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Proposed Simulation
+\end_layout
+
+\begin_layout Standard
+We have chosen to investigate our research question in the previously-identified
+ context of HRI in spaceflight.
+ 
+\end_layout
+
+\begin_layout Standard
+The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell.
+ It will be powered by lithium ion rechargeable batteries, and it will house
+ a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
+ airflow, a computer-vision-based navigational system, HD camera, fisheye
+ camera, depth sensor, perching arm, 2DOF robotic arm with gripper, and
+ two payload ports that provide potential for additional sensors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb,yoo2015avionics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Astrobee is designed to navigate around the ISS USOS (U.S.
+ Orbital Segment), which consists of 9 modules: the U.S.
+ Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
+ Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
+se Module, Cupola, and the U.S.
+ Airlock 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the interest of acquiring meaningful results in a limited time-frame,
+ we will make some assumptions and simplifications, which we describe below.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Environment and Human Obstacles
+\end_layout
+
+\begin_layout Standard
+We intend to create our initial simulation within a simplified 2D model.
+ Our environment will be an approximated rectangular cross-section of a
+ module of the ISS USOS, which we can extend to include multiple modules
+ once a successful simulation has been created with the simpler geometry.
+ We are also simulating a clean environment, without non-human obstacles.
+ In reality, the environment could be significantly more cluttered, with
+ experiments and equipment lining the walls.
+ We will be addressing this issue in a simplified manner by adding a hard
+ constraint that does not allow Astrobee to come into physical contact with
+ a small buffer surrounding the module's walls unless directed to do so
+ as part of its task.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProxModel.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simplified illustration of simulation for A) APF and B) 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ for one crew and agnostic of task type (1, 2, or 3).
+ Higher repulsive forces or costs shown for area in front of crew.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:proxemicsmodel"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our two-dimensional environment, humans and their associated proxemics
+ can be roughly represented as a circle with an assigned position, forwards
+ orientation, and associated elliptical z-symmetric proxemics (See Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proxemicsmodel"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In creating our simulations, we will be simulating all humans with equal
+ proxemics.
+ This is a simplification, as studies show that proxemics vary between people
+ and across cultures 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "joosse"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To properly provide conclusions a solution applicable to the ISS, the additional
+ degrees of freedom and asymmetry that come with a microgravity environment
+ mean that we cannot ignore the effect of the system's 3-dimensionality
+ on our path planning algorithms.
+ As a result, if time allows, we hope to extrapolate our simulation to three
+ dimensions.
+ Considering a human model as a cylinder, the associated proxemics would
+ vary with z-position 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kirby2009companion"
+
+\end_inset
+
+.
+ While we can ignore this variation as irrelevant in a 2D simulation (We
+ are treating all human obstacles as if at a uniform height), it would prove
+ an inaccurate representation of a 3D world.
+ We must therefore treat our study as a proof-of-concept, acknowledging
+ that further improvements, including z-varying proxemics, three additional
+ degrees of freedom in our simulated robot movement, sensor limitations,
+ and a more complex environment, would need to be made before any results
+ could be applied to a practical situation.
+ 
+\end_layout
+
+\begin_layout Standard
+We have intentionally chosen not to model human motion.
+ Although it is relevant to the field and research has been done in this
+ area 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weinrich2013prediction"
+
+\end_inset
+
+, literature has shown that humans change their patterns of motion in response
+ to a moving robot.
+ The added complexity is out of the scope of this project.
+\end_layout
+
+\begin_layout Subsubsection
+Test Scenarios
+\end_layout
+
+\begin_layout Standard
+For each of our algorithms, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and APF, we will run identical testing scenarios for each of several configurat
+ions.
+ Configurations will be designed to test the versatility of each algorithm,
+ including navigation around a single human, navigation between two humans,
+ navigation around a cluster of humans, and navigation around several randomly
+ generated numbers (up to six, the maximum capacity of the ISS), positions,
+ and orientations of humans (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:configurations"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+In each scenario, we direct Astrobee to perform three tasks (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Illustration-of-paths"
+
+\end_inset
+
+).
+ The first task is a simple traveling task from one end of the module to
+ the next.
+ The second task involves stopping at several points around the walls of
+ the module.
+ This simulates Astrobee's versatility in performing IVAs at specific points
+ within a module.
+ The third task will send Astrobee out along one wall and have it return
+ along the opposite, testing its ability to navigate obstacles along a more
+ prescriptive path.
+ 
+\end_layout
+
+\begin_layout Standard
+Our first test for each task and scenario will be to run each path-planning
+ algorithm without the use of proxemics to provide a baseline point of compariso
+n for proxemic simulations.
+ To do so while still maintaining collision avoidance, we will weight humans
+ with a cost or potential field strength inversely proportional to the robot's
+ distance from the humans, regardless of human orientation.
+ We will then introduce our proxemics model for our cost map and potential
+ field and run each scenario and task again.
+ 
+\end_layout
+
+\begin_layout Standard
+Early in the design process, we will intentionally create additional scenarios
+ to test known weaknesses of each algorithm, such as net zero cost for 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, and local maxima or minima for APF.
+ We will investigate the use of our locational uncertainties to evade these
+ problems, simulating noise by randomly selecting an absolute orientation
+ and position within the margin of error.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename tasktype.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Illustration of paths for three tasks without inclusion of obstacles, where
+ the blue rectangle represents the module boundaries, the yellow square
+ is the simulated Astrobee, and the dotted line is a possible path: A) Task
+ 1 is direct navigation from one end of module to the other, B) Task 2 involves
+ consecutive inspection of four waypoints, C) Monitoring task (3) of the
+ module perimeter and returning to the start point.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Illustration-of-paths"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename configurations.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example of possible crew configurations: A) Crew located in direct path
+ of shortest distance (Crew Config.
+ 1), B) Two crew members on opposing sides of module (Crew Config.
+ 2), C) Cluster of crew members opposite from single crew (Crew Config.
+ 3), and D) Random position and orientation of four crew members; the black
+ arrows indicate the direction of highest repulsive force or cost (Crew
+ Config.
+ 4).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:configurations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Table of experimental conditions for three factors (path planning, task
+ type, and crew configuration) for a total of 24 simulations.
+ A use case is comprised of a sequence of factor designations, such as A*-T01-CC
+1 (
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm for end-to-end module navigation with one crew member present).
+ Selected abbreviations: T01 = Task 1, CC1 = Crew Configuration 1.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TestTable"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename TestTable2.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulated Robot
+\end_layout
+
+\begin_layout Subsection
+Robot Model
+\end_layout
+
+\begin_layout Standard
+Astrobee itself will be represented by a 12”x12” square with a 6kg mass
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+, capable of 3-DOF holonomic motion (x translation, y translation, and xy
+ rotation).
+ 
+\end_layout
+
+\begin_layout Standard
+The mobility specifications of SPHERES were publicized on July 30, 2015
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb"
+
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Translation 1m start to stop: 5s 
+\begin_inset Newline newline
+\end_inset
+
+Rotation 360° start to stop: 5s 
+\begin_inset Newline newline
+\end_inset
+
+Translation accuracy: 0.5cm 
+\begin_inset Newline newline
+\end_inset
+
+Rotation accuracy: 2.5° 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Astrobee plans include position estimation to within 20cm of walls, which
+ shall provide the distance for our hard-constraint wall buffers.
+ It is able to internally update its position at ~6Hz, and it has a hardware
+ safety constraint that limits thrust at a maximum of 0.72N 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+.
+ Our simulated robot's motion shall accomodate these Astrobee constraints,
+ supplementing any lack of available information with comparable specifications
+ from the motion of SPHERES.
+\end_layout
+
+\begin_layout Standard
+We will treat the propulsion and battery lifetimes as irrelevant given the
+ scope of our experiment.
+ 
+\end_layout
+
+\begin_layout Subsection
+Sensors
+\end_layout
+
+\begin_layout Standard
+We are making some significant assumptions with respect to the capabilities
+ of Astrobee itself.
+ In order to test the robotic architectures and algorithms, it is necessary
+ that Astrobee accurately detect humans and their associated orientations
+ with omnipotence, in all directions at all times.
+ Astrobee's current vision sensors, however, are only placed on four faces
+ of the satellite 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The primary experiment concerning computer vision based navigation for satellite
+s onboard the ISS is MIT's VERTIGO (Visual Estimation for Relative Tracking
+ and Inspection of Generic Object) goggles, a hardware and software addition
+ to the SPHERES satellites.
+ VERTIGO experiments have demonstrated a successful stereo vision-based
+ orbiting of an unknown object at a close range, using simultaneous location
+ and mapping (SLAM) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TweddleVertigo,fourievertigo"
+
+\end_inset
+
+.
+ The experiments demonstrated the capabilities of a free-flying satellite
+ to use computer vision to navigate the challenges of 6-DOF motion in real
+ time.
+ 
+\end_layout
+
+\begin_layout Standard
+Due to the demonstrated feasibility of computer vision-based navigation
+ for satellites on the ISS and the scope of our proposed investigation,
+ we will not include the limitations of sensors in our simulation.
+ We recognize that sensors have limitations, such as noise and errors at
+ small or large distances; in order for simulation results to be directly
+ applied to a physical situation involving Astrobee, these limitations would
+ need to be included in a final simulation.
+ However, thanks to Astrobee's payload ports for additional software 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew,bualat2015astrobee"
+
+\end_inset
+
+, the sensors onboard Astrobee are highly customizable.
+ Since our investigation focuses on the effects of proxemics on our path-plannin
+g algorithms, it remains more useful if the simulation stays in a generalized
+ form, which could be modified appropriately to an individually-selected
+ sensor system.
+ We shall assume that with additional computer vision software or through
+ supplementation with other sensors, Astrobee could have all needed information
+ available to it at all times.
+ 
+\end_layout
+
+\begin_layout Section
+Techniques and Algorithms
+\end_layout
+
+\begin_layout Subsection
+Artificial Potential Field
+\end_layout
+
+\begin_layout Standard
+In APF, the robot is modelled as a particle driven by a potential field.
+ The potential field is linear, so the total potential at each point is
+ is the sum of the different components
+\begin_inset Formula 
+\[
+U\left(x_{r},y_{y}\right)=\sum U_{i}\left(x_{r},y_{y}\right)
+\]
+
+\end_inset
+
+and the force acting on the robot is the partial derivative of the potential
+ field with respect to each direction with the addition of a damping term
+\begin_inset Formula 
+\begin{align*}
+F_{x} & =\frac{\partial}{\partial x_{r}}U\left(x_{r},y_{y}\right)-bv_{x}\\
+F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
+\end{align*}
+
+\end_inset
+
+The motion of robot is then determined by the dynamic and kinematic constraints
+ for two dimensions 
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dt}v_{x} & =\frac{1}{m}F_{x}\\
+\frac{d}{dt}v_{y} & =\frac{1}{m}F_{y}\\
+\frac{d}{dt}x_{r} & =v_{x}\\
+\frac{d}{dt}y_{r} & =v_{y}
+\end{align*}
+
+\end_inset
+
+In many APF simulations, damping in the overall system is included in the
+ dynamic model of the mobile robot, caused by losses such as friction.
+ We chose to consider the damping as a tunable parameter in the scheme navigatio
+n for two reasons.
+ First, we did not have a good model for the drag Astrobee would encounter
+ while moving in the module, making it difficult to justify the choice of
+ a parameter.
+ Second, since Astrobee is travelling at low velocities, additional damping
+ in the navigation system may need to be added to achieve a desirable performanc
+e, so we could consider the the total damping as a design parameter.
+ 
+\end_layout
+
+\begin_layout Standard
+The repulsive potential field associated with the module boundary is a gaussian
+\begin_inset Formula 
+\[
+\begin{aligned}U_{\text{wall}}\left(x_{r},y_{r}\right) & =\exp\left[-\frac{\left(x_{r}-w\right)^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{\left(y_{r}-h\right)^{2}}{2\sigma_{w}^{2}}\right]\\
+ & \qquad+\exp\left[-\frac{x_{r}^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{y_{r}^{2}}{2\sigma_{w}^{2}}\right]
+\end{aligned}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{r}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the robot, 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ are the width and height of the module, and 
+\begin_inset Formula $\sigma_{w}$
+\end_inset
+
+ is a width normalizing constant set to 0.15 so that the potential drops
+ off to 1% of the peak value 1.5 robot lengths from a wall.
+\end_layout
+
+\begin_layout Standard
+The attractive potential field associated with the goal position is a combinatio
+n conic and quadratic potential, two common goal models used in APF, defined
+ as
+\begin_inset Formula 
+\[
+U_{\text{goal}}\left(x_{r},y_{r}\right)=\begin{cases}
+-kd^{2} & \text{ if }d<1.5l\\
+-k\left(1.5l+d\right) & \text{ if }d\ge1.5l
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $d=\sqrt{\left(x_{r}-x_{g}\right)^{2}+\left(y_{r}-y_{g}\right)^{2}}$
+\end_inset
+
+ is the distance between the robot and the goal and 
+\begin_inset Formula $l$
+\end_inset
+
+ is the side length of the robot.
+ This potential acts as a spring force on the robot when the robot is close
+ to the goal and as a constant attractive force when the robot is far.
+ 
+\end_layout
+
+\begin_layout Standard
+The values for the constants 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ were chosen by qualitatively evaluating the performance of APF for the
+ simplest mission and crew configuration over a range of values.
+ The values 
+\begin_inset Formula $k=\unit[1]{N/m}$
+\end_inset
+
+ and 
+\begin_inset Formula $b=\unit[5]{N\cdot s/m}$
+\end_inset
+
+ was chosen because the robot moved the fastest (0.25 m/s) without driving
+ through the repulsive potential associated with the crew.
+ This velocity is also a velocity that was considerd comfortable in the
+ proxemic literature.
+ This indicates that the forces associated with moving toward the goal,
+ avoiding collisions with humans, and damping were acceptably tuned.
+ However, this search was non-exhaustive and there may exist values which
+ produce better path planning performance.
+\end_layout
+
+\begin_layout Subsection
+A* Implementation
+\end_layout
+
+\begin_layout Standard
+A* is a modification of Dijkstra's algorithm to find a lowest-cost path
+ between two points on a directed graph, but it uses an additional heuristic
+ to perform not just a breadth-first search, but a best-first search.
+ 
+\end_layout
+
+\begin_layout Standard
+Our general algorithm was implemented using a priority queue of potential
+ paths, stored as lists of graph nodes with (x,y) coordinates and an associated
+ velocity.
+ As the robot traversed the discretized model, it looked at all possible
+ nearest neighbors on the grid and a range of possible next velocities,
+ assigning each possible next step a cost that depends on human proxemics
+ and the robot's locaation and velocity.
+ The cost function is described in more detail in Section 4.3: Human Avoidance
+ Models.
+ After the proxemic cost was calculated for each newest node in a path,
+ each new path was added to the priority queue with 
+\begin_inset Formula $Priority=(Cumulative\ proxemic\ cost)+(Heuristic)$
+\end_inset
+
+, where the heuristic is a function of location and velocity that emphasizes
+ following the shortest path to the goal and travelling at a higher speed
+ with different weights.
+ The heuristic used in our simulations is described below in Section 4.2.1.
+ Once each new potential path was added to the priority queue, the algorithm
+ then selected the path with the lowest priority from the current queue,
+ and it began the same process to extend the newly selected path.
+ The algorithm returned a path when the edge of the robot reaches a distance
+ of 1.2*the grid step size, which allowed the algorithm to recognize when
+ the robot had reached its destination, still allowing for some uncertainty.
+ 
+\end_layout
+
+\begin_layout Standard
+Djikstra's Algorithm runs in 
+\begin_inset Formula $\mathcal{O}(N^{2})$
+\end_inset
+
+ time [CHECK AND CITE TEXTBOOK], but as the addition of a heuristic allows
+ the algorithm to select the most likely path first, A* can often run in
+ significantly less time.
+\end_layout
+
+\begin_layout Subsubsection
+Heuristic and parameter determinations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Heuristic=\ \alpha*\left(Distance\ to\ goal\right)\ +\ \beta*\left(\dfrac{1}{New\ velocity}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We selected our heuristic to emphasize following the shortest path to the
+ goal and travelling at a higher velocity, desirable traits that allow the
+ robot to prioritize efficient use of fuel, power, and time.
+ Both quantities were weighted with coefficients 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ following the manner found in Kirby's COMPANION algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+, which allowed us to control the strength with which these priorities competed
+ with the respect of proxemics, which was considered to have a weight of
+ 1 that was contributed by our Gaussian cost function described in 4.3.
+ The weights 
+\begin_inset Formula $\alpha$
+\end_inset
+
+and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ were chosen in a manner similar to the parameter selection in the APF case,
+ where several instances of the same mission/crew combination were compared,
+ and a reasonable answer was selected qualitatively.
+ While more rigorous testing of parameters is recommended in further studies,
+ our method of selection was deemed sufficient given the time limitations
+ and scope of our study.
+ Our results presented in Section 5 were found with weights of 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0.05$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Algorithm Modifications for Embodiment and Situatedness
+\end_layout
+
+\begin_layout Standard
+We implemented our A* algorithm on a grid with a mesh size of the module
+ length / 50, which corresponded to a 6.72
+\begin_inset Quotes erd
+\end_inset
+
+ distance between nodes in the x and y directions.
+ The mesh size was selected qualitatively after some experimentation to
+ find a balance between detail and computational time.
+ 
+\end_layout
+
+\begin_layout Standard
+The path extension step was implemented through consideration of the 9 nearest
+ nodes with varying velocities, described below.
+ Each path kept a list of nodes that had already been visited on the path,
+ and only added nodes that hadn't been visited on the way to the current
+ waypoint, in order to avoid pointless loops.
+ Viability of nodes also considered potential robot collision, with hard
+ constraints included that removed nodes a distance of the robot's working
+ radius, defined as the distance from the center of the robot to a corner
+ of the robot, 
+\end_layout
+
+\begin_layout Standard
+At each step, the possible velocities for consideration were determined
+ by the robot's inertia, maximum thrust, mass, and our hard-coded saftey
+ constraints, which limited the maximum robot velocity to 0.5m/s at all times
+ to protect crew comfort and spacecraft safety.
+ Given a current velocity 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+, possible velocities were determined by 
+\begin_inset Formula $v_{new}=\sqrt{{v_{0}^{2}\pm2as}}$
+\end_inset
+
+, where 
+\begin_inset Formula $a$
+\end_inset
+
+ is our maximum acceleration, determined by 
+\begin_inset Formula $a=\dfrac{Maximum\ thrust}{Astrobee\ mass}$
+\end_inset
+
+, and 
+\begin_inset Formula $s$
+\end_inset
+
+ is the distance travelled, with 
+\begin_inset Formula $s=6.72"$
+\end_inset
+
+ for next nodes parellel to the module walls, or 
+\begin_inset Formula $s=9.50"$
+\end_inset
+
+ for diagonal next nodes.
+ Our considered velocity range was then determined by 
+\begin_inset Formula $v_{max}=min(Absolute\ max\ velocity,Max\ possible\ velocity)$
+\end_inset
+
+, 
+\begin_inset Formula $v_{min}=max(0,Min\ possible\ velocity)$
+\end_inset
+
+, and five velocities (limited to mitigate the time taken for the code to
+ run), equally spaced within that range, were considered at each viable
+ next node.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+- 
+\series medium
+hard constraints for humans and walls
+\end_layout
+
+\begin_layout Standard
+- limited maximum velocity so that it would be able to slow down to a stop
+ at each waypoint
+\end_layout
+
+\begin_layout Subsection
+Human Avoidance Models
+\end_layout
+
+\begin_layout Standard
+Both 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and APF rely on a model scalar-field of the navigation area representing
+ the cost of being in that position.
+ Both planning methods will use the same proxemic and non-proxemic models
+ of the human obstacles in the scalar-field.
+ 
+\end_layout
+
+\begin_layout Standard
+The non-proxemic model is a symmetric gaussian model defined by
+\begin_inset Formula 
+\[
+U_{\text{non-proxemic}}\left(x_{r},y_{r}\right)=\exp\left[-\frac{\left(x_{r}-x_{c}\right)^{2}+\left(y_{r}-y_{c}\right)^{2}}{2\sigma_{n}^{2}}\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{r}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the robot, 
+\begin_inset Formula $x_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{c}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the crew being modeled,
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is an amplitude normalizing constant,
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{n}^{2}$
+\end_inset
+
+ is a width normalizing constant.
+ We set 
+\begin_inset Formula $\sigma_{N}^{2}$
+\end_inset
+
+ to 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+SARAH 
+\end_layout
+
+\end_inset
+
+, so that the cost of a typical shoulder distance is half the cost as the
+ center.
+\end_layout
+
+\begin_layout Standard
+The proxemic model is the asymetric gaussian Kirby used to model personal
+ space, defined as
+\begin_inset Formula 
+\[
+\begin{aligned}U_{\text{proxemic}}\left(x_{r},y_{r},\left|v\right|\right) & =\exp\left[-\left(ad_{x}^{2}+bd_{x}d_{y}+cd_{y}^{2}\right)\right]\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $d_{x}=x_{r}-x_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{y}=y_{r}-y_{c}$
+\end_inset
+
+ is the distance between the robot and crew member being modeled in the
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ directions.
+ The shape factors 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+, and 
+\begin_inset Formula $c$
+\end_inset
+
+ are based on rotational transformations of the aligned shape factors, 
+\begin_inset Formula 
+\begin{align*}
+a & =\frac{\cos^{2}\theta}{2\sigma_{p}^{2}}+\frac{\sin^{2}\theta}{2\sigma_{s}^{2}}\\
+b & =\frac{\sin2\theta}{4\sigma_{p}^{2}}-\frac{\sin2\theta}{4\sigma_{s}^{2}}\\
+c & =\frac{\sin^{2}\theta}{2\sigma_{p}^{2}}+\frac{\cos^{2}\theta}{2\sigma_{s}^{2}}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the orientation of the crew member in the global frame of reference.
+ The values for aligned shape factors are described by
+\begin_inset Formula 
+\begin{align*}
+\sigma_{h} & =\max\left[2\left|v\right|,0.5\right]\\
+\sigma_{s} & =\frac{2}{3}\sigma_{h}\\
+\sigma_{r} & =\frac{1}{2}\sigma_{h}\\
+\sigma_{p} & =\begin{cases}
+\sigma_{h} & \text{ if robot in front of crew}\\
+\sigma_{r} & \text{ if robot behind crew}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+We note that the larger shape factor corresponding to the front of the crew
+ corresponds to a wider cost curve, reflecting the need for more personal
+ space in the forward direction.
+ The smaller shape factor for the rear reflects the need for less personal
+ space.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Subsection
+Comparison of Non-proxemic and Proxemic APF Results
+\end_layout
+
+\begin_layout Standard
+Main concern = comparison between non-proxemic and proxemic, so analysis
+ done on primarily this factor; non-proxemic and proxemic compared within
+ a given case (APF x Mission Type x Crew Configuration); robot instructed
+ to continue to next goal if v = 0; probably need a figure of mission x
+ crew config to refer back to, labeled with goal # and crew #; talk about
+ (2,2) (1,1) separately; case = path planning x mission x crew; scenario
+ = proxemic or non x case; maybe table listing cases and if a metric significant
+ly varied
+\end_layout
+
+\begin_layout Subsubsection
+Incomplete Missions and Collisions
+\end_layout
+
+\begin_layout Standard
+The APF simulation encompassed a full factorial simulation for mission type,
+ crew confirguration, and inclusion of proxemics, which resulted in 24 test
+ scenarios.
+ Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
+ (4 non-proxemic, 2 proxemic) due to entrappment in local minima prior to
+ reaching the goal zone.
+ For the non-proxemic direct mission with 1 crew, the robot came to a stop
+ directly in front of the crew member.
+ From examining a plot of the potential field, it is clear that the robot
+ was pulled into a local minimum (BEN CONFIRM).
+ In the proxemic equivalent, the robot was able to navigate around the crew
+ and complete the mission.
+ A similar situation occured during the waypoint mission for 2 crew, where
+ in the non-proxemic case the robot was unable to reach the goal zone.
+ In comparing the potential fields when the robot navigates to the second
+ goal zone, a local minimum occurs just outside the goal zone in the non-proxemi
+c case.
+ However, in the proxemic one, the local minimum occurs just inside the
+ goal zone boundary.
+ In contrast, the configuration of the clustered crew during the waypoint
+ mission blocks the robot's access to the second goal zone for both the
+ non-proxemic and proxemic cases.
+ Similarly, a crew member from the random crew configuration during the
+ monitoring mission creates a local minimum that prevents the robot from
+ continuing to the fourth goal zone for both non-proxemic and proxemic.
+ A plot of the potential fields indicates that the robot could have continued
+ to the fourth goal zone, if released from the local minimum; there was
+ a possible path between the two applicable crew members.
+ These particular results highlight the challenges of APF-based navigation,
+ where the selecting the strength of the sources and sinks affects the outcome.
+ As discussed in section XX, the strength of the sources (a.k.a.
+ crew) was based on (INSERT RK THESIS REF) and the sinks (a.k.a.
+ goals) was determined from our analysis.
+ Prior to the damping coefficient and sink amplitude analysis, we observed
+ that the robot trajectories, mission success, and collisions varied from
+ our final results.
+ In our final results, there were no collisions with the crew or module.
+ A summary of the missed goal zones are provided in Table XX (OR a figure
+ with subplots?).
+\end_layout
+
+\begin_layout Subsubsection
+Distance Traveled and Average Velocity
+\end_layout
+
+\begin_layout Standard
+For 10 cases, the distanced traveled was similar between non-proxemic and
+ proxemic scenarios.
+ The percent change
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $percent\:change\:=\frac{(proxemic)-(non-proxemic)}{(non-proxemic)}x100\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ in the distance traveled from non-proxemic to proxemic across scenarios
+ is less than or equal to 1.04%.
+ As expected, the distance travaled increased with mission type (direct
+ < waypoints < monitoring) and the range of values appears small, indicating
+ that the crew configuration is not as important (See table XX).
+ It is interesting to note the lower range values were caused by missed
+ goal zones.
+ In the non-proxemic case of the direct mission with one crew, the robot
+ was not able to navigate around the crew and towards the goal.
+ This issue resulted in a smaller distance traveled than the proxemic case
+ (3.44m versus 8.37m, respectively).
+ 
+\end_layout
+
+\begin_layout Standard
+The average velocity was also largely consisent between non-proxemic and
+ proxemic scenarios.
+ In 9 cases, the average velocity was within 5% of the non-proxemic value,
+ and ranged between 2.50 cm/s and 8.87 cm/s across scenarios.
+ During the waypoints mission with the clustered crew, the proxemic case
+ saw an increased average velocity (78.19% change or +2.09 cm/s) and a larger
+ maximum velocity (7.22% change or +1.94 cm/s) resulting in a faster completion
+ time (-44.49% change or -194.75 s).
+ While navigating towards goal 2, the robot appeared to translate slowly
+ across the clustered crew before reaching a local minimum and continuing
+ to the next goal zone.
+ This process occured earlier and was of shorter duration in the proxemic
+ scenario (A FIGURE WOULD PROBS BE GOOD).
+\end_layout
+
+\begin_layout Subsubsection
+Maximum Velocity
+\end_layout
+
+\begin_layout Standard
+For non-proxemic and proxemic cases, the maximum velocity tended to reach
+ similar values (within 3.58% of non-proxemic value) ranging between 18.38
+ cm/s and 26.76 cm/s.
+ There were four cases where a larger change in maximum velocity from non-proxem
+ic occured (7.22% to 18.02% change): 1) waypoint mission with two crew, and
+ 2) all monitoring missions with more than one crew.
+ The difference in maximum velocity can be attributed to ??? (WHERE does
+ v max occur on trajectory?).
+ In the 12 scenarios where the maximum velocity was greater than 25 cm/s,
+ the variance of the Gaussian distributions describing the sources (a.k.a.
+ crew) would have increased, resulting in a dynamically changing field during
+ navigation to a goal zone (CONFIRM with max velocity plots).
+ These results confirm that the maximum velocity never exceeded the 50 cm/s
+ constraint for any scenario.
+\end_layout
+
+\begin_layout Subsubsection
+Personal Space Zones and Minimum Distance
+\end_layout
+
+\begin_layout Standard
+blah
+\end_layout
+
+\begin_layout Subsubsection
+Unique Cases
+\end_layout
+
+\begin_layout Subsection
+Comparison of Non-proxemic and Proxemic A* Results
+\end_layout
+
+\begin_layout Subsection
+Evaluation of Results 
+\end_layout
+
+\begin_layout Standard
+In the studies we reviewed, none closely matched our experimental design
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-HRI"
+
+\end_inset
+
+), therefore they cannot provide a direct comparison.
+ The primary point of comparison between previous studies described in the
+ literature review and our proposed one will be the instantaneous distance
+ between the robot and the human.
+ There are references (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human,walters2009empirical"
+
+\end_inset
+
+) and studies (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion,takayama2009influences,walters2011long,torta2013design,kim2014social"
+
+\end_inset
+
+) documenting the proxemic distance across multiple factors.
+ It is not possible to include many factors, in particular those pertaining
+ to humans (e.g.
+ height, pet experience), in this simulation, but it may be possible to
+ make recommendations or pose questions for further investigation.
+ Hypothetically, if one architecture plans a path that tends to be closer
+ to humans, that architecture may be more suitable when the humans have
+ a smaller proxemic distance (e.g.
+ prior experience with pets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "takayama2009influences"
+
+\end_inset
+
+).
+ Even though this simulation does not accomodate feedback regarding human
+ acceptance of the robot, it may provide valuable insights by comparing
+ with other human studies.
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Section
+Future Work
+\end_layout
+
+\begin_layout Standard
+Based on the literature review to date, a consistent and obvious avenue
+ for future work was apparent: incorporation of physiological signals for
+ real-time feedback of proxemics distance.
+ Currently experimental setups with physical robots and humans rely on questionn
+aires (e.g.
+ Likert scales) after the human-robot encounter, and pose several limitations.
+ Post-experimental questionnaires are dependent on accurate recollection,
+ and in this context, cannot be used real-time.
+ It may be possible in an experiment to have a human indicate discomfort
+ by pressing a button, but this would not be desirable in an applied setting
+ where robots should not increase any burden.
+ Therefore, it would be desirable to translate physiological signals (measured
+ in a way that is not invasive) to emotional states, primarily discomfort.
+ Chandler briefly reviewed various options, where the galvanic skin response
+ and facial expression reading appear the most promising 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "chandler2012biometric"
+
+\end_inset
+
+.
+ Research in affect recognition has sought to evaluate classifier accuracy
+ across a variety of supervised machine learning algorithms and physiological
+ signals
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kulic2007affective,rani2006empirical"
+
+\end_inset
+
+.
+ As an alternative to physiological signals, Best et.
+ al describe the use of a machine learning algorithm to discern the likely
+ social signal (e.g.
+ angry) from social cues, such as head movement and gait 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "best2016clustering"
+
+\end_inset
+
+.
+ Social cues may be interesting to investigate as another input source,
+ but the classification accuracy was lower as several social cues appeared
+ across social signals.
+ Physiological signals appears better suited for the next step in this research
+ to achieve the desired application.
+ Incorporation of physiological signals will require collaboration across
+ disciplines, like physiology and machine learning, and is expected to improve
+ HRI.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "refs"
+options "IEEEtran"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
