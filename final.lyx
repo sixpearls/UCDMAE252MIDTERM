@@ -2361,7 +2361,19 @@ The A* simulation included 24 test scenarioes from a full factorial analysis
  For the non-proxemic direct mission with one crew, the robot started to
  navigate around the crew in the same direction as the proxemic scenario,
  but was unable to continue past a few steps.
- The opposite case occured for the direct mission with two crew, where the
+ Similarily, in the waypoints mission with two crew the simulation times
+ out for the non-proxemic case and the proxemic scenario is able to complete.
+ Interestingly, the robot reaches the same coordinates and distance from
+ crew en route to the second goal zone for both scenarios in this case.
+ At that location, the standard deviation for the non-proxemic and proxemic
+ cost functions would be 0.36m and 0.50 m, respectively.
+ Yet, the robot has more difficulty navigating around a cost function with
+ a smaller width and the cause is unclear.
+ 
+\end_layout
+
+\begin_layout Standard
+The opposite case occured for the direct mission with two crew, where the
  robot completed the non-proxemic scenario and not the proxemic one.
  In the proxemic scenario, the robot approached the two crew with the maximum
  allowed velocity (50 cm/s) and started to decrease its velocity at t =
@@ -2374,6 +2386,30 @@ The A* simulation included 24 test scenarioes from a full factorial analysis
  (SOMEONE DOUBLE CHECK) after three standard deviations away from the mean
  (> 1.5 m), the cost functions overlap and may cause an occlusion (BEN–DRAW
  CONTOURS?).
+\end_layout
+
+\begin_layout Standard
+In some cases, both the non-proxemic and proxemic scenarios failed to reach
+ every goal zone.
+ In the waypoints mission with clustered crew, three crew members were situated
+ in front of the second goal.
+ For both non-proxemic and proxemic scenarios, the robot decreased its velocity
+ as it approached the crew cluster, was not able to navigate to the second
+ goal zone, and the simulation ended.
+ As expected, the robot was able to navigate closer to the crew cluster
+ in the non-proxemic scenario due to the smaller width of the relevant cost
+ function
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Show any numbers or evidence?
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2390,6 +2426,10 @@ The A* implementation included restrictions on the total computational time
  The grid size and computational times were partially investigated, but
  it was out of the scope of this project to allocated enough resources for
  a full analysis.
+\end_layout
+
+\begin_layout Standard
+Across scenarioes there were no collisions.
 \end_layout
 
 \begin_layout Subsection
