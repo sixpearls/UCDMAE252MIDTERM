@@ -2155,7 +2155,10 @@ Comparison of Non-proxemic and Proxemic AFP Results
 
 \begin_layout Standard
 Main concern = comparison between non-proxemic and proxemic, so analysis
- done on primarily this factor
+ done on primarily this factor; non-proxemic and proxemic compared within
+ a given test scenario (APF x Mission Type x Crew Configuration); robot
+ instructed to continue to next goal if v = 0; probably need a figure of
+ mission x crew config to refer back to, labeled with goal # and crew #
 \end_layout
 
 \begin_layout Subsubsection
@@ -2209,7 +2212,7 @@ Distance Traveled and Average Velocity
 \end_layout
 
 \begin_layout Standard
-For the 24 APF test scenarios, the inclusion of proxemics did not appear
+For 23 of 24 APF test scenarios, the inclusion of proxemics did not appear
  to affect the distanced traveled.
  The percent change
 \begin_inset Foot
@@ -2231,10 +2234,36 @@ status open
  that the crew configuration is not as important (See table XX).
  It is interesting to note the lower range values were caused by missed
  goal zones.
- The average velocity was also consisent between non-proxemic and proxemic
+ In the non-proxemic case of the direct mission with one crew, the robot
+ was not able to navigate around the crew and towards the goal.
+ This issue resulted in a smaller distance traveled than the proxemic case
+ (3.44m versus 8.37m, respectively).
+ 
+\end_layout
+
+\begin_layout Standard
+The average velocity was also largely consisent between non-proxemic and
+ proxemic scenarios.
+ With the exception of one scenario, the average velocity was within 5%
+ of the non-proxemic value, and ranged between 2.50 cm/s and 8.87 cm/s across
  scenarios.
- With the exception of one scenario, the average velocity was wihin 5% of
- the non-proxemic value
+ During the waypoints mission with the clustered crew, the proxemic case
+ saw an increased average velocity (78.19% change or +2.09 cm/s) and a larger
+ maximum velocity (7.22% change or +1.94 cm/s) resulting in a faster completion
+ time (-44.49% change or -194.75 s).
+ While navigating towards goal 2, the robot appeared to translate slowly
+ across the clustered crew before reaching a local minimum and continuing
+ to the next goal zone.
+ This process occured earlier and was of shorter duration in the proxemic
+ scenario (A FIGURE WOULD PROBS BE GOOD).
+\end_layout
+
+\begin_layout Subsubsection
+Maximum Velocity
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
