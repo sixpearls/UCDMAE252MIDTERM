@@ -2062,20 +2062,16 @@ status collapsed
 \begin_inset Formula $\sigma_{N}^{2}$
 \end_inset
 
- to 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-SARAH 
-\end_layout
+ to 0.355 , so that the cost of a typical shoulder distance (14 inches) is
+ half the cost as the center
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haslegrave1986characterizing"
 
 \end_inset
 
-, so that the cost of a typical shoulder distance is half the cost as the
- center.
+.
+ 
 \end_layout
 
 \begin_layout Standard
