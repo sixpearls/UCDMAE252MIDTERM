@@ -2629,7 +2629,7 @@ locality
 \end_inset
 
  by using a variable sized grid; this may not be so different from adding
- some global behavior to a local 
+ some global behavior to a local method, as is often done with APF.
 \end_layout
 
 \begin_layout Section
@@ -2688,6 +2688,29 @@ key "best2016clustering"
  Incorporation of physiological signals will require collaboration across
  disciplines, like physiology and machine learning, and is expected to improve
  HRI.
+\end_layout
+
+\begin_layout Standard
+- optimize 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ implementation to see if the computational issues are relieved.
+ We can also compare some 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ variations for real-time and some APF controllers that incorporate heirarhical
+ switching to avoid local minima.
+\end_layout
+
+\begin_layout Standard
+3D proxemic models - in space, nobody can hear you scream.
+\end_layout
+
+\begin_layout Standard
+Simulation realism - anisotropic dynamics, more cluttered environment, detecting
+ environment (including crew) using vision, including noise.
 \end_layout
 
 \begin_layout Standard
