@@ -1734,6 +1734,152 @@ Techniques and Algorithms
 Artificial Potential Field
 \end_layout
 
+\begin_layout Standard
+In APF, the robot is modelled as a particle driven by a potential field.
+ The potential field is linear, so the total potential at each point is
+ is the sum of the different components
+\begin_inset Formula 
+\[
+U\left(x_{r},y_{y}\right)=\sum U_{i}\left(x_{r},y_{y}\right)
+\]
+
+\end_inset
+
+and the force acting on the robot is the partial derivative of the potential
+ field with respect to each direction with the addition of a damping term
+\begin_inset Formula 
+\begin{align*}
+F_{x} & =\frac{\partial}{\partial x_{r}}U\left(x_{r},y_{y}\right)-bv_{x}\\
+F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
+\end{align*}
+
+\end_inset
+
+The motion of robot is then determined by the dynamic and kinematic constraints
+ for two dimensions 
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dt}v_{x} & =\frac{1}{m}F_{x}\\
+\frac{d}{dt}v_{y} & =\frac{1}{m}F_{y}\\
+\frac{d}{dt}x_{r} & =v_{x}\\
+\frac{d}{dt}y_{r} & =v_{y}
+\end{align*}
+
+\end_inset
+
+In many APF simulations, damping in the overall system is included in the
+ dynamical model of the mobile robot, caused by losses such as friction.
+ We chose to consider the damping as a tunable parameter in the scheme navigatio
+n for two reasons.
+ First, we did not have a good model for the drag astrobee would encounter
+ while moving in the module, making it difficult to justify the choice of
+ parameter.
+ Second, since Astrobee is travelling at low velocities, additional damping
+ in the navigation system may need to be added to achieve a desirable performanc
+e, so we could consider the the total damping as a design parameter.
+ 
+\end_layout
+
+\begin_layout Standard
+The repulsive potential field associated with the module boundary is a gaussian
+\begin_inset Formula 
+\[
+\begin{aligned}U_{\text{wall}}\left(x_{r},y_{r}\right) & =\exp\left[-\frac{\left(x_{r}-w\right)^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{\left(y_{r}-h\right)^{2}}{2\sigma_{w}^{2}}\right]\\
+ & \qquad+\exp\left[-\frac{x_{r}^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{y_{r}^{2}}{2\sigma_{w}^{2}}\right]
+\end{aligned}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{r}$
+\end_inset
+
+ are the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinates of the robot, 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ are the width and height of the module, and 
+\begin_inset Formula $\sigma_{w}$
+\end_inset
+
+ is a width normalizing constant set to 0.15 so that the potential drops
+ off to 1% of the peak value 1.5 robot lengths from a wall.
+\end_layout
+
+\begin_layout Standard
+The attractive potential field associated with the goal position is a combinatio
+n conic and quadratic potential, two common goal models used in APF, defined
+ as
+\begin_inset Formula 
+\[
+U_{\text{goal}}\left(x_{r},y_{r}\right)=\begin{cases}
+-kd^{2} & \text{ if }d<1.5l\\
+-k\left(1.5l+d\right) & \text{ if }d\ge1.5l
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $d=\sqrt{\left(x_{r}-x_{g}\right)^{2}+\left(y_{r}-y_{g}\right)^{2}}$
+\end_inset
+
+ is the distance between the robot and the goal and 
+\begin_inset Formula $l$
+\end_inset
+
+ is the side length of the robot.
+ This potential acts as a spring force on the robot when the robot is close
+ to the goal and as a constant attractive force when the robot is far.
+ 
+\end_layout
+
+\begin_layout Standard
+The values for the constants 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ were chosen by qualitatively evaluating the performance of APF for the
+ simplest mission and crew configuration over a range of values.
+ The values 
+\begin_inset Formula $k=\unit[1]{N/m}$
+\end_inset
+
+ and 
+\begin_inset Formula $b=\unit[5]{N\cdot s/m}$
+\end_inset
+
+ was chosen because the robot moved the fastest (0.25 m/s) without driving
+ through the repulsive potential associated with the crew.
+ This velocity is also a velocity that was considerd comfortable in the
+ proxemic literature.
+ This indicates that the forces associated with moving toward the goal,
+ avoiding collisions with humans, and damping were acceptably tuned.
+ However, this search was non-exhaustive and there may exist values which
+ produce better path planning performance.
+\end_layout
+
 \begin_layout Subsection
 A* Implementation
 \end_layout
@@ -1843,7 +1989,7 @@ Both
 The non-proxemic model is a symmetric gaussian model defined by
 \begin_inset Formula 
 \[
-U\left(x_{r},y_{r}\right)=\exp\left[-\frac{\left(x_{r}-x_{c}\right)^{2}+\left(y_{r}-y_{c}\right)^{2}}{2\sigma_{N}^{2}}\right]
+U_{\text{non-proxemic}}\left(x_{r},y_{r}\right)=\exp\left[-\frac{\left(x_{r}-x_{c}\right)^{2}+\left(y_{r}-y_{c}\right)^{2}}{2\sigma_{n}^{2}}\right]
 \]
 
 \end_inset
@@ -1895,7 +2041,7 @@ status collapsed
 \end_inset
 
  and 
-\begin_inset Formula $\sigma_{N}^{2}$
+\begin_inset Formula $\sigma_{n}^{2}$
 \end_inset
 
  is a width normalizing constant.
@@ -1924,7 +2070,7 @@ The proxemic model is the asymetric gaussian Kirby used to model personal
  space, defined as
 \begin_inset Formula 
 \[
-U\left(x_{r},y_{r},\left|v\right|\right)=\exp\left[-\left(\left(\frac{\cos^{2}\theta}{2\sigma_{p}^{2}}+\frac{\sin^{2}\theta}{2\sigma_{s}^{2}}\right)\left(x_{r}-x_{c}\right)^{2}+\left(\frac{\sin2\theta}{4\sigma_{p}^{2}}-\frac{\sin2\theta}{4\sigma_{s}^{2}}\right)\left(x_{r}-x_{c}\right)\left(y_{r}-y_{c}\right)+\left(\frac{\sin^{2}\theta}{2\sigma_{p}^{2}}+\frac{\cos^{2}\theta}{2\sigma_{s}^{2}}\right)\left(y_{r}-y_{c}\right)^{2}\right)\right]
+\begin{aligned}U_{\text{proxemic}}\left(x_{r},y_{r},\left|v\right|\right) & =\exp\left[-\left(ad_{x}^{2}+bd_{x}d_{y}+cd_{y}^{2}\right)\right]\end{aligned}
 \]
 
 \end_inset
@@ -1934,14 +2080,15 @@ U\left(x_{r},y_{r},\left|v\right|\right)=\exp\left[-\left(\left(\frac{\cos^{2}\t
 
 \begin_layout Standard
 where 
-\begin_inset Formula $x_{r}$
+\begin_inset Formula $d_{x}=x_{r}-x_{c}$
 \end_inset
 
  and 
-\begin_inset Formula $y_{r}$
+\begin_inset Formula $d_{y}=y_{r}-y_{c}$
 \end_inset
 
- are the 
+ is the distance between the robot and crew member being modeled in the
+ 
 \begin_inset Formula $x$
 \end_inset
 
@@ -1949,34 +2096,35 @@ where
 \begin_inset Formula $y$
 \end_inset
 
- coordinates of the robot, 
-\begin_inset Formula $\left|v\right|$
+ directions.
+ The shape factors 
+\begin_inset Formula $a$
 \end_inset
 
- is the magnitude of the robot's velocity, 
-\begin_inset Formula $x_{c}$
+, 
+\begin_inset Formula $b$
 \end_inset
 
- and 
-\begin_inset Formula $y_{c}$
+, and 
+\begin_inset Formula $c$
 \end_inset
 
- are the 
-\begin_inset Formula $x$
+ are based on rotational transformations of the aligned shape factors, 
+\begin_inset Formula 
+\begin{align*}
+a & =\frac{\cos^{2}\theta}{2\sigma_{p}^{2}}+\frac{\sin^{2}\theta}{2\sigma_{s}^{2}}\\
+b & =\frac{\sin2\theta}{4\sigma_{p}^{2}}-\frac{\sin2\theta}{4\sigma_{s}^{2}}\\
+c & =\frac{\sin^{2}\theta}{2\sigma_{p}^{2}}+\frac{\cos^{2}\theta}{2\sigma_{s}^{2}}
+\end{align*}
+
 \end_inset
 
- and 
-\begin_inset Formula $y$
-\end_inset
-
- coordinates of the crew being modeled, and 
+where 
 \begin_inset Formula $\theta$
 \end_inset
 
- is the orientation of the crew member.
- The shape factor here is not a constant with respect to the robot position
- and velocity.
- The values are described by
+ is the orientation of the crew member in the global frame of reference.
+ The values for aligned shape factors are described by
 \begin_inset Formula 
 \begin{align*}
 \sigma_{h} & =\max\left[2\left|v\right|,0.5\right]\\
