@@ -2429,7 +2429,24 @@ The A* simulation included 24 test scenarioes from a full factorial analysis
  cost functions would be 0.36m and 0.50 m, respectively.
  Yet, the robot has more difficulty navigating around a cost function with
  a smaller width and the cause is unclear.
- 
+ For the monitoring mission with two crew, the robot stops 0.72 m away from
+ crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+crew numbering
+\end_layout
+
+\end_inset
+
+ between the first and second goal zone for the non-proxemic scenario.
+ In the proxemic scenario, the robot moves closer to the wall earlier (x
+ = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
+ is able to reach all goal zones.
+ Also, the width of the cost function is smaller behind the crew (sigma_r
+ approximately 0.25 m while passing) than than non-proxemic width enabling
+ the robot to pass in this simulation.
 \end_layout
 
 \begin_layout Standard
@@ -2469,7 +2486,55 @@ Show any numbers or evidence?
 \end_inset
 
 .
- 
+ Similarly, the monitoring mission with the random crew fails in the same
+ manner for the non-proxemic and proxemic scenarios.
+ The robot is able to reach the third goal and has to navigate towards a
+ cluster of two crew members facing the robot.
+ The robot approaches closer in the non-proxemic case, but ultimately the
+ robot cannot navigate past the crew for both scenarios.
+ In the monitoring mission with a crew cluster, the non-proxemic and proxemic
+ scenarios appear to fail in different ways.
+ For the non-proxemic scenario, the robot is unable to pass behind the single
+ crew member like the monitoring mission with two crew discussed earlier,
+ and fails at a similar location and time.
+ This finding is consistent between those two scenarios 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert short hand for scenario ID
+\end_layout
+
+\end_inset
+
+implying that a robot cannot pass behind a crew member facing towards the
+ center of the module and 3 ft.
+ away from the wall using a non-proxemic model.
+ While in the proxemic scenario, the robot is able to navigate behind a
+ single crew member positioned close to the wall, the robot cannot pass
+ behind the cluster.
+ The first crew member encountered leaving the third goal (
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert crew id
+\end_layout
+
+\end_inset
+
+) is oriented so that the robot would have to pass through multiple cost
+ functions 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ben contour plot to confirm
+\end_layout
+
+\end_inset
+
+, therefore ??
 \end_layout
 
 \begin_layout Standard
