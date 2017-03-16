@@ -1755,7 +1755,10 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-The motion of robot is then determined by the dynamic and kinematic constraints
+If the magnitude of these control forces exceed the maximum thrust of Astrobee,
+ they are scaled so that the controlled force magnitude is within the thrust
+ constraint, but points in the same direction.
+ The motion of robot is then determined by the dynamic and kinematic constraints
  for two dimensions 
 \begin_inset Formula 
 \begin{align*}
