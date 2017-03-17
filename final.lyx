@@ -3109,6 +3109,73 @@ would a side by side comparision of the velocity plots be useful?
 
 \end_layout
 
+\begin_layout Subsubsection
+Personal Space Zones and Minimum Distance
+\end_layout
+
+\begin_layout Standard
+The majority of cases saw a greater than 5% change from the non-proxemic
+ scenario minimum distance.
+ There were three cases (
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+list cases
+\end_layout
+
+\end_inset
+
+) where the percent change ranged from 0% to 4.76%, and can be attributed
+ to either a) the robot passing through the center when the crew is on the
+ perimeter
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+id
+\end_layout
+
+\end_inset
+
+, or b) the robot passing crew on the side or behind, or c) the robot is
+ circumnavigating the module while the crew is in the center.
+ All these explanations converge on the situation where the proxemic cost
+ function is less and closer in value to the non-proxemic one.
+\end_layout
+
+\begin_layout Standard
+In cases where the robot's trajectory brought it in front of crew, the minimum
+ distance for the non-proxemic scenario was smaller, as it could approach
+ closer to the crew due to the decreased width of the cost function.
+ This result occured for case #, #, and # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(2,1),(2,3),(3,4)
+\end_layout
+
+\end_inset
+
+, where the percent change was 13.99%, 19.42% and 36.41%.
+ However, the robot occupied the same personal space zones–personal, social,
+ and public–for both scenarios and the time spent in the personal zone did
+ not appear significantly different.
+ In contrast, there was a small percent change (-6.73%) for case # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ that was investigated for a cause until it was determined that the percent
+ change translates to 5.04 cm.
+\end_layout
+
 \begin_layout Subsection
 Evaluation of Results 
 \end_layout
