@@ -1186,7 +1186,7 @@ We chose to investigate our research question in the previously-identified
 The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell.
  It will be powered by lithium ion rechargeable batteries, and it will house
  a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
- airflow, a computer-vision-based navigational system, HD camera, fisheye
+ airflow, computer-vision-based navigational system, HD camera, fisheye
  camera, depth sensor, perching arm, 2DOF robotic arm with gripper, and
  two payload ports that provide potential for additional sensors 
 \begin_inset CommandInset citation
@@ -1216,7 +1216,8 @@ key "bualat2015astrobee"
 
 \begin_layout Standard
 In the interest of acquiring meaningful results in a limited time-frame,
- we will make some assumptions and simplifications, which we describe below.
+ we have intentionally limited the scope of our project, making many assumptions
+ and simplifications, which we describe below.
  
 \end_layout
 
@@ -1225,17 +1226,16 @@ Environment and Human Obstacles
 \end_layout
 
 \begin_layout Standard
-We intend to create our initial simulation within a simplified 2D model.
- Our environment will be an approximated rectangular cross-section of a
- module of the ISS USOS, which we can extend to include multiple modules
- once a successful simulation has been created with the simpler geometry.
- We are also simulating a clean environment, without non-human obstacles.
- In reality, the environment could be significantly more cluttered, with
+In order to focus on the effect of proxemics on the path planning algorithms,
+ our robot simulation takes place in a simplified 2D model.
+ Our environment is an approximated rectangular cross-section of a single
+ module, the ISS USOS Destiny Lab, with dimensions 28' x 14'.
+ We simulated a clean environment, clear of any non-human obstacles.
+ In reality, the environment would be significantly more cluttered, with
  experiments and equipment lining the walls.
- We will be addressing this issue in a simplified manner by adding a hard
- constraint that does not allow Astrobee to come into physical contact with
- a small buffer surrounding the module's walls unless directed to do so
- as part of its task.
+ We introduced a hard constraint for walls that prevents our Astrobee model
+ from coming into physical contact with the module's walls unless directed
+ to do so as part of its task.
  
 \begin_inset Float figure
 wide false
@@ -1283,9 +1283,10 @@ name "fig:proxemicsmodel"
 
 \begin_layout Standard
 In our two-dimensional environment, humans and their associated proxemics
- can be roughly represented as a circle with an assigned position, forwards
- orientation, and associated elliptical z-symmetric proxemics (See Figure
- 
+ are represented as a circle with an assigned position, forwards orientation,
+ and associated weighted human buffer: a radially symmetric Gaussian for
+ nonproxemic scenarios, or an asymmetric Gaussian for a proxemic model (both
+ are explained in Section 4.3: Human Avoidance Models) (See Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:proxemicsmodel"
@@ -1293,11 +1294,7 @@ reference "fig:proxemicsmodel"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-In creating our simulations, we will be simulating all humans with equal
- proxemics.
+ All humans have been simulated with equal proxemics.
  This is a simplification, as studies show that proxemics vary between people
  and across cultures 
 \begin_inset CommandInset citation
@@ -1315,8 +1312,6 @@ To properly provide conclusions a solution applicable to the ISS, the additional
  degrees of freedom and asymmetry that come with a microgravity environment
  mean that we cannot ignore the effect of the system's 3-dimensionality
  on our path planning algorithms.
- As a result, if time allows, we hope to extrapolate our simulation to three
- dimensions.
  Considering a human model as a cylinder, the associated proxemics would
  vary with z-position 
 \begin_inset CommandInset citation
@@ -1329,16 +1324,11 @@ key "kirby2009companion"
  While we can ignore this variation as irrelevant in a 2D simulation (We
  are treating all human obstacles as if at a uniform height), it would prove
  an inaccurate representation of a 3D world.
- We must therefore treat our study as a proof-of-concept, acknowledging
- that further improvements, including z-varying proxemics, three additional
- degrees of freedom in our simulated robot movement, sensor limitations,
- and a more complex environment, would need to be made before any results
- could be applied to a practical situation.
  
 \end_layout
 
 \begin_layout Standard
-We have intentionally chosen not to model human motion.
+We intentionally chose not to model human motion.
  Although it is relevant to the field and research has been done in this
  area 
 \begin_inset CommandInset citation
@@ -1352,6 +1342,21 @@ key "weinrich2013prediction"
  The added complexity is out of the scope of this project.
 \end_layout
 
+\begin_layout Standard
+We have treated our study as a proof-of-concept, acknowledging that further
+ improvements, including z-varying proxemics, three additional degrees of
+ freedom in our simulated robot movement, sensor limitations, and a more
+ complex environment, would need to be made before any results could be
+ applied to a practical situation or tested in a changing environment.
+ Such simplifications have removed many variables that could have unknown
+ results.
+ By keeping our simulation simple and clean, we can be certain that any
+ results we generate have been caused by the introduction of proxemics into
+ our otherwise identical case studies.
+ Now that such a baseline has been established, it will be possible for
+ future simulations to expand on the work done here.
+\end_layout
+
 \begin_layout Subsubsection
 Test Scenarios
 \end_layout
@@ -1361,13 +1366,18 @@ For each of our algorithms,
 \begin_inset Formula $A^{*}$
 \end_inset
 
- and APF, we will run identical testing scenarios for each of several configurat
-ions.
- Configurations will be designed to test the versatility of each algorithm,
- including navigation around a single human, navigation between two humans,
- navigation around a cluster of humans, and navigation around several randomly
- generated numbers (up to six, the maximum capacity of the ISS), positions,
- and orientations of humans (Figure 
+ and APF, we have two run identical tests for each of 12 case studies (defined
+ as a mission and crew configuration pairing), one with a nonproxemic model
+ and one with our proxemic model.
+ 
+\end_layout
+
+\begin_layout Standard
+Crew member configurations were designed to test the versatility of each
+ algorithm, demonstrating navigation around a single human, navigation between
+ two humans, navigation around a cluster of humans, and navigation around
+ four crew members with randomly generated positions and orientations.
+ (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:configurations"
@@ -1379,7 +1389,8 @@ reference "fig:configurations"
 \end_layout
 
 \begin_layout Standard
-In each scenario, we direct Astrobee to perform three tasks (Figure 
+For each crew configuration, we directed our Astrobee model to execute three
+ missions (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Illustration-of-paths"
@@ -1387,40 +1398,29 @@ reference "fig:Illustration-of-paths"
 \end_inset
 
 ).
- The first task is a simple traveling task from one end of the module to
+ The first task was a simple traveling task from one end of the module to
  the next.
- The second task involves stopping at several points around the walls of
+ The second task involved visiting several waypoints around the walls of
  the module.
  This simulates Astrobee's versatility in performing IVAs at specific points
- within a module.
- The third task will send Astrobee out along one wall and have it return
- along the opposite, testing its ability to navigate obstacles along a more
- prescriptive path.
+ within a module, as well as its ability to perch on a module wall to save
+ energy and ensure stability during a stationary task.
+ The third task sent Astrobee out along one wall and had it return along
+ the opposite, testing its ability to navigate obstacles along a more prescripti
+ve path.
  
 \end_layout
 
 \begin_layout Standard
-Our first test for each task and scenario will be to run each path-planning
- algorithm without the use of proxemics to provide a baseline point of compariso
-n for proxemic simulations.
- To do so while still maintaining collision avoidance, we will weight humans
- with a cost or potential field strength inversely proportional to the robot's
- distance from the humans, regardless of human orientation.
- We will then introduce our proxemics model for our cost map and potential
- field and run each scenario and task again.
+Our first test for each case study (defined as a mission and crew configuration
+ pairing) task and scenario was be to run each path-planning algorithm without
+ the use of proxemics to provide a baseline point of comparison for proxemic
+ simulations.
+ To do so while still maintaining collision avoidance, we weighted humans
+ with a symmetric Gaussian, regardless of human orientation.
+ We then introduced our proxemic model for our cost graph and potential
+ field strengths, and we ran each case study again.
  
-\end_layout
-
-\begin_layout Standard
-Early in the design process, we will intentionally create additional scenarios
- to test known weaknesses of each algorithm, such as net zero cost for 
-\begin_inset Formula $A^{*}$
-\end_inset
-
-, and local maxima or minima for APF.
- We will investigate the use of our locational uncertainties to evade these
- problems, simulating noise by randomly selecting an absolute orientation
- and position within the margin of error.
 \end_layout
 
 \begin_layout Standard
@@ -1792,6 +1792,33 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Is this accurate anymore? I know the table is, but I don't think we ended
+ up using these notations.
+ Also are we referring to 
+\begin_inset Quotes eld
+\end_inset
+
+missions
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+tasks
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
 Table of experimental conditions for three factors (path planning, task
  type, and crew configuration) for a total of 24 simulations.
  A use case is comprised of a sequence of factor designations, such as A*-T01-CC
@@ -2344,7 +2371,13 @@ Both
 \end_layout
 
 \begin_layout Standard
-The non-proxemic model is a symmetric gaussian model defined by
+In order to run our nonproxemic case study task and scenario will be to
+ run each path-planning algorithm without the use of proxemics to provide
+ a baseline point of comparison for proxemic simulations.
+ To do so while still maintaining collision avoidance, we will weight humans
+ with a cost or potential field strength inversely proportional to the robot's
+ distance from the humans, regardless of human orientation.The non-proxemic
+ model is a symmetric gaussian model defined by
 \begin_inset Formula 
 \[
 U_{\text{non-proxemic}}\left(x_{r},y_{r}\right)=\exp\left[-\frac{\left(x_{r}-x_{c}\right)^{2}+\left(y_{r}-y_{c}\right)^{2}}{2\sigma_{n}^{2}}\right]
