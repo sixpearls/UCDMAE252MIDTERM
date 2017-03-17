@@ -2218,17 +2218,15 @@ Incomplete Missions
 Of 24 scenarios, the robot was unable to reach one goal in 6 test scenarios
  (4 non-proxemic, 2 proxemic) due to entrapment in local minima.
  The configuration of the clustered crew in Case 7 blocks the robot's access
- to Goal 2 for both the non-proxemic and proxemic scenarios
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref fig
-\end_layout
+ to Goal 2 for both the non-proxemic and proxemic scenarios (See Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case 7Robot-Path"
 
 \end_inset
 
-.
+).
  Similarly, Crew 1 in Case 12 creates a local minimum that prevents the
  robot from continuing to Goal 4 for both non-proxemic and proxemic scenarios.
  
@@ -2268,7 +2266,7 @@ reference "fig:Case 7 Robot-Distance-from"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Float figure
@@ -2434,17 +2432,14 @@ The analysis also showed that a proxemic model robot maintained a smaller
  In Case 4, the maximum velocity does not exceed 25 cm/s for either scenario.
  As a result, the robot with the proxemic model passes crew from behind
  and on the side and the shape factor in these cases are smaller than for
- the non-proxemic one
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ben table: std dev compares for key velocity points
-\end_layout
+ the non-proxemic one (See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-gaussian"
 
 \end_inset
 
-.
+).
  A similar situation occurs in Case 8, where the proxemic model robot passes
  closer to Crew 1 and 2, which are oriented away from the robot.
  Again this situation is repeated for Case 10 and 11, where the robot passes
@@ -2597,7 +2592,7 @@ reference "fig:Case6 Robot-Distance-from"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Float figure
@@ -3316,10 +3311,6 @@ locality
 
  to begin to run in real time, and the algorithm should not be written off
  for future studies.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
