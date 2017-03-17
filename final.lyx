@@ -1180,16 +1180,6 @@ aiton of the robot and simple geometric constructions for the crew and module
 
 \begin_layout Subsubsection
 Robot, Environment, and Human Model
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1258,7 +1248,14 @@ key "haslegrave1986characterizing"
 \end_inset
 
 was used to verify that the shoulder width corresponded to a height within
- the published astronaut requirements.
+ the published astronaut requirements 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "astronautreqs"
+
+\end_inset
+
+.
  All humans have been simulated with equal proxemics.
  This is a simplification, as studies show that proxemics vary between people
  and across cultures 
