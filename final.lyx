@@ -2641,7 +2641,17 @@ Incomplete Missions
 Of 24 scenarios, the robot was unable to reach one goal in 6 test scenarios
  (4 non-proxemic, 2 proxemic) due to entrapment in local minima.
  The configuration of the clustered crew in Case 7 blocks the robot's access
- to Goal 2 for both the non-proxemic and proxemic scenarios.
+ to Goal 2 for both the non-proxemic and proxemic scenarios
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref fig
+\end_layout
+
+\end_inset
+
+.
  Similarly, Crew 1 in Case 12 creates a local minimum that prevents the
  robot from continuing to Goal 4 for both non-proxemic and proxemic scenarios.
  
@@ -2656,11 +2666,7 @@ For 11 cases, the distanced traveled was similar between non-proxemic and
  proxemic scenarios.
  The in the distance traveled from non-proxemic to proxemic across scenarios
  is less than or equal to 2.99%.
- 
-\end_layout
-
-\begin_layout Standard
-The average velocity was also largely consisent between non-proxemic and
+ The average velocity was also largely consisent between non-proxemic and
  proxemic scenarios.
  In 9 cases, the average velocity was within 5% of the non-proxemic value,
  and ranged between 2.50 cm/s and 8.87 cm/s across scenarios.
@@ -2671,7 +2677,17 @@ The average velocity was also largely consisent between non-proxemic and
  across the clustered crew before reaching a local minimum and continuing
  to the next goal zone.
  This process occured earlier and was of shorter duration in the proxemic
- scenario 
+ scenario
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref fig
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Note Note
 status open
 
@@ -2744,20 +2760,21 @@ The change in minimum distance for four cases was within 0.28%, where in
  function would have an minimal effect.
  For these cases, the minimum crew distance was greater than 1.2 m and in
  the social zone.
- In Case 12, the robots' paths appear identical until Goal 3 and occurs
- at a relatively large distance from crew members 
+ The robots' paths depicted in Figure 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-reword clearer
+insert ref
 \end_layout
 
 \end_inset
 
-.
+ for Case 12 illustrate areas where the proxemic model effect varies, where
+ the paths overlap through Goal 2 (small proxemic effect) and separate at
+ Goal 3 (larger proxemic effect) .
  These results highlight that inclusion of a proxemic model has a smaller
- effect when distances between the robot and crew are larger.
+ effect at large distances from crew.
  
 \begin_inset Note Note
 status open
@@ -2776,7 +2793,7 @@ The analysis also showed that a proxemic model robot maintained a smaller
  minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
  In Case 4, the maximum velocity does not exceed 25 cm/s for either scenario.
  As a result, the robot with the proxemic model passes crew from behind
- and on the side and the cost function in these cases are smaller than for
+ and on the side and the shape factor in these cases are smaller than for
  the non-proxemic one
 \begin_inset Note Note
 status open
@@ -2804,7 +2821,17 @@ In two cases, the proxemic scenario yielded a larger minimum distance.
  The robot also approaches a cluster of crew and crosses in front in Case
  7.
  The proxemic model produced expected results with the robot maintaining
- a larger distance.
+ a larger distance 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref figure
+\end_layout
+
+\end_inset
+
+.
  These results compliment the recently discussed findings, where the crew
  orientation is an important factor.
 \end_layout
@@ -2832,6 +2859,37 @@ for discussion, the bins have a width and people's preference may draw different
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Unique Cases
 \end_layout
@@ -2843,8 +2901,7 @@ In Case 1, the non-proxemic model robot encountered a local minimum in front
  and complete the simulation.
  The maximum velocity of the proxemic model robot was 23.00 cm/s, so the
  potential field was static for the duration of the simulation.
- Comparing the plots of the potential fields for each scenario yielded the
- following insight 
+ 
 \begin_inset Note Note
 status open
 
@@ -2859,58 +2916,22 @@ reword, symm field, rounding issues (discussion)
 \end_layout
 
 \begin_layout Standard
-For the non-proxemic Case 1, the robot came to a stop directly in front
- of the crew.
- From examining a plot of the potential field, it is clear that the robot
- was pulled into a local minimum.
- In the proxemic equivalent, the robot was able to navigate around the crew
- and complete the mission.
- A similar situation occured during the Case 6, where in the non-proxemic
+A similar situation occured during the Case 6, where in the non-proxemic
  scenario the robot was unable to reach the goal zone.
  In comparing the potential fields when the robot navigates to Goal 2, a
- local minimum occurs just outside of the goal zone in the non-proxemic
- scenario.
+ local minimum occurs just outside of Goal 2 in the non-proxemic scenario.
  However, in the proxemic case, the local minimum occurs just inside the
  goal zone boundary.
-\end_layout
-
-\begin_layout Standard
-In the one exception (Case 1), the non-proxemic model robot was not able
- to navigate around the crew and towards the goal.
- This issue resulted in a smaller distance traveled than the proxemic case
- (3.44m versus 8.37m, respectively).
- 
-\end_layout
-
-\begin_layout Standard
-In Case 6, the non-proxemic scenario resulted in the robot missing Goal
- 2 and crossing in front of Crew 2.
- Whereas, the proxemic model robot reached the second goal zone and continued
- behind Crew 1.
- After examining the potential fields during the robots' navigation to Goal
- 2, the local minimum lies outside the boundary for the non-proxemic scenario
- and inside the boundary for the proxemic one.
- In the non-proxemic potential field, it is also evident that the field
- blocks the robot from the goal zone (See Figure XX 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-no, reword without
-\end_layout
-
-\end_inset
-
-).
+ As a result, the non-proxemic model robot crossed in front of Crew 2, whereas
+ the proxemic model robot continued behind Crew 1.
  While the proxemic model robot was able to reach Goal 2, it caused the
  average velocity to decrease (-46.66% change from non-proxemic) due to a
- large amount of time spent at a low force and velocity near Crew 1 (See
- Figure XX
+ large amount of time spent at a low force and velocity near Crew 1 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Fix
+fig ref
 \end_layout
 
 \end_inset
@@ -2923,15 +2944,56 @@ Fix
  The increased distance traveled by the non-proxemic robot is attributed
  to when it double backs after reaching the local minimum (-2.99% change
  from proxemic).
- In terms of personal space zones, the robots from both scearios entered
- up to the personal zone for Crew 1.
+ In terms of personal space zones, the robots from both scenarios entered
+ the personal zone for Crew 1.
  Due to the non-proxemic model robot crossing in front, it spends time in
  the personal zone of Crew 2.
  In contrast, the proxemic model robot never enters the personal zone of
- that crew member.
+ that crew member 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fig ref
+\end_layout
+
+\end_inset
+
+.
  This unique case draws attention to an interesting point of discussion:
  is it less invasive or uncomfortable for a robot to slowly pass behind
  or cross in front and affect more people?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
