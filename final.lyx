@@ -1012,66 +1012,6 @@ Global search methods can find globally optimal paths, but are often slow
  members, although approaching humans remains a soft constraint given by
  the cost function model.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In the following subsections, we describe the two path planning methods,
- our justifications for their choice, and their expected shortcomings.
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename moving_proxemic_map.png
-	lyxscale 25
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-A graphical representation of the cost or repulsive potential associated
- with a moving human.
- Figure taken from Kirby 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
-.
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:moving_human_prox"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1081,7 +1021,7 @@ Simulation Design
 \begin_layout Standard
 In the interest of focusing our investigation, we have intentionally limited
  the scope of our simulation.
- We developed a two-dimensional simulation with a simplifeid dynamical represent
+ We developed a two-dimensional simulation with a simplified dynamical represent
 aiton of the robot and simple geometric constructions for the crew and module
  boundaries.
  Although this makes the simulation more abstract, it allows us to focus
@@ -1331,129 +1271,13 @@ scenario
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
 status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename mission1.png
+	filename mission_group.png
 	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Mission 1 is direct navigation from one end of module to the other
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Mission1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename mission2.png
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Mission 2 involves consecutive inspection of four waypoints
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Mission2"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename mission3.png
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Mission 3 monitoring task (3) of the module perimeter and returning to the
- start point
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Mission3"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1485,12 +1309,29 @@ name "fig:Illustration-of-paths"
 \end_inset
 
 
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+SARAH
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename cc_group.png
+	lyxscale 30
+	width 3.5in
+
+\end_inset
+
 
 \end_layout
 
@@ -1504,6 +1345,16 @@ Crew Config
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+BEN LABEL
 \end_layout
 
 \end_inset
@@ -1571,16 +1422,6 @@ n for two reasons.
 
 \begin_layout Standard
 The repulsive potential field associated with the module boundary is a Gaussian,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Should this be in 4.3: Human avoidance models?
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \[
 \begin{aligned}U_{\text{wall}}\left(x_{r},y_{r}\right) & =\exp\left[-\frac{\left(x_{r}-w\right)^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{\left(y_{r}-h\right)^{2}}{2\sigma_{w}^{2}}\right]\\
@@ -3128,11 +2969,8 @@ mission or simulation?
 \end_layout
 
 \begin_layout Standard
-For the non-proxemic Case 1, the robot started to navigate around the crew
- in the same direction as the proxemic scenario, but was unable to continue
- past a few steps.
- Similarily, in Case 6 the simulation times out for the non-proxemic case
- and the proxemic scenario is able to complete.
+In Case 6 the simulation times out for the non-proxemic case and the proxemic
+ scenario is able to complete.
  Interestingly, the robot reaches the same coordinates and distance from
  Crew 1 en route to Goal 2 for both scenarios in this case.
  At that location, the standard deviation for the non-proxemic and proxemic
@@ -3165,22 +3003,17 @@ The opposite case occured for Case 2, where the robot completed the non-proxemic
  allowed velocity (50 cm/s) and started to decrease its velocity at t =
  5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
  functions.
- The relevant portion of the crew cost functions defined by the asymmetrical
- Gaussian distribution is sigma_h = 0.5m 
+ However, the cost functions overlap and may cause an occlusion 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-fix
+contour fig appen?
 \end_layout
 
 \end_inset
 
 .
- Since the distance between the crew centers is 2.44 m, the crew are facing
- each other, and the value of a Gaussian distribution is essentially zero
- after three standard deviations away from the mean (> 1.5 m), the cost functions
- overlap and may cause an occlusion .
 \end_layout
 
 \begin_layout Standard
@@ -3192,21 +3025,17 @@ In Case 11, the non-proxemic and proxemic scenarios appear to fail in different
  cannot pass behind a crew member facing towards the center of the module
  and 3 ft.
  away from the wall using a non-proxemic model.
- While in the proxemic scenario, the robot is able to navigate behind a
- single crew member positioned close to the wall, the robot cannot pass
- behind the cluster.
- Crew 3 is oriented so that the robot would have to pass through multiple
- cost functions 
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-ben contour plot to confirm - sent
+contour fig?
 \end_layout
 
 \end_inset
 
-, therefore ??
+
 \end_layout
 
 \begin_layout Standard
@@ -3217,62 +3046,26 @@ To move to discussion: The cause of the increased computational times in
  a full analysis.
 \end_layout
 
-\begin_layout Subsection
-Evaluation of Results 
-\end_layout
-
 \begin_layout Standard
-In the studies we reviewed, none closely matched our experimental design
- of comparing proxemic and nonproxemic navigational methods for different
- architectures (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Comparison-of-HRI"
-
-\end_inset
-
-), therefore they cannot provide a direct comparison.
- The primary point of comparison between previous studies described in the
- literature review and our proposed one will be the instantaneous distance
- between the robot and the human.
- There are references (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kruse2013human,walters2009empirical"
-
-\end_inset
-
-) and studies (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion,takayama2009influences,walters2011long,torta2013design,kim2014social"
-
-\end_inset
-
-) documenting the proxemic distance across multiple factors.
- It is not possible to include many factors, in particular those pertaining
- to humans (e.g.
- height, pet experience), in this simulation, but it may be possible to
- make recommendations or pose questions for further investigation.
- Hypothetically, if one architecture plans a path that tends to be closer
- to humans, that architecture may be more suitable when the humans have
- a smaller proxemic distance (e.g.
- prior experience with pets 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "takayama2009influences"
-
-\end_inset
-
-).
- Even though this simulation did not accomodate feedback regarding human
- acceptance of the robot, it may provide still valuable insights through
- comparison with other human studies.
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Do we need to actually do that if we're going to say that?
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Contours
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3403,6 +3196,22 @@ locality
 
  to begin to run in real time, and the algorithm should not be written off
  for future studies.
+\end_layout
+
+\begin_layout Standard
+In the studies we reviewed, none closely matched our experimental design
+ of comparing proxemic and nonproxemic navigational methods for different
+ architectures (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-HRI"
+
+\end_inset
+
+), therefore they cannot provide a direct comparison.
+ The primary point of comparison between previous studies described in the
+ literature review and our proposed one will be the instantaneous distance
+ between the robot and the human.
 \end_layout
 
 \begin_layout Section
@@ -3585,6 +3394,15 @@ options "IEEEtran"
 \end_layout
 
 \begin_layout Appendix
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+reset counting please
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
