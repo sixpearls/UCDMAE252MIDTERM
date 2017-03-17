@@ -2243,6 +2243,52 @@ Main concern = comparison between non-proxemic and proxemic, so analysis
 ly varied; time?
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Summary of APF Non-proxemic and Proxemic % Change
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename APF_case_compare.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+A positive sign indicates a larger proxemic value, a negative sign indicates
+ a smaller proxemic value, and a blank indicates values were within 5%.
+\end_layout
+
+\begin_layout Plain Layout
+Cases with a º symbol indicate a unique case.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Incomplete Missions and Collisions
 \end_layout
@@ -2780,6 +2826,52 @@ Comparison of Non-proxemic and Proxemic A* Results
 \begin_layout Standard
 Samer percent difference as APF; within 1% not considered large enough to
  make statements
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Summary of A* Non-proxemic and Proxemic % Change
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Astar_case_compare.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+A positive sign indicates a larger proxemic value, a negative sign indicates
+ a smaller proxemic value, and a blank indicates values were within 5%.
+\end_layout
+
+\begin_layout Plain Layout
+Cases with a º symbol indicate a unique case.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
