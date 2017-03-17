@@ -2959,7 +2959,7 @@ Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Standard
-Samer percent difference as APF; within 1% not considered large enough to
+Samer percent difference as APF; within 5% not considered large enough to
  make statements
 \end_layout
 
@@ -3319,9 +3319,50 @@ In cases where the robot's trajectory brought it in front of crew, the minimum
  However, the robot occupied the same personal space zones–personal, social,
  and public–for both scenarios and the time spent in the personal zone did
  not appear significantly different.
- In contrast, there was a small percent change (-6.73%) for Case 8 that was
- investigated for a cause until it was determined that the percent change
- translates to 5.04 cm.
+ 
+\end_layout
+
+\begin_layout Standard
+Overall, the robot never entered the close intimate or intimate zones and
+ only one case (Case 9) had a percent change less than 5%.
+ For Cases 3, 5, 7, and 8, the proxemic model robot traveled slower past
+ nearby crew members causing increased time in particular zones–typically
+ in the closest zone the robot ever crossed for that case.
+ For example, the robot in Case 5 crossed in front of a crew member at velocitie
+s less than 25 cm/s (compared to upwards of 50 cm/s for non-proxemic) and
+ had increased time in the personal zone.
+ In contrast, the proxemic model robot's path by Crew 4 
+\begin_inset Quotes eld
+\end_inset
+
+bubbles out
+\begin_inset Quotes erd
+\end_inset
+
+ (see 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref figure
+\end_layout
+
+\end_inset
+
+) and the robot never enters the personal zone, whereas the non-proxemic
+ model robot does.
+ These results indicate that the robot's velocity influenced the amount
+ of time spent in each personal space zone
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+discussion note: tradeoff between going slower but being closer longer
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
