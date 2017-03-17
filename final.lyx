@@ -565,7 +565,7 @@ Mars communications latency is approximately ten minutes.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1911,21 +1911,11 @@ We chose the values for the constants
 \begin_inset Formula $b=\unit[5]{N\cdot s/m}$
 \end_inset
 
- were chosen because the robot moved the fastest 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Are we worried that we don't always stick with the same units?
-\end_layout
-
-\end_inset
-
-(0.25 m/s) without driving through the repulsive potential associated with
- the crew.
+ were chosen because the robot moved the fastest (25 cm/s) without driving
+ through the repulsive potential associated with the crew.
  These parameters were kept constant over the course of our simulations
  to enable comparison between case studies.
- This velocity, 0.25 m/s, was considered comfortable in the proxemic literature.
+ This velocity, 25 cm/s, was considered comfortable in the proxemic literature.
  These results indicated that the forces associated with moving toward the
  goal, avoiding collisions with humans, and damping were acceptably tuned.
  However, this search was non-exhaustive and there may exist values which
