@@ -335,10 +335,10 @@ Humans, Robots, and Space
 \begin_layout Standard
 The SPHERES platform is a system of three free-flying small satellites (roughly
  comparable to the size and mass of a bowling ball) that have been operating
- out of the Japanese Experimental Module since 2006.
- First developed as a class project at MIT (Massachusetts Institute of Technolog
-y), the platform, through its ability to upload guest software, has become
- a primary source of research in autonomous controls for free-flying spacecraft.
+ out of the Japanese Experimental Module of the ISS since 2006.
+ First developed as a class project at MIT, the platform, through its ability
+ to upload guest software, has become a primary source of research in autonomous
+ controls for free-flying spacecraft.
  For example, this satellite research platform enabled the development of
  a safe and stable cold-gas CO
 \begin_inset Formula $_{2}$
@@ -386,11 +386,11 @@ Reducing risk onboard the spacecraft by providing an interface for logistical
 \end_layout
 
 \begin_layout Enumerate
-Crew (astronaut) performance monitoring and feedback 
+Providing crew (astronaut) performance monitoring and feedback 
 \end_layout
 
 \begin_layout Enumerate
-Just-in-time training
+Acting as a platform for just-in-time training
 \end_layout
 
 \begin_layout Enumerate
@@ -414,10 +414,10 @@ key "psa"
 \end_layout
 
 \begin_layout Standard
-Although PSA never fully realized in its projected role on the ISS, Astrobee
- has taken over its original goals of increasing productivity and safety,
- as well as continuing and improving upon SPHERES’ role as a microgravity
- research laboratory for robotics 
+Although PSA never realized its projected role on the ISS, Astrobee has
+ taken over its original goals of increasing crew productivity and safety,
+ as well as continuing SPHERES’ role as a microgravity laboratory for robotics
+ research 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "smartspheres,bualat2015astrobee"
@@ -425,19 +425,19 @@ key "smartspheres,bualat2015astrobee"
 \end_inset
 
 .
- As the immediate future of small satellites for IVAs, we focus on Astrobee
- for the purposes of our simulation.
+ As the immediate future of small satellites for IVAs, we chose to adapt
+ an Astrobee model for the purposes of our simulation.
 \end_layout
 
 \begin_layout Standard
 In its current projection, Astrobee will operate only semi-autonomously
  in coordination with the ground crew.
- Given a goal, Astrobee follows a pre-programmed path using its computer
+ Given a goal, Astrobee will follow a pre-programmed path using its computer
  vision navigation system.
  When Astrobee encounters an obstacle, whether an unexpected object or a
- human, it currently slows down, stops, and waits for either a ground controller
+ human, it will slow down, stop, and wait for either a ground controller
  to telenavigate Astrobee around the obstacle or for the obstacle to leave
- its planned path (See Figure 
+ its preplanned path (See Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Concept-of-Astrobee"
@@ -510,12 +510,13 @@ name "fig:Concept-of-Astrobee"
 
 \begin_layout Standard
 Astrobee would clearly benefit from fully autonomous, human-aware navigation.
- With a primary purpose to help crew while working in the same environment,
+ With its primary purpose to help crew while working in the same environment,
  human-aware navigation is the logical development path.
  Astrobee is also an ideal candidate for robotic simulation research, prior
  to physical testing.
- As Astrobee interacts directly with crew and with life-supporting systems,
- it is subject to stringent safety measures applied to any ISS payload
+ As Astrobee interacts directly with crew and with life-supporting systems
+ in an isolated environment, it is subject to the stringent safety measures
+ applied to any ISS payload
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -525,9 +526,9 @@ key "bualat2015astrobee"
 .
  Rigorous testing through robotic simulation rather than immediately switching
  to the physical world provides an opportunity for risk-free development.
- In conjunction with Astrobee’s evolution history, established technologies,
- and intended application, it lends itself perfectly to our research simulation
- that will focus on one aspect of human-aware navigation: proxemics.
+ With Astrobee’s evolutionary history, established technologies, and intended
+ application, it lends itself perfectly to our research simulation that
+ will focus on one aspect of human-aware navigation: proxemics.
 \end_layout
 
 \begin_layout Subsubsection
@@ -593,7 +594,7 @@ key "kim2014social"
 
 .
  While most of the human-human interaction (HHI) based hypotheses found
- support, some has no support and may be an indication that humans may interact
+ support, some have no support and may be an indication that humans interact
  differently with robots in certain contexts.
  However, the experimental design may not have used a complicated enough
  task, particularly for examining power distance and the benefits of a collabora
@@ -636,8 +637,8 @@ key "torta2013design"
 \end_inset
 
 .
- The authors suggested that the robot, which is relatively short, may have
- caused the deviation from HHI distances.
+ The authors suggested that the robot's height, which is relatively short,
+ may have caused the deviation from HHI distances.
  Another study investigated the change in proxemic distance with repeated
  interactions between the human and the robot, and hypothesized that exposure
  over multiple weeks would continuously decrease the proxemic distance 
@@ -726,7 +727,7 @@ for brief comparison of studies reviewed here).
  to find relevant simulation studies to date.
  Kirby et.
  al conducted a simulation study and provide a framework upon which this
- project will be based 
+ project is based 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion"
@@ -796,7 +797,7 @@ Some proxemic distance factors are more relevant for the application of
  navigation onboard the ISS.
  While an interesting question, it would not be appropriate to tackle in
  this project due to time constraints and the experimental setup (simulation),
- so must be left to future researchers.
+ so it must be left to future researchers.
 \end_layout
 
 \begin_layout Section
@@ -836,7 +837,7 @@ key "kruse2013human"
  We are particularly interested in exploring whether a hierarchical architecture
  is necessary for human-aware path planning, because the literature seems
  focused on global search methods.
- To that end, we hope to explore the question:
+ To that end, we have explored the question:
 \end_layout
 
 \begin_layout Quote
@@ -864,13 +865,17 @@ Global optimization methods can find globally optimal paths, but are often
  While these could be considered flaws, in human-aware path planning, these
  errors may cause desirable social behaviors such as waiting at a blocked
  pathway or avoiding a human collision.
- For both path planning methods, we will compare the robot's trajectory
- with and without proxemics.
- Soft constraints will be used for human avoidance, although hard constraints
- will be included to provent collisions with the environment's walls as
+ For both path planning methods, we compared the robot's trajectory with
+ and without proxemics.
+ In APF, soft constraints were used for human avoidance, although hard constrain
+ts will be included to provent collisions with the environment's walls as
  applicable.
- In the following subsections, we describe the formulation for the two path
- planning methods we will be comparing.
+ In A*, we use hard constraints to avoid both wall collisions and human
+ collisions, although approaching humans remains a soft constraint given
+ by a cost function.
+ In the following subsections, we introduce the formulation for our two
+ path planning methods, our justifications for their choice, and their expected
+ shortcomings.
  
 \begin_inset Float figure
 wide false
@@ -1039,6 +1044,67 @@ key "kirby2009companion,stentz1994d,koenig2004lifelong"
 \end_inset
 
  is still considered a standard technique for path planning.
+ We incorporated it into our simulation to investigate its shortcomings
+ for ourselves, and to enable a comparison to robotic simulations found
+ in the literature.
+ 
+\end_layout
+
+\begin_layout Standard
+Kirby et.
+\begin_inset space ~
+\end_inset
+
+al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+ proposed a path planning scheme called COMPANION, which uses a modified
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ graph-search based algorithm with a proxemic cost function, from which
+ much of our experimental design draws its inspiration.
+ Kirby et.al showed that a heuristic path-planning algorithm could demonstrate
+ social behaviors, such as passing on one side and respecting personal space.
+ While we have ignored many of the social behaviors that Kirby proposed
+ for her experiment 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+, we adopted the strategy of encoding our desired behaviors (which we limit
+ to respecting human proxemics, minimizing distance to a goal, and minimizing
+ the time taken to reach a goal) into a weighted A* heuristic function.
+ The implementation of our A* algorithm will be detailed in Section IV:
+ Techniques and Algorithms.
+\end_layout
+
+\begin_layout Standard
+We wish to compare the results from our COMPANION-style architecture with
+ a reactive architecture based on an artificial potential field (APF) that
+ incorporates an equivalent proxemic map, such as those shown in Figures
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:moving_human_prox"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pass_left_prox"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -1106,62 +1172,12 @@ key "yun1997wall,mabrouk2008solving"
  
 \end_layout
 
-\begin_layout Subsubsection
-COMPANION Comparison
-\end_layout
-
-\begin_layout Standard
-Kirby et.
-\begin_inset space ~
-\end_inset
-
-al 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
- proposed a path planning scheme called COMPANION, which uses a modified
- 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- graph-search based algorithm with a proxemic cost function, from which
- much of our experimental design draws its inspiration.
- Kirby et.al showed that a heuristic path-planning algorithm could demonstrate
- social behaviors, such as passing on one side and respecting personal space.
- 
-\end_layout
-
-\begin_layout Standard
-We wish to compare the results from our COMPANION-style architecture with
- a reactive architecture based on an artificial potential field (APF) that
- incorporates an equivalent proxemic map, such as those shown in Figures
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:moving_human_prox"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:pass_left_prox"
-
-\end_inset
-
-.
- 
-\end_layout
-
 \begin_layout Subsection
 Proposed Simulation
 \end_layout
 
 \begin_layout Standard
-We have chosen to investigate our research question in the previously-identified
+We chose to investigate our research question in the previously-identified
  context of HRI in spaceflight.
  
 \end_layout
@@ -1673,7 +1689,8 @@ Artificial Potential Field
 \end_layout
 
 \begin_layout Standard
-In APF, the robot is modelled as a particle driven by a potential field.
+In our APF implementation, the robot is modelled as a particle driven by
+ a potential field.
  The potential field is linear, so the total potential at each point is
  is the sum of the different components
 \begin_inset Formula 
@@ -1836,10 +1853,11 @@ A* is a modification of Dijkstra's algorithm to find a lowest-cost path
 Our general algorithm was implemented using a priority queue of potential
  paths, stored as lists of graph nodes with (x,y) coordinates and an associated
  velocity.
- As the robot traversed the discretized model, it looked at all possible
- nearest neighbors on the grid and a range of possible next velocities,
- assigning each possible next step a cost that depends on human proxemics
- and the robot's locaation and velocity.
+ As the algorithm planned our robot's path through the discretized model,
+ it considered all possible nearest neighbors on the grid, with a range
+ of possible next velocities at each location, assigning each possible next
+ step a cost that depends on human proxemics and the robot's locaation and
+ velocity.
  The cost function is described in more detail in Section 4.3: Human Avoidance
  Models.
  After the proxemic cost was calculated for each newest node in a path,
@@ -1939,8 +1957,9 @@ Algorithm Modifications for Embodiment and Situatedness
 \end_layout
 
 \begin_layout Standard
-We implemented our A* algorithm on a grid with a mesh size of the module
- length / 50, which corresponded to a 6.72
+We implemented our A* algorithm on a regular, rectangular grid with a mesh
+ size of the module length / 50.
+ This corresponded to a 6.72
 \begin_inset Quotes erd
 \end_inset
 
@@ -1951,7 +1970,7 @@ We implemented our A* algorithm on a grid with a mesh size of the module
 \end_layout
 
 \begin_layout Standard
-The path extension step was implemented through consideration of the 9 nearest
+The path extension step was implemented through consideration of the 8 nearest
  nodes with varying velocities, described below.
  Each path kept a list of nodes that had already been visited on the path,
  and only added nodes that hadn't been visited on the way to the current
@@ -1993,7 +2012,7 @@ At each step, the possible velocities for consideration were determined
 \begin_inset Formula $s=6.72"$
 \end_inset
 
- for next nodes parellel to the module walls
+ for next nodes parallel to the module walls
 \begin_inset Note Note
 status open
 
@@ -2864,7 +2883,7 @@ Overall, we found that in most situations, APF did not have significant
 \end_layout
 
 \begin_layout Standard
-In our implemnetaiton of APF and 
+In our implementation of APF and 
 \begin_inset Formula $A^{*}$
 \end_inset
 
