@@ -3023,6 +3023,13 @@ name "fig:case4 vel p"
 
 \begin_layout Plain Layout
 Case 4: Comparison of Non-Proxemic and Proxemic Robot Paths
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case-4:-Comparison"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3057,17 +3064,14 @@ Across the 24 scenarios, the maximum allowable velocity was achieved for
  As a result, the average velocity and completion time for the nonproxemic
  scenario were 24.50% lower and 33.86% slower than the proxemic one, respectively.
  Interestingly, the distance traveled in the proxemic case actually decreased
- by 8.28%.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref fig
-\end_layout
+ by 8.28% (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case-4:-Comparison"
 
 \end_inset
 
-
+).
 \end_layout
 
 \begin_layout Subsubsection
@@ -3104,30 +3108,17 @@ For Cases 3, 5, 7, and 8, the proxemic model robot traveled slower past
 s less than 25 cm/s (compared to upwards of 50 cm/s for non-proxemic) and
  had increased time in the personal zone.
  In contrast, the proxemic model robot's path by Crew 4 in Case 4 expands
- outward (see 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref figure
-\end_layout
+ outward (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:case4 vel p"
 
 \end_inset
 
 ) and the robot never enters the personal zone, whereas the non-proxemic
  model robot does.
  These results indicate that the robot's velocity influenced the amount
- of time spent in each personal space zone
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-discussion note: tradeoff between going slower but being closer longer
-\end_layout
-
-\end_inset
-
-.
+ of time spent in each personal space zone.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3141,17 +3132,7 @@ In all of the unique cases (Case 1, 2, 6, 10, 11), the number of goals reached
  not seem reasonable to draw any conclusions along those lines.
  In some cases, the non-proxemic model robot is not able to reach all the
  goals (Case 1 = 0%, Case 6 = 25%, Case 10 = 20%) and the proxemic model
- robot can complete the mission
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-mission or simulation?
-\end_layout
-
-\end_inset
-
-.
+ robot can complete the mission.
  The reverse ocurred in Case 2, and the proxemic model robot did not reach
  any goals (0%) and the non-proxemic model robot completed the mission.
  Lastly, both robots did not reach all goals in Case 11 to varying degrees
@@ -3189,17 +3170,7 @@ The opposite case occured for Case 2, where the robot completed the non-proxemic
  allowed velocity (50 cm/s) and started to decrease its velocity at t =
  5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
  functions.
- However, the cost functions overlap and may cause an occlusion 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-contour fig appen?
-\end_layout
-
-\end_inset
-
-.
+ However, the cost functions overlap and may cause an occlusion.
 \end_layout
 
 \begin_layout Standard
@@ -3212,51 +3183,6 @@ In Case 11, the non-proxemic and proxemic scenarios appear to fail in different
  and 3 ft.
  away from the wall using a non-proxemic model.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-contour fig?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To move to discussion: The cause of the increased computational times in
- unclear and would be a point for future investigation.
- The grid size and computational times were partially investigated, but
- it was out of the scope of this project to allocated enough resources for
- a full analysis.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Contours
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3385,6 +3311,10 @@ locality
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 In the studies we reviewed, none closely matched our experimental design
  of comparing proxemic and nonproxemic navigational methods for different
  architectures (see 
@@ -3445,6 +3375,20 @@ and the sinks (a.k.a.
  that the robot trajectories, mission success, and collisions varied from
  our final results.
  In our final results, there were no collisions with the crew or module.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+discussion note: tradeoff between going slower but being closer longer
+\end_layout
+
+\end_inset
+
+To move to discussion: The cause of the increased computational times in
+ unclear and would be a point for future investigation.
+ The grid size and computational times were partially investigated, but
+ it was out of the scope of this project to allocated enough resources for
+ a full analysis.
 \end_layout
 
 \begin_layout Section
