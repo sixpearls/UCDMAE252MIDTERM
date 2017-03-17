@@ -1947,6 +1947,68 @@ We note that the larger shape factor in the front of the crew corresponded
  forward direction.
  The smaller shape factor for the rear reflected the need for less personal
  space.
+ For reference, values for 
+\begin_inset Formula $\sigma_{h}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{s}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{r}$
+\end_inset
+
+ at 25 cm/s and 50 cm/s are compared to 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-gaussian"
+
+\end_inset
+
+.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of gaussian widths used in human collision avoidance models
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparison-of-gaussian"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename sigmatable.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2815,14 +2877,8 @@ In contrast, there were two cases where the distance traveled was within
  For Case 8, the closest crew members to the robot's trajectory are approximatel
 y facing 180 degrees away.
  Therefore, the robot in the proxemic scenario primarily experienced the
- shape factor from sigma_r
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
+ shape factor from 
+\begin_inset Formula $\sigma_{r}$
 \end_inset
 
  that is closer to the non-proxemic shape factor value 
@@ -3009,14 +3065,8 @@ In Case 6 the simulation times out for the non-proxemic case and the proxemic
  In the proxemic scenario, the robot moves closer to the wall earlier (x
  = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
  is able to reach all goal zones.
- Also, the width of the cost function is smaller behind the crew (sigma_r
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
+ Also, the width of the cost function is smaller behind the crew (
+\begin_inset Formula $\sigma_{r}$
 \end_inset
 
  approximately 0.25 m while passing) than than non-proxemic width enabling
