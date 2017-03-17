@@ -1,0 +1,332 @@
+% Encoding: UTF-8
+
+@InProceedings{best2016clustering,
+  author       = {Best, Andrew and Kapalo, Katelynn A and Warta, Samantha F and Fiore, Stephen M},
+  title        = {Clustering social cues to determine social signals: developing learning algorithms using the n-most likely states approach},
+  booktitle    = {SPIE Defense+ Security},
+  year         = {2016},
+  pages        = {98370L--98370L},
+  organization = {International Society for Optics and Photonics},
+}
+
+@Article{chandler2012biometric,
+  author  = {Chandler, Clive and Cornes, Rachel},
+  title   = {Biometric Meausurement of Human Emotions},
+  journal = {International Journal of Computing Science and Communication Technologies},
+  year    = {2012},
+  volume  = {4},
+  number  = {2},
+}
+
+@Book{hall1966hidden,
+  title     = {The hidden dimension},
+  publisher = {Doubleday \& Co},
+  year      = {1966},
+  author    = {Hall, Edward Twitchell},
+}
+
+@Article{kim2014social,
+  author    = {Kim, Yunkyung and Mutlu, Bilge},
+  title     = {How social distance shapes human--robot interaction},
+  journal   = {International Journal of Human-Computer Studies},
+  year      = {2014},
+  volume    = {72},
+  number    = {12},
+  pages     = {783--795},
+  publisher = {Elsevier},
+}
+
+@InProceedings{kirby2009companion,
+  author       = {Kirby, Rachel and Simmons, Reid and Forlizzi, Jodi},
+  title        = {Companion: A constraint-optimizing method for person-acceptable navigation},
+  booktitle    = {Robot and Human Interactive Communication, 2009. RO-MAN 2009. The 18th IEEE International Symposium on},
+  year         = {2009},
+  pages        = {607--612},
+  organization = {IEEE},
+}
+
+@Article{kruse2013human,
+  author    = {Kruse, Thibault and Pandey, Amit Kumar and Alami, Rachid and Kirsch, Alexandra},
+  title     = {Human-aware robot navigation: A survey},
+  journal   = {Robotics and Autonomous Systems},
+  year      = {2013},
+  volume    = {61},
+  number    = {12},
+  pages     = {1726--1743},
+  publisher = {Elsevier},
+}
+
+@InProceedings{takayama2009influences,
+  author       = {Takayama, Leila and Pantofaru, Caroline},
+  title        = {Influences on proxemic behaviors in human-robot interaction},
+  booktitle    = {Intelligent robots and systems, 2009. IROS 2009. IEEE/RSJ international conference on},
+  year         = {2009},
+  pages        = {5495--5502},
+  organization = {IEEE},
+}
+
+@Article{torta2013design,
+  author    = {Torta, Elena and Cuijpers, Raymond H and Juola, James F},
+  title     = {Design of a parametric model of personal space for robotic social navigation},
+  journal   = {International Journal of Social Robotics},
+  year      = {2013},
+  volume    = {5},
+  number    = {3},
+  pages     = {357--365},
+  publisher = {Springer},
+}
+
+@Article{walters2009empirical,
+  author  = {Walters, Michael L and Dautenhahn, Kerstin and Te Boekhorst, Ren{\'e} and Koay, Kheng Lee and Syrdal, Dag Sverre and Nehaniv, Chrystopher L},
+  title   = {An empirical framework for human-robot proxemics},
+  journal = {Procs of new frontiers in human-robot interaction},
+  year    = {2009},
+}
+
+@InProceedings{walters2011long,
+  author       = {Walters, Michael L and Oskoei, Mohammedreza A and Syrdal, Dag Sverre and Dautenhahn, Kerstin},
+  title        = {A long-term human-robot proxemic study},
+  booktitle    = {RO-MAN, 2011 IEEE},
+  year         = {2011},
+  pages        = {137--142},
+  organization = {IEEE},
+}
+
+@InProceedings{bualat2015astrobee,
+  author    = {Bualat, Maria and Barlow, Jonathan and Fong, Terrence and Provencher, Chris and Smith, Trey},
+  title     = {Astrobee: Developing a free-flying robot for the International Space Station},
+  booktitle = {AIAA SPACE 2015 Conference and Exposition},
+  year      = {2015},
+  pages     = {4643},
+}
+
+@Online{spheresweb,
+  author = {Jose V Benavides, Aric J Katterhagen, Jonathan S Barlow},
+  title  = {SPHERES Fact Sheet},
+  year   = {2015},
+  url    = {https://www.nasa.gov/sites/default/files/atoms/files/spheres_fact_sheet-508-7may2015.pdf},
+}
+
+@InProceedings{yoo2015avionics,
+  author       = {Yoo, Jongwoon and Park, In-Won and To, Vinh and Lum, Jason QH and Smith, Trey},
+  title        = {Avionics and perching systems of free-flying robots for the International Space Station},
+  booktitle    = {Systems Engineering (ISSE), 2015 IEEE International Symposium on},
+  year         = {2015},
+  pages        = {198--201},
+  organization = {IEEE},
+}
+
+@InProceedings{weinrich2013prediction,
+  author       = {Weinrich, Christoph and Volkhardt, Michael and Einhorn, Erik and Gross, Horst-Michael},
+  title        = {Prediction of human collision avoidance behavior by lifelong learning for socially compliant robot navigation},
+  booktitle    = {Robotics and Automation (ICRA), 2013 IEEE International Conference on},
+  year         = {2013},
+  pages        = {376--381},
+  organization = {IEEE},
+}
+
+@Article{ge2002dynamic,
+  author    = {Ge, Shuzhi S. and Cui, Yun J},
+  title     = {Dynamic motion planning for mobile robots using potential field method},
+  journal   = {Autonomous robots},
+  year      = {2002},
+  volume    = {13},
+  number    = {3},
+  pages     = {207--222},
+  publisher = {Springer},
+}
+
+@PhdThesis{kirbythesis,
+  author = {Rachel Kirby},
+  title  = {Social Robot Navigation},
+  school = {Robotics Institute, Carnegie Mellon University, Pittsburgh, PA},
+  year   = {2010},
+}
+
+@Article{kulic2007affective,
+  author    = {Kulic, Dana and Croft, Elizabeth A},
+  title     = {Affective state estimation for human--robot interaction},
+  journal   = {IEEE Transactions on Robotics},
+  year      = {2007},
+  volume    = {23},
+  number    = {5},
+  pages     = {991--1000},
+  publisher = {IEEE},
+}
+
+@Article{rani2006empirical,
+  author    = {Rani, Pramila and Liu, Changchun and Sarkar, Nilanjan and Vanman, Eric},
+  title     = {An empirical study of machine learning techniques for affect recognition in human--robot interaction},
+  journal   = {Pattern Analysis and Applications},
+  year      = {2006},
+  volume    = {9},
+  number    = {1},
+  pages     = {58--69},
+  publisher = {Springer},
+}
+
+@Conference{psa,
+  author    = {Gregory A. Dorais and Yuri Gawdiak},
+  title     = {The Personal Satellite Assistant: An Internal Spacecraft Autonomous Mobile Monitor},
+  booktitle = {IEEE Aerospace Conference},
+  year      = {2003},
+  volume    = {1},
+  pages     = {333-348},
+}
+
+@Conference{joosse,
+  author    = {Michiel Joosse and Manja Lohse and Vanessa Evers},
+  title     = {Lost in proxemics: spatial behavior for cross-cultural HRI},
+  booktitle = {HRI 2014 Workshop on Culture-Aware Robotics},
+  year      = {2014},
+}
+
+@Conference{smartspheres,
+  author       = {Terrence Fong and Mark J. Micire and Ted Morse and Eric Park and Chris Provencher and Vinh To and D. W. Wheeler and David Mittman and R. Jay Torres and Ernest Smith},
+  title        = {Smart SPHERES: A Telerobotic Free-Flyer for Intravehicular Activities in Space},
+  year         = {10-12 Sep. 2013},
+  address      = {San Diego, CA},
+  organization = {AIAA Space Conference and Exposition},
+}
+
+@Article{hart1968formal,
+  author    = {Hart, Peter E and Nilsson, Nils J and Raphael, Bertram},
+  title     = {A formal basis for the heuristic determination of minimum cost paths},
+  journal   = {IEEE transactions on Systems Science and Cybernetics},
+  year      = {1968},
+  volume    = {4},
+  number    = {2},
+  pages     = {100--107},
+  publisher = {IEEE},
+}
+
+@Article{koenig2004lifelong,
+  author    = {Koenig, Sven and Likhachev, Maxim and Furcy, David},
+  title     = {Lifelong planning A*},
+  journal   = {Artificial Intelligence},
+  year      = {2004},
+  volume    = {155},
+  number    = {1-2},
+  pages     = {93--146},
+  publisher = {Elsevier},
+}
+
+@TechReport{stentz1994d,
+  author      = {Stentz, Anthony},
+  title       = {The D* Algorithm for Real-Time Planning of Optimal Traverses.},
+  institution = {DTIC Document},
+  year        = {1994},
+}
+
+@InCollection{khatib1986real,
+  author    = {Khatib, Oussama},
+  title     = {Real-time obstacle avoidance for manipulators and mobile robots},
+  booktitle = {Autonomous robot vehicles},
+  publisher = {Springer},
+  year      = {1986},
+  pages     = {396--404},
+}
+
+@InProceedings{koren1991potential,
+  author       = {Koren, Yoram and Borenstein, Johann},
+  title        = {Potential field methods and their inherent limitations for mobile robot navigation},
+  booktitle    = {Robotics and Automation, 1991. Proceedings., 1991 IEEE International Conference on},
+  year         = {1991},
+  pages        = {1398--1404},
+  organization = {IEEE},
+}
+
+@Article{ge2000new,
+  author    = {Ge, Shuzhi Sam and Cui, Yan Juan},
+  title     = {New potential functions for mobile robot path planning},
+  journal   = {IEEE Transactions on robotics and automation},
+  year      = {2000},
+  volume    = {16},
+  number    = {5},
+  pages     = {615--620},
+  publisher = {IEEE},
+}
+
+@InProceedings{yun1997wall,
+  author       = {Yun, Xiaoping and Tan, Ko-Cheng},
+  title        = {A wall-following method for escaping local minima in potential field based motion planning},
+  booktitle    = {Advanced Robotics, 1997. ICAR'97. Proceedings., 8th International Conference on},
+  year         = {1997},
+  pages        = {421--426},
+  organization = {IEEE},
+}
+
+@Article{mabrouk2008solving,
+  author    = {Mabrouk, MH and McInnes, CR},
+  title     = {Solving the potential field local minimum problem using internal agent states},
+  journal   = {Robotics and Autonomous Systems},
+  year      = {2008},
+  volume    = {56},
+  number    = {12},
+  pages     = {1050--1060},
+  publisher = {Elsevier},
+}
+
+@InProceedings{TweddleVertigo,
+  author    = {Brent E. Tweddle and Steve Ulrich and Timothy Setterfield and Alvar Saenz-Otero and David W. Miller and John J. Leonard},
+  title     = {THE SPHERES VERTIGO GOGGLES: AN OVERVIEW OF VISION-BASED NAVIGATION RESEARCH RESULTS FROM THE INTERNATIONAL SPACE STATION},
+  booktitle = {Proceedings of the International Symposium on Artificial Intelligence, Robotics and Automation in Space (i-SAIRAS 2014)},
+  year      = {2014},
+}
+
+@Conference{fourievertigo,
+  author    = {Dehann Fourie and Brent E. Tweddle and Steve Ulrich and Alvar Saenz-Otero},
+  title     = {Vision-Based Relative Navigation and Control for Autonomous Spacecraft Inspection of an Unknown Object},
+  booktitle = {AIAA Guidance, Navigation, and Control (GNC) Conference},
+  year      = {2013},
+  address   = {Boston, MA},
+  month     = aug,
+}
+
+@Misc{SmithAstrobeeNew,
+  author       = {Trey Smith and Jonathan Barlow and Maria Bualat and Terrence Fong and Christopher Provencher and Hugo Sanchez and Ernest Smith},
+  title        = {ASTROBEE: A NEW PLATFORM FOR FREE-FLYING ROBOTICS ON THE INTERNATIONAL SPACE STATION},
+  howpublished = {NASA Technical Reports Server Archive},
+  month        = jun,
+  year         = {2016},
+}
+
+@Article{haslegrave1986characterizing,
+  author    = {Haslegrave, CM},
+  title     = {Characterizing the anthropometric extremes of the population},
+  journal   = {Ergonomics},
+  year      = {1986},
+  volume    = {29},
+  number    = {2},
+  pages     = {281--301},
+  publisher = {Taylor \& Francis},
+}
+
+@Misc{destiny,
+  author = {Jerry Wright},
+  title  = {Destiny Laboratory},
+  month  = jul,
+  year   = {2015},
+  file   = {:destiny - Destiny Laboratory.html:URL},
+  url    = {https://www.nasa.gov/mission_pages/station/structure/elements/destiny.html},
+}
+
+@Book{Cormen2009,
+  title     = {Introduction to Algorithms},
+  publisher = {The MIT Press},
+  year      = {2009},
+  author    = {Thomas H. Cormen and Charles E. Leiserson and Ronald L. Rivest and Clifford Stein},
+  edition   = {3rd},
+  isbn      = {978-0-262-03384-8},
+  date      = {2009-09-11},
+  ean       = {9780262033848},
+  url       = {http://www.ebook.de/de/product/8474892/thomas_h_cormen_charles_e_leiserson_ronald_l_rivest_clifford_stein_introduction_to_algorithms.html},
+}
+
+@Misc{astronautreqs,
+  title        = {Astronaut Requirements},
+  howpublished = {https://www.nasa.gov/audience/forstudents/postsecondary/features/F_Astronaut_Requirements.html},
+  url          = {https://www.nasa.gov/audience/forstudents/postsecondary/features/F_Astronaut_Requirements.html},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
