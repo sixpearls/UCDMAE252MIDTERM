@@ -2322,6 +2322,13 @@ hard constraints for humans and walls
 
 \begin_layout Subsection
 Human Avoidance Models
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Human-Avoidance-Models"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2531,6 +2538,13 @@ Summary of APF Non-proxemic and Proxemic % Change
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "apf change summary"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2568,78 +2582,66 @@ The APF simulation encompassed a full factorial simulation for mission type,
  Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
  (4 non-proxemic, 2 proxemic) due to entrappment in local minima prior to
  reaching the goal zone.
- For the non-proxemic direct mission with 1 crew, the robot came to a stop
- directly in front of the crew member.
+ For the non-proxemic Case 1, the robot came to a stop directly in front
+ of the crew.
  From examining a plot of the potential field, it is clear that the robot
- was pulled into a local minimum
+ was pulled into a local minimum.
+ In the proxemic equivalent, the robot was able to navigate around the crew
+ and complete the mission.
+ A similar situation occured during the Case 6, where in the non-proxemic
+ scenario the robot was unable to reach the goal zone.
+ In comparing the potential fields when the robot navigates to Goal 2, a
+ local minimum occurs just outside the goal zone in the non-proxemic scenario.
+ However, in the proxemic one, the local minimum occurs just inside the
+ goal zone boundary.
+ In contrast, the configuration of the clustered crew during Case 7 blocks
+ the robot's access to Goal 2 for both the non-proxemic and proxemic scenarios.
+ Similarly, Crew 1 in Case 12 creates a local minimum that prevents the
+ robot from continuing to Goal 4 for both non-proxemic and proxemic scenarios
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Crew4"
+
+\end_inset
+
+for crew configuration).
+ A plot of the potential fields indicates that the robot could have continued
+ to Goal 4, if released from the local minimum; there was a possible path
+ between Crew 1 and Crew 4
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-(BEN CONFIRM) - yes seems right to me
+move to discussion
 \end_layout
 
 \end_inset
 
 .
- In the proxemic equivalent, the robot was able to navigate around the crew
- and complete the mission.
- A similar situation occured during the waypoint mission for 2 crew, where
- in the non-proxemic case the robot was unable to reach the goal zone.
- In comparing the potential fields when the robot navigates to the second
- goal zone, a local minimum occurs just outside the goal zone in the non-proxemi
-c case.
- However, in the proxemic one, the local minimum occurs just inside the
- goal zone boundary.
- In contrast, the configuration of the clustered crew during the waypoint
- mission blocks the robot's access to the second goal zone for both the
- non-proxemic and proxemic cases.
- Similarly, a crew member from the random crew configuration during the
- monitoring mission creates a local minimum that prevents the robot from
- continuing to the fourth goal zone for both non-proxemic and proxemic.
- A plot of the potential fields indicates that the robot could have continued
- to the fourth goal zone, if released from the local minimum; there was
- a possible path between the two applicable crew members.
  These particular results highlight the challenges of APF-based navigation,
  where the selecting the strength of the sources and sinks affects the outcome.
- As discussed in section XX
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
+ As discussed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Human-Avoidance-Models"
 
 \end_inset
 
 , the strength of the sources (a.k.a.
- crew) was based on RK Thesis
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-citation
-\end_layout
+ crew) was based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
 
 \end_inset
 
- and the sinks (a.k.a.
+and the sinks (a.k.a.
  goals) was determined from our analysis.
  Prior to the damping coefficient and sink amplitude analysis, we observed
  that the robot trajectories, mission success, and collisions varied from
  our final results.
  In our final results, there were no collisions with the crew or module.
- A summary of the missed goal zones are provided in Table XX 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix, OR a figure with subplots?)
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2647,7 +2649,7 @@ Distance Traveled and Average Velocity
 \end_layout
 
 \begin_layout Standard
-For 10 cases, the distanced traveled was similar between non-proxemic and
+For 11 cases, the distanced traveled was similar between non-proxemic and
  proxemic scenarios.
  The percent change
 \begin_inset Foot
@@ -2663,24 +2665,9 @@ status open
 \end_inset
 
  in the distance traveled from non-proxemic to proxemic across scenarios
- is less than or equal to 1.04%.
- As expected, the distance travaled increased with mission type (direct
- < waypoints < monitoring) and the range of values appears small, indicating
- that the crew configuration is not as important (See table XX
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-).
- It is interesting to note the lower range values were caused by missed
- goal zones.
- In the non-proxemic case of the direct mission with one crew, the robot
- was not able to navigate around the crew and towards the goal.
+ is less than or equal to 2.99%.
+ In the one exception (Case 1), the non-proxemic model robot was not able
+ to navigate around the crew and towards the goal.
  This issue resulted in a smaller distance traveled than the proxemic case
  (3.44m versus 8.37m, respectively).
  
@@ -2691,11 +2678,10 @@ The average velocity was also largely consisent between non-proxemic and
  proxemic scenarios.
  In 9 cases, the average velocity was within 5% of the non-proxemic value,
  and ranged between 2.50 cm/s and 8.87 cm/s across scenarios.
- During the waypoints mission with the clustered crew, the proxemic case
- saw an increased average velocity (78.19% change or +2.09 cm/s) and a larger
- maximum velocity (7.22% change or +1.94 cm/s) resulting in a faster completion
- time (-44.49% change or -194.75 s).
- While navigating towards goal 2, the robot appeared to translate slowly
+ In Case 7, the proxemic scenario saw an increased average velocity (78.19%
+ change or +2.09 cm/s) and a larger maximum velocity (7.22% change or +1.94
+ cm/s) resulting in a faster completion time (-44.49% change or -194.75 s).
+ While navigating towards Goal 2, the robot appeared to translate slowly
  across the clustered crew before reaching a local minimum and continuing
  to the next goal zone.
  This process occured earlier and was of shorter duration in the proxemic
@@ -2704,7 +2690,7 @@ The average velocity was also largely consisent between non-proxemic and
 status open
 
 \begin_layout Plain Layout
-A figure could be useful
+Ben-plot of 2,3 models combined for vel and showing goal zones
 \end_layout
 
 \end_inset
@@ -2721,8 +2707,7 @@ For non-proxemic and proxemic cases, the maximum velocity tended to reach
  similar values (within 3.58% of non-proxemic value) ranging between 18.38
  cm/s and 26.76 cm/s.
  There were four cases where a larger change in maximum velocity from non-proxem
-ic occured (7.22% to 18.02% change): 1) waypoint mission with two crew, and
- 2) all monitoring missions with more than one crew.
+ic occured (7.22% to 18.02% change) (Cases 6, 10, 11, 12).
  The difference in maximum velocity can be attributed to ???
 \begin_inset Note Note
 status open
@@ -2734,19 +2719,9 @@ WHERE does v max occur on trajectory?
 \end_inset
 
  In the 12 scenarios where the maximum velocity was greater than 25 cm/s,
- the variance of the Gaussian distributions describing the sources (a.k.a.
+ the widths of the Gaussian distributions describing the sources (a.k.a.
  crew) would have increased, resulting in a dynamically changing field during
- navigation to a goal zone 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-CONFIRM with max velocity plots
-\end_layout
-
-\end_inset
-
-.
+ navigation to a goal zone.
  These results confirm that the maximum velocity never exceeded the 50 cm/s
  constraint for any scenario.
 \end_layout
@@ -2757,32 +2732,27 @@ Personal Space Zones and Minimum Distance
 
 \begin_layout Standard
 The distance between the robot and each crew member was used to calculate
- the minimum distance and the time spent in each personal space zone as
- defined by Hall 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Citation; table of zones from reference?
-\end_layout
+ the minimum distance and the time spent in each personal space zone 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "walters2009empirical"
 
 \end_inset
 
 .
  The change in minimum distance for four cases was within 0.28%, where in
- three of the cases (direct mission two crew; direct mission clustered crew;
- monitoring mission one crew) the robot's trajectory was relatively far
- from the crew members and it would be expected that the proxemic cost function
- would have an minimal effect.
+ three of the cases (Cases 2, 3, 9) the robot's trajectory was relatively
+ far from the crew members and it would be expected that the proxemic cost
+ function would have an minimal effect.
  For these cases, the minimum crew distance was greater than 1.2 m and in
  the social zone.
- In the fourth case, the robot path appears identical to the third goal
- zone and occurs at a relatively large distance from crew members 
+ In Case 12, the robots' paths appear identical until Goal 3 and occurs
+ at a relatively large distance from crew members 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-include comparision figure? plot both paths on one?
+reword clearer
 \end_layout
 
 \end_inset
@@ -2793,10 +2763,9 @@ include comparision figure? plot both paths on one?
 \end_layout
 
 \begin_layout Standard
-The analysis showed that a robot with a proxemic model maintained a smaller
- minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
- In the direct mission with random crew, the maximum velocity does not exceed
- 25 cm/s for either scenario.
+The analysis also showed that a robot with a proxemic model maintained a
+ smaller minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
+ In Case 4, the maximum velocity does not exceed 25 cm/s for either scenario.
  As a result, the robot with the proxemic model passes crew from behind
  and on the side and the cost function in these cases are smaller than for
  the non-proxemic one
@@ -2804,68 +2773,34 @@ The analysis showed that a robot with a proxemic model maintained a smaller
 status open
 
 \begin_layout Plain Layout
-maybe a table somewhere with how std dev compares for key velocity points
+Ben table: std dev compares for key velocity points
 \end_layout
 
 \end_inset
 
 .
- A similar situation occurs in the waypoints mission with random crew where
- the proxemic model robot passes closer to crew members # and # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
+ A similar situation occurs in Case 8, where the proxemic model robot passes
+ closer to Crew 1 and 2 (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Crew4"
 
 \end_inset
 
-, which are oriented away from the robot.
- Again this situation is repeated for case # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- and case #
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-, where the robot passes behind and with velocities less than 25 cm/s (relevant
- for proxemic).
+), which are oriented away from the robot.
+ Again this situation is repeated for Case 10 and 11, where the robot passes
+ behind and with velocities less than 25 cm/s (relevant for proxemic).
  Therefore, the overall orientation of the crew is an important factor.
  
 \end_layout
 
 \begin_layout Standard
 In two cases, the proxemic scenario yielded a larger minimum distance.
- The first case, waypoint mission with one crew, the robot passes in front
- of the crew member.
+ The first case (Case 5), the robot passes in front of the crew member.
  Since passing in front is a higher cost zone, the proxemic model maintains
  a larger distance from the crew, as expected.
- The robot also approaches a cluster of crew and crosses in front in case
- # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-.
+ The robot also approaches a cluster of crew and crosses in front in Case
+ 7.
  The proxemic model produced expected results with the robot maintaining
  a larger distance.
  These results compliment the recently discussed findings, where the crew
@@ -2876,40 +2811,10 @@ fix
 There were surprisingly few differences throughout the scenarios regarding
  personal space zones, and the differences ranged from 0% to 1.15% across
  9 cases.
- In the waypoints mission with clustered crew, the non-proxemic model robot
- spent signficantly longer transversing the space in front of the cluster
- and at a closer distance.
- Consequently, the robot stayed longer in the personal zones for crew #
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-, crew #
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-, and crew #
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- by 236.75 s, 194.00 s, 183.00 s, respectively.
+ In Case 7, the non-proxemic model robot spent signficantly longer transversing
+ the space in front of the clustered crew and at a closer distance.
+ Consequently, the robot stayed longer in the personal zones for Crew 1,
+ 2, and 3 by 236.75 s, 194.00 s, 183.00 s, respectively.
  For all 24 scenarios, the robot never entered the close intimate or intimate
  zones.
  Overall, the non-proxemic and proxemic models behaved similarly in terms
@@ -2933,26 +2838,16 @@ Unique Cases
 
 \begin_layout Standard
 For the APF simulations, two cases were identified as unique due to the
- significantly different robot trajectories 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-trajectories or path?
-\end_layout
-
-\end_inset
-
- between the non-proxemic and proxemic scenarios.
+ significantly different robot paths between the non-proxemic and proxemic
+ scenarios.
  As such, it may not be reasonable to compare metrics from these scenarios
  and should be discussed individually.
  
 \end_layout
 
 \begin_layout Standard
-During the direct mission with one crew, the non-proxemic model robot encountere
-d a local minimum in front of the crew and was unable to navigate around
- the crew member.
+In Case 1, the non-proxemic model robot encountered a local minimum in front
+ of the crew and was unable to navigate around the crew member.
  In the proxemic scenario, the robot was able to pass by the crew member
  and complete the simulation.
  The maximum velocity of the proxemic model robot was 23.00 cm/s, so the
@@ -2963,8 +2858,7 @@ d a local minimum in front of the crew and was unable to navigate around
 status open
 
 \begin_layout Plain Layout
-get an insight; Ben- subplots of the quiver fields? if difficult to see,
- zoom in on the area in front of crew
+reword, symm field, rounding issues (discussion)
 \end_layout
 
 \end_inset
@@ -2974,66 +2868,34 @@ get an insight; Ben- subplots of the quiver fields? if difficult to see,
 \end_layout
 
 \begin_layout Standard
-The second unique case concerns the waypoints mission and two crew, where
- the non-proxemic scenario resulted in the robot missing the second goal
- zone and crossing in front of crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-.
+In Case 6, the non-proxemic scenario resulted in the robot missing Goal
+ 2 and crossing in front of Crew 2.
  Whereas, the proxemic model robot reached the second goal zone and continued
- behind crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-.
- After examining the potential fields during the robots' navigation to the
- second goal zone, the local minimum lies outside the boundary for the non-proxe
-mic scenario and inside the boundary for the proxemic one.
+ behind Crew 1.
+ After examining the potential fields during the robots' navigation to Goal
+ 2, the local minimum lies outside the boundary for the non-proxemic scenario
+ and inside the boundary for the proxemic one.
  In the non-proxemic potential field, it is also evident that the field
  blocks the robot from the goal zone (See Figure XX 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-insert
+no, reword without
 \end_layout
 
 \end_inset
 
 ).
- While the proxemic model robot was able to reach the second goal zone,
- it caused the average velocity to decrease (-46.66% change from non-proxemic)
- due to a large amount of time spent at a low force and velocity near crew
- # 
+ While the proxemic model robot was able to reach Goal 2, it caused the
+ average velocity to decrease (-46.66% change from non-proxemic) due to a
+ large amount of time spent at a low force and velocity near Crew 1 (See
+ Figure XX
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- (See Figure XX
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Force, velocity plot + colored trajectory; subplots; maybe also distance
- from crew; add marker for a time point?
+Fix
 \end_layout
 
 \end_inset
@@ -3041,45 +2903,15 @@ Force, velocity plot + colored trajectory; subplots; maybe also distance
 .
  This area in the field appears to be the driver behind the increased completion
  time for the proxemic scenario (82.00%).
- Passing behind crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- also brings the proxemic model robot closer, decreasing the minimum distance
- by 8.00%.
+ Passing behind Crew 1 also brings the proxemic model robot closer, decreasing
+ the minimum distance by 8.00%.
  The increased distance traveled by the non-proxemic robot is attributed
  to when it double backs after reaching the local minimum (-2.99% change
  from proxemic).
  In terms of personal space zones, the robots from both scearios entered
- up to the personal zone for crew #
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-.
+ up to the personal zone for Crew 1.
  Due to the non-proxemic model robot crossing in front, it spends time in
- the personal zone of crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-.
+ the personal zone of Crew 2.
  In contrast, the proxemic model robot never enters the personal zone of
  that crew member.
  This unique case draws attention to an interesting point of discussion:
@@ -3164,29 +2996,19 @@ add table?
 \end_inset
 
 ).
- For the non-proxemic direct mission with one crew, the robot started to
- navigate around the crew in the same direction as the proxemic scenario,
- but was unable to continue past a few steps.
- Similarily, in the waypoints mission with two crew the simulation times
- out for the non-proxemic case and the proxemic scenario is able to complete.
+ For the non-proxemic Case 1, the robot started to navigate around the crew
+ in the same direction as the proxemic scenario, but was unable to continue
+ past a few steps.
+ Similarily, in Case 6 the simulation times out for the non-proxemic case
+ and the proxemic scenario is able to complete.
  Interestingly, the robot reaches the same coordinates and distance from
- crew en route to the second goal zone for both scenarios in this case.
+ Crew 1 en route to Goal 2 for both scenarios in this case.
  At that location, the standard deviation for the non-proxemic and proxemic
  cost functions would be 0.36m and 0.50 m, respectively.
  Yet, the robot has more difficulty navigating around a cost function with
  a smaller width and the cause is unclear.
- For the monitoring mission with two crew, the robot stops 0.72 m away from
- crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-crew numbering
-\end_layout
-
-\end_inset
-
- between the first and second goal zone for the non-proxemic scenario.
+ For the Case 10, the robot stops 0.72 m away from Crew 2 between Goal 1
+ and 2 for the non-proxemic scenario.
  In the proxemic scenario, the robot moves closer to the wall earlier (x
  = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
  is able to reach all goal zones.
@@ -3205,8 +3027,8 @@ fix
 \end_layout
 
 \begin_layout Standard
-The opposite case occured for the direct mission with two crew, where the
- robot completed the non-proxemic scenario and not the proxemic one.
+The opposite case occured for Case 2, where the robot completed the non-proxemic
+ scenario and not the proxemic one.
  In the proxemic scenario, the robot approached the two crew with the maximum
  allowed velocity (50 cm/s) and started to decrease its velocity at t =
  5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
@@ -3232,63 +3054,49 @@ fix
 \begin_layout Standard
 In some cases, both the non-proxemic and proxemic scenarios failed to reach
  every goal zone.
- In the waypoints mission with clustered crew, three crew members were situated
- in front of the second goal.
+ In Case 7, three crew members were situated in front of the second goal.
  For both non-proxemic and proxemic scenarios, the robot decreased its velocity
- as it approached the crew cluster, was not able to navigate to the second
- goal zone, and the simulation ended.
- As expected, the robot was able to navigate closer to the crew cluster
+ as it approached the clustered crew, was not able to navigate to Goal 2,
+ and the simulation ended.
+ As expected, the robot was able to navigate closer to the clustered crew
  in the non-proxemic scenario due to the smaller width of the relevant cost
  function
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Show any numbers or evidence?
+ref table
 \end_layout
 
 \end_inset
 
 .
- Similarly, the monitoring mission with the random crew fails in the same
- manner for the non-proxemic and proxemic scenarios.
- The robot is able to reach the third goal and has to navigate towards a
- cluster of two crew members facing the robot.
- The robot approaches closer in the non-proxemic case, but ultimately the
- robot cannot navigate past the crew for both scenarios.
- In the monitoring mission with a crew cluster, the non-proxemic and proxemic
- scenarios appear to fail in different ways.
- For the non-proxemic scenario, the robot is unable to pass behind the single
- crew member like the monitoring mission with two crew discussed earlier,
- and fails at a similar location and time.
- This finding is consistent between those two scenarios 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert short hand for scenario ID
-\end_layout
+ Similarly, Case 12 fails in the same manner for the non-proxemic and proxemic
+ scenarios.
+ The robot is able to reach Goal 3 and has to navigate towards a cluster
+ of two crew members facing the robot (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Crew4"
 
 \end_inset
 
-implying that a robot cannot pass behind a crew member facing towards the
- center of the module and 3 ft.
+).
+ The robot approaches closer in the non-proxemic case, but ultimately the
+ robot cannot navigate past the crew for both scenarios.
+ In Case 11, the non-proxemic and proxemic scenarios appear to fail in different
+ ways.
+ For the non-proxemic scenario, the robot is unable to pass behind Crew
+ 4 like Case 10, and fails at a similar location and time.
+ This finding is consistent between Case 10 and 11, implying that a robot
+ cannot pass behind a crew member facing towards the center of the module
+ and 3 ft.
  away from the wall using a non-proxemic model.
  While in the proxemic scenario, the robot is able to navigate behind a
  single crew member positioned close to the wall, the robot cannot pass
  behind the cluster.
- The first crew member encountered leaving the third goal (
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert crew id
-\end_layout
-
-\end_inset
-
-) is oriented so that the robot would have to pass through multiple cost
- functions 
+ Crew 3 is oriented so that the robot would have to pass through multiple
+ cost functions 
 \begin_inset Note Note
 status open
 
@@ -3323,16 +3131,6 @@ Across scenarioes there were no collisions.
 
 \begin_layout Subsubsection
 Distance Traveled and Average Velocity
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3480,7 +3278,7 @@ is that okay to say?
 status open
 
 \begin_layout Plain Layout
-would a side by side comparision of the velocity plots be useful?
+would a side by side comparision of the velocity plots be useful?-yes
 \end_layout
 
 \end_inset
