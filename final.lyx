@@ -2598,6 +2598,162 @@ for discussion, the bins have a width and people's preference may draw different
 Unique Cases
 \end_layout
 
+\begin_layout Standard
+For the APF simulations, two cases were identified as unique due to the
+ significantly different robot trajectories 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+trajectories or path?
+\end_layout
+
+\end_inset
+
+ between the non-proxemic and proxemic scenarios.
+ As such, it may not be reasonable to compare metrics from these scenarios
+ and should be discussed individually.
+ 
+\end_layout
+
+\begin_layout Standard
+During the direct mission with one crew, the non-proxemic model robot encountere
+d a local minimum in front of the crew and was unable to navigate around
+ the crew member.
+ In the proxemic scenario, the robot was able to pass by the crew member
+ and complete the simulation.
+ The maximum velocity of the proxemic model robot was 23.00 cm/s, so the
+ potential field was static for the duration of the simulation.
+ Comparing the plots of the potential fields for each scenario yielded the
+ following insight 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+get an insight; Ben- subplots of the quiver fields? if difficult to see,
+ zoom in on the area in front of crew
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The second unique case concerns the waypoints mission and two crew, where
+ the non-proxemic scenario resulted in the robot missing the second goal
+ zone and crossing in front of crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ Whereas, the proxemic model robot reached the second goal zone and continued
+ behind crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ After examining the potential fields during the robots' navigation to the
+ second goal zone, the local minimum lies outside the boundary for the non-proxe
+mic scenario and inside the boundary for the proxemic one.
+ In the non-proxemic potential field, it is also evident that the field
+ blocks the robot from the goal zone (See Figure XX 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert
+\end_layout
+
+\end_inset
+
+).
+ While the proxemic model robot was able to reach the second goal zone,
+ it caused the average velocity to decrease (-46.66% change from non-proxemic)
+ due to a large amount of time spent at a low force and velocity near crew
+ # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ (See Figure XX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Force, velocity plot + colored trajectory; subplots; maybe also distance
+ from crew; add marker for a time point?
+\end_layout
+
+\end_inset
+
+.
+ This area in the field appears to be the driver behind the increased completion
+ time for the proxemic scenario (82.00%).
+ Passing behind crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ also brings the proxemic model robot closer, decreasing the minimum distance
+ by 8.00%.
+ The increased distance traveled by the non-proxemic robot is attributed
+ to when it double backs after reaching the local minimum (-2.99% change
+ from proxemic).
+ In terms of personal space zones, the robots from both scearios entered
+ up to the personal zone for crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ Due to the non-proxemic model robot crossing in front, it spends time in
+ the personal zone of crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ In contrast, the proxemic model robot never enters the personal zone of
+ that crew member.
+ This unique case draws attention to an interesting point of discussion:
+ is it less invasive or uncomfortable for a robot to slowly pass behind
+ or cross in front and affect more people?
+\end_layout
+
 \begin_layout Subsection
 Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
