@@ -2686,12 +2686,9 @@ The change in minimum distance for four cases was within 0.28%, where in
  For these cases, the minimum crew distance was greater than 1.2 m and in
  the social zone.
  The robots' paths depicted in Figure 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert ref
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case-12-Comparison"
 
 \end_inset
 
@@ -2798,6 +2795,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Case 12 Comparison of Non-Proxemic and Proxemic Paths
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case-12-Comparison"
+
+\end_inset
+
 
 \end_layout
 
@@ -2807,6 +2811,12 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename Case12_apf_pair.png
+	width 3.5in
+
+\end_inset
+
 
 \end_layout
 
@@ -2912,10 +2922,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2998,6 +3004,16 @@ reference "tab:Summary-of-A*"
  In general, the average velocity is smaller and the completion time longer
  for the proxemic scenarios.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref to appendix
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3058,11 +3074,7 @@ Incomplete Missions
 The robot was unable to navigation to all goal zones successfully in 10
  scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
  0% to 80%.
- 
-\end_layout
-
-\begin_layout Standard
-In some cases, both the non-proxemic and proxemic scenarios failed to reach
+ In some cases, both the non-proxemic and proxemic scenarios failed to reach
  every goal zone.
  In Case 7, three crew members were situated in front of the second goal.
  For both non-proxemic and proxemic scenarios, the robot decreased its velocity
@@ -3095,7 +3107,17 @@ For all cases the average velocity was lower for proxemic scenarios (35.89
  Even though the quantity of direction changes in similar (36 for non-proxemic
  and 35 for proxemic), the robot in the non-proxemic case travels a shorter
  distance before changing direction with a higher average velocity, which
- may explain the increased overal distance and shorter completion time.
+ may explain the increased overal distance and shorter completion time 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+figure ref, subplots
+\end_layout
+
+\end_inset
+
+.
  Another case (Case 7) follows a similar pattern with a smaller average
  velocity and distance traveled for the proxemic scenario with the key differenc
 e that the simulation ended before reaching Goal 2.
@@ -3107,17 +3129,7 @@ e that the simulation ended before reaching Goal 2.
  Compared to other cases, the percent change in average velocity for this
  case was relatively small (6.67%) and the decreased velocity for the proxemic
  scenario appears to be attributed to the effect of Crew 2 and 3 by Goal
- 3 (see figure velocity color map)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert
-\end_layout
-
-\end_inset
-
-.
+ 3.
 \end_layout
 
 \begin_layout Standard
@@ -3126,7 +3138,7 @@ In contrast, there were two cases where the distance traveled was within
  For Case 8, the closest crew members to the robot's trajectory are approximatel
 y facing 180 degrees away.
  Therefore, the robot in the proxemic scenario primarily experienced the
- cost from sigma_r
+ shape factor from sigma_r
 \begin_inset Note Note
 status open
 
@@ -3136,7 +3148,7 @@ fix
 
 \end_inset
 
- that is closer to the non-proxemic standard deviation 
+ that is closer to the non-proxemic shape factor value 
 \begin_inset Note Note
 status open
 
@@ -3154,6 +3166,37 @@ ref table
 mic scenario.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Maximum Velocity
 \end_layout
@@ -3167,25 +3210,8 @@ Across the 24 scenarios, the maximum allowable velocity was achieved for
  The shortest path to the goal zone would bring the robot close to crew
  members (i.e.
  higher cost area).
- Therefore, the robot's trajectory 
-\begin_inset Quotes eld
-\end_inset
-
-bubbled out
-\begin_inset Quotes erd
-\end_inset
-
- from the crew members to minimize the cost and time
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-is that okay to say?
-\end_layout
-
-\end_inset
-
-.
+ Therefore, the robot's trajectory expanded outwards from the crew members
+ to minimize the cost and time.
  As a result, the average velocity and completion time for the nonproxemic
  scenario were 24.50% lower and 33.86% slower than the proxemic one, respectively.
  Interestingly, the distance traveled in the proxemic case actually decreased
@@ -3194,7 +3220,7 @@ is that okay to say?
 status open
 
 \begin_layout Plain Layout
-+side by side comparision of the velocity plots
+ref fig
 \end_layout
 
 \end_inset
@@ -3210,10 +3236,8 @@ Personal Space Zones and Minimum Distance
 The majority of cases saw a greater than 5% change from the non-proxemic
  scenario minimum distance.
  There were three cases (Cases 3, 4, 9) where the percent change ranged
- from 0% to 4.76%, and can be attributed to either a) the robot passing through
- the center when the crew is on the perimeter (Case 3), or b) the robot
- passing crew on the side or behind (Case 4), or c) the robot is circumnavigatin
-g the module while the crew is in the center (Case 9).
+ from 0% to 4.76%, and can be attributed to either a large distance from
+ crew (Case 3, 9) or favorable crew orientation (Case 4).
  All these explanations converge on the situation where the proxemic cost
  function is less and closer in value to the non-proxemic one.
 \end_layout
@@ -3231,22 +3255,14 @@ In cases where the robot's trajectory brought it in front of crew, the minimum
 \end_layout
 
 \begin_layout Standard
-Only one case (Case 9) had a percent change less than 5%.
- For Cases 3, 5, 7, and 8, the proxemic model robot traveled slower past
+For Cases 3, 5, 7, and 8, the proxemic model robot traveled slower past
  nearby crew members causing increased time in particular zones–typically
  in the closest zone the robot ever crossed for that case.
  For example, the robot in Case 5 crossed in front of a crew member at velocitie
 s less than 25 cm/s (compared to upwards of 50 cm/s for non-proxemic) and
  had increased time in the personal zone.
- In contrast, the proxemic model robot's path by Crew 4 
-\begin_inset Quotes eld
-\end_inset
-
-bubbles out
-\begin_inset Quotes erd
-\end_inset
-
- (see 
+ In contrast, the proxemic model robot's path by Crew 4 in Case 4 expands
+ outward (see 
 \begin_inset Note Note
 status open
 
