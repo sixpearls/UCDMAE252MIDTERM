@@ -2154,7 +2154,7 @@ Are we worried that we don't always stick with the same units?
 (0.25 m/s) without driving through the repulsive potential associated with
  the crew.
  These parameters were kept constant over the course of our simulations
- to enable comparison between Case Studies.
+ to enable comparison between case studies.
  This velocity, 0.25 m/s, was considered comfortable in the proxemic literature.
  These results indicated that the forces associated with moving toward the
  goal, avoiding collisions with humans, and damping were acceptably tuned.
@@ -2397,20 +2397,20 @@ Both
 \end_inset
 
  and APF relied on a model scalar-field of the navigation area representing
- the cost of being in that position.
- Both planning methods used the same proxemic and non-proxemic models of
- the human obstacles in the scalar-field.
+ the cost of being in an 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ position.
+ To allow for comparison of results, both planning methods used the same
+ proxemic and non-proxemic models of the human obstacles in the scalar-field.
  
 \end_layout
 
 \begin_layout Standard
-In order to run our nonproxemic case study task and scenario will be to
- run each path-planning algorithm without the use of proxemics to provide
- a baseline point of comparison for proxemic simulations.
- To do so while still maintaining collision avoidance, we will weight humans
- with a cost or potential field strength inversely proportional to the robot's
- distance from the humans, regardless of human orientation.The non-proxemic
- model is a symmetric gaussian model defined by
+In order to run our nonproxemic case studies while maintaining collision
+ avoidance for each algorithm, we weighted humans with a symmetric Gaussian
+ model defined by
 \begin_inset Formula 
 \[
 U_{\text{non-proxemic}}\left(x_{r},y_{r}\right)=\exp\left[-\frac{\left(x_{r}-x_{c}\right)^{2}+\left(y_{r}-y_{c}\right)^{2}}{2\sigma_{n}^{2}}\right]
@@ -2426,7 +2426,7 @@ where
 \begin_inset Formula $y_{r}$
 \end_inset
 
- are the 
+ were the 
 \begin_inset Formula $x$
 \end_inset
 
@@ -2442,7 +2442,7 @@ where
 \begin_inset Formula $y_{c}$
 \end_inset
 
- are the 
+ were the 
 \begin_inset Formula $x$
 \end_inset
 
@@ -2468,16 +2468,16 @@ status collapsed
 \begin_inset Formula $\sigma_{n}^{2}$
 \end_inset
 
- is a width normalizing constant.
+ was a width-normalizing constant.
  We set 
 \begin_inset Formula $\sigma_{N}^{2}$
 \end_inset
 
- to 0.355 , so that the cost of a typical shoulder distance (14
+ to 0.355, so that the cost of a typical shoulder distance (14
 \begin_inset Quotes erd
 \end_inset
 
-) is half the cost as the center
+) was half the cost of the center
 \begin_inset CommandInset citation
 LatexCommand cite
 key "haslegrave1986characterizing"
@@ -2489,8 +2489,14 @@ key "haslegrave1986characterizing"
 \end_layout
 
 \begin_layout Standard
-The proxemic model is the asymetric gaussian Kirby used to model personal
- space, defined as
+The proxemic model was the asymetric Gaussian Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+ used to model personal space, defined as
 \begin_inset Formula 
 \[
 \begin{aligned}U_{\text{proxemic}}\left(x_{r},y_{r},\left|v\right|\right) & =\exp\left[-\left(ad_{x}^{2}+bd_{x}d_{y}+cd_{y}^{2}\right)\right]\end{aligned}
@@ -2510,7 +2516,7 @@ where
 \begin_inset Formula $d_{y}=y_{r}-y_{c}$
 \end_inset
 
- is the distance between the robot and crew member being modeled in the
+ was the distance between the robot and crew member being modeled in the
  
 \begin_inset Formula $x$
 \end_inset
@@ -2532,7 +2538,8 @@ where
 \begin_inset Formula $c$
 \end_inset
 
- are based on rotational transformations of the aligned shape factors, 
+ were based on rotational transformations of the aligned shape factors,
+ 
 \begin_inset Formula 
 \begin{align*}
 a & =\frac{\cos^{2}\theta}{2\sigma_{p}^{2}}+\frac{\sin^{2}\theta}{2\sigma_{s}^{2}}\\
@@ -2546,8 +2553,8 @@ where
 \begin_inset Formula $\theta$
 \end_inset
 
- is the orientation of the crew member in the global frame of reference.
- The values for aligned shape factors are described by
+ was the orientation of the crew member in the global frame of reference.
+ The values for aligned shape factors were described by
 \begin_inset Formula 
 \begin{align*}
 \sigma_{h} & =\max\left[2\left|v\right|,0.5\right]\\
@@ -2561,10 +2568,10 @@ where
 
 \end_inset
 
-We note that the larger shape factor corresponding to the front of the crew
- corresponds to a wider cost curve, reflecting the need for more personal
- space in the forward direction.
- The smaller shape factor for the rear reflects the need for less personal
+We note that the larger shape factor in the front of the crew corresponded
+ to a wider cost curve, reflecting the need for more personal space in the
+ forward direction.
+ The smaller shape factor for the rear reflected the need for less personal
  space.
 \end_layout
 
@@ -2627,8 +2634,9 @@ name "apf change summary"
 \end_layout
 
 \begin_layout Plain Layout
-A positive sign indicates a larger proxemic value, a negative sign indicates
- a smaller proxemic value, and a blank indicates values were within 5%.
+A positive sign indicates a larger proxemic value as compared to the nonproxemic
+ value, a negative sign indicates a smaller proxemic value, and a blank
+ indicates values were within 5%.
 \end_layout
 
 \begin_layout Plain Layout
@@ -2646,10 +2654,10 @@ Incomplete Missions and Collisions
 
 \begin_layout Standard
 The APF simulation encompassed a full factorial simulation for mission type,
- crew confirguration, and inclusion of proxemics, which resulted in 24 test
+ crew configuration, and inclusion of proxemics, which resulted in 24 test
  scenarios.
  Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
- (4 non-proxemic, 2 proxemic) due to entrappment in local minima prior to
+ (4 non-proxemic, 2 proxemic) due to entrapment in local minima prior to
  reaching the goal zone.
  For the non-proxemic Case 1, the robot came to a stop directly in front
  of the crew.
@@ -2660,8 +2668,9 @@ The APF simulation encompassed a full factorial simulation for mission type,
  A similar situation occured during the Case 6, where in the non-proxemic
  scenario the robot was unable to reach the goal zone.
  In comparing the potential fields when the robot navigates to Goal 2, a
- local minimum occurs just outside the goal zone in the non-proxemic scenario.
- However, in the proxemic one, the local minimum occurs just inside the
+ local minimum occurs just outside of the goal zone in the non-proxemic
+ scenario.
+ However, in the proxemic case, the local minimum occurs just inside the
  goal zone boundary.
  In contrast, the configuration of the clustered crew during Case 7 blocks
  the robot's access to Goal 2 for both the non-proxemic and proxemic scenarios.
@@ -2993,7 +3002,7 @@ Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Standard
-Samer percent difference as APF; within 5% not considered large enough to
+Same percent difference as APF; within 5% not considered large enough to
  make statements
 \end_layout
 
@@ -3002,10 +3011,6 @@ Samer percent difference as APF; within 5% not considered large enough to
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3030,8 +3035,9 @@ Summary of A* Non-proxemic and Proxemic % Change
 \end_layout
 
 \begin_layout Plain Layout
-A positive sign indicates a larger proxemic value, a negative sign indicates
- a smaller proxemic value, and a blank indicates values were within 5%.
+A positive sign indicates a larger proxemic value when compared to the nonproxem
+ic, a negative sign indicates a smaller proxemic value, and a blank indicates
+ values were within 5%.
 \end_layout
 
 \begin_layout Plain Layout
@@ -3297,7 +3303,7 @@ fix notation
 \begin_inset Quotes eld
 \end_inset
 
-bubbles out
+bubbled out
 \begin_inset Quotes erd
 \end_inset
 
@@ -3312,8 +3318,8 @@ is that okay to say?
 \end_inset
 
 .
- As a result, the average velocity and completion time for the proxemic
- scenario are 24.50% lower and 33.86% slower than the proxemic one, respectively.
+ As a result, the average velocity and completion time for the nonproxemic
+ scenario were 24.50% lower and 33.86% slower than the proxemic one, respectively.
  Interestingly, the distance traveled in the proxemic case actually decreased
  by 8.28%.
 \begin_inset Note Note
@@ -3409,7 +3415,8 @@ Evaluation of Results
 
 \begin_layout Standard
 In the studies we reviewed, none closely matched our experimental design
- (see 
+ of comparing proxemic and nonproxemic navigational methods for different
+ architectures (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Comparison-of-HRI"
@@ -3450,9 +3457,19 @@ key "takayama2009influences"
 \end_inset
 
 ).
- Even though this simulation does not accomodate feedback regarding human
- acceptance of the robot, it may provide valuable insights by comparing
- with other human studies.
+ Even though this simulation did not accomodate feedback regarding human
+ acceptance of the robot, it may provide still valuable insights through
+ comparison with other human studies.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Do we need to actually do that if we're going to say that?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3498,17 +3515,28 @@ In our implementation of APF and
  It is possible that by tuning APF so that it could achieve higher velocities,
  we could see similar increased distances maintained from the crew using
  the proxemic model.
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+'s weights could also be tuned to produce differing results in terms of
+ maximum velocities.
 \end_layout
 
 \begin_layout Standard
-For time, our 
+For computational time, our 
 \begin_inset Formula $A^{*}$
 \end_inset
 
  implementation included a time-out if the computations seemed to be taking
  too long.
  This restriction also reflects patience and timing requirements for use
- on an actual robot.
+ on an actual robot, and the feasibility of using 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ in a scenario with humans, where movement and obstacles are likely to change
+ in unpredictable ways.
  We notice that many cases that would cause APF to become stuck in a local
  minima or to travel excessively slowly due to the shallow gradient, were
  also cases where the computational time for the 
@@ -3520,14 +3548,14 @@ For time, our
 \begin_inset Formula $A^{*}$
 \end_inset
 
- actually completed quite quickly.
- Although as a global search algorithm 
+ actually returned an optimal path quite quickly.
+ Although as a global search algorithm, 
 \begin_inset Formula $A^{*}$
 \end_inset
 
  should be able to find the optimal path for any crew and mission combination
  given enough computational time, our results suggest that challenges for
- using such a method for real-time navigation are actually quite analgous.
+ using such a method for real-time navigation are actually quite analagous.
  We note that the real-time navigation method proposed by Kirby adds some
  
 \begin_inset Quotes eld
@@ -3541,8 +3569,39 @@ locality
 \begin_inset Formula $A^{*}$
 \end_inset
 
- by using a variable sized grid; this may not be so different from adding
+ by using a variable-sized grid; this may not be so different from adding
  some global behavior to a local method, as is often done with APF.
+ In addition, the runtime of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is also very dependent on the implementation of the data structures 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "algorithms"
+
+\end_inset
+
+.
+ Due to the increase in computational grid size due to cost depending on
+ differences in velocities, we made the decision that 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ should only calculate costs as it approached each node.
+ In situations in which the path is less simple, and 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ searches a large proportion of the graph, the computational time could
+ benefit from pre-computing costs.
+ While this choice seems the most obvious change, there are certainly other
+ optimizations that could allow 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ to begin to run in real time, and the algorithm should not be written off
+ for future studies.
 \end_layout
 
 \begin_layout Section
@@ -3553,8 +3612,8 @@ Future Work
 Based on the literature review to date, a consistent and obvious avenue
  for future work was apparent: incorporation of physiological signals for
  real-time feedback of proxemics distance.
- Currently experimental setups with physical robots and humans rely on questionn
-aires (e.g.
+ Currently, experimental setups with physical robots and humans rely on
+ questionnaires (e.g.
  Likert scales) after the human-robot encounter, and pose several limitations.
  Post-experimental questionnaires are dependent on accurate recollection,
  and in this context, cannot be used real-time.
@@ -3621,12 +3680,24 @@ Another important direction for future work in human-aware navigation in
  robots).
  Long term space travel would also provide a valuable opportunity to see
  how comfort changes over time.
+ It is also worth noting that with an additional 3 degrees of freedom, the
+ computational complexity of the human 
+\begin_inset Quotes eld
+\end_inset
+
+maze
+\begin_inset Quotes erd
+\end_inset
+
+ the algorithms must traverse would increase significantly, which could
+ have dramatic effects on computational time and new complications for local
+ minima.
 \end_layout
 
 \begin_layout Standard
 More work could also be done to explore our specific research question about
  the effect of proxemic models on path planning.
- First, optimizing 
+ First, we recommend optimizing the 
 \begin_inset Formula $A^{*}$
 \end_inset
 
@@ -3640,7 +3711,7 @@ More work could also be done to explore our specific research question about
 \end_inset
 
  variations for real-time navigation like COMPANION and some APF controllers
- that incorporate heirarhical switching to avoid local minima.
+ that incorporate hierarchical switching to avoid local minima.
 \end_layout
 
 \begin_layout Standard
@@ -3655,11 +3726,17 @@ Finally, we note that before implementation on Astrobee, significant validation
  In terms of the path planning algorithm, it would be important to incorporate
  models for detecting the environment (including crew position and orientation)
  using vision, which would introduce noise and error.
+ In addition, it could introduce a new layer of complexity to model motion
+ prediction of humans, particularly taking into account demonstrated human
+ tendencies to modify one's own movement in response to an approaching robot
  
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weinrich2013prediction"
 
-\begin_layout Standard
-- Improving A*
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
