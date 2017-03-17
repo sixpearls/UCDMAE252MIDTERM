@@ -1288,8 +1288,9 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Crew Config
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:configurations"
 
 \end_inset
 
@@ -1299,11 +1300,6 @@ Crew Config
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-BEN LABEL
 \end_layout
 
 \end_inset
@@ -1356,6 +1352,15 @@ s for two dimensions:
 
 \end_inset
 
+The termination of movement toward a goal is triggered when the velocity
+ and control forces approach zero.
+ If the current waypoint is the final waypoint in the mission, the simulation
+ terminates.
+ This check does not depend on the position of the robot, so the simulation
+ may move on or terminate without reaching the goal.
+\end_layout
+
+\begin_layout Standard
 In many APF simulations, damping in the overall system is included in the
  dynamic model of the mobile robot, caused by losses such as friction.
  We chose to consider the damping as a tunable parameter in the scheme navigatio
@@ -1475,21 +1480,6 @@ We chose the values for the constants
  produce better path planning performance.
  We recommended that further parameter trials be performed before extending
  the research presented in this paper.
-\end_layout
-
-\begin_layout Standard
-Since two of the three missions used in the experiment involve multiple
- waypoints, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-BEN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1731,21 +1721,13 @@ where
 \end_inset
 
  for diagonal next nodes.
- Our considered velocity range was then determined by 
-\begin_inset Formula $v_{max}=\min(0.5,\sqrt{v_{0}^{2}+2\frac{T_{max}}{m}s})$
-\end_inset
-
-, 
-\begin_inset Formula $v_{min}=\max(0,\sqrt{v_{0}^{2}-2\frac{T_{max}}{m}s})$
-\end_inset
-
-, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-BEN SPACE OUT
-\end_layout
+ The endpoints for the considered velocity range was then determined by
+ 
+\begin_inset Formula 
+\begin{align*}
+v_{max} & =\min\left(0.5,\sqrt{v_{0}^{2}+2\frac{T_{max}}{m}s}\right)\\
+v_{min} & =\max\left(0,\sqrt{v_{0}^{2}-2\frac{T_{max}}{m}s}\right)
+\end{align*}
 
 \end_inset
 
@@ -1951,6 +1933,68 @@ We note that the larger shape factor in the front of the crew corresponded
  forward direction.
  The smaller shape factor for the rear reflected the need for less personal
  space.
+ For reference, values for 
+\begin_inset Formula $\sigma_{h}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{s}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{r}$
+\end_inset
+
+ at 25 cm/s and 50 cm/s are compared to 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-gaussian"
+
+\end_inset
+
+.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of gaussian widths used in human collision avoidance models
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparison-of-gaussian"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename sigmatable.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2657,11 +2701,15 @@ Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Standard
-The A* implementation included restrictions on the total computational time
- (60 s) and node computational time (0.25 s) for practical purposes.
- The maximum total computational time was exceeded (> 60 s) by 9 of the
- 10 scenarios with the node computational time ranging between 0.10 s and
- 0.21 s.
+The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ implementation included restrictions on the total computational time (60
+ s) and node computational time (0.25 s) for practical purposes.
+ e75dc283aee61ba058601407dfdbc4752a08fd91 The maximum total computational
+ time was exceeded (> 60 s) by 9 of the 10 scenarios with the node computational
+ time ranging between 0.10 s and 0.21 s.
  The remaining scenario exceeded the node computational time (> 0.25 s),
  but was within the maximum computational time (52.82 s) when the simulation
  ended.
@@ -2820,14 +2868,8 @@ In contrast, there were two cases where the distance traveled was within
  For Case 8, the closest crew members to the robot's trajectory are approximatel
 y facing 180 degrees away.
  Therefore, the robot in the proxemic scenario primarily experienced the
- shape factor from sigma_r
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
+ shape factor from 
+\begin_inset Formula $\sigma_{r}$
 \end_inset
 
  that is closer to the non-proxemic shape factor value 
@@ -3132,14 +3174,8 @@ In Case 6 the simulation times out for the non-proxemic case and the proxemic
  In the proxemic scenario, the robot moves closer to the wall earlier (x
  = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
  is able to reach all goal zones.
- Also, the width of the cost function is smaller behind the crew (sigma_r
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
+ Also, the width of the cost function is smaller behind the crew (
+\begin_inset Formula $\sigma_{r}$
 \end_inset
 
  approximately 0.25 m while passing) than than non-proxemic width enabling
