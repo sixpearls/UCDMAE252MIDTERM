@@ -1352,6 +1352,15 @@ s for two dimensions:
 
 \end_inset
 
+The termination of movement toward a goal is triggered when the velocity
+ and control forces approach zero.
+ If the current waypoint is the final waypoint in the mission, the simulation
+ terminates.
+ This check does not depend on the position of the robot, so the simulation
+ may move on or terminate without reaching the goal.
+\end_layout
+
+\begin_layout Standard
 In many APF simulations, damping in the overall system is included in the
  dynamic model of the mobile robot, caused by losses such as friction.
  We chose to consider the damping as a tunable parameter in the scheme navigatio
@@ -1471,21 +1480,6 @@ We chose the values for the constants
  produce better path planning performance.
  We recommended that further parameter trials be performed before extending
  the research presented in this paper.
-\end_layout
-
-\begin_layout Standard
-Since two of the three missions used in the experiment involve multiple
- waypoints, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-BEN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1727,21 +1721,13 @@ where
 \end_inset
 
  for diagonal next nodes.
- Our considered velocity range was then determined by 
-\begin_inset Formula $v_{max}=\min(0.5,\sqrt{v_{0}^{2}+2\frac{T_{max}}{m}s})$
-\end_inset
-
-, 
-\begin_inset Formula $v_{min}=\max(0,\sqrt{v_{0}^{2}-2\frac{T_{max}}{m}s})$
-\end_inset
-
-, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-BEN SPACE OUT
-\end_layout
+ The endpoints for the considered velocity range was then determined by
+ 
+\begin_inset Formula 
+\begin{align*}
+v_{max} & =\min\left(0.5,\sqrt{v_{0}^{2}+2\frac{T_{max}}{m}s}\right)\\
+v_{min} & =\max\left(0,\sqrt{v_{0}^{2}-2\frac{T_{max}}{m}s}\right)
+\end{align*}
 
 \end_inset
 
