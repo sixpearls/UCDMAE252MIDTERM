@@ -466,7 +466,7 @@ ion missions, such as planned trips to Mars, when communications between
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -745,7 +745,7 @@ key "kirby2009companion"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1616,7 +1616,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1657,7 +1657,7 @@ name "fig:Crew1"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1698,7 +1698,7 @@ name "fig:Crew2"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1739,7 +1739,7 @@ name "fig:Crew3"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2712,15 +2712,91 @@ We note that the larger shape factor in the front of the crew corresponded
 Results
 \end_layout
 
+\begin_layout Standard
+The analysis of the results was separated by path planning algorithm and
+ focused on the comparision between the non-proxemic and proxemic model,
+ as the aim of the analysis was the ascertain the effects of a proxemic
+ model on path planning.
+ The metrics used for the analysis consisted of goals attained, distance
+ traveled, average velocity, maximum velocity, minimum distance, completion
+ time, collisions, and personal space zones.
+ The minimum distance refers to the smallest distance between the robot
+ and a crew member for the duration of a simulation.
+ For multiple crew members, the smallest distance overall was used.
+ The completion time is the total time of the simulation, and the robot
+ does not have the navigate to every goal zone for the simulation to cease.
+ The simulation ended when all goals were attained, the robot was entrapped
+ in a local minimum (APF), or the computational times exceeded the limits
+ (A*).
+ The definitions of the personal space zone used as shown in 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert ref
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Personal Space Zones
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Social_Dist_Table.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Personal Spaces Zones for HHI used to determine zone of robot (D_p is the
+ proxemic distance between the robot and crew).
+ Based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "walters2009empirical"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Comparison of Non-proxemic and Proxemic APF Results
 \end_layout
 
 \begin_layout Standard
-Main concern = comparison between non-proxemic and proxemic, so analysis
- done on primarily this factor; non-proxemic and proxemic compared within
- a given case (APF x Mission Type x Crew Configuration); robot instructed
- to continue to next goal if v = 0; time?
+; robot instructed to continue to next goal if v = 0; time?
 \end_layout
 
 \begin_layout Standard
