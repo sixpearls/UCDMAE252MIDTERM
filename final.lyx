@@ -1154,48 +1154,6 @@ key "weinrich2013prediction"
 , literature has shown that humans change their patterns of motion in response
  to a moving robot.
  The added complexity is out of the scope of this project.
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ProxModel.png
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simplified illustration of simulation for A) APF and B) 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- for one crew and agnostic of task type (1, 2, or 3).
- Higher repulsive forces or costs shown for area in front of crew.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:proxemicsmodel"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -1271,12 +1229,13 @@ scenario
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename mission_group.png
+	lyxscale 25
 	width 3.5in
 
 \end_inset
@@ -1527,6 +1486,16 @@ We chose the values for the constants
 \begin_layout Standard
 Since two of the three missions used in the experiment involve multiple
  waypoints, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+BEN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1565,16 +1534,14 @@ Our general algorithm was implemented using a priority queue of potential
  the cumalative cost and a heuristic value.
  The heuristic is a function of location and velocity that estimates the
  cost  of the current path based on path length and velocity.
- The heuristic used in our simulations is described below
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-in Section 4.2.1
-\end_layout
+ The heuristic used in our simulations is described below in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Heuristic-and-parameter"
 
 \end_inset
 
+.
  Once each new potential path was added to the priority queue, the algorithm
  then selected the path with the lowest priority from the current queue,
  and it repeated the same process to extend the newly selected path.
@@ -1586,6 +1553,13 @@ in Section 4.2.1
 
 \begin_layout Subsubsection
 Heuristic and parameter determinations
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Heuristic-and-parameter"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1672,35 +1646,6 @@ key "kirbythesis"
  scenarios, we expect the values do not have a significant influence on
  the effect of using the different human avoidance models.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Some other stuff where Molly's and my stuff clashed: .======= and a reasonable
- answer was selected qualitatively.
- While, as with APF, more rigorous testing of weights is recommended for
- further studies, our method of selection was deemed sufficient given the
- time limitations and scope of our study.
- Parameters were kept equal across proxemic and nonproxemic scenarios and
- all case studies, to allow for direct comparison of results.>>>>>>> bf3f92f59b96
-bb430039f25b63cba6482cbb7e99 Our results presented in Section 5 were found
- with weights of 
-\begin_inset Formula $\alpha=1$
-\end_inset
-
- and 
-\begin_inset Formula $\beta=0.05$
-\end_inset
-
-<<<<<<< HEAD, with coded exceptions to avoid division by 0.
- Delete? =======, with coded exceptions to the velocities considered to
- avoid division by 0.
- >>>>>>> bf3f92f59b96bb430039f25b63cba6482cbb7e99
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph*
@@ -1800,7 +1745,17 @@ where
 \begin_inset Formula $v_{min}=\max(0,\sqrt{v_{0}^{2}-2\frac{T_{max}}{m}s})$
 \end_inset
 
-, and five velocities (limited to mitigate the time taken for the code to
+, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+BEN SPACE OUT
+\end_layout
+
+\end_inset
+
+and five velocities (limited to mitigate the time taken for the code to
  run), equally spaced within that range, were considered at each viable
  next node.
  
@@ -1893,21 +1848,7 @@ where
 \begin_inset Formula $y$
 \end_inset
 
- coordinates of the crew being modeled,
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
- 
-\begin_inset Formula $A$
-\end_inset
-
- is an amplitude normalizing constant,
-\end_layout
-
-\end_inset
-
- and 
+ coordinates of the crew being modeled, and 
 \begin_inset Formula $\sigma_{n}^{2}$
 \end_inset
 
@@ -2110,9 +2051,10 @@ name "tab:Personal-Space-Zones"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename Social_Dist_Table.png
-	width 3in
+	width 2.5in
 
 \end_inset
 
@@ -2293,7 +2235,7 @@ Ben-this is where the paired plots go
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2309,6 +2251,84 @@ Case 7
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename case7_apf_pair.png
+	lyxscale 30
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparision of Non-proxemic and Proxemic Robot Path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename case7_dist_pair.png
+	lyxscale 50
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of Non-Proxemic and Proxemic Robot Distance from Selected Crew
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SARAH LABEL AND LINK
 \end_layout
 
 \end_inset
@@ -2623,9 +2643,9 @@ The
 
  implementation included restrictions on the total computational time (60
  s) and node computational time (0.25 s) for practical purposes.
- The maximum total computational time was exceeded (> 60 s) by 9 of the
- 10 scenarios with the node computational time ranging between 0.10 s and
- 0.21 s.
+ e75dc283aee61ba058601407dfdbc4752a08fd91 The maximum total computational
+ time was exceeded (> 60 s) by 9 of the 10 scenarios with the node computational
+ time ranging between 0.10 s and 0.21 s.
  The remaining scenario exceeded the node computational time (> 0.25 s),
  but was within the maximum computational time (52.82 s) when the simulation
  ended.
