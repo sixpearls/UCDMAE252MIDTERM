@@ -132,7 +132,7 @@ status open
 
 \end_inset
 
-,Sarah
+, Sarah
 \begin_inset space ~
 \end_inset
 
@@ -396,6 +396,132 @@ key "smartspheres,bualat2015astrobee"
 .
  As the immediate future of small satellites for IVAs, we chose to adapt
  an Astrobee model for the purposes of our simulation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+REVIEW HERE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell,
+ It will be powered by lithium ion rechargeable batteries, and it will house
+ a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
+ airflow, computer-vision-based navigational system, HD camera, fisheye
+ camera, depth sensor, perching arm, 2DOF robotic arm with gripper, and
+ two payload ports that provide potential for additional sensors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spheresweb,yoo2015avionics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Astrobee is designed to navigate around the ISS USOS (U.S.
+ Orbital Segment), which consists of 9 modules: the U.S.
+ Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
+ Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
+se Module, Cupola, and the U.S.
+ Airlock 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bualat2015astrobee"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Astrobee is able to internally update its position at ~6Hz
+\end_layout
+
+\begin_layout Standard
+Astrobee's current vision sensors, however, are only placed on four faces
+ of the satellite 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+.
+ We chose to model Astrobee as if it had all of the requisite information
+ available to it, and we ignored sensor noise and uncertainty.
+\end_layout
+
+\begin_layout Standard
+The primary experiment concerning computer vision based navigation for satellite
+s onboard the ISS is MIT's VERTIGO (Visual Estimation for Relative Tracking
+ and Inspection of Generic Object) goggles, a hardware and software addition
+ to the SPHERES satellites.
+ VERTIGO experiments have demonstrated a successful stereo vision-based
+ orbiting of an unknown object at a close range, using simultaneous location
+ and mapping (SLAM) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TweddleVertigo,fourievertigo"
+
+\end_inset
+
+.
+ The experiments demonstrated the capabilities of a free-flying satellite
+ to use computer vision to navigate the challenges of 6-DOF motion in real
+ time.
+\end_layout
+
+\begin_layout Standard
+Due to the demonstrated feasibility of computer vision-based navigation
+ for satellites on the ISS and the scope of our proposed investigation,
+ we did not include the limitations of sensors in our simulation.
+ We recognize that sensors have limitations, such as noise and errors at
+ small or large distances; in order for simulation results to be directly
+ applied to a physical situation involving Astrobee, these limitations would
+ need to be included in a final simulation.
+ However, thanks to Astrobee's payload ports for additional software 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew,bualat2015astrobee"
+
+\end_inset
+
+, the sensors onboard Astrobee are highly customizable.
+ Since our investigation focused on the effects of proxemics on our path-plannin
+g algorithms, it remained more useful if the simulation stayed in a generalized
+ form, which could be modified appropriately to an individually-selected
+ sensor system if necessary.
+ We shall assume that with additional computer vision software or through
+ supplementation with other sensors, Astrobee could have all needed information
+ available to it at all times.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STOP REVIEWING
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -690,7 +816,7 @@ reference "tab:Comparison-of-HRI"
 
 \end_inset
 
-in Appendix for brief comparison of studies reviewed here).
+ in Appendix for brief comparison of studies reviewed here).
  Most work reviewed was not conducted in a simulation, and it has been difficult
  to find relevant simulation studies to date.
  Kirby et.
@@ -723,181 +849,11 @@ Some proxemic distance factors are more relevant for the application of
  so it must be left to future researchers.
 \end_layout
 
-\begin_layout Section
-Experimental Design
-\end_layout
-
-\begin_layout Subsection
-Problem Formulation 
-\end_layout
-
-\begin_layout Standard
-Path planning generally uses either a global, hierarchical search or a local,
- reactive method.
- To incorporate human-aware navigation and increase human comfort, these
- methods are modified to include a proxemic model 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kruse2013human"
-
-\end_inset
-
-.
- However, much human-aware path planning is focused on a global, hierarchical
- approach; in the human-aware navigation survey by Kruse et.
-\begin_inset space ~
-\end_inset
-
-al, reactive methods are not considered 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kruse2013human"
-
-\end_inset
-
-.
- We are particularly interested in whether a hierarchical architecture is
- necessary for human-aware path planning, as the literature seems focused
- on global search methods.
- To that end, we have explored the question:
-\end_layout
-
-\begin_layout Quote
-
-\series bold
-How do the output paths of the 
-\begin_inset Formula $\mathbf{A^{*}}$
-\end_inset
-
- and Artifical Potential Field (APF) architectures react to the introduction
- of proxemics during autonomous navigation in an enclosed area? 
-\end_layout
-
-\begin_layout Standard
-Global search methods can find globally optimal paths, but are often slow
- and require modification to be used for real-time navigation in dynamic
- environments.
- In contrast, reactive methods are simple and well suited to real-time control,
- but may perform non-optimally.
- Most local, reactive techniques are based on APF, which may cause the robot
- to stop moving towards the target due to local minima in the potential
- field.
- Overweighted obstacles can also overwhelm the attraction to the target
- and cause navigational errors.
- For both path planning methods, we compared the robot's trajectory with
- and without a proxemic model.
- In APF, soft constraints were used to avoid collisions with the crew and
- the environment's walls.
- In 
-\begin_inset Formula $A^{*}$
-\end_inset
-
-, we used hard constraints to avoid collisions with both the wall and crew
- members, although approaching humans remains a soft constraint given by
- the cost function model.
- In the following subsections, we describe the two path planning methods,
- our justifications for their choice, and their expected shortcomings.
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename moving_proxemic_map.png
-	lyxscale 25
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-A graphical representation of the cost or repulsive potential associated
- with a moving human.
- Figure taken from Kirby 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
-.
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:moving_human_prox"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pass_on_right_proxemic_map.png
-	lyxscale 25
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-A graphical representation of the cost or potential associated with the
- social cue to pass on the left.
- Figure taken from Kirby 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
-.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:pass_left_prox"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
+Path Planning Methods
+\end_layout
+
+\begin_layout Paragraph
 Heuristic Graph Search For Path Planning 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -1009,13 +965,13 @@ key "kirbythesis"
  algorithm will be detailed in Section IV: Techniques and Algorithms.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Artificial Potential Field
 \end_layout
 
 \begin_layout Standard
-The APF method for robot navigation was introduced by Khatib in the 1980's
- 
+The Artificial Potential Field (APF) method for robot navigation was introduced
+ by Khatib in the 1980's 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "khatib1986real"
@@ -1073,6 +1029,180 @@ key "yun1997wall,mabrouk2008solving"
  
 \end_layout
 
+\begin_layout Section
+Experimental Design
+\end_layout
+
+\begin_layout Subsection
+Problem Formulation 
+\end_layout
+
+\begin_layout Standard
+Path planning generally uses either a global, hierarchical search or a local,
+ reactive method, such as those described above.
+ To incorporate human-aware navigation and increase human comfort, these
+ methods are modified to include a proxemic model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ However, much human-aware path planning is focused on a global, hierarchical
+ approach; in the human-aware navigation survey by Kruse et.
+\begin_inset space ~
+\end_inset
+
+al, reactive methods are not considered 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruse2013human"
+
+\end_inset
+
+.
+ We are particularly interested in whether a hierarchical architecture is
+ necessary for human-aware path planning, as the literature seems focused
+ on global search methods.
+ To that end, we have explored the question:
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+How do the output paths of the 
+\begin_inset Formula $\mathbf{A^{*}}$
+\end_inset
+
+ and APF architectures react to the introduction of proxemics during autonomous
+ navigation in an enclosed area? 
+\end_layout
+
+\begin_layout Standard
+Global search methods can find globally optimal paths, but are often slow
+ and require modification to be used for real-time navigation in dynamic
+ environments.
+ In contrast, reactive methods are simple and well suited to real-time control,
+ but may perform non-optimally.
+ Most local, reactive techniques are based on APF, which may cause the robot
+ to stop moving towards the target due to local minima in the potential
+ field.
+ Overweighted obstacles can also overwhelm the attraction to the target
+ and cause navigational errors.
+ For both path planning methods, we compared the robot's trajectory with
+ and without a proxemic model.
+ In APF, soft constraints were used to avoid collisions with the crew and
+ the environment's walls.
+ In 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, we used hard constraints to avoid collisions with both the wall and crew
+ members, although approaching humans remains a soft constraint given by
+ the cost function model.
+ In the following subsections, we describe the two path planning methods,
+ our justifications for their choice, and their expected shortcomings.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename moving_proxemic_map.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graphical representation of the cost or repulsive potential associated
+ with a moving human.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:moving_human_prox"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pass_on_right_proxemic_map.png
+	lyxscale 25
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graphical representation of the cost or potential associated with the
+ social cue to pass on the left.
+ Figure taken from Kirby 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirby2009companion"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pass_left_prox"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Simulation Design
 \end_layout
@@ -1080,45 +1210,73 @@ Simulation Design
 \begin_layout Standard
 We chose to investigate our research question in the previously-identified
  context of HRI in spaceflight.
+ In the interest of focusing our investigation, we have intentionally limited
+ the scope of our simulation.
+ By focusing the simulation on two-dimensional motion with simple dynamical
+ representaiton of the robot and simple geometric constructions for the
+ crew and module boundaries, our study can focus on the effect of proxemic
+ models on the path planning methods.
+\end_layout
+
+\begin_layout Subsubsection
+Robot Model
+\end_layout
+
+\begin_layout Standard
+Our robot model was represented by a 12”x12” square with a 6kg mass, modeled
+ after the Astrobee robot.
+ , and it has a hardware safety constraint that limits thrust at a maximum
+ of 0.72N 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew"
+
+\end_inset
+
+, so we ensured that our chosen time and velocity steps for APF and A* reflected
+ these motion limitations.
+ While in two dimensions, Astrobee should be capable of 3-DOF holonomic
+ motion (x translation, y translation, and xy rotation), we simplified our
+ simulations by considering only translation, rather than rotation, and
+ considered every direction of travel to have the same specified maximum
+ thrust.<<<<<<< HEAD For collision detection, we used the robot's working
+ radius, defined as the distance from the center of the robot to a corner
+ of the robot, or 8.49======= As we allowed the robot to translate in both
+ x and y directions simultaneously, we still managed to approximate holonomic
+ motion.
+ For motion to be modeled more completely, more detailed specifications
+ on Astrobee's rotational speeds would need to be made available, as we
+ could not find any mention of such specifications in the literature.
+ As we did not model rotation, yet still wished to acknowledge that rotation
+ could be possible in future simulations, we used the robot's 
+\begin_inset Quotes eld
+\end_inset
+
+working radius,
+\begin_inset Quotes erd
+\end_inset
+
+ defined as the distance from the center of the robot to a corner of the
+ robot (8.49>>>>>>> bf3f92f59b96bb430039f25b63cba6482cbb7e99
+\begin_inset Quotes erd
+\end_inset
+
+) for collision detection purposes.
+\end_layout
+
+\begin_layout Standard
+We treated the propulsion and battery lifetimes as irrelevant given the
+ scope of our experiment.
  
 \end_layout
 
 \begin_layout Standard
-The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell.
- It will be powered by lithium ion rechargeable batteries, and it will house
- a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
- airflow, computer-vision-based navigational system, HD camera, fisheye
- camera, depth sensor, perching arm, 2DOF robotic arm with gripper, and
- two payload ports that provide potential for additional sensors 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "spheresweb,yoo2015avionics"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Astrobee is designed to navigate around the ISS USOS (U.S.
- Orbital Segment), which consists of 9 modules: the U.S.
- Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
- Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
-se Module, Cupola, and the U.S.
- Airlock 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "bualat2015astrobee"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-In the interest of acquiring meaningful results in a limited time-frame,
- we have intentionally limited the scope of our simulation, making many
- assumptions and simplifications, which we describe below.
+Much as we simplified the environment to enable clear evaluation of results,
+ we made some significant assumptions with respect to the capabilities of
+ Astrobee itself.
+ In order to test the robotic architectures and algorithms, it is necessary
+ that Astrobee accurately detect humans and their associated orientations
+ with omnipotence, in all directions at all times.
  
 \end_layout
 
@@ -1328,9 +1486,6 @@ reference "fig:Illustration-of-paths"
  energy and ensure stability during a stationary task.
  The third task sent Astrobee along the perimeter of the module, testing
  its ability to navigate obstacles along a more prescriptive path.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1762,133 +1917,6 @@ name "fig:TestTable"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Simulated Robot
-\end_layout
-
-\begin_layout Subsection
-Robot Model
-\end_layout
-
-\begin_layout Standard
-Our robot model was represented by a 12”x12” square with a 6kg mass, modeled
- after the Astrobee robot.
- Astrobee is able to internally update its position at ~6Hz, and it has
- a hardware safety constraint that limits thrust at a maximum of 0.72N 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-, so we ensured that our chosen time and velocity steps for APF and A* reflected
- these motion limitations.
- While in two dimensions, Astrobee should be capable of 3-DOF holonomic
- motion (x translation, y translation, and xy rotation), we simplified our
- simulations by considering only translation, rather than rotation, and
- considered every direction of travel to have the same specified maximum
- thrust.<<<<<<< HEAD For collision detection, we used the robot's working
- radius, defined as the distance from the center of the robot to a corner
- of the robot, or 8.49======= As we allowed the robot to translate in both
- x and y directions simultaneously, we still managed to approximate holonomic
- motion.
- For motion to be modeled more completely, more detailed specifications
- on Astrobee's rotational speeds would need to be made available, as we
- could not find any mention of such specifications in the literature.
- As we did not model rotation, yet still wished to acknowledge that rotation
- could be possible in future simulations, we used the robot's 
-\begin_inset Quotes eld
-\end_inset
-
-working radius,
-\begin_inset Quotes erd
-\end_inset
-
- defined as the distance from the center of the robot to a corner of the
- robot (8.49>>>>>>> bf3f92f59b96bb430039f25b63cba6482cbb7e99
-\begin_inset Quotes erd
-\end_inset
-
-) for collision detection purposes.
-\end_layout
-
-\begin_layout Standard
-We treated the propulsion and battery lifetimes as irrelevant given the
- scope of our experiment.
- 
-\end_layout
-
-\begin_layout Subsection
-Sensors
-\end_layout
-
-\begin_layout Standard
-Much as we simplified the environment to enable clear evaluation of results,
- we made some significant assumptions with respect to the capabilities of
- Astrobee itself.
- In order to test the robotic architectures and algorithms, it is necessary
- that Astrobee accurately detect humans and their associated orientations
- with omnipotence, in all directions at all times.
- Astrobee's current vision sensors, however, are only placed on four faces
- of the satellite 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-.
- We chose to model Astrobee as if it had all of the requisite information
- available to it, and we ignored sensor noise and uncertainty.
-\end_layout
-
-\begin_layout Standard
-The primary experiment concerning computer vision based navigation for satellite
-s onboard the ISS is MIT's VERTIGO (Visual Estimation for Relative Tracking
- and Inspection of Generic Object) goggles, a hardware and software addition
- to the SPHERES satellites.
- VERTIGO experiments have demonstrated a successful stereo vision-based
- orbiting of an unknown object at a close range, using simultaneous location
- and mapping (SLAM) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "TweddleVertigo,fourievertigo"
-
-\end_inset
-
-.
- The experiments demonstrated the capabilities of a free-flying satellite
- to use computer vision to navigate the challenges of 6-DOF motion in real
- time.
- 
-\end_layout
-
-\begin_layout Standard
-Due to the demonstrated feasibility of computer vision-based navigation
- for satellites on the ISS and the scope of our proposed investigation,
- we did not include the limitations of sensors in our simulation.
- We recognize that sensors have limitations, such as noise and errors at
- small or large distances; in order for simulation results to be directly
- applied to a physical situation involving Astrobee, these limitations would
- need to be included in a final simulation.
- However, thanks to Astrobee's payload ports for additional software 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew,bualat2015astrobee"
-
-\end_inset
-
-, the sensors onboard Astrobee are highly customizable.
- Since our investigation focused on the effects of proxemics on our path-plannin
-g algorithms, it remained more useful if the simulation stayed in a generalized
- form, which could be modified appropriately to an individually-selected
- sensor system if necessary.
- We shall assume that with additional computer vision software or through
- supplementation with other sensors, Astrobee could have all needed information
- available to it at all times.
- 
 \end_layout
 
 \begin_layout Section
@@ -2631,7 +2659,7 @@ The results are presented for APF and then A*.
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula $percent\:change\:=\frac{(proxemic)-(non-proxemic)}{(non-proxemic)}x100\%$
+\begin_inset Formula $\text{percent change}=\frac{\text{proxemic}-\text{non-proxemic}}{\text{non-proxemic}}\times100\%$
 \end_inset
 
 
