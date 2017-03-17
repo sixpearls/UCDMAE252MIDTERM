@@ -2870,9 +2870,9 @@ Unique Cases
 \end_layout
 
 \begin_layout Standard
-For the APF simulations, two cases were identified as unique due to the
- significantly different robot paths between the non-proxemic and proxemic
- scenarios.
+For the APF simulations, two cases (Case 1 and 6) were identified as unique
+ due to the significantly different robot paths between the non-proxemic
+ and proxemic scenarios.
  As such, it may not be reasonable to compare metrics from these scenarios
  and should be discussed individually.
  
@@ -3013,22 +3013,10 @@ Incomplete Missions and Collisions
 
 \begin_layout Standard
 The A* simulation included 24 test scenarioes from a full factorial analysis
- of mission type, crew configuration, and inclusion of proxemics.
+ of mission type, crew configuration, and model.
  The robot was unable to navigation to all goal zones successfully in 10
  scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
  0% to 80%.
- These 10 scenarios occurred across the different combinations of mission
- type and crew configuration (see table XX
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-add table?
-\end_layout
-
-\end_inset
-
-).
  For the non-proxemic Case 1, the robot started to navigate around the crew
  in the same direction as the proxemic scenario, but was unable to continue
  past a few steps.
@@ -3176,44 +3164,31 @@ Unique to the proxemic scenarios is the dependence of the cost function
  However, for all cases the average velocity was lower for proxemic scenarios
  (35.89 cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s),
  yet the change in distance traveled was not consistent.
- The distance traveled increased for the direct mission with a clustered
- crew and the waypoints mission with one crew, where in the former case
- the robot is perturned from the module centerline in the proxemic scenario
- and for the latter case the robot maintains a farther distance from the
- crew when crossing in front.
+ The distance traveled increased for the Case 3 and Case 5, where in the
+ former case the robot is perturbed from the module centerline in the proxemic
+ scenario and for the latter case the robot maintains a farther distance
+ from the crew when crossing in front.
  In other cases, the proxemic scenario had a smaller average velocity and
  shorter distance traveled than the non-proxemic one.
- The first case (direct mission with random crew) has a relatively small
- difference of 8.28%.
- The robot appears to stay closer to the centerline and crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- near the goal zone for the proxemic case.
+ The first case (Case 4) has a relatively small difference of 8.28%.
+ The robot appears to stay closer to the centerline and Crew 2 near Goal
+ 2 for the proxemic case.
  Even though the quantity of direction changes in similar (36 for non-proxemic
  and 35 for proxemic), the robot in the non-proxemic case travels a shorter
  distance before changing direction with a higher average velocity, which
  may explain the increased overal distance and shorter completion time.
- Another case (waypoints mission with clustered crew) follows a similar
- pattern with a smaller average velocity and distance traveled for the proxemic
- scenario with the key difference that the simulation ended before reaching
- the second goal.
+ Another case (Case 7) follows a similar pattern with a smaller average
+ velocity and distance traveled for the proxemic scenario with the key differenc
+e that the simulation ended before reaching Goal 2.
  As expected, the robot maintains a farther distance from the clustered
  crew causing the shorter distance traveled.
- The simulations for case # (monitoring mission with random crew) also ended
- before reaching the fourth goal.
- The robot approaches closer to the crew clustered by the third goal for
- the non-proxemic case.
+ The simulations for case 12 also ended before reaching the goal (Goal 4).
+ The robot approaches closer to the crew clustered by the Goal 3 for the
+ non-proxemic case.
  Compared to other cases, the percent change in average velocity for this
  case was relatively small (6.67%) and the decreased velocity for the proxemic
- scenario appears to be attributed to the effect of the clustered crew by
- the third goal (see figure velocity color map)
+ scenario appears to be attributed to the effect of Crew 2 and 3 by Goal
+ 3 (see figure velocity color map)
 \begin_inset Note Note
 status open
 
@@ -3229,9 +3204,8 @@ insert
 \begin_layout Standard
 In contrast, there were two cases where the distance traveled was within
  0.57% between the applicable non-proxemic scenarios.
- For the first case (waypoints mission with random crew), the closest crew
- members to the robot's trajectory are approximately facing 180 degrees
- away.
+ For Case 8, the closest crew members to the robot's trajectory are approximatel
+y facing 180 degrees away.
  Therefore, the robot in the proxemic scenario primarily experienced the
  cost from sigma_r
 \begin_inset Note Note
@@ -3248,14 +3222,14 @@ fix
 status open
 
 \begin_layout Plain Layout
-evidence for this?
+ref table
 \end_layout
 
 \end_inset
 
 .
- For the second case (monitoring mission with one crew), the crew is positioned
- in the module center while the robot navigates around the perimeter.
+ For Case 9, the crew is positioned in the module center while the robot
+ navigates around the perimeter.
  It appears at this distance that inclusion of the proxemic model does not
  affect the results, as every metric comparision is within 4.76% of the non-proxe
 mic scenario.
@@ -3277,8 +3251,7 @@ fix notation
 \end_inset
 
 ) was achieved for 23 scenarios.
- During the direct mission with random crew, the proxemic scenario had a
- maximum velocity of 49.14 cm/s.
+ During Case 4, the proxemic scenario had a maximum velocity of 49.14 cm/s.
  This maximum velocity resulted from the tradeoff between the time penalty
  and velocity-dependent cost function.
  The shortest path to the goal zone would bring the robot close to crew
@@ -3311,7 +3284,7 @@ is that okay to say?
 status open
 
 \begin_layout Plain Layout
-would a side by side comparision of the velocity plots be useful?-yes
++side by side comparision of the velocity plots
 \end_layout
 
 \end_inset
@@ -3326,30 +3299,11 @@ Personal Space Zones and Minimum Distance
 \begin_layout Standard
 The majority of cases saw a greater than 5% change from the non-proxemic
  scenario minimum distance.
- There were three cases (
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-list cases
-\end_layout
-
-\end_inset
-
-) where the percent change ranged from 0% to 4.76%, and can be attributed
- to either a) the robot passing through the center when the crew is on the
- perimeter
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-id
-\end_layout
-
-\end_inset
-
-, or b) the robot passing crew on the side or behind, or c) the robot is
- circumnavigating the module while the crew is in the center.
+ There were three cases (Cases 3, 4, 9) where the percent change ranged
+ from 0% to 4.76%, and can be attributed to either a) the robot passing through
+ the center when the crew is on the perimeter (Case 3), or b) the robot
+ passing crew on the side or behind (Case 4), or c) the robot is circumnavigatin
+g the module while the crew is in the center (Case 9).
  All these explanations converge on the situation where the proxemic cost
  function is less and closer in value to the non-proxemic one.
 \end_layout
@@ -3358,32 +3312,14 @@ id
 In cases where the robot's trajectory brought it in front of crew, the minimum
  distance for the non-proxemic scenario was smaller, as it could approach
  closer to the crew due to the decreased width of the cost function.
- This result occured for case #, #, and # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(2,1),(2,3),(3,4)
-\end_layout
-
-\end_inset
-
-, where the percent change was 13.99%, 19.42% and 36.41%.
+ This result occured for Case 5, 7, and 12, where the percent change was
+ 13.99%, 19.42% and 36.41%.
  However, the robot occupied the same personal space zones–personal, social,
  and public–for both scenarios and the time spent in the personal zone did
  not appear significantly different.
- In contrast, there was a small percent change (-6.73%) for case # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- that was investigated for a cause until it was determined that the percent
- change translates to 5.04 cm.
+ In contrast, there was a small percent change (-6.73%) for Case 8 that was
+ investigated for a cause until it was determined that the percent change
+ translates to 5.04 cm.
 \end_layout
 
 \begin_layout Subsubsection
