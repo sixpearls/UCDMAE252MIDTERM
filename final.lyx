@@ -1244,7 +1244,8 @@ CITATION
 
 \begin_layout Standard
 The crew is modeled as circle with an orientation.
- The circle radius is 35.5 cm representing a typical shoulder width 
+ The circle radius is 35.5 cm representing the average shoulder width for
+ the 95% male and 5% female 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "haslegrave1986characterizing"
@@ -1252,6 +1253,15 @@ key "haslegrave1986characterizing"
 \end_inset
 
 .
+ The average relationship between shoulder width and height 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haslegrave1986characterizing"
+
+\end_inset
+
+was used to verify that the shoulder width corresponded to a height within
+ the published astronaut requirements.
  All humans have been simulated with equal proxemics.
  This is a simplification, as studies show that proxemics vary between people
  and across cultures 
