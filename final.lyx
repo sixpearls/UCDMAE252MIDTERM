@@ -2423,7 +2423,175 @@ Personal Space Zones and Minimum Distance
 \end_layout
 
 \begin_layout Standard
-blah
+The distance between the robot and each crew member was used to calculate
+ the minimum distance and the time spent in each personal space zone as
+ defined by Hall 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation; table of zones from reference?
+\end_layout
+
+\end_inset
+
+.
+ The change in minimum distance for four cases was within 0.28%, where in
+ three of the cases (direct mission two crew; direct mission clustered crew;
+ monitoring mission one crew) the robot's trajectory was relatively far
+ from the crew members and it would be expected that the proxemic cost function
+ would have an minimal effect.
+ For these cases, the minimum crew distance was greater than 1.2 m and in
+ the social zone.
+ In the fourth case, the robot path appears identical to the third goal
+ zone and occurs at a relatively large distance from crew members 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+include comparision figure? plot both paths on one?
+\end_layout
+
+\end_inset
+
+.
+ These results highlight that inclusion of a proxemic model has a smaller
+ effect when distances between the robot and crew are larger.
+\end_layout
+
+\begin_layout Standard
+The analysis showed that a robot with a proxemic model maintained a smaller
+ minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
+ In the direct mission with random crew, the maximum velocity does not exceed
+ 25 cm/s for either scenario.
+ As a result, the robot with the proxemic model passes crew from behind
+ and on the side and the cost function in these cases are smaller than for
+ the non-proxemic one
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+maybe a table somewhere with how std dev compares for key velocity points
+\end_layout
+
+\end_inset
+
+.
+ A similar situation occurs in the waypoints mission with random crew where
+ the proxemic model robot passes closer to crew members # and # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, which are oriented away from the robot.
+ Again this situation is repeated for case # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ and case #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, where the robot passes behind and with velocities less than 25 cm/s (relevant
+ for proxemic).
+ Therefore, the overall orientation of the crew is an important factor.
+ 
+\end_layout
+
+\begin_layout Standard
+In two cases, the proxemic scenario yielded a larger minimum distance.
+ The first case, waypoint mission with one crew, the robot passes in front
+ of the crew member.
+ Since passing in front is a higher cost zone, the proxemic model maintains
+ a larger distance from the crew, as expected.
+ The robot also approaches a cluster of crew and crosses in front in case
+ # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ The proxemic model produced expected results with the robot maintaining
+ a larger distance.
+ These results compliment the recently discussed findings, where the crew
+ orientation is an important factor.
+\end_layout
+
+\begin_layout Standard
+There were surprisingly few differences throughout the scenarios regarding
+ personal space zones, and the differences ranged from 0% to 1.15% across
+ 9 cases.
+ In the waypoints mission with clustered crew, the non-proxemic model robot
+ spent signficantly longer transversing the space in front of the cluster
+ and at a closer distance.
+ Consequently, the robot stayed longer in the personal zones for crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, and crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ by 236.75 s, 194.00 s, 183.00 s, respectively.
+ For all 24 scenarios, the robot never entered the close intimate or intimate
+ zones.
+ Overall, the non-proxemic and proxemic models behaved similarly in terms
+ of personal space zones
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+for discussion, the bins have a width and people's preference may draw different
+ lines
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
