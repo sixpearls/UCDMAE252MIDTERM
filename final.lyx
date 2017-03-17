@@ -1956,11 +1956,11 @@ where
 
  for diagonal next nodes.
  Our considered velocity range was then determined by 
-\begin_inset Formula $v_{max}=min(Absolute\ max\ velocity,Max\ possible\ velocity)$
+\begin_inset Formula $v_{max}=\min(0.5,\sqrt{v_{0}^{2}+2\frac{T_{max}}{m}s})$
 \end_inset
 
 , 
-\begin_inset Formula $v_{min}=max(0,Min\ possible\ velocity)$
+\begin_inset Formula $v_{min}=\max(0,\sqrt{v_{0}^{2}-2\frac{T_{max}}{m}s})$
 \end_inset
 
 , and five velocities (limited to mitigate the time taken for the code to
