@@ -1883,7 +1883,13 @@ key "SmithAstrobeeNew"
  simulations by considering only translation, rather than rotation, and
  considered every direction of travel to have the same specified maximum
  thrust.
- For collision detection, we used the robot's 
+ As we allowed the robot to translate in both x and y directions simultaneously,
+ we still managed to approximate holonomic motion.
+ For motion to be modeled more completely, more detailed specifications
+ on Astrobee's rotational speeds would need to be made available, as we
+ could not find any mention of such specifications in the literature.
+ As we did not model rotation, yet still wished to acknowledge that rotation
+ could be possible in future simulations, we used the robot's 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1892,11 +1898,11 @@ working radius,
 \end_inset
 
  defined as the distance from the center of the robot to a corner of the
- robot, or 8.49
+ robot (8.49
 \begin_inset Quotes erd
 \end_inset
 
-.
+) for collision detection purposes.
 \end_layout
 
 \begin_layout Standard
@@ -2040,7 +2046,7 @@ The repulsive potential field associated with the module boundary is a Gaussian,
 status open
 
 \begin_layout Plain Layout
-Should this be in 4.3?
+Should this be in 4.3: Human avoidance models?
 \end_layout
 
 \end_inset
@@ -2135,8 +2141,18 @@ We chose the values for the constants
 \begin_inset Formula $b=\unit[5]{N\cdot s/m}$
 \end_inset
 
- were chosen because the robot moved the fastest (0.25 m/s) without driving
- through the repulsive potential associated with the crew.
+ were chosen because the robot moved the fastest 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Are we worried that we don't always stick with the same units?
+\end_layout
+
+\end_inset
+
+(0.25 m/s) without driving through the repulsive potential associated with
+ the crew.
  These parameters were kept constant over the course of our simulations
  to enable comparison between Case Studies.
  This velocity, 0.25 m/s, was considered comfortable in the proxemic literature.
@@ -2185,8 +2201,8 @@ Our general algorithm was implemented using a priority queue of potential
  and it repeated the same process to extend the newly selected path.
  The algorithm returned a path when the edge of the robot reached a distance
  of 1.2*the grid step size, which allowed the algorithm to recognize when
- the robot had reached its destination, while still allowing for some uncertaint
-y.
+ the robot had reached its destination, while still allowing for some flexibilit
+y in position and continuing inertia.
  
 \end_layout
 
@@ -2207,8 +2223,8 @@ Heuristic=\ \alpha*\left(Distance\ to\ goal\right)\ +\ \beta*\left(\dfrac{1}{New
 
 \begin_layout Standard
 We selected our heuristic to emphasize following the shortest path to the
- goal and travelling at a higher velocity, desirable traits that allow the
- robot to prioritize efficient use of fuel, power, and time.
+ goal and travelling at a higher velocity, desirable traits that would allow
+ the robot to prioritize efficient use of fuel, power, and time.
  Both quantities were weighted with coefficients 
 \begin_inset Formula $\alpha$
 \end_inset
@@ -2238,10 +2254,11 @@ and
  were chosen in a manner similar to the parameter selection in the APF case,
  where several instances of the same mission/crew combination were compared,
  and a reasonable answer was selected qualitatively.
- While more rigorous testing of weights is recommended for further studies,
- our method of selection was deemed sufficient given the time limitations
- and scope of our study, as parameters were kept equal across proxemic and
- nonproxemic scenarios.
+ While, as with APF, more rigorous testing of weights is recommended for
+ further studies, our method of selection was deemed sufficient given the
+ time limitations and scope of our study.
+ Parameters were kept equal across proxemic and nonproxemic scenarios and
+ all case studies, to allow for direct comparison of results.
  Our results presented in Section 5 were found with weights of 
 \begin_inset Formula $\alpha=1$
 \end_inset
@@ -2250,7 +2267,8 @@ and
 \begin_inset Formula $\beta=0.05$
 \end_inset
 
-, with coded exceptions to avoid division by 0.
+, with coded exceptions to the velocities considered to avoid division by
+ 0.
  
 \end_layout
 
@@ -2276,18 +2294,18 @@ The path extension step was implemented through consideration of the 8 nearest
  nodes with varying velocities, described below.
  Each path kept a list of nodes that had already been visited on the path,
  and only added nodes that hadn't been visited on the way to the current
- waypoint, in order to avoid pointless loops.
- Viability of nodes also considered potential robot collision, with hard
- constraints that ceased considering potential nodes that would cause the
+ waypoint, in order to avoid pointless loops that would slow the algorithm.
+ Viability of nodes also considered potential robot collisions.
+ Hard constraints ceased considering potential nodes that would cause the
  robot to collide with a human obstacle or the module wall, with a collision
- being defined as within distance of the robot's working radius of the coordinat
-es of the wall or the human's defined area.
+ being defined as within a distance of the robot's working radius of the
+ coordinates of the wall or the human's defined area.
  
 \end_layout
 
 \begin_layout Standard
 At each step, the possible velocities for consideration were determined
- by the robot's inertia, maximum thrust, mass, and our hard-coded saftey
+ by the robot's inertia, maximum thrust, mass, and our hard-coded safety
  constraints, which limited the maximum robot velocity to 0.5m/s at all times
  to protect crew comfort and spacecraft safety.
  Given a current velocity 
@@ -2319,7 +2337,9 @@ At each step, the possible velocities for consideration were determined
 status open
 
 \begin_layout Plain Layout
-? would like to see a picture for my benefit
+This is just describing the surrounding points on a grid.
+ Top left, top, top right, left, right, bottom left, bottom, bottom right.
+ Parallel = {top,bottom,left,right}, Diagonal = {corners}
 \end_layout
 
 \end_inset
@@ -2343,15 +2363,21 @@ status open
  
 \end_layout
 
-\begin_layout Paragraph*
-- 
-\series medium
-hard constraints for humans and walls
-\end_layout
-
 \begin_layout Standard
-- limited maximum velocity so that it would be able to slow down to a stop
- at each waypoint 
+Finally, we added a constraint that allowed Astrobee to slow to a stop at
+ each waypoint, rather than barrelling into a wall.
+ If Astrobee's working radius was inside the range at which Astrobee would
+ need to use constant, maximum thrust to slow to a stop by the waypoint,
+ Astrobee's maximum velocity for the next step was capped at a speed of
+ 
+\begin_inset Formula $v_{max}=\sqrt{2as}$
+\end_inset
+
+, where 
+\begin_inset Formula $s$
+\end_inset
+
+ was Astrobee's current distance from the waypoint.
 \end_layout
 
 \begin_layout Subsection
@@ -2370,10 +2396,10 @@ Both
 \begin_inset Formula $A^{*}$
 \end_inset
 
- and APF rely on a model scalar-field of the navigation area representing
+ and APF relied on a model scalar-field of the navigation area representing
  the cost of being in that position.
- Both planning methods will use the same proxemic and non-proxemic models
- of the human obstacles in the scalar-field.
+ Both planning methods used the same proxemic and non-proxemic models of
+ the human obstacles in the scalar-field.
  
 \end_layout
 
@@ -2447,8 +2473,11 @@ status collapsed
 \begin_inset Formula $\sigma_{N}^{2}$
 \end_inset
 
- to 0.355 , so that the cost of a typical shoulder distance (14 inches) is
- half the cost as the center
+ to 0.355 , so that the cost of a typical shoulder distance (14
+\begin_inset Quotes erd
+\end_inset
+
+) is half the cost as the center
 \begin_inset CommandInset citation
 LatexCommand cite
 key "haslegrave1986characterizing"
