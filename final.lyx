@@ -215,19 +215,20 @@ As robots become increasingly prevalent in environments with humans across
  contexts, whether social or work, there is a need to understand human-robot
  interaction (HRI) to build strong and effective relationships.
  The motivation for this project stems from the existing and projected future
- collaboration between robots and crew in space, as crew time is the most
- precious resource, and offloading tasks to a robot partner would be invaluable.
+ collaboration between robots and crew in space, as offloading tedious or
+ dangerous tasks to a robot partner would be invaluable.
  There are several aspects of HRI and the focus of this paper will be the
  relationship between path planning and proxemics, or social distance, which
  is the comfortable, physical distance between two parties.
- This project will investigate aspects of path planning and execution when
- proxemics are considered by simulating an autonomous, monitoring robot.
- The three-factorial experimental design encompasses path planning (cost
+ This project investigates aspects of path planning and execution when proxemics
+ are considered by simulating an autonomous monitoring robot.
+ The three-factorial experimental design encompasses path planning (A* cost
  function, artificial potential field), task type (direct path, waypoints,
  monitoring), and crew configuration (one person, two opposing, four with
  clustering, and random generation).
- The evaluation criteria will examine the trade off between efficiency and
- human comfort.
+ The evaluation criteria compares proxemic and nonproxemic scenarios, examining
+ the trade off between efficiency and human comfort, as well as unanticipated
+ consequences of introducing proxemics into a path planning simulation.
 \end_layout
 
 \begin_layout Abstract
@@ -239,7 +240,7 @@ As robots become increasingly prevalent in environments with humans across
 
 \begin_layout Abstract
 Index Terms—HRI, Proxemics, Human-Aware Navigation, Autonomous, Artificial
- Potential Field, Cost Function
+ Potential Field, Heuristic Cost Function, A*
 \end_layout
 
 \begin_layout Section
@@ -247,8 +248,9 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The technological advances in robotics is leading towards increased prevalence
- of robots within society ranging from existing roles as work partners (e.g.
+Technological advances in robotics are leading towards increased prevalence
+ of robots within society, ranging from existing roles as work partners
+ (e.g.
  space exploration, military, search and rescue) to social ones (e.g.
  healthcare, companionship).
  NASA (National Aeronautics and Space Administration) is developing and
@@ -280,9 +282,9 @@ key "hall1966hidden"
 .
  However, the application of these interpersonal distances has been a recent
  topic of research.
- Proxemic distance is a relevant topic for autonomous robotics and path
- planning, as the comfort of humans in the same environment need to be considere
-d.
+ Proxemic distance is quickly becoming a relevant topic for autonomous robotics
+ and path planning, as the comfort of humans in the same environment as
+ robots need to be considered.
  In a review of human-aware robot navigation, a search of the literature
  revealed that the topic seemed to generate interest in 2001 and the number
  of publications has increased over the years 
@@ -294,26 +296,32 @@ key "kruse2013human"
 
 .
  This relatively novel field contains many unanswered questions, but has
- produced a generalized observation across the literature that humans tend
+ produced generalized observations across the literature that humans tend
  to interact with robots as if they were humans.
  
 \end_layout
 
 \begin_layout Standard
-The following sections will briefly review the literature and areas for
- future work.
- Next, we will describe our simulation, which compares an 
+The following sections will present a brief literature review surrounding
+ robotics in space, proxemics, and autonomous robotic navigation.
+ Next, we present our robotic simulation, which compares proxemic and nonproxemi
+c human avoidance for a free-flying robot avoiding human obstacles and exhibitin
+g sociable behavior, with an 
 \begin_inset Formula $A^{*}$
 \end_inset
 
- based graph search path-planning algorithm and a reactive artificial potential
- field (APF) navigation scheme, for a free-flying robot avoiding human obstacles
- and exhibiting sociable behavior using proxemic distance on the International
- Space Station.
- We will describe a simulation based on the Astrobee small satellite for
- Intravehicular Activities (IVAs) on the ISS, discuss simplifications due
- to time constraints, and present goals for future extensions to the simulation
- should time permit them.
+ heuristic path-planning algorithm and a reactive artificial potential field
+ (APF) navigation scheme.
+ We will discuss our experimental design, comparability to previous work
+ in literature, the details of our simulated robot based on the Astrobee
+ small satellite for Intravehicular Activities (IVAs) on the International
+ Space Station (ISS), and we will discuss simplifications made due to time
+ constraints.
+ We will detail the specifics of our proxemic model and algorithmic implementati
+ons.
+ Finally, we will present our simulation results with an analysis of emergent
+ patterns and unexpected observations, before presenting our goals for future
+ research.
 \end_layout
 
 \begin_layout Subsection
