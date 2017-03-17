@@ -2756,7 +2756,8 @@ status open
 
 \end_inset
 
- was calculated.
+ was calculated and values within 5% were not considered adequate to draw
+ strong conclusions.
  Additionally, cases were separated from the main analysis and addressed
  individually when the robots' paths between non-proxemic and proxemic scenarios
  were significantly different and a direct, high-level comparision may not
@@ -3248,8 +3249,34 @@ Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Standard
-Same percent difference as APF; within 5% not considered large enough to
- make statements; time
+The A* implementation included restrictions on the total computational time
+ (60 s) and node computational time (0.25 s) for practical purposes.
+ The maximum total computational time was exceeded (> 60 s) by 9 of the
+ 10 scenarios with the node computational time ranging between 0.10 s and
+ 0.21 s.
+ The remaining scenario exceeded the node computational time (> 0.25 s),
+ but was within the maximum computational time (52.82 s) when the simulation
+ ended.
+ The cause of the increased computational times in unclear and would be
+ a point for future investigation.
+ The grid size and computational times were partially investigated, but
+ it was out of the scope of this project to allocated enough resources for
+ a full analysis.
+\end_layout
+
+\begin_layout Standard
+The analysis of the A* results follows the same breakdown as APF, and a
+ summary is provided in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Summary-of-A*"
+
+\end_inset
+
+.
+ In general, the average velocity is smaller and the completion time longer
+ for the proxemic scenarios.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3263,6 +3290,13 @@ status open
 
 \begin_layout Plain Layout
 Summary of A* Non-proxemic and Proxemic % Change
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Summary-of-A*"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3416,26 +3450,6 @@ ben contour plot to confirm - sent
 \end_inset
 
 , therefore ??
-\end_layout
-
-\begin_layout Standard
-The A* implementation included restrictions on the total computational time
- (60 s) and node computational time (0.25 s) for practical purposes.
- The maximum total computational time was exceeded (> 60 s) by 9 of the
- 10 scenarios with the node computational time ranging between 0.10 s and
- 0.21 s.
- The remaining scenario exceeded the node computational time (> 0.25 s),
- but was within the maximum computational time (52.82 s) when the simulation
- ended.
- The cause of the increased computational times in unclear and would be
- a point for future investigation.
- The grid size and computational times were partially investigated, but
- it was out of the scope of this project to allocated enough resources for
- a full analysis.
-\end_layout
-
-\begin_layout Standard
-Across scenarioes there were no collisions.
 \end_layout
 
 \begin_layout Subsubsection
