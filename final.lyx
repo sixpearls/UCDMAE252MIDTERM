@@ -405,7 +405,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-REVIEW HERE
+REVIEW HERE - don't have rotational specs to make accurate model
 \end_layout
 
 \end_inset
@@ -1101,8 +1101,17 @@ Global search methods can find globally optimal paths, but are often slow
 , we used hard constraints to avoid collisions with both the wall and crew
  members, although approaching humans remains a soft constraint given by
  the cost function model.
- In the following subsections, we describe the two path planning methods,
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In the following subsections, we describe the two path planning methods,
  our justifications for their choice, and their expected shortcomings.
+\end_layout
+
+\end_inset
+
  
 \begin_inset Float figure
 wide false
@@ -1208,105 +1217,97 @@ Simulation Design
 \end_layout
 
 \begin_layout Standard
-We chose to investigate our research question in the previously-identified
- context of HRI in spaceflight.
- In the interest of focusing our investigation, we have intentionally limited
+In the interest of focusing our investigation, we have intentionally limited
  the scope of our simulation.
- By focusing the simulation on two-dimensional motion with simple dynamical
+ By limiting the simulation to two-dimensional motion with simple dynamical
  representaiton of the robot and simple geometric constructions for the
  crew and module boundaries, our study can focus on the effect of proxemic
  models on the path planning methods.
 \end_layout
 
 \begin_layout Subsubsection
-Robot Model
+Robot, Environment, and Human Model
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Our robot model was represented by a 12”x12” square with a 6kg mass, modeled
  after the Astrobee robot.
- , and it has a hardware safety constraint that limits thrust at a maximum
- of 0.72N 
+ We include in our modelthe hardware safety constraint that limits thrust
+ at a maximum of 0.72 N 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
 
 \end_inset
 
-, so we ensured that our chosen time and velocity steps for APF and A* reflected
- these motion limitations.
- While in two dimensions, Astrobee should be capable of 3-DOF holonomic
- motion (x translation, y translation, and xy rotation), we simplified our
- simulations by considering only translation, rather than rotation, and
- considered every direction of travel to have the same specified maximum
- thrust.<<<<<<< HEAD For collision detection, we used the robot's working
- radius, defined as the distance from the center of the robot to a corner
- of the robot, or 8.49======= As we allowed the robot to translate in both
- x and y directions simultaneously, we still managed to approximate holonomic
- motion.
- For motion to be modeled more completely, more detailed specifications
- on Astrobee's rotational speeds would need to be made available, as we
- could not find any mention of such specifications in the literature.
- As we did not model rotation, yet still wished to acknowledge that rotation
- could be possible in future simulations, we used the robot's 
-\begin_inset Quotes eld
-\end_inset
-
-working radius,
-\begin_inset Quotes erd
-\end_inset
-
- defined as the distance from the center of the robot to a corner of the
- robot (8.49>>>>>>> bf3f92f59b96bb430039f25b63cba6482cbb7e99
-\begin_inset Quotes erd
-\end_inset
-
-) for collision detection purposes.
+.
+ We considered only translation motion and assumed the maximum thrust could
+ applied in any direction in the plane.
+ 
 \end_layout
 
 \begin_layout Standard
-We treated the propulsion and battery lifetimes as irrelevant given the
+We did not consider a number of other factors.
+ We treated the propulsion and battery lifetimes as irrelevant given the
  scope of our experiment.
+ Assumed perfect knowledge of the environment, including location and orientatio
+n of crew.
+ Assumed perfect control, so that given a path, the robot would follow it
+ perfectly.
  
 \end_layout
 
 \begin_layout Standard
-Much as we simplified the environment to enable clear evaluation of results,
- we made some significant assumptions with respect to the capabilities of
- Astrobee itself.
- In order to test the robotic architectures and algorithms, it is necessary
- that Astrobee accurately detect humans and their associated orientations
- with omnipotence, in all directions at all times.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Environment and Human Obstacles
-\end_layout
-
-\begin_layout Standard
-In order to focus on the effect of proxemics on the path planning algorithms,
- our robot simulation takes place in a simplified 2D model.
- Our environment is an approximated rectangular cross-section of a single
- module, the ISS USOS Destiny Lab, with dimensions 28' x 14'.
- We simulated a clean environment, clear of any non-human obstacles.
- In reality, the environment would be significantly more cluttered, with
- experiments and equipment lining the walls.
- We introduced a hard constraint for walls that prevents our Astrobee model
- from coming into physical contact with the module's walls unless directed
- to do so as part of its task
+Our environment is an approximated rectangular cross-section of a single
+ module, the ISS USOS Destiny Lab, with dimensions 28' x 14'
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-only true for A*.
- Deltee?
+CITATION
 \end_layout
 
 \end_inset
 
 .
+ We simulated a clean environment, clear of any non-human obstacles.
+ In reality, the environment would be significantly more cluttered, with
+ experiments and equipment lining the walls.
+\end_layout
+
+\begin_layout Standard
+Crew is a circle with radius of 35.5 cm representing a typical shoulder width
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haslegrave1986characterizing"
+
+\end_inset
+
+, with an orientation.
+ All humans have been simulated with equal proxemics.
+ This is a simplification, as studies show that proxemics vary between people
+ and across cultures 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "joosse"
+
+\end_inset
+
+.
  
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1352,59 +1353,6 @@ name "fig:proxemicsmodel"
 \end_layout
 
 \begin_layout Standard
-In our two-dimensional environment, humans and their associated proxemics
- are represented as a circle with an assigned position, forwards orientation,
- and associated weighted human buffer: a radially symmetric Gaussian for
- nonproxemic scenarios, or an asymmetric Gaussian for a proxemic model (both
- are explained in sub-section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Human-Avoidance-Models"
-
-\end_inset
-
- and illustrated in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:proxemicsmodel"
-
-\end_inset
-
-).
- All humans have been simulated with equal proxemics.
- This is a simplification, as studies show that proxemics vary between people
- and across cultures 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "joosse"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-To properly provide conclusions a solution applicable to the ISS, the additional
- degrees of freedom and asymmetry that come with a microgravity environment
- mean that we cannot ignore the effect of the system's 3-dimensionality
- on our path planning algorithms.
- Considering a human model as a cylinder, the associated proxemics would
- vary with z-position 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "kirby2009companion"
-
-\end_inset
-
-.
- While we can ignore this variation as irrelevant in a 2D simulation (We
- are treating all human obstacles as if at a uniform height), it would prove
- an inaccurate representation of a 3D world.
- 
-\end_layout
-
-\begin_layout Standard
 We intentionally chose not to model human motion.
  Although it is relevant to the field and research has been done in this
  area 
@@ -1420,18 +1368,7 @@ key "weinrich2013prediction"
 \end_layout
 
 \begin_layout Standard
-We have treated our study as a proof-of-concept, acknowledging that further
- improvements, including z-varying proxemics, three additional degrees of
- freedom in our simulated robot movement, sensor limitations, and a more
- complex environment, would need to be made before any results could be
- applied to a practical situation or tested in a changing environment.
- Such simplifications have removed many variables that could have unknown
- results.
- By keeping our simulation simple and clean, we can be certain that any
- results we generate have been caused by the introduction of proxemics into
- our otherwise identical case studies.
- Now that such a baseline has been established, it will be possible for
- future simulations to expand on the work done here.
+Mission goals 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2105,6 +2042,10 @@ Are we worried that we don't always stick with the same units?
  the research presented in this paper.
 \end_layout
 
+\begin_layout Standard
+How the robot switches to the next waypoint.
+\end_layout
+
 \begin_layout Subsection
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -2346,7 +2287,22 @@ The path extension step was implemented through consideration of the eight
  robot to collide with a human obstacle or the module wall, with a collision
  being defined as within a distance of the robot's working radius of the
  coordinates of the wall or the human's defined area.
- 
+ For collision detection, we used the robot's working radius, defined as
+ the distance from the center of the robot to a corner of the robot, or
+ 8.49 We introduced a hard constraint for walls that prevents our Astrobee
+ model from coming into physical contact with the module's walls unless
+ directed to do so as part of its task
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+only true for A*.
+ Deltee?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3892,6 +3848,40 @@ maze
  the algorithms must traverse would increase significantly, which could
  have dramatic effects on computational time and new complications for local
  minima.
+\end_layout
+
+\begin_layout Standard
+We have treated our study as a proof-of-concept, acknowledging that further
+ improvements, including z-varying proxemics, three additional degrees of
+ freedom in our simulated robot movement, sensor limitations, and a more
+ complex environment, would need to be made before any results could be
+ applied to a practical situation or tested in a changing environment.
+ Such simplifications have removed many variables that could have unknown
+ results.
+ By keeping our simulation simple and clean, we can be certain that any
+ results we generate have been caused by the introduction of proxemics into
+ our otherwise identical case studies.
+ Now that such a baseline has been established, it will be possible for
+ future simulations to expand on the work done here.
+\end_layout
+
+\begin_layout Standard
+To properly provide conclusions a solution applicable to the ISS, the additional
+ degrees of freedom and asymmetry that come with a microgravity environment
+ mean that we cannot ignore the effect of the system's 3-dimensionality
+ on our path planning algorithms.
+ Considering a human model as a cylinder, the associated proxemics would
+ vary with z-position 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kirby2009companion"
+
+\end_inset
+
+.
+ While we can ignore this variation as irrelevant in a 2D simulation (We
+ are treating all human obstacles as if at a uniform height), it would prove
+ an inaccurate representation of a 3D world.
 \end_layout
 
 \begin_layout Standard
