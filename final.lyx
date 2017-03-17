@@ -1038,7 +1038,11 @@ Our robot model was represented by a 30.5 cm
 \begin_inset Formula $\times$
 \end_inset
 
- 30.5 cm (12”x12”) square with 6 kg mass, modeled after the Astrobee robot.
+ 30.5 cm (12”
+\begin_inset Formula $\times$
+\end_inset
+
+12”) square with 6 kg mass, modeled after the Astrobee robot.
  Our model included the hardware safety constraint that limits thrust to
  a maximum of 0.72 N 
 \begin_inset CommandInset citation
@@ -1092,7 +1096,11 @@ key "SmithAstrobeeNew,bualat2015astrobee"
 
 \begin_layout Standard
 The model's environment is an approximated rectangular cross-section of
- a single module of the USOS, the Destiny Lab, with dimensions 28'x14' 
+ a single module of the USOS, the Destiny Lab, with dimensions 853 cm 
+\begin_inset Formula $\times$
+\end_inset
+
+ 427 cm (28'x14') 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "destiny"
@@ -1744,7 +1752,7 @@ Finally, we added a constraint that allowed Astrobee to slow to a stop at
  need to use constant, maximum thrust to slow to a stop by the waypoint,
  Astrobee's maximum velocity for the next step was capped at a speed of
  
-\begin_inset Formula $v_{max}=\sqrt{2as}$
+\begin_inset Formula $\sqrt{2as}$
 \end_inset
 
 , where 
