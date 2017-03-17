@@ -432,11 +432,8 @@ key "spheresweb,yoo2015avionics"
 
 \begin_layout Standard
 Astrobee is designed to navigate around the ISS USOS (U.S.
- Orbital Segment), which consists of 9 modules: the U.S.
- Destiny Lab, ESA’s Columbus Lab, the Japanese Experimental Module (JEM/Kibo),
- Node 1 (Unity), Node 2 (Harmony), Node 3 (Tranquility) and Permanent Multipurpo
-se Module, Cupola, and the U.S.
- Airlock 
+ Orbital Segment).
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bualat2015astrobee"
@@ -1189,8 +1186,8 @@ Our robot model was represented by a 30.5 cm
 \end_inset
 
  30.5 cm (12”x12”) square with 6 kg mass, modeled after the Astrobee robot.
- We include in our model the hardware safety constraint that limits thrust
- to a maximum of 0.72 N 
+ Our model included the hardware safety constraint that limits thrust to
+ a maximum of 0.72 N 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
@@ -1985,26 +1982,6 @@ in Section 4.2.1
  in position and continuing inertia.
 \end_layout
 
-\begin_layout Standard
-Djikstra's Algorithm runs in 
-\begin_inset Formula $\mathcal{O}(N^{2})$
-\end_inset
-
- time [CHECK AND CITE TEXTBOOK], but as the addition of a heuristic allows
- the algorithm to select the most likely path first, A* can often run in
- significantly less time.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-delete?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Heuristic and parameter determinations
 \end_layout
@@ -2037,7 +2014,11 @@ where
 \begin_inset Formula $\beta$
 \end_inset
 
- are tuning parameters.
+ are weights that allowed us to control the strength with which 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ preferred each behavior.
  
 \end_layout
 
@@ -2176,17 +2157,6 @@ The path extension step was implemented through consideration of the eight
  8.49 We introduced a hard constraint for walls that prevents our Astrobee
  model from coming into physical contact with the module's walls unless
  directed to do so as part of its task
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-only true for A*.
- Deltee?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
