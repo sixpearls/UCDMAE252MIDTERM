@@ -2221,7 +2221,7 @@ Our general algorithm was implemented using a priority queue of potential
 
  coordinates and an associated velocity.
  As the algorithm planned our robot's path through a discretized map of
- the module, it considered all nine possible nearest neighbors on the grid,
+ the module, it considered all eight possible nearest neighbors on the grid,
  with a range of possible next velocities at each location, assigning each
  possible next step a cost that depends on the relative position of the
  crew and the robot's location and velocity.
@@ -2402,9 +2402,19 @@ Algorithm Modifications for Embodiment and Situatedness
 \end_layout
 
 \begin_layout Standard
-We implemented our A* algorithm on a regular, rectangular grid with a mesh
- size of the module length / 50.
- This corresponded to a 6.72
+We implemented our 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm on a regular, rectangular grid with 50 points in the 
+\begin_inset Formula $x$
+\end_inset
+
+ direction and 25 points in the 
+\begin_inset Formula $y$
+\end_inset
+
+ direction, corresponding to a 6.72
 \begin_inset Quotes erd
 \end_inset
 
@@ -2415,8 +2425,8 @@ We implemented our A* algorithm on a regular, rectangular grid with a mesh
 \end_layout
 
 \begin_layout Standard
-The path extension step was implemented through consideration of the 8 nearest
- nodes with varying velocities, described below.
+The path extension step was implemented through consideration of the eight
+ nearest nodes with varying velocities, described below.
  Each path kept a list of nodes that had already been visited on the path,
  and only added nodes that hadn't been visited on the way to the current
  waypoint, in order to avoid pointless loops that would slow the algorithm.
@@ -2432,44 +2442,42 @@ The path extension step was implemented through consideration of the 8 nearest
 At each step, the possible velocities for consideration were determined
  by the robot's inertia, maximum thrust, mass, and our hard-coded safety
  constraints, which limited the maximum robot velocity to 0.5m/s at all times
- to protect crew comfort and spacecraft safety.
+ to ensure crew comfort and spacecraft safety.
  Given a current velocity 
 \begin_inset Formula $v_{0}$
 \end_inset
 
 , possible velocities were determined by 
-\begin_inset Formula $v_{new}=\sqrt{{v_{0}^{2}\pm2as}}$
+\begin_inset Formula 
+\[
+v_{new}=\sqrt{{v_{0}^{2}\pm2\frac{T_{max}}{m}s}}
+\]
+
 \end_inset
 
-, where 
-\begin_inset Formula $a$
+where 
+\begin_inset Formula $T_{max}$
 \end_inset
 
- is our maximum acceleration, determined by 
-\begin_inset Formula $a=\dfrac{Maximum\ thrust}{Astrobee\ mass}$
+ is astrobee's maximum thrust, 
+\begin_inset Formula $m$
 \end_inset
 
-, and 
+ is astrobee's mass, and 
 \begin_inset Formula $s$
 \end_inset
 
- is the distance travelled, with 
+ is the distance between the current node and the neighboring node under
+ consideration.
+ Using our rectangular grid, 
+\begin_inset Formula $s$
+\end_inset
+
+ took on only two possible values: 
 \begin_inset Formula $s=6.72"$
 \end_inset
 
- for next nodes parallel to the module walls
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-This is just describing the surrounding points on a grid.
- Top left, top, top right, left, right, bottom left, bottom, bottom right.
- Parallel = {top,bottom,left,right}, Diagonal = {corners}
-\end_layout
-
-\end_inset
-
-, or 
+ for next nodes parallel to the module walls, or 
 \begin_inset Formula $s=9.50"$
 \end_inset
 
