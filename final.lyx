@@ -231,16 +231,6 @@ As robots become increasingly prevalent in social or work environments with
 \begin_inset Formula $A^{*}$
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-150 words or less; rework
-\end_layout
-
-\end_inset
-
 .
 \end_layout
 
@@ -399,22 +389,6 @@ key "smartspheres,bualat2015astrobee"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-REVIEW HERE - don't have rotational specs to make accurate model -> [This
- is discussed in the robot section]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The Astrobee robot is a roughly 12” cube in a an aluminum and Ultem shell,
  It will be powered by lithium ion rechargeable batteries, and it will house
  a six-degree-of-freedom holonomic propulsion sytem, avionics, fan and nozzle
@@ -428,10 +402,7 @@ key "spheresweb,yoo2015avionics"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Astrobee is designed to navigate around the ISS USOS (U.S.
+ Astrobee is designed to navigate around the ISS USOS (U.S.
  Orbital Segment).
  
 \begin_inset CommandInset citation
@@ -441,24 +412,6 @@ key "bualat2015astrobee"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Astrobee is able to internally update its position at ~6Hz
-\end_layout
-
-\begin_layout Standard
-Astrobee's current vision sensors, however, are only placed on four faces
- of the satellite 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-.
- We chose to model Astrobee as if it had all of the requisite information
- available to it, and we ignored sensor noise and uncertainty.
 \end_layout
 
 \begin_layout Standard
@@ -479,47 +432,6 @@ key "TweddleVertigo,fourievertigo"
  The experiments demonstrated the capabilities of a free-flying satellite
  to use computer vision to navigate the challenges of 6-DOF motion in real
  time.
-\end_layout
-
-\begin_layout Standard
-Due to the demonstrated feasibility of computer vision-based navigation
- for satellites on the ISS and the scope of our proposed investigation,
- we did not include the limitations of sensors in our simulation.
- We recognize that sensors have limitations, such as noise and errors at
- small or large distances; in order for simulation results to be directly
- applied to a physical situation involving Astrobee, these limitations would
- need to be included in a final simulation.
- However, thanks to Astrobee's payload ports for additional software 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew,bualat2015astrobee"
-
-\end_inset
-
-, the sensors onboard Astrobee are highly customizable.
- Since our investigation focused on the effects of proxemics on our path-plannin
-g algorithms, it remained more useful if the simulation stayed in a generalized
- form, which could be modified appropriately to an individually-selected
- sensor system if necessary.
- We shall assume that with additional computer vision software or through
- supplementation with other sensors, Astrobee could have all needed information
- available to it at all times.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-STOP REVIEWING
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1173,7 +1085,8 @@ In the interest of focusing our investigation, we have intentionally limited
 aiton of the robot and simple geometric constructions for the crew and module
  boundaries.
  Although this makes the simulation more abstract, it allows us to focus
- on the effect of proxemic models on the path planning methods.
+ on the effect of the introduction of proxemic models on the path planning
+ methods.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1197,27 +1110,52 @@ key "SmithAstrobeeNew"
 .
  The dynamics model only holonomic translation with the assumption that
  the maximum thrust could applied in any direction in the plane.
- We did not consider a number of other factors that might distract from
- the research question.
- For example, we treated the propulsion and battery lifetimes as irrelevant.
- We also assumed that the sensing and control problems have been solved.
+ Due to the scope of our proposed investigation, we did not consider a number
+ of other factors that might distract from the research question.
+ We treated the propulsion and battery lifetimes as irrelevant.
+ We also did not include sensor limitations and control uncertainties.
  Our path planning algorithms use perfect knowledge of the environment,
  including location and orientation of crew.
- The results are also evaluated uner perfect control, so given a path, the
- robot could follow it perfectly.
+ The results are also evaluated under perfect control, so given a path,
+ the robot could follow it perfectly.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+We recognize that sensors have limitations, such as noise and errors at
+ small or large distances.
+ Astrobee updates its location internally at a rate of 6Hz, and it currently
+ only has vision sensors on four faces 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SmithAstrobeeNew,bualat2015astrobee"
+
+\end_inset
+
+.
+ In order for simulation results to be directly applied to a physical situation
+ involving Astrobee, these limitations would need to be included in a final
+ simulation.
+ However, thanks to Astrobee's payload ports for additional software and
+ the demonstrated feasibility of computer vision-based navigation for satellites
+ on the ISS, we shall assume that with additional computer vision software,
+ supplementation with other sensors, or an adjustment of velocity, Astrobee
+ could have all needed information available to it at all times and execute
+ its desired performance admirably.
+ 
+\end_layout
+
+\end_inset
+
  
 \end_layout
 
 \begin_layout Standard
-The module model is an approximated rectangular cross-section of a single
- module, the ISS USOS Destiny Lab, with dimensions 853 cm 
-\begin_inset Formula $\times$
-\end_inset
-
- 427 cm
+The model's environment is an approximated rectangular cross-section of
+ a single module of the USOS, the Destiny Lab, with dimensions 28'x14' 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "destinywiki"
+key "destiny"
 
 \end_inset
 
@@ -1241,7 +1179,7 @@ key "haslegrave1986characterizing"
  The average relationship between shoulder width and height 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "haslegrave1986characterizing"
+key "Cormen2009"
 
 \end_inset
 
@@ -2014,11 +1952,7 @@ where
 \begin_inset Formula $\beta$
 \end_inset
 
- are weights that allowed us to control the strength with which 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- preferred each behavior.
+ are tuning parameters.
  
 \end_layout
 
@@ -2043,17 +1977,7 @@ key "kirbythesis"
 
 , which allowed us to control the strength with which these priorities competed
  with the proxemic cost function, which was considered to have a weight
- of 1
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Delete 2 sentences?
-\end_layout
-
-\end_inset
-
-.
+ of 1.
  The weights 
 \begin_inset Formula $\alpha$
 \end_inset
@@ -2062,9 +1986,10 @@ Delete 2 sentences?
 \begin_inset Formula $\beta$
 \end_inset
 
- were chosen in a manner similar to the parameter selection in the APF case,
- where several instances of the same mission/crew combination were compared
- and the values 
+ were chosen in the same manner as parameter selection in the APF case,
+ where we compared several parameter values of the simplest mission/crew
+ combination.
+ Based on this comparison, we qualitatively selected the values 
 \begin_inset Formula $\alpha=1$
 \end_inset
 
@@ -2072,7 +1997,7 @@ Delete 2 sentences?
 \begin_inset Formula $\beta=0.05$
 \end_inset
 
- were selected qualitatively.
+ to use for our simulation.
  While more rigorous testing of weights is recommended for further studies,
  our method of selection was deemed sufficient given the time limitations
  and scope of our study; since the parameters were kept constant for all
@@ -3652,14 +3577,7 @@ locality
 \begin_inset Formula $A^{*}$
 \end_inset
 
- is also very dependent on the implementation of the data structures 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "algorithms"
-
-\end_inset
-
-.
+ is extremely dependent on the implementation of its data structures .
  Due to the increase in computational grid size due to cost depending on
  differences in velocities, we made the decision that 
 \begin_inset Formula $A^{*}$
@@ -3772,18 +3690,17 @@ maze
 \end_layout
 
 \begin_layout Standard
-We have treated our study as a proof-of-concept, acknowledging that further
- improvements, including z-varying proxemics, three additional degrees of
- freedom in our simulated robot movement, sensor limitations, and a more
- complex environment, would need to be made before any results could be
- applied to a practical situation or tested in a changing environment.
+We treated our study as a proof-of-concept, so that we could be certain
+ that our results were caused by the introduction of proxemics into our
+ otherwise identical case studies.
  Such simplifications have removed many variables that could have unknown
- results.
- By keeping our simulation simple and clean, we can be certain that any
- results we generate have been caused by the introduction of proxemics into
- our otherwise identical case studies.
- Now that such a baseline has been established, it will be possible for
- future simulations to expand on the work done here.
+ results, and we acknowledge that further improvements, including z-varying
+ proxemics, three additional degrees of freedom in our simulated robot movement,
+ sensor limitations, and a more complex environment, would need to be made
+ before any results could be applied to a practical situation or tested
+ in a changing environment.
+ Now that we have established a baseline study with proxemics alone, it
+ will be possible for future simulations to expand on the work done here.
 \end_layout
 
 \begin_layout Standard
