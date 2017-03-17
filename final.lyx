@@ -2442,11 +2442,335 @@ Personal Space Zones and Minimum Distance
 \end_layout
 
 \begin_layout Standard
-blah
+The distance between the robot and each crew member was used to calculate
+ the minimum distance and the time spent in each personal space zone as
+ defined by Hall 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation; table of zones from reference?
+\end_layout
+
+\end_inset
+
+.
+ The change in minimum distance for four cases was within 0.28%, where in
+ three of the cases (direct mission two crew; direct mission clustered crew;
+ monitoring mission one crew) the robot's trajectory was relatively far
+ from the crew members and it would be expected that the proxemic cost function
+ would have an minimal effect.
+ For these cases, the minimum crew distance was greater than 1.2 m and in
+ the social zone.
+ In the fourth case, the robot path appears identical to the third goal
+ zone and occurs at a relatively large distance from crew members 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+include comparision figure? plot both paths on one?
+\end_layout
+
+\end_inset
+
+.
+ These results highlight that inclusion of a proxemic model has a smaller
+ effect when distances between the robot and crew are larger.
+\end_layout
+
+\begin_layout Standard
+The analysis showed that a robot with a proxemic model maintained a smaller
+ minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
+ In the direct mission with random crew, the maximum velocity does not exceed
+ 25 cm/s for either scenario.
+ As a result, the robot with the proxemic model passes crew from behind
+ and on the side and the cost function in these cases are smaller than for
+ the non-proxemic one
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+maybe a table somewhere with how std dev compares for key velocity points
+\end_layout
+
+\end_inset
+
+.
+ A similar situation occurs in the waypoints mission with random crew where
+ the proxemic model robot passes closer to crew members # and # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, which are oriented away from the robot.
+ Again this situation is repeated for case # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ and case #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, where the robot passes behind and with velocities less than 25 cm/s (relevant
+ for proxemic).
+ Therefore, the overall orientation of the crew is an important factor.
+ 
+\end_layout
+
+\begin_layout Standard
+In two cases, the proxemic scenario yielded a larger minimum distance.
+ The first case, waypoint mission with one crew, the robot passes in front
+ of the crew member.
+ Since passing in front is a higher cost zone, the proxemic model maintains
+ a larger distance from the crew, as expected.
+ The robot also approaches a cluster of crew and crosses in front in case
+ # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ The proxemic model produced expected results with the robot maintaining
+ a larger distance.
+ These results compliment the recently discussed findings, where the crew
+ orientation is an important factor.
+\end_layout
+
+\begin_layout Standard
+There were surprisingly few differences throughout the scenarios regarding
+ personal space zones, and the differences ranged from 0% to 1.15% across
+ 9 cases.
+ In the waypoints mission with clustered crew, the non-proxemic model robot
+ spent signficantly longer transversing the space in front of the cluster
+ and at a closer distance.
+ Consequently, the robot stayed longer in the personal zones for crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, and crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ by 236.75 s, 194.00 s, 183.00 s, respectively.
+ For all 24 scenarios, the robot never entered the close intimate or intimate
+ zones.
+ Overall, the non-proxemic and proxemic models behaved similarly in terms
+ of personal space zones
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+for discussion, the bins have a width and people's preference may draw different
+ lines
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
 Unique Cases
+\end_layout
+
+\begin_layout Standard
+For the APF simulations, two cases were identified as unique due to the
+ significantly different robot trajectories 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+trajectories or path?
+\end_layout
+
+\end_inset
+
+ between the non-proxemic and proxemic scenarios.
+ As such, it may not be reasonable to compare metrics from these scenarios
+ and should be discussed individually.
+ 
+\end_layout
+
+\begin_layout Standard
+During the direct mission with one crew, the non-proxemic model robot encountere
+d a local minimum in front of the crew and was unable to navigate around
+ the crew member.
+ In the proxemic scenario, the robot was able to pass by the crew member
+ and complete the simulation.
+ The maximum velocity of the proxemic model robot was 23.00 cm/s, so the
+ potential field was static for the duration of the simulation.
+ Comparing the plots of the potential fields for each scenario yielded the
+ following insight 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+get an insight; Ben- subplots of the quiver fields? if difficult to see,
+ zoom in on the area in front of crew
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The second unique case concerns the waypoints mission and two crew, where
+ the non-proxemic scenario resulted in the robot missing the second goal
+ zone and crossing in front of crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ Whereas, the proxemic model robot reached the second goal zone and continued
+ behind crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ After examining the potential fields during the robots' navigation to the
+ second goal zone, the local minimum lies outside the boundary for the non-proxe
+mic scenario and inside the boundary for the proxemic one.
+ In the non-proxemic potential field, it is also evident that the field
+ blocks the robot from the goal zone (See Figure XX 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+insert
+\end_layout
+
+\end_inset
+
+).
+ While the proxemic model robot was able to reach the second goal zone,
+ it caused the average velocity to decrease (-46.66% change from non-proxemic)
+ due to a large amount of time spent at a low force and velocity near crew
+ # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ (See Figure XX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Force, velocity plot + colored trajectory; subplots; maybe also distance
+ from crew; add marker for a time point?
+\end_layout
+
+\end_inset
+
+.
+ This area in the field appears to be the driver behind the increased completion
+ time for the proxemic scenario (82.00%).
+ Passing behind crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ also brings the proxemic model robot closer, decreasing the minimum distance
+ by 8.00%.
+ The increased distance traveled by the non-proxemic robot is attributed
+ to when it double backs after reaching the local minimum (-2.99% change
+ from proxemic).
+ In terms of personal space zones, the robots from both scearios entered
+ up to the personal zone for crew #
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ Due to the non-proxemic model robot crossing in front, it spends time in
+ the personal zone of crew # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ In contrast, the proxemic model robot never enters the personal zone of
+ that crew member.
+ This unique case draws attention to an interesting point of discussion:
+ is it less invasive or uncomfortable for a robot to slowly pass behind
+ or cross in front and affect more people?
 \end_layout
 
 \begin_layout Subsection
@@ -2802,6 +3126,73 @@ would a side by side comparision of the velocity plots be useful?
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Personal Space Zones and Minimum Distance
+\end_layout
+
+\begin_layout Standard
+The majority of cases saw a greater than 5% change from the non-proxemic
+ scenario minimum distance.
+ There were three cases (
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+list cases
+\end_layout
+
+\end_inset
+
+) where the percent change ranged from 0% to 4.76%, and can be attributed
+ to either a) the robot passing through the center when the crew is on the
+ perimeter
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+id
+\end_layout
+
+\end_inset
+
+, or b) the robot passing crew on the side or behind, or c) the robot is
+ circumnavigating the module while the crew is in the center.
+ All these explanations converge on the situation where the proxemic cost
+ function is less and closer in value to the non-proxemic one.
+\end_layout
+
+\begin_layout Standard
+In cases where the robot's trajectory brought it in front of crew, the minimum
+ distance for the non-proxemic scenario was smaller, as it could approach
+ closer to the crew due to the decreased width of the cost function.
+ This result occured for case #, #, and # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(2,1),(2,3),(3,4)
+\end_layout
+
+\end_inset
+
+, where the percent change was 13.99%, 19.42% and 36.41%.
+ However, the robot occupied the same personal space zones–personal, social,
+ and public–for both scenarios and the time spent in the personal zone did
+ not appear significantly different.
+ In contrast, there was a small percent change (-6.73%) for case # 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ that was investigated for a cause until it was determined that the percent
+ change translates to 5.04 cm.
 \end_layout
 
 \begin_layout Subsection
