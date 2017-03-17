@@ -1127,45 +1127,6 @@ key "kirby2009companion"
 \end_layout
 
 \begin_layout Standard
-When determining the heuristic for their A* implementation, Kirby et.
- al paid attention to the following points: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{cc}
-\textbf{{Constraint\:Name}} & \textbf{Weight (\textit{{w_{c}}})}\\
-Minimize\ distance & 1\\
-Obstacle\ buffer & 1\\
-Personal\ space & 2\\
-Robot\ space & 2\\
-Pass\ on\ right & 3\\
-Default\ velocity & 2\\
-Face\ travel & 2\\
-Inertia & 2
-\end{array}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-In our work, we only cared about a limited number of these (Minimize distance,
- personal space, (to a degree) default velocity).
- 
-\end_layout
-
-\begin_layout Standard
 We wish to compare the results from our COMPANION-style architecture with
  a reactive architecture based on an artificial potential field (APF) that
  incorporates an equivalent proxemic map, such as those shown in Figures
@@ -1600,42 +1561,6 @@ key "SmithAstrobeeNew"
 \end_layout
 
 \begin_layout Standard
-The mobility specifications of SPHERES were publicized on July 30, 2015
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "spheresweb"
-
-\end_inset
-
-: 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Translation 1m start to stop: 5s 
-\begin_inset Newline newline
-\end_inset
-
-Rotation 360° start to stop: 5s 
-\begin_inset Newline newline
-\end_inset
-
-Translation accuracy: 0.5cm 
-\begin_inset Newline newline
-\end_inset
-
-Rotation accuracy: 2.5° 
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Astrobee plans include position estimation to within 20cm of walls, which
  shall provide the distance for our hard-constraint wall buffers.
  It is able to internally update its position at ~6Hz, and it has a hardware
@@ -1656,6 +1581,11 @@ key "SmithAstrobeeNew"
 We will treat the propulsion and battery lifetimes as irrelevant given the
  scope of our experiment.
  
+\end_layout
+
+\begin_layout Standard
+The robot's working radius was defined as the distance from the center of
+ the robot to a corner of the robot,
 \end_layout
 
 \begin_layout Subsection
@@ -1875,7 +1805,7 @@ The values for the constants
 
  was chosen because the robot moved the fastest (0.25 m/s) without driving
  through the repulsive potential associated with the crew.
- This velocity is also a velocity that was considerd comfortable in the
+ This velocity is also a velocity that was considered comfortable in the
  proxemic literature.
  This indicates that the forces associated with moving toward the goal,
  avoiding collisions with humans, and damping were acceptably tuned.
@@ -1967,8 +1897,8 @@ key "kirbythesis"
 \end_inset
 
 , which allowed us to control the strength with which these priorities competed
- with the respect of proxemics, which was considered to have a weight of
- 1 that was contributed by our Gaussian cost function described in 4.3.
+ with the proxemic cost function, which was considered to have a weight
+ of 1.
  The weights 
 \begin_inset Formula $\alpha$
 \end_inset
@@ -1980,9 +1910,10 @@ and
  were chosen in a manner similar to the parameter selection in the APF case,
  where several instances of the same mission/crew combination were compared,
  and a reasonable answer was selected qualitatively.
- While more rigorous testing of parameters is recommended in further studies,
+ While more rigorous testing of weights is recommended for further studies,
  our method of selection was deemed sufficient given the time limitations
- and scope of our study.
+ and scope of our study, as parameters were kept equal across proxemic and
+ nonproxemic scenarios.
  Our results presented in Section 5 were found with weights of 
 \begin_inset Formula $\alpha=1$
 \end_inset
@@ -1991,7 +1922,7 @@ and
 \begin_inset Formula $\beta=0.05$
 \end_inset
 
-.
+, with coded exceptions to avoid division by 0.
  
 \end_layout
 
@@ -2006,8 +1937,8 @@ We implemented our A* algorithm on a grid with a mesh size of the module
 \end_inset
 
  distance between nodes in the x and y directions.
- The mesh size was selected qualitatively after some experimentation to
- find a balance between detail and computational time.
+ The mesh size was selected qualitatively after experimentation to find
+ a balance between detail in results and computational time.
  
 \end_layout
 
@@ -2018,11 +1949,11 @@ The path extension step was implemented through consideration of the 9 nearest
  and only added nodes that hadn't been visited on the way to the current
  waypoint, in order to avoid pointless loops.
  Viability of nodes also considered potential robot collision, with hard
- constraints included that removed nodes that would cause the robot to collide
- with a human obstacle or the module wall, with a collision being defined
- as within distance of the robot's working radius, defined as the distance
- from the center of the robot to a corner of the robot, of the coordinates
- of the wall or the human's defined area.
+ constraints that ceased considering potential nodes that would cause the
+ robot to collide with a human obstacle or the module wall, with a collision
+ being defined as within distance of the robot's working radius of the coordinat
+es of the wall or the human's defined area.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2917,6 +2848,10 @@ Finally, we note that before implementation on Astrobee, significant validation
  models for detecting the environment (including crew position and orientation)
  using vision, which would introduce noise and error.
  
+\end_layout
+
+\begin_layout Standard
+- Improving A*
 \end_layout
 
 \begin_layout Standard
