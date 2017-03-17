@@ -3648,6 +3648,41 @@ reset counting please
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{figure}{0} 
+\backslash
+renewcommand{
+\backslash
+thefigure}{A.
+\backslash
+arabic{figure}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{table}{0} 
+\backslash
+renewcommand{
+\backslash
+thetable}{A.
+\backslash
+arabic{table}} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
