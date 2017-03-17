@@ -214,21 +214,24 @@ bwmargolis@ucdavis.edu
 As robots become increasingly prevalent in environments with humans across
  contexts, whether social or work, there is a need to understand human-robot
  interaction (HRI) to build strong and effective relationships.
- The motivation for this project stems from the existing and projected future
- collaboration between robots and crew in space, as offloading tedious or
- dangerous tasks to a robot partner would be invaluable.
  There are several aspects of HRI and the focus of this paper will be the
  relationship between path planning and proxemics, or social distance, which
  is the comfortable, physical distance between two parties.
- This project investigates aspects of path planning and execution when proxemics
- are considered by simulating an autonomous monitoring robot.
- The three-factorial experimental design encompasses path planning (A* cost
- function, artificial potential field), task type (direct path, waypoints,
- monitoring), and crew configuration (one person, two opposing, four with
- clustering, and random generation).
- The evaluation criteria compares proxemic and nonproxemic scenarios, examining
- the trade off between efficiency and human comfort, as well as unanticipated
- consequences of introducing proxemics into a path planning simulation.
+ This project investigates the effects of proxemic models on two path planning
+ techniques, 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and artificial potential field (APF), by simulating an autonomous monitoring
+ robot navigation in the presence of crew members on a space station.
+ We evaluated the results of these two factors over twelve cases of goal
+ and crew positions.
+ The introduction of proxemic models tended to help APF avoid local minima
+ but increased the computational load for 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Abstract
@@ -867,12 +870,11 @@ Global optimization methods can find globally optimal paths, but are often
  pathway or avoiding a human collision.
  For both path planning methods, we compared the robot's trajectory with
  and without proxemics.
- In APF, soft constraints were used for human avoidance, although hard constrain
-ts will be included to provent collisions with the environment's walls as
- applicable.
- In A*, we use hard constraints to avoid both wall collisions and human
- collisions, although approaching humans remains a soft constraint given
- by a cost function.
+ In APF, soft constraints were used to avoid collisions with the crew members
+ and the environment's walls.
+ In A*, we use hard constraints to avoid collisions with both the wall and
+ crew members, although approaching humans remains a soft constraint given
+ by the cost function model.
  In the following subsections, we introduce the formulation for our two
  path planning methods, our justifications for their choice, and their expected
  shortcomings.
@@ -1081,9 +1083,16 @@ key "kirbythesis"
 
 , we adopted the strategy of encoding our desired behaviors (which we limit
  to respecting human proxemics, minimizing distance to a goal, and minimizing
- the time taken to reach a goal) into a weighted A* heuristic function.
- The implementation of our A* algorithm will be detailed in Section IV:
- Techniques and Algorithms.
+ the time taken to reach a goal) into a weighted 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ heuristic function.
+ The implementation of our 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ algorithm will be detailed in Section IV: Techniques and Algorithms.
 \end_layout
 
 \begin_layout Standard
@@ -1105,7 +1114,16 @@ reference "fig:pass_left_prox"
 \end_inset
 
 .
- 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+DELETE PARAGRAPH?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1128,7 +1146,7 @@ key "khatib1986real"
  of goals and obstacles.
  Goals are incorporated as negative (attractive) potentials, while obstacles
  have associated positive (repulsive) potentials.
- Then, the desired acceleration of the robot is set as a modeled force equal
+ Then, the control forces on the robot are set to the modeled force equal
  to the negative gradient of the potential field.
  In this way, the robot drives away from obstacles and towards the goal.
  This method is relatively simple to implement and is well suited for real-time
@@ -1173,7 +1191,7 @@ key "yun1997wall,mabrouk2008solving"
 \end_layout
 
 \begin_layout Subsection
-Proposed Simulation
+Simulation Design
 \end_layout
 
 \begin_layout Standard
@@ -1235,7 +1253,18 @@ In order to focus on the effect of proxemics on the path planning algorithms,
  experiments and equipment lining the walls.
  We introduced a hard constraint for walls that prevents our Astrobee model
  from coming into physical contact with the module's walls unless directed
- to do so as part of its task.
+ to do so as part of its task
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+only true for A*.
+ Deltee?
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Float figure
 wide false
@@ -1286,7 +1315,14 @@ In our two-dimensional environment, humans and their associated proxemics
  are represented as a circle with an assigned position, forwards orientation,
  and associated weighted human buffer: a radially symmetric Gaussian for
  nonproxemic scenarios, or an asymmetric Gaussian for a proxemic model (both
- are explained in Section 4.3: Human Avoidance Models) (See Figure 
+ are explained in sub-section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Human-Avoidance-Models"
+
+\end_inset
+
+ and illustrated in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:proxemicsmodel"
@@ -1366,38 +1402,40 @@ For each of our algorithms,
 \begin_inset Formula $A^{*}$
 \end_inset
 
- and APF, we have two run identical tests for each of 12 case studies (defined
- as a mission and crew configuration pairing), one with a nonproxemic model
- and one with our proxemic model.
- 
+ and APF, we have two run identical tests for each of twelve case studies
+ (defined as a mission and crew configuration pairing), one with a nonproxemic
+ model and one with our proxemic model.
+ The paths from each planning method using proxemic and non-proxemic models
+ for the distance to keep from crew members are compared for all twelve
+ cases.
 \end_layout
 
 \begin_layout Standard
 Crew member configurations were designed to test the versatility of each
  algorithm, demonstrating navigation around a single human, navigation between
  two humans, navigation around a cluster of humans, and navigation around
- four crew members with randomly generated positions and orientations.
- (Figure 
+ four crew members with randomly generated positions and orientations, as
+ shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:configurations"
 
 \end_inset
 
-).
+.
  
 \end_layout
 
 \begin_layout Standard
 For each crew configuration, we directed our Astrobee model to execute three
- missions (Figure 
+ missions shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Illustration-of-paths"
 
 \end_inset
 
-).
+.
  The first task was a simple traveling task from one end of the module to
  the next.
  The second task involved visiting several waypoints around the walls of
@@ -1405,22 +1443,8 @@ reference "fig:Illustration-of-paths"
  This simulates Astrobee's versatility in performing IVAs at specific points
  within a module, as well as its ability to perch on a module wall to save
  energy and ensure stability during a stationary task.
- The third task sent Astrobee out along one wall and had it return along
- the opposite, testing its ability to navigate obstacles along a more prescripti
-ve path.
- 
-\end_layout
-
-\begin_layout Standard
-Our first test for each case study (defined as a mission and crew configuration
- pairing) task and scenario was be to run each path-planning algorithm without
- the use of proxemics to provide a baseline point of comparison for proxemic
- simulations.
- To do so while still maintaining collision avoidance, we weighted humans
- with a symmetric Gaussian, regardless of human orientation.
- We then introduced our proxemic model for our cost graph and potential
- field strengths, and we ran each case study again.
- 
+ The third task sent Astrobee along the perimeter of the module, testing
+ its ability to navigate obstacles along a more prescriptive path.
 \end_layout
 
 \begin_layout Standard
@@ -1881,10 +1905,20 @@ key "SmithAstrobeeNew"
 \end_layout
 
 \begin_layout Standard
-Astrobee plans include position estimation to within 20cm of walls, which
- shall provide the distance for our hard-constraint wall buffers.
- It is able to internally update its position at ~6Hz, and it has a hardware
- safety constraint that limits thrust at a maximum of 0.72N 
+Astrobee plans include position estimation to within 20cm of walls
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ which shall provide the distance for our hard-constraint wall buffers.
+ 
+\end_layout
+
+\end_inset
+
+ and is able to internally update its position at ~6Hz.
+ It has a hardware safety constraint that limits thrust at a maximum of
+ 0.72N 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
@@ -1894,7 +1928,17 @@ key "SmithAstrobeeNew"
 .
  Our simulated robot's motion shall accomodate these Astrobee constraints,
  supplementing any lack of available information with comparable specifications
- from the motion of SPHERES.
+ from the motion of SPHERES
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+delete spehres reference? We really only include the max thrust
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1988,8 +2032,8 @@ Artificial Potential Field
 \begin_layout Standard
 In our APF implementation, the robot is modelled as a particle driven by
  a potential field.
- The potential field is linear, so the total potential at each point is
- is the sum of the different components
+ Potential fields are linear, so the total potential at each point is is
+ the sum of the different components
 \begin_inset Formula 
 \[
 U\left(x_{r},y_{y}\right)=\sum U_{i}\left(x_{r},y_{y}\right)
@@ -2093,7 +2137,11 @@ U_{\text{goal}}\left(x_{r},y_{r}\right)=\begin{cases}
 \end_inset
 
 where 
-\begin_inset Formula $d=\sqrt{\left(x_{r}-x_{g}\right)^{2}+\left(y_{r}-y_{g}\right)^{2}}$
+\begin_inset Formula 
+\[
+d=\sqrt{\left(x_{r}-x_{g}\right)^{2}+\left(y_{r}-y_{g}\right)^{2}}
+\]
+
 \end_inset
 
  is the distance between the robot and the goal and 
@@ -2116,7 +2164,7 @@ The values for the constants
 \end_inset
 
  were chosen by qualitatively evaluating the performance of APF for the
- simplest mission and crew configuration over a range of values.
+ first case over a range of values.
  The values 
 \begin_inset Formula $k=\unit[1]{N/m}$
 \end_inset
@@ -2136,13 +2184,21 @@ The values for the constants
 \end_layout
 
 \begin_layout Subsection
-A* Implementation
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ Implementation
 \end_layout
 
 \begin_layout Standard
-A* is a modification of Dijkstra's algorithm to find a lowest-cost path
- between two points on a directed graph, but it uses an additional heuristic
- to perform not just a breadth-first search, but a best-first search.
+The 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ technique is a modification of Dijkstra's algorithm to find a lowest-cost
+ path between two points on a directed graph, but it uses an additional
+ heuristic to perform not just a breadth-first search, but a best-first
+ search.
  
 \end_layout
 
@@ -2151,27 +2207,32 @@ Our general algorithm was implemented using a priority queue of potential
  paths, stored as lists of graph nodes with (x,y) coordinates and an associated
  velocity.
  As the algorithm planned our robot's path through the discretized model,
- it considered all possible nearest neighbors on the grid, with a range
+ it considered all nine possible nearest neighbors on the grid, with a range
  of possible next velocities at each location, assigning each possible next
- step a cost that depends on human proxemics and the robot's locaation and
- velocity.
- The cost function is described in more detail in Section 4.3: Human Avoidance
- Models.
+ step a cost that depends on the relative position of the crew and the robot's
+ location and velocity.
  After the proxemic cost was calculated for each newest node in a path,
- each new path was added to the priority queue with 
-\begin_inset Formula $Priority=(Cumulative\ proxemic\ cost)+(Heuristic)$
+ each new path was added to the priority queue with a priority equal to
+ the sum of the cumalative cost and a heuristic value.
+ The heuristic is a function of location and velocity that estimates the
+ cost  of the current path based on path length and velocity.
+ The heuristic used in our simulations is described below
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+in Section 4.2.1
+\end_layout
+
 \end_inset
 
-, where the heuristic is a function of location and velocity that emphasizes
- following the shortest path to the goal and travelling at a higher speed
- with different weights.
- The heuristic used in our simulations is described below in Section 4.2.1.
+.
  Once each new potential path was added to the priority queue, the algorithm
  then selected the path with the lowest priority from the current queue,
  and it began the same process to extend the newly selected path.
  The algorithm returned a path when the edge of the robot reached a distance
- of 1.2*the grid step size, which allowed the algorithm to recognize when
- the robot had reached its destination, still allowing for some uncertainty.
+ of 1.2 times the grid step size, which allowed the algorithm to recognize
+ when the robot had reached its destination, still allowing for some uncertainty.
  
 \end_layout
 
@@ -2183,6 +2244,16 @@ Djikstra's Algorithm runs in
  time [CHECK AND CITE TEXTBOOK], but as the addition of a heuristic allows
  the algorithm to select the most likely path first, A* can often run in
  significantly less time.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+delete?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2190,14 +2261,35 @@ Heuristic and parameter determinations
 \end_layout
 
 \begin_layout Standard
+Our heuristic is defined as 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-Heuristic=\ \alpha*\left(Distance\ to\ goal\right)\ +\ \beta*\left(\dfrac{1}{New\ velocity}\right)
+H=\ \alpha D+\ \beta\left(\dfrac{1}{v}\right)
 \]
 
 \end_inset
 
+where 
+\begin_inset Formula $D$
+\end_inset
 
+ is the distance from the current position to the goal, 
+\begin_inset Formula $v$
+\end_inset
+
+ is the velocity under consideration, and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are tuning parameters.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2221,22 +2313,51 @@ key "kirbythesis"
 
 , which allowed us to control the strength with which these priorities competed
  with the proxemic cost function, which was considered to have a weight
- of 1.
+ of 1
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Delete 2 sentences?
+\end_layout
+
+\end_inset
+
+.
  The weights 
 \begin_inset Formula $\alpha$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $\beta$
 \end_inset
 
  were chosen in a manner similar to the parameter selection in the APF case,
  where several instances of the same mission/crew combination were compared,
- and a reasonable answer was selected qualitatively.
+ and where the values 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0.05$
+\end_inset
+
+ were selected qualitatively.
  While more rigorous testing of weights is recommended for further studies,
  our method of selection was deemed sufficient given the time limitations
- and scope of our study, as parameters were kept equal across proxemic and
- nonproxemic scenarios.
+ and scope of our study; since the parameters were kept constant for all
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ scenarios, we expect the values do not have a significant influence on
+ the effect of using the different human avoidance models.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+.
  Our results presented in Section 5 were found with weights of 
 \begin_inset Formula $\alpha=1$
 \end_inset
@@ -2246,7 +2367,12 @@ and
 \end_inset
 
 , with coded exceptions to avoid division by 0.
- 
+ Delete?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph*
