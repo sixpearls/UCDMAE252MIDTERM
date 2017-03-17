@@ -96,7 +96,7 @@
 \begin_body
 
 \begin_layout Title
-Comparing Hierarchical and Reactive Architectures for Human-Aware Navigation
+The Effect of Proxemic Models on Path Planning
 \end_layout
 
 \begin_layout Author
@@ -104,16 +104,16 @@ Comparing Hierarchical and Reactive Architectures for Human-Aware Navigation
 status open
 
 \begin_layout Plain Layout
-Sarah
+Benjamin
 \begin_inset space ~
 \end_inset
 
-O'Meara
+Margolis
 \begin_inset Flex Author Mark
 status open
 
 \begin_layout Plain Layout
-1
+3
 \end_layout
 
 \end_inset
@@ -132,16 +132,16 @@ status open
 
 \end_inset
 
-, Benjamin
+,Sarah
 \begin_inset space ~
 \end_inset
 
-Margolis
+O'Meara
 \begin_inset Flex Author Mark
 status open
 
 \begin_layout Plain Layout
-3
+1
 \end_layout
 
 \end_inset
@@ -177,12 +177,12 @@ Davis, CA 95616 USA
 status open
 
 \begin_layout Plain Layout
-1
+3
 \end_layout
 
 \end_inset
 
-someara@ucdavis.edu 
+bwmargolis@ucdavis.edu 
 \begin_inset Flex Author Mark
 status open
 
@@ -197,12 +197,12 @@ mcocon@ucdavis.edu
 status open
 
 \begin_layout Plain Layout
-3
+1
 \end_layout
 
 \end_inset
 
-bwmargolis@ucdavis.edu
+someara@ucdavis.edu
 \end_layout
 
 \end_inset
@@ -211,9 +211,9 @@ bwmargolis@ucdavis.edu
 \end_layout
 
 \begin_layout Abstract
-As robots become increasingly prevalent in environments with humans across
- contexts, whether social or work, there is a need to understand human-robot
- interaction (HRI) to build strong and effective relationships.
+As robots become increasingly prevalent in social or work environments with
+ humans, there is a need to understand human-robot interaction (HRI) to
+ build strong and effective relationships.
  There are several aspects of HRI and the focus of this paper will be the
  relationship between path planning and proxemics, or social distance, which
  is the comfortable, physical distance between two parties.
@@ -222,13 +222,23 @@ As robots become increasingly prevalent in environments with humans across
 \begin_inset Formula $A^{*}$
 \end_inset
 
- and artificial potential field (APF), by simulating an autonomous monitoring
- robot navigation in the presence of crew members on a space station.
+ and artificial potential field (APF), by simulating an autonomous robot
+ navigating in the presence of crew members in a space station module.
  We evaluated the results of these two factors over twelve cases of goal
  and crew positions.
  The introduction of proxemic models tended to help APF avoid local minima
  but increased the computational load for 
 \begin_inset Formula $A^{*}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+150 words or less; rework
+\end_layout
+
 \end_inset
 
 .
@@ -256,26 +266,26 @@ Technological advances in robotics are leading towards increased prevalence
  (e.g.
  space exploration, military, search and rescue) to social ones (e.g.
  healthcare, companionship).
- NASA (National Aeronautics and Space Administration) is developing and
- deploying robots, such as Robonaut, Astrobee, Valkyrie, and SPHERES (Synchroniz
-ed Position Hold, Engage, Reorient, Experimental Satellites), to work with
- and/or in the same environment as astronauts.
+ NASA is developing and deploying robots, such as Robonaut, Astrobee, Valkyrie,
+ and SPHERES (Synchronized Position Hold, Engage, Reorient, Experimental
+ Satellites), to work with and/or in the same environment as astronauts.
  Robots like Astrobee will perform tedious, daily monitoring tasks and will
  need to navigate the modules in the ISS (International Space Station) without
- adversely affecting astronaut activities.
+ adversely affecting crew (a.k.a.
+ astronaut) activities.
  Therefore, these monitoring robots will need to understand and adhere to
  rules governing personal and work space.
- The aim of this simulation project is to investigate existing models of
- personal space and their effect on path planning and execution (i.e.
+ The aim of this simulation project is to leverage an existing personal
+ space model and investigate its effect on path planning (i.e.
  human-aware navigation) of an autonomous robot, like Astrobee.
  While our interest focuses on space exploration, human-aware navigation
  can be applied across a variety of contexts.
 \end_layout
 
 \begin_layout Standard
-Proxemic distance, or personal space, in the context of Human-Robot Interaction
- (HRI) is founded on the characterization of human-human interaction by
- Hall 
+Human-aware navigation has drawn on Human-Human Interaction (HHI) proxemics
+ research, established by Edward T.
+ Hall in the 1960s 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hall1966hidden"
@@ -283,14 +293,15 @@ key "hall1966hidden"
 \end_inset
 
 .
- However, the application of these interpersonal distances has been a recent
- topic of research.
- Proxemic distance is quickly becoming a relevant topic for autonomous robotics
- and path planning, as the comfort of humans in the same environment as
- robots need to be considered.
- In a review of human-aware robot navigation, a search of the literature
- revealed that the topic seemed to generate interest in 2001 and the number
- of publications has increased over the years 
+ Proxemics is the study of human use of space, and provides a framework
+ for understanding the comfortable, physical distance between two parties.
+ The application of proxemics to Human-Robot Interation (HRI) has been a
+ recent topic of research.
+ Proxemics is rapidly becoming a relevant topic for autonomous robotics
+ and path planning to account for human comfort in a shared environment.
+ Kruse et.
+ al conducted a human-aware navigation literature search that revealed increasin
+g publications and interest since 2001 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -305,26 +316,9 @@ key "kruse2013human"
 \end_layout
 
 \begin_layout Standard
-The following sections will present a brief literature review surrounding
- robotics in space, proxemics, and autonomous robotic navigation.
- Next, we present our robotic simulation, which compares proxemic and nonproxemi
-c human avoidance for a free-flying robot avoiding human obstacles and exhibitin
-g sociable behavior, with an 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- heuristic path-planning algorithm and a reactive artificial potential field
- (APF) navigation scheme.
- We will discuss our experimental design, comparability to previous work
- in literature, the details of our simulated robot based on the Astrobee
- small satellite for Intravehicular Activities (IVAs) on the International
- Space Station (ISS), and we will discuss simplifications made due to time
- constraints.
- We will detail the specifics of our proxemic model and algorithmic implementati
-ons.
- Finally, we will present our simulation results with an analysis of emergent
- patterns and unexpected observations, before presenting our goals for future
- research.
+The following sections will encompass a brief literature review, experimental
+ design, robotics simulation, techniques and algorithms, results and discussion,
+ and future work.
 \end_layout
 
 \begin_layout Subsection
@@ -336,9 +330,9 @@ Humans, Robots, and Space
 \end_layout
 
 \begin_layout Standard
-The SPHERES platform is a system of three free-flying small satellites (roughly
- comparable to the size and mass of a bowling ball) that have been operating
- out of the Japanese Experimental Module of the ISS since 2006.
+The SPHERES platform is a system of three free-flying small satellites that
+ have been operating out of the Japanese Experimental Module of the ISS
+ since 2006.
  First developed as a class project at MIT, the platform, through its ability
  to upload guest software, has become a primary source of research in autonomous
  controls for free-flying spacecraft.
@@ -376,29 +370,8 @@ key "bualat2015astrobee"
 \end_inset
 
 .
- The PSA satellite was originally designed with the goals of 
-\end_layout
-
-\begin_layout Enumerate
-Increasing crew productivity by taking over mundane and repetitive tasks
-\end_layout
-
-\begin_layout Enumerate
-Reducing risk onboard the spacecraft by providing an interface for logistical
- management
-\end_layout
-
-\begin_layout Enumerate
-Providing crew (astronaut) performance monitoring and feedback 
-\end_layout
-
-\begin_layout Enumerate
-Acting as a platform for just-in-time training
-\end_layout
-
-\begin_layout Enumerate
-Monitoring air and system quality, isolating faults, and providing a backup
- sensor system to those already onboard the ISS 
+ The original PSA satellite design goals included increasing crew productivity
+ by taking over mundane and repetitive tasks, and monitoring functions 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "psa"
@@ -407,13 +380,6 @@ key "psa"
 
 .
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -437,10 +403,9 @@ In its current projection, Astrobee will operate only semi-autonomously
  in coordination with the ground crew.
  Given a goal, Astrobee will follow a pre-programmed path using its computer
  vision navigation system.
- When Astrobee encounters an obstacle, whether an unexpected object or a
- human, it will slow down, stop, and wait for either a ground controller
- to telenavigate Astrobee around the obstacle or for the obstacle to leave
- its preplanned path (See Figure 
+ When Astrobee encounters an obstacle it will slow down, stop, and wait
+ for either a ground controller to telenavigate Astrobee around the obstacle
+ or for the obstacle to leave its preplanned path (See Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Concept-of-Astrobee"
@@ -455,10 +420,18 @@ key "bualat2015astrobee"
 \end_inset
 
 .
- While the method avoids unintended collisions, its reliance on ground crews
- or waiting for an environment to clear could prove impractical for longer-durat
-ion missions, such as planned trips to Mars, when communications between
- the robot and a ground crew could easily exceed ten minutes.
+ The reliance on ground crew or waiting for a clear environment would prove
+ impractical for longer-duration missions with increased latency
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Mars communications latency is approximately ten minutes.
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -515,11 +488,10 @@ name "fig:Concept-of-Astrobee"
 Astrobee would clearly benefit from fully autonomous, human-aware navigation.
  With its primary purpose to help crew while working in the same environment,
  human-aware navigation is the logical development path.
- Astrobee is also an ideal candidate for robotic simulation research, prior
+ Astrobee is also an ideal candidate for robotics simulation research, prior
  to physical testing.
- As Astrobee interacts directly with crew and with life-supporting systems
- in an isolated environment, it is subject to the stringent safety measures
- applied to any ISS payload
+ As Astrobee interacts directly with crew and life support systems, it is
+ subject to the stringent safety measures applied to any ISS payload
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bualat2015astrobee"
@@ -527,15 +499,15 @@ key "bualat2015astrobee"
 \end_inset
 
 .
- Rigorous testing through robotic simulation rather than immediately switching
- to the physical world provides an opportunity for risk-free development.
+ Rigorous testing through robotics simulation, rather than immediately switching
+ to the physical world, provides an opportunity for risk-free development.
  With Astrobee’s evolutionary history, established technologies, and intended
  application, it lends itself perfectly to our research simulation that
  will focus on one aspect of human-aware navigation: proxemics.
 \end_layout
 
 \begin_layout Subsubsection
-Human-Robot Interaction
+Proxemics in HRI
 \end_layout
 
 \begin_layout Standard
@@ -561,7 +533,7 @@ key "walters2011long"
 
 \end_inset
 
-, personal experience, personality, and gaze 
+, personal experience, personality, gaze 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "takayama2009influences"
@@ -576,7 +548,7 @@ key "kruse2013human,walters2009empirical"
 \end_inset
 
 .
- In a study by Kim and Mutlu, proxemic distance, or physical distance, is
+ In a study by Kim and Mutlu, proxemic distance (physical distance), is
  examined in conjunction with task distance (collaborative versus competitive)
  and power distance (supervisor versus subordinate) 
 \begin_inset CommandInset citation
@@ -586,8 +558,8 @@ key "kim2014social"
 \end_inset
 
 .
- In this card matching task, participants performed better with a greater
- physical distance (120 cm versus 46 cm) and reported a more positive experience
+ In a card matching task, participants performed better with a greater physical
+ distance (120 cm versus 46 cm) and reported a more positive experience
  with a subordinate robot when it kept a greater physical distance 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -596,9 +568,9 @@ key "kim2014social"
 \end_inset
 
 .
- While most of the human-human interaction (HHI) based hypotheses found
- support, some have no support and may be an indication that humans interact
- differently with robots in certain contexts.
+ While most of the HHI-based hypotheses found support, some have no support
+ and may be an indication that humans interact differently with robots in
+ certain contexts.
  However, the experimental design may not have used a complicated enough
  task, particularly for examining power distance and the benefits of a collabora
 tive relationship may have been lost.
@@ -620,9 +592,9 @@ key "torta2013design"
 \end_inset
 
 .
- Overall, participants preferred a head-on approach, a rightward versus
- leftward, and the proxemic distance was larger than that measured in HHI
- 
+ Overall, participants reported a preference for a head-on approach, a rightward
+ versus leftward, and the proxemic distance was larger than that measured
+ in HHI 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torta2013design"
@@ -672,7 +644,7 @@ key "takayama2009influences"
 
 .
  Here, personal experience and participants with agreeable personalities
- had smaller minimum proxemics distances.
+ had smaller minimum proxemic distances.
  Interestingly, there was a gender effect when the robot gazed at the participan
 ts’ faces, where it resulted in a shorter distance for men and a greater
  distance for women 
@@ -693,16 +665,9 @@ key "torta2013design"
 
 \end_inset
 
-, or in the study with gender differences
-\begin_inset CommandInset citation
-LatexCommand cite
-key "takayama2009influences"
-
-\end_inset
-
 .
- There are other factors to considered, such as mechanoid versus humanoid,
- and Walters et.
+ There are other factors to be considered, such as mechanoid versus humanoid
+ appearance, and Walters et.
  al 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -718,19 +683,18 @@ key "kruse2013human"
 
 \end_inset
 
- have a more in-depth discussion of factors (See 
+ have a more in-depth discussion of factors (See Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Comparison-of-HRI"
 
 \end_inset
 
-for brief comparison of studies reviewed here).
+in Appendix for brief comparison of studies reviewed here).
  Most work reviewed was not conducted in a simulation, and it has been difficult
  to find relevant simulation studies to date.
  Kirby et.
- al conducted a simulation study and provide a framework upon which this
- project is based 
+ al conducted a simulation study that has guided this project 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirby2009companion"
@@ -742,52 +706,8 @@ key "kirby2009companion"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Comparison of HRI Experimental Designs
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Comparison-of-HRI"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename lit review compare.png
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Some proxemic distance factors are more relevant for the application of
- an autonomous robot onboard the ISS for monitoring tasks.
+ an autonomous robot onboard the ISS.
  The robot would take on a subordinate position, would not gaze, have a
  collaborative-type task, have a long-term relationship, and could approach
  from multiple directions in 3D space.
@@ -804,7 +724,7 @@ Some proxemic distance factors are more relevant for the application of
 \end_layout
 
 \begin_layout Section
-Experimental design
+Experimental Design
 \end_layout
 
 \begin_layout Subsection
@@ -814,9 +734,8 @@ Problem Formulation
 \begin_layout Standard
 Path planning generally uses either a global, hierarchical search or a local,
  reactive method.
- To incorporate human-awareness and increase human comfort, these methods
- are modified to include a consideration based on the proxemic distance
- from humans in the environment as described above 
+ To incorporate human-aware navigation and increase human comfort, these
+ methods are modified to include a proxemic model 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruse2013human"
@@ -837,9 +756,9 @@ key "kruse2013human"
 \end_inset
 
 .
- We are particularly interested in exploring whether a hierarchical architecture
- is necessary for human-aware path planning, because the literature seems
- focused on global search methods.
+ We are particularly interested in whether a hierarchical architecture is
+ necessary for human-aware path planning, as the literature seems focused
+ on global search methods.
  To that end, we have explored the question:
 \end_layout
 
@@ -850,39 +769,39 @@ How do the output paths of the
 \begin_inset Formula $\mathbf{A^{*}}$
 \end_inset
 
- and APF architectures react to the introduction of proxemics during autonomous
- navigation in an enclosed area? 
+ and Artifical Potential Field (APF) architectures react to the introduction
+ of proxemics during autonomous navigation in an enclosed area? 
 \end_layout
 
 \begin_layout Standard
-Global optimization methods can find globally optimal paths, but are often
- slow and require modification to be used for real-time navigation in dynamic
+Global search methods can find globally optimal paths, but are often slow
+ and require modification to be used for real-time navigation in dynamic
  environments.
- In contrast, reactive methods are simple and well suited to real-time control
+ In contrast, reactive methods are simple and well suited to real-time control,
  but may perform non-optimally.
  Most local, reactive techniques are based on APF, which may cause the robot
  to stop moving towards the target due to local minima in the potential
  field.
  Overweighted obstacles can also overwhelm the attraction to the target
  and cause navigational errors.
- While these could be considered flaws, in human-aware path planning, these
- errors may cause desirable social behaviors such as waiting at a blocked
- pathway or avoiding a human collision.
  For both path planning methods, we compared the robot's trajectory with
- and without proxemics.
- In APF, soft constraints were used to avoid collisions with the crew members
- and the environment's walls.
- In A*, we use hard constraints to avoid collisions with both the wall and
- crew members, although approaching humans remains a soft constraint given
- by the cost function model.
- In the following subsections, we introduce the formulation for our two
- path planning methods, our justifications for their choice, and their expected
- shortcomings.
+ and without a proxemic model.
+ In APF, soft constraints were used to avoid collisions with the crew and
+ the environment's walls.
+ In 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+, we used hard constraints to avoid collisions with both the wall and crew
+ members, although approaching humans remains a soft constraint given by
+ the cost function model.
+ In the following subsections, we describe the two path planning methods,
+ our justifications for their choice, and their expected shortcomings.
  
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -931,7 +850,7 @@ name "fig:moving_human_prox"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1023,7 +942,7 @@ Generally,
 
  is not well suited for real-time navigation because it does not incorporate
  dynamics of the robot or its environment and may not be able to replan
- quickly enough to update based on those changes.
+ quickly.
  Additionally on physical systems, paths generated by 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -1046,9 +965,6 @@ key "kirby2009companion,stentz1994d,koenig2004lifelong"
 \end_inset
 
  is still considered a standard technique for path planning.
- We incorporated it into our simulation to investigate its shortcomings
- for ourselves, and to enable a comparison to robotic simulations found
- in the literature.
  
 \end_layout
 
@@ -1069,61 +985,28 @@ key "kirby2009companion"
 \begin_inset Formula $A^{*}$
 \end_inset
 
- graph-search based algorithm with a proxemic cost function, from which
- much of our experimental design draws its inspiration.
+ graph search based algorithm with a proxemic cost function.
  Kirby et.al showed that a heuristic path-planning algorithm could demonstrate
  social behaviors, such as passing on one side and respecting personal space.
- While we have ignored many of the social behaviors that Kirby proposed
- for her experiment 
+ We adopted the encoding strategy for desired behaviors (respecting human
+ proxemics, minimizing distance to a goal, and minimizing the time taken
+ to reach a goal) into a weighted 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ heuristic function, as outlined in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kirbythesis"
 
 \end_inset
 
-, we adopted the strategy of encoding our desired behaviors (which we limit
- to respecting human proxemics, minimizing distance to a goal, and minimizing
- the time taken to reach a goal) into a weighted 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- heuristic function.
+.
  The implementation of our 
 \begin_inset Formula $A^{*}$
 \end_inset
 
  algorithm will be detailed in Section IV: Techniques and Algorithms.
-\end_layout
-
-\begin_layout Standard
-We wish to compare the results from our COMPANION-style architecture with
- a reactive architecture based on an artificial potential field (APF) that
- incorporates an equivalent proxemic map, such as those shown in Figures
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:moving_human_prox"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:pass_left_prox"
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-DELETE PARAGRAPH?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -4033,6 +3916,50 @@ key "weinrich2013prediction"
 LatexCommand bibtex
 bibfiles "refs"
 options "IEEEtran"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Appendix
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of HRI Experimental Designs
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparison-of-HRI"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lit review compare.png
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
