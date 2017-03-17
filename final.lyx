@@ -1229,14 +1229,14 @@ scenario
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename mission_group.png
 	lyxscale 25
-	width 3.5in
+	width 3in
 
 \end_inset
 
@@ -1263,16 +1263,6 @@ name "fig:Illustration-of-paths"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SARAH
 \end_layout
 
 \end_inset
@@ -2204,54 +2194,25 @@ For 11 cases, the distanced traveled was similar between non-proxemic and
  In Case 7, the proxemic scenario saw an increased average velocity (78.19%
  change or +2.09 cm/s) and a larger maximum velocity (7.22% change or +1.94
  cm/s) resulting in a faster completion time (-44.49% change or -194.75 s).
- While navigating towards Goal 2, the robot appeared to translate slowly
- across the clustered crew before reaching a local minimum and continuing
- to the next goal zone.
- This process occured earlier and was of shorter duration in the proxemic
- scenario
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref fig
-\end_layout
+ While navigating towards Goal 2, the non-proxemic model robot appeared
+ to translate slowly across the clustered crew before reaching a local minimum
+ and continuing to the next goal zone.
+ Althought this process occured around the same time, it was of shorter
+ duration in the proxemic scenario (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case 7 Robot-Distance-from"
 
 \end_inset
 
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ben-this is where the paired plots go
-\end_layout
-
-\end_inset
-
-.
+).
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Case 7
-\end_layout
-
-\end_inset
-
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Float figure
@@ -2274,7 +2235,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Comparision of Non-proxemic and Proxemic Robot Path
+Robot Path
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case 7Robot-Path"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2308,8 +2276,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Comparison of Non-Proxemic and Proxemic Robot Distance from Selected Crew
-\end_layout
+Robot Distance from Selected Crew
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case 7 Robot-Distance-from"
 
 \end_inset
 
@@ -2320,15 +2290,27 @@ Comparison of Non-Proxemic and Proxemic Robot Distance from Selected Crew
 
 
 \end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
 
 \begin_layout Plain Layout
-SARAH LABEL AND LINK
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Case 7 Comparision of Non-Proxemic and Proxemic Scenarios (Non-proxemic
+ shown in green and proxemic shown in blue)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2374,7 +2356,7 @@ reference "fig:Case-12-Comparison"
 
  for Case 12 illustrate areas where the proxemic model effect varies, where
  the paths overlap through Goal 2 (small proxemic effect) and separate at
- Goal 3 (larger proxemic effect) .
+ Goal 3 (larger proxemic effect).
  These results highlight that inclusion of a proxemic model has a smaller
  effect at large distances from crew.
  
@@ -2423,17 +2405,14 @@ In two cases, the proxemic scenario yielded a larger minimum distance.
  The robot also approaches a cluster of crew and crosses in front in Case
  7.
  The proxemic model produced expected results with the robot maintaining
- a larger distance 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref figure
-\end_layout
+ a larger distance from the crew cluster (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case 7Robot-Path"
 
 \end_inset
 
-.
+).
  These results compliment the recently discussed findings, where the crew
  orientation is an important factor.
 \end_layout
@@ -2447,31 +2426,32 @@ There were surprisingly few differences throughout the scenarios regarding
  Consequently, the robot stayed longer in the personal zones for Crew 1,
  2, and 3 by 236.75 s, 194.00 s, 183.00 s, respectively.
  Overall, the non-proxemic and proxemic models behaved similarly in terms
- of personal space zones
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-for discussion, the bins have a width and people's preference may draw different
- lines
-\end_layout
-
-\end_inset
-
-.
+ of personal space zones.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Case12_apf_pair.png
+	lyxscale 50
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Case 12 Comparison of Non-Proxemic and Proxemic Paths
+Case 12 Comparison of Non-Proxemic and Proxemic Paths (Non-proxemic shown
+ in green and proxemic shown in blue)
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Case-12-Comparison"
@@ -2503,17 +2483,6 @@ In Case 1, the non-proxemic model robot encountered a local minimum in front
  The maximum velocity of the proxemic model robot was 23.00 cm/s, so the
  potential field was static for the duration of the simulation.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-reword, symm field, rounding issues (discussion)
-\end_layout
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
@@ -2524,20 +2493,25 @@ A similar situation occured during the Case 6, where in the non-proxemic
  However, in the proxemic case, the local minimum occurs just inside the
  goal zone boundary.
  As a result, the non-proxemic model robot crossed in front of Crew 2, whereas
- the proxemic model robot continued behind Crew 1.
- While the proxemic model robot was able to reach Goal 2, it caused the
- average velocity to decrease (-46.66% change from non-proxemic) due to a
- large amount of time spent at a low force and velocity near Crew 1 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fig ref
-\end_layout
+ the proxemic model robot continued behind Crew 1 (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case6Robot-Path"
 
 \end_inset
 
-.
+).
+ While the proxemic model robot was able to reach Goal 2, it caused the
+ average velocity to decrease (-46.66% change from non-proxemic) due to a
+ large amount of time spent at a low force and velocity near Crew 1 (See
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case6 Robot-Distance-from"
+
+\end_inset
+
+).
  This area in the field appears to be the driver behind the increased completion
  time for the proxemic scenario (82.00%).
  Passing behind Crew 1 also brings the proxemic model robot closer, decreasing
@@ -2550,17 +2524,14 @@ fig ref
  Due to the non-proxemic model robot crossing in front, it spends time in
  the personal zone of Crew 2.
  In contrast, the proxemic model robot never enters the personal zone of
- that crew member 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fig ref
-\end_layout
+ that crew member (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case6 Robot-Distance-from"
 
 \end_inset
 
-.
+).
  This unique case draws attention to an interesting point of discussion:
  is it less invasive or uncomfortable for a robot to slowly pass behind
  or cross in front and affect more people?
@@ -2573,6 +2544,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename case6_realapf_pair.png
+	lyxscale 50
+	width 3.5in
+
+\end_inset
+
 
 \end_layout
 
@@ -2580,6 +2564,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Robot Path
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case6Robot-Path"
+
+\end_inset
+
 
 \end_layout
 
@@ -2593,43 +2584,68 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-To move to discussion: A plot of the potential fields indicates that the
- robot could have continued to Goal 4, if released from the local minimum;
- there was a possible path between Crew 1 and Crew 4
-\begin_inset Note Note
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-move to discussion
+\begin_inset Graphics
+	filename case6_dist_pair.png
+	lyxscale 50
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Robot Distance from Selected Crew
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case6 Robot-Distance-from"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-.
- These particular results highlight the challenges of APF-based navigation,
- where the selecting the strength of the sources and sinks affects the outcome.
- As discussed in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Human-Avoidance-Models"
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
-, the strength of the sources (a.k.a.
- crew) was based on 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirbythesis"
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Case 6 Comparision of Non-Proxemic and Proxemic Scenarios (Non-proxemic
+ shown in green and proxemic shown in blue; solid lines for Crew 1 and -
+ - for Crew 2)
+\end_layout
 
 \end_inset
 
-and the sinks (a.k.a.
- goals) was determined from our analysis.
- Prior to the damping coefficient and sink amplitude analysis, we observed
- that the robot trajectories, mission success, and collisions varied from
- our final results.
- In our final results, there were no collisions with the crew or module.
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3223,6 +3239,53 @@ reference "tab:Comparison-of-HRI"
  The primary point of comparison between previous studies described in the
  literature review and our proposed one will be the instantaneous distance
  between the robot and the human.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+for discussion, the bins have a width and people's preference may draw different
+ lines
+\end_layout
+
+\end_inset
+
+ To move to discussion: A plot of the potential fields indicates that the
+ robot could have continued to Goal 4, if released from the local minimum;
+ there was a possible path between Crew 1 and Crew 4
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+move to discussion
+\end_layout
+
+\end_inset
+
+.
+ These particular results highlight the challenges of APF-based navigation,
+ where the selecting the strength of the sources and sinks affects the outcome.
+ As discussed in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Human-Avoidance-Models"
+
+\end_inset
+
+, the strength of the sources (a.k.a.
+ crew) was based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+and the sinks (a.k.a.
+ goals) was determined from our analysis.
+ Prior to the damping coefficient and sink amplitude analysis, we observed
+ that the robot trajectories, mission success, and collisions varied from
+ our final results.
+ In our final results, there were no collisions with the crew or module.
 \end_layout
 
 \begin_layout Section
