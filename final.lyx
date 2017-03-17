@@ -1323,53 +1323,71 @@ Test Scenarios
 \end_layout
 
 \begin_layout Standard
-For each of our algorithms, 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- and APF, we have two run identical tests for each of twelve case studies
- (defined as a mission and crew configuration pairing), one with a nonproxemic
- model and one with our proxemic model.
- The paths from each planning method using proxemic and non-proxemic models
- for the distance to keep from crew members are compared for all twelve
- cases.
-\end_layout
-
-\begin_layout Standard
-Crew member configurations were designed to test the versatility of each
- algorithm, demonstrating navigation around a single human, navigation between
- two humans, navigation around a cluster of humans, and navigation around
- four crew members with randomly generated positions and orientations, as
- shown in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:configurations"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-For each crew configuration, we directed our Astrobee model to execute three
- missions shown in Figure 
+In order to address the research question, we created 12 cases using multiple
+ factors with the aim of creating challenging navigational situations to
+ draw out differences bewteen proxemic and non-proxemic models for APF and
+ A*.
+ The first factor, the mission type, defined the navigational goal(s) of
+ the robot and were selected to cause the robot to transverse through the
+ space in different ways.
+ As shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Illustration-of-paths"
 
 \end_inset
 
-.
- The first task was a simple traveling task from one end of the module to
- the next.
- The second task involved visiting several waypoints around the walls of
- the module.
- This simulates Astrobee's versatility in performing IVAs at specific points
- within a module, as well as its ability to perch on a module wall to save
- energy and ensure stability during a stationary task.
- The third task sent Astrobee along the perimeter of the module, testing
- its ability to navigate obstacles along a more prescriptive path.
+, there are three possible mission types: Direct, Waypoints, and Monitoring.
+ The second factor, the crew configuration, defined how the module space
+ was occupied with four possible options:1 Crew, 2 Crew, Clustered Crew,
+ and Random Crew (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:configurations"
+
+\end_inset
+
+).
+ The 1 Crew configuration placed the crew facing in the direction of the
+ robot starting point.
+ The 2 Crew configuration was situated to potentially cause an occlusion
+ by placing two crew members facing and opposing each other.
+ The Clustered Crew was configured to create a higher density of obstacles
+ for that location.
+ Finally, the position and orientation of the Random Crew was randomly generated
+ to create an unknown situation.
+ The third factor was the use of a non-proxemic or proxemic model for the
+ crew potential fields or cost function.
+ The fourth factor was the implementation of APF or A*.
+ Due to the large number of simulations, it was helpful to define the terms
+ 
+\begin_inset Quotes eld
+\end_inset
+
+case
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+scenario
+\begin_inset Quotes erd
+\end_inset
+
+ for this paper.
+ A case was described by the mission type and crew configuration, and there
+ were a total of 12 possibilities.
+ A scenario was identified by the case and the model, which yielded 24 scenarios
+ or test scenarios.
+ The implementation of APF and A* are applied for each scenario for a total
+ of 48 simulations.
+ The results and analysis are reported by APF scenarios (24) and A* scenarios
+ (24).
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1508,9 +1526,8 @@ name "fig:Mission3"
 \begin_layout Plain Layout
 Illustration of paths for three tasks without inclusion of obstacles, where
  the blue rectangle represents the module boundaries, the yellow square
- is the simulated Astrobee, and the dotted line is a possible path: A) Task
- 1 is direct navigation from one end of module to the other, B) Task 2 ,
- C) .
+ is the simulated robot, and the dotted line is a possible path: A) Mission
+ 1 is Direct B) Mission 2 is Waypoints , C) Mission 3 in Monitoring.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Illustration-of-paths"
@@ -1701,14 +1718,13 @@ name "fig:Crew4"
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Example of possible crew configurations: A) Crew located in direct path
- of shortest distance (Crew Config.
- 1), B) Two crew members on opposing sides of module (Crew Config.
- 2), C) Cluster of crew members opposite from single crew (Crew Config.
- 3), and D) Random position and orientation of four crew members; the black
- arrows indicate the direction of highest repulsive force or cost (Crew
- Config.
- 4).
+Example of possible crew configurations: A) Crew Config.
+ 1 is 1 Crew, B) Crew Config.
+ 2 is 2 Crew C) Crew Config.
+ 3 is Clustered Crew, and D) Crew Config.
+ 4 is Random Crew; the black arrows indicate the direction of highest repulsive
+ force or cost.
+ The orientation is indicated by the tick mark.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:configurations"
@@ -1717,81 +1733,6 @@ name "fig:configurations"
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Is this accurate anymore? I know the table is, but I don't think we ended
- up using these notations.
- Also are we referring to 
-\begin_inset Quotes eld
-\end_inset
-
-missions
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-tasks
-\begin_inset Quotes erd
-\end_inset
-
-?
-\end_layout
-
-\end_inset
-
-Table of experimental conditions for three factors (path planning, task
- type, and crew configuration) for a total of 24 simulations.
- A use case is comprised of a sequence of factor designations, such as A*-T01-CC
-1 (
-\begin_inset Formula $A^{*}$
-\end_inset
-
- algorithm for end-to-end module navigation with one crew member present).
- Selected abbreviations: T01 = Task 1, CC1 = Crew Configuration 1.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:TestTable"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename TestTable2.png
-	width 3.5in
 
 \end_inset
 
@@ -2728,10 +2669,7 @@ Incomplete Missions
 \end_layout
 
 \begin_layout Standard
-The APF simulation encompassed a full factorial simulation for mission type,
- crew configuration, and inclusion of proxemics, which resulted in 24 test
- scenarios.
- Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
+Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
  (4 non-proxemic, 2 proxemic) due to entrapment in local minima prior to
  reaching the goal zone.
  For the non-proxemic Case 1, the robot came to a stop directly in front
