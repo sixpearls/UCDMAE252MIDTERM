@@ -1866,46 +1866,43 @@ Robot Model
 \end_layout
 
 \begin_layout Standard
-Our Astrobee model itself was represented by a 12”x12” square with a 6kg
- mass 
+Our robot model was represented by a 12”x12” square with a 6kg mass, modeled
+ after the Astrobee robot.
+ Astrobee is able to internally update its position at ~6Hz, and it has
+ a hardware safety constraint that limits thrust at a maximum of 0.72N 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
 
 \end_inset
 
-.
- capable of 3-DOF holonomic motion (x translation, y translation, and xy
- rotation).
- 
-\end_layout
+, so we ensured that our chosen time and velocity steps for APF and A* reflected
+ these motion limitations.
+ While in two dimensions, Astrobee should be capable of 3-DOF holonomic
+ motion (x translation, y translation, and xy rotation), we simplified our
+ simulations by considering only translation, rather than rotation, and
+ considered every direction of travel to have the same specified maximum
+ thrust.
+ For collision detection, we used the robot's 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-Astrobee plans include position estimation to within 20cm of walls, which
- shall provide the distance for our hard-constraint wall buffers.
- It is able to internally update its position at ~6Hz, and it has a hardware
- safety constraint that limits thrust at a maximum of 0.72N 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
+working radius,
+\begin_inset Quotes erd
+\end_inset
 
+ defined as the distance from the center of the robot to a corner of the
+ robot, or 8.49
+\begin_inset Quotes erd
 \end_inset
 
 .
- Our simulated robot's motion shall accomodate these Astrobee constraints,
- supplementing any lack of available information with comparable specifications
- from the motion of SPHERES.
 \end_layout
 
 \begin_layout Standard
-We will treat the propulsion and battery lifetimes as irrelevant given the
+We treated the propulsion and battery lifetimes as irrelevant given the
  scope of our experiment.
  
-\end_layout
-
-\begin_layout Standard
-The robot's working radius was defined as the distance from the center of
- the robot to a corner of the robot,
 \end_layout
 
 \begin_layout Subsection
@@ -1928,6 +1925,8 @@ key "SmithAstrobeeNew"
 \end_inset
 
 .
+ We chose to model Astrobee as if it had all of the requisite information
+ available to it, and we ignored sensor noise and uncertainty.
 \end_layout
 
 \begin_layout Standard
@@ -1954,7 +1953,7 @@ key "TweddleVertigo,fourievertigo"
 \begin_layout Standard
 Due to the demonstrated feasibility of computer vision-based navigation
  for satellites on the ISS and the scope of our proposed investigation,
- we will not include the limitations of sensors in our simulation.
+ we did not include the limitations of sensors in our simulation.
  We recognize that sensors have limitations, such as noise and errors at
  small or large distances; in order for simulation results to be directly
  applied to a physical situation involving Astrobee, these limitations would
@@ -1967,10 +1966,10 @@ key "SmithAstrobeeNew,bualat2015astrobee"
 \end_inset
 
 , the sensors onboard Astrobee are highly customizable.
- Since our investigation focuses on the effects of proxemics on our path-plannin
-g algorithms, it remains more useful if the simulation stays in a generalized
+ Since our investigation focused on the effects of proxemics on our path-plannin
+g algorithms, it remained more useful if the simulation stayed in a generalized
  form, which could be modified appropriately to an individually-selected
- sensor system.
+ sensor system if necessary.
  We shall assume that with additional computer vision software or through
  supplementation with other sensors, Astrobee could have all needed information
  available to it at all times.
@@ -1986,10 +1985,10 @@ Artificial Potential Field
 \end_layout
 
 \begin_layout Standard
-In our APF implementation, the robot is modelled as a particle driven by
+In our APF implementation, the robot was modelled as a particle driven by
  a potential field.
- The potential field is linear, so the total potential at each point is
- is the sum of the different components
+ Potential field is linear, so the total potential at each point is is the
+ sum of the different components
 \begin_inset Formula 
 \[
 U\left(x_{r},y_{y}\right)=\sum U_{i}\left(x_{r},y_{y}\right)
@@ -1997,8 +1996,8 @@ U\left(x_{r},y_{y}\right)=\sum U_{i}\left(x_{r},y_{y}\right)
 
 \end_inset
 
-and the force acting on the robot is the partial derivative of the potential
- field with respect to each direction with the addition of a damping term
+and the force acting on the robot was the partial derivative of the potential
+ field with respect to each direction, with the addition of a damping term:
 \begin_inset Formula 
 \begin{align*}
 F_{x} & =\frac{\partial}{\partial x_{r}}U\left(x_{r},y_{y}\right)-bv_{x}\\
@@ -2007,11 +2006,11 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-If the magnitude of these control forces exceed the maximum thrust of Astrobee,
- they are scaled so that the controlled force magnitude is within the thrust
- constraint, but points in the same direction.
- The motion of robot is then determined by the dynamic and kinematic constraints
- for two dimensions 
+If the magnitude of these control forces exceeded the maximum thrust of
+ Astrobee, they were scaled so that the controlled force magnitude would
+ be within the thrust constraint, but direction remained unchanged.
+ The motion of robot was then determined by the dynamic and kinematic constraint
+s for two dimensions:
 \begin_inset Formula 
 \begin{align*}
 \frac{d}{dt}v_{x} & =\frac{1}{m}F_{x}\\
@@ -2026,17 +2025,27 @@ In many APF simulations, damping in the overall system is included in the
  dynamic model of the mobile robot, caused by losses such as friction.
  We chose to consider the damping as a tunable parameter in the scheme navigatio
 n for two reasons.
- First, we did not have a good model for the drag Astrobee would encounter
+ Firstly, we did not have a good model for the drag Astrobee would encounter
  while moving in the module, making it difficult to justify the choice of
  a parameter.
- Second, since Astrobee is travelling at low velocities, additional damping
- in the navigation system may need to be added to achieve a desirable performanc
-e, so we could consider the the total damping as a design parameter.
+ Secondly, since Astrobee was travelling only at low velocities, additional
+ damping in the navigation system may have been needed to achieve a desirable
+ performance, so we could consider the the total damping as a design parameter.
  
 \end_layout
 
 \begin_layout Standard
-The repulsive potential field associated with the module boundary is a gaussian
+The repulsive potential field associated with the module boundary is a Gaussian,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Should this be in 4.3?
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 \begin{aligned}U_{\text{wall}}\left(x_{r},y_{r}\right) & =\exp\left[-\frac{\left(x_{r}-w\right)^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{\left(y_{r}-h\right)^{2}}{2\sigma_{w}^{2}}\right]\\
@@ -2054,7 +2063,7 @@ where
 \begin_inset Formula $y_{r}$
 \end_inset
 
- are the 
+ were the 
 \begin_inset Formula $x$
 \end_inset
 
@@ -2070,17 +2079,17 @@ where
 \begin_inset Formula $h$
 \end_inset
 
- are the width and height of the module, and 
+ were the width and height of the module, and 
 \begin_inset Formula $\sigma_{w}$
 \end_inset
 
- is a width normalizing constant set to 0.15 so that the potential drops
+ was a width normalizing constant set to 0.15, so that the potential drops
  off to 1% of the peak value 1.5 robot lengths from a wall.
 \end_layout
 
 \begin_layout Standard
-The attractive potential field associated with the goal position is a combinatio
-n conic and quadratic potential, two common goal models used in APF, defined
+The attractive potential field associated with the goal position was a combinati
+on conic and quadratic potential, two common goal models used in APF, defined
  as
 \begin_inset Formula 
 \[
@@ -2096,18 +2105,19 @@ where
 \begin_inset Formula $d=\sqrt{\left(x_{r}-x_{g}\right)^{2}+\left(y_{r}-y_{g}\right)^{2}}$
 \end_inset
 
- is the distance between the robot and the goal and 
+ was the distance between the robot and the goal and 
 \begin_inset Formula $l$
 \end_inset
 
- is the side length of the robot.
- This potential acts as a spring force on the robot when the robot is close
- to the goal and as a constant attractive force when the robot is far.
+ was the side length of the robot.
+ This potential acted as a spring force on the robot when the robot was
+ close to the goal and as a constant attractive force when the robot was
+ far away.
  
 \end_layout
 
 \begin_layout Standard
-The values for the constants 
+We chose the values for the constants 
 \begin_inset Formula $k$
 \end_inset
 
@@ -2115,8 +2125,8 @@ The values for the constants
 \begin_inset Formula $b$
 \end_inset
 
- were chosen by qualitatively evaluating the performance of APF for the
- simplest mission and crew configuration over a range of values.
+ by qualitatively evaluating the performance of APF for the simplest mission
+ and crew configuration over a range of values.
  The values 
 \begin_inset Formula $k=\unit[1]{N/m}$
 \end_inset
@@ -2125,14 +2135,17 @@ The values for the constants
 \begin_inset Formula $b=\unit[5]{N\cdot s/m}$
 \end_inset
 
- was chosen because the robot moved the fastest (0.25 m/s) without driving
+ were chosen because the robot moved the fastest (0.25 m/s) without driving
  through the repulsive potential associated with the crew.
- This velocity is also a velocity that was considered comfortable in the
- proxemic literature.
- This indicates that the forces associated with moving toward the goal,
- avoiding collisions with humans, and damping were acceptably tuned.
+ These parameters were kept constant over the course of our simulations
+ to enable comparison between Case Studies.
+ This velocity, 0.25 m/s, was considered comfortable in the proxemic literature.
+ These results indicated that the forces associated with moving toward the
+ goal, avoiding collisions with humans, and damping were acceptably tuned.
  However, this search was non-exhaustive and there may exist values which
  produce better path planning performance.
+ We recommended that further parameter trials be performed before extending
+ the research presented in this paper.
 \end_layout
 
 \begin_layout Subsection
@@ -2148,13 +2161,14 @@ A* is a modification of Dijkstra's algorithm to find a lowest-cost path
 
 \begin_layout Standard
 Our general algorithm was implemented using a priority queue of potential
- paths, stored as lists of graph nodes with (x,y) coordinates and an associated
- velocity.
+ paths, stored as lists of graph nodes, each with (x,y) coordinates and
+ an associated velocity.
  As the algorithm planned our robot's path through the discretized model,
  it considered all possible nearest neighbors on the grid, with a range
- of possible next velocities at each location, assigning each possible next
- step a cost that depends on human proxemics and the robot's locaation and
- velocity.
+ of possible next velocities at each location.
+ Each possible next step was assigned a cost that depended on whether or
+ not our simulation was using human proxemics, and the robot's location
+ and velocity.
  The cost function is described in more detail in Section 4.3: Human Avoidance
  Models.
  After the proxemic cost was calculated for each newest node in a path,
@@ -2162,27 +2176,18 @@ Our general algorithm was implemented using a priority queue of potential
 \begin_inset Formula $Priority=(Cumulative\ proxemic\ cost)+(Heuristic)$
 \end_inset
 
-, where the heuristic is a function of location and velocity that emphasizes
+, where the heuristic was a function of location and velocity that emphasized
  following the shortest path to the goal and travelling at a higher speed
  with different weights.
  The heuristic used in our simulations is described below in Section 4.2.1.
  Once each new potential path was added to the priority queue, the algorithm
  then selected the path with the lowest priority from the current queue,
- and it began the same process to extend the newly selected path.
+ and it repeated the same process to extend the newly selected path.
  The algorithm returned a path when the edge of the robot reached a distance
  of 1.2*the grid step size, which allowed the algorithm to recognize when
- the robot had reached its destination, still allowing for some uncertainty.
+ the robot had reached its destination, while still allowing for some uncertaint
+y.
  
-\end_layout
-
-\begin_layout Standard
-Djikstra's Algorithm runs in 
-\begin_inset Formula $\mathcal{O}(N^{2})$
-\end_inset
-
- time [CHECK AND CITE TEXTBOOK], but as the addition of a heuristic allows
- the algorithm to select the most likely path first, A* can often run in
- significantly less time.
 \end_layout
 
 \begin_layout Subsubsection
