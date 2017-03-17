@@ -323,9 +323,10 @@
   url       = {http://www.ebook.de/de/product/8474892/thomas_h_cormen_charles_e_leiserson_ronald_l_rivest_clifford_stein_introduction_to_algorithms.html},
 }
 
-@Misc{astronautreqs,
+@Misc{astroreqs,
   title        = {Astronaut Requirements},
-  howpublished = {https://www.nasa.gov/audience/forstudents/postsecondary/features/F_Astronaut_Requirements.html},
+  howpublished = {Online},
+  file         = {:astronautreqs - Astronaut Requirements.html:URL},
   url          = {https://www.nasa.gov/audience/forstudents/postsecondary/features/F_Astronaut_Requirements.html},
 }
 
