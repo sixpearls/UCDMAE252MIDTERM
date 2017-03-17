@@ -565,7 +565,7 @@ Mars communications latency is approximately ten minutes.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1116,7 +1116,7 @@ In the following subsections, we describe the two path planning methods,
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1162,54 +1162,6 @@ name "fig:moving_human_prox"
 \end_inset
 
 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pass_on_right_proxemic_map.png
-	lyxscale 25
-	width 3.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-A graphical representation of the cost or potential associated with the
- social cue to pass on the left.
- Figure taken from Kirby 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirby2009companion"
-
-\end_inset
-
-.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:pass_left_prox"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1219,10 +1171,11 @@ Simulation Design
 \begin_layout Standard
 In the interest of focusing our investigation, we have intentionally limited
  the scope of our simulation.
- By limiting the simulation to two-dimensional motion with simple dynamical
- representaiton of the robot and simple geometric constructions for the
- crew and module boundaries, our study can focus on the effect of proxemic
- models on the path planning methods.
+ We developed a two-dimensional simulation with a simplifeid dynamical represent
+aiton of the robot and simple geometric constructions for the crew and module
+ boundaries.
+ Although this makes the simulation more abstract, it allows us to focus
+ on the effect of proxemic models on the path planning methods.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1240,10 +1193,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-Our robot model was represented by a 12”x12” square with a 6kg mass, modeled
- after the Astrobee robot.
- We include in our modelthe hardware safety constraint that limits thrust
- at a maximum of 0.72 N 
+Our robot model was represented by a 30.5 cm 
+\begin_inset Formula $\times$
+\end_inset
+
+ 30.5 cm (12”x12”) square with 6 kg mass, modeled after the Astrobee robot.
+ We include in our model the hardware safety constraint that limits thrust
+ to a maximum of 0.72 N 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
@@ -1251,25 +1207,26 @@ key "SmithAstrobeeNew"
 \end_inset
 
 .
- We considered only translation motion and assumed the maximum thrust could
- applied in any direction in the plane.
+ The dynamics model only holonomic translation with the assumption that
+ the maximum thrust could applied in any direction in the plane.
+ We did not consider a number of other factors that might distract from
+ the research question.
+ For example, we treated the propulsion and battery lifetimes as irrelevant.
+ We also assumed that the sensing and control problems have been solved.
+ Our path planning algorithms use perfect knowledge of the environment,
+ including location and orientation of crew.
+ The results are also evaluated uner perfect control, so given a path, the
+ robot could follow it perfectly.
  
 \end_layout
 
 \begin_layout Standard
-We did not consider a number of other factors.
- We treated the propulsion and battery lifetimes as irrelevant given the
- scope of our experiment.
- Assumed perfect knowledge of the environment, including location and orientatio
-n of crew.
- Assumed perfect control, so that given a path, the robot would follow it
- perfectly.
- 
-\end_layout
+The module model is an approximated rectangular cross-section of a single
+ module, the ISS USOS Destiny Lab, with dimensions 853 cm 
+\begin_inset Formula $\times$
+\end_inset
 
-\begin_layout Standard
-Our environment is an approximated rectangular cross-section of a single
- module, the ISS USOS Destiny Lab, with dimensions 28' x 14'
+ 427 cm
 \begin_inset Note Note
 status open
 
@@ -1281,19 +1238,20 @@ CITATION
 
 .
  We simulated a clean environment, clear of any non-human obstacles.
- In reality, the environment would be significantly more cluttered, with
- experiments and equipment lining the walls.
+ In reality, the module would be significantly more cluttered, with experiments
+ and equipment lining the walls.
 \end_layout
 
 \begin_layout Standard
-Crew is a circle with radius of 35.5 cm representing a typical shoulder width
+The crew is modeled as circle with an orientation.
+ The circle radius is 35.5 cm representing a typical shoulder width 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "haslegrave1986characterizing"
 
 \end_inset
 
-, with an orientation.
+.
  All humans have been simulated with equal proxemics.
  This is a simplification, as studies show that proxemics vary between people
  and across cultures 
@@ -1304,10 +1262,18 @@ key "joosse"
 \end_inset
 
 .
- 
-\end_layout
+ We intentionally chose not to model human motion.
+ Although it is relevant to the field and research has been done in this
+ area 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weinrich2013prediction"
 
-\begin_layout Standard
+\end_inset
+
+, literature has shown that humans change their patterns of motion in response
+ to a moving robot.
+ The added complexity is out of the scope of this project.
 \begin_inset Float figure
 wide false
 sideways false
@@ -1350,25 +1316,6 @@ name "fig:proxemicsmodel"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-We intentionally chose not to model human motion.
- Although it is relevant to the field and research has been done in this
- area 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "weinrich2013prediction"
-
-\end_inset
-
-, literature has shown that humans change their patterns of motion in response
- to a moving robot.
- The added complexity is out of the scope of this project.
-\end_layout
-
-\begin_layout Standard
-Mission goals 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2043,7 +1990,8 @@ Are we worried that we don't always stick with the same units?
 \end_layout
 
 \begin_layout Standard
-How the robot switches to the next waypoint.
+Since two of the three missions used in the experiment involve multiple
+ waypoints, 
 \end_layout
 
 \begin_layout Subsection
