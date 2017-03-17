@@ -3199,17 +3199,16 @@ Overall, we found that in most situations, APF did not have significant
  However, there were a small number of cases where the proxemic model helped
  avoid the common APF problem of getting stuck in a local minima when the
  goal was on the opposite side of the robot.
- In mission 1, crew configuration 1, the APF was able to navigate around
- the crew member directly in between the robot starting position and the
- goal position.
+ In Case 1, the APF was able to navigate around the crew member directly
+ in between the robot starting position and the goal position.
  This case was likely caused by a combination of the shallow gradient in
  the potential field associated with the asymetric gaussian and numerical
  round-off.
  For a shallow gradient, the numerical round-off acts to introduces noise,
  helping push the robot out of the local minima.
  In contrast, the ability of the APF method to navigate around the crew
- in mission 2, crew configuration 2 is a direct result of the proxemic model
- driving the robot around the back of the crew member.
+ in Case 6 is a direct result of the proxemic model driving the robot around
+ the back of the crew member.
  By incorporating this social behavior, the APF method avoids the problem
  of local minima in some cases.
 \end_layout
@@ -3311,83 +3310,6 @@ locality
 
  to begin to run in real time, and the algorithm should not be written off
  for future studies.
-\end_layout
-
-\begin_layout Standard
-In the studies we reviewed, none closely matched our experimental design
- of comparing proxemic and nonproxemic navigational methods for different
- architectures (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Comparison-of-HRI"
-
-\end_inset
-
-), therefore they cannot provide a direct comparison.
- The primary point of comparison between previous studies described in the
- literature review and our proposed one will be the instantaneous distance
- between the robot and the human.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-for discussion, the bins have a width and people's preference may draw different
- lines
-\end_layout
-
-\end_inset
-
- To move to discussion: A plot of the potential fields indicates that the
- robot could have continued to Goal 4, if released from the local minimum;
- there was a possible path between Crew 1 and Crew 4
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-move to discussion
-\end_layout
-
-\end_inset
-
-.
- These particular results highlight the challenges of APF-based navigation,
- where the selecting the strength of the sources and sinks affects the outcome.
- As discussed in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Human-Avoidance-Models"
-
-\end_inset
-
-, the strength of the sources (a.k.a.
- crew) was based on 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirbythesis"
-
-\end_inset
-
-and the sinks (a.k.a.
- goals) was determined from our analysis.
- Prior to the damping coefficient and sink amplitude analysis, we observed
- that the robot trajectories, mission success, and collisions varied from
- our final results.
- In our final results, there were no collisions with the crew or module.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-discussion note: tradeoff between going slower but being closer longer
-\end_layout
-
-\end_inset
-
-To move to discussion: The cause of the increased computational times in
- unclear and would be a point for future investigation.
- The grid size and computational times were partially investigated, but
- it was out of the scope of this project to allocated enough resources for
- a full analysis.
 \end_layout
 
 \begin_layout Section
