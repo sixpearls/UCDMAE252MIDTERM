@@ -1216,8 +1216,8 @@ key "bualat2015astrobee"
 
 \begin_layout Standard
 In the interest of acquiring meaningful results in a limited time-frame,
- we have intentionally limited the scope of our project, making many assumptions
- and simplifications, which we describe below.
+ we have intentionally limited the scope of our simulation, making many
+ assumptions and simplifications, which we describe below.
  
 \end_layout
 
@@ -1866,15 +1866,16 @@ Robot Model
 \end_layout
 
 \begin_layout Standard
-Astrobee itself will be represented by a 12”x12” square with a 6kg mass
- 
+Our Astrobee model itself was represented by a 12”x12” square with a 6kg
+ mass 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
 
 \end_inset
 
-, capable of 3-DOF holonomic motion (x translation, y translation, and xy
+.
+ capable of 3-DOF holonomic motion (x translation, y translation, and xy
  rotation).
  
 \end_layout
@@ -1912,8 +1913,9 @@ Sensors
 \end_layout
 
 \begin_layout Standard
-We are making some significant assumptions with respect to the capabilities
- of Astrobee itself.
+Much as we simplified the environment to enable clear evaluation of results,
+ we made some significant assumptions with respect to the capabilities of
+ Astrobee itself.
  In order to test the robotic architectures and algorithms, it is necessary
  that Astrobee accurately detect humans and their associated orientations
  with omnipotence, in all directions at all times.
@@ -2167,7 +2169,7 @@ Our general algorithm was implemented using a priority queue of potential
  Once each new potential path was added to the priority queue, the algorithm
  then selected the path with the lowest priority from the current queue,
  and it began the same process to extend the newly selected path.
- The algorithm returned a path when the edge of the robot reaches a distance
+ The algorithm returned a path when the edge of the robot reached a distance
  of 1.2*the grid step size, which allowed the algorithm to recognize when
  the robot had reached its destination, still allowing for some uncertainty.
  
