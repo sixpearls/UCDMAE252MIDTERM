@@ -2430,7 +2430,7 @@ We note that the larger shape factor in the front of the crew corresponded
 \end_layout
 
 \begin_layout Section
-Results
+Results & Analysis
 \end_layout
 
 \begin_layout Standard
@@ -2451,7 +2451,8 @@ The analysis of the results was separated by path planning algorithm and
  the limits (A*).
  The collisions metric will not be further discussed, as there were no collision
 s across 48 simulations.
- Finally, the definitions of the personal space zone used as shown in 
+ Finally, the definitions of the personal space zone used as shown in Table
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Personal-Space-Zones"
@@ -2459,6 +2460,8 @@ reference "tab:Personal-Space-Zones"
 \end_inset
 
 .
+ For all 48 scenarios, the robot never entered the close intimate or intimate
+ zones.
  
 \end_layout
 
@@ -2483,7 +2486,8 @@ status open
  individually when the robots' paths between non-proxemic and proxemic scenarios
  were significantly different and a direct, high-level comparision may not
  be appropriate.
- This seperation was done to direct a more focused analysis on uniques cases.
+ This seperation was done to direct a more focused analysis on those unique
+ cases.
  
 \end_layout
 
@@ -2558,7 +2562,7 @@ Comparison of Non-proxemic and Proxemic APF Results
 
 \begin_layout Standard
 The comparision of results was broken down by metric(s), and a summary is
- provided in 
+ provided in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Summary-of-APF"
@@ -2634,70 +2638,13 @@ Incomplete Missions
 \end_layout
 
 \begin_layout Standard
-Of these scenarios, the robot was unable to reach one goal in 6 test scenarios
- (4 non-proxemic, 2 proxemic) due to entrapment in local minima prior to
- reaching the goal zone.
- For the non-proxemic Case 1, the robot came to a stop directly in front
- of the crew.
- From examining a plot of the potential field, it is clear that the robot
- was pulled into a local minimum.
- In the proxemic equivalent, the robot was able to navigate around the crew
- and complete the mission.
- A similar situation occured during the Case 6, where in the non-proxemic
- scenario the robot was unable to reach the goal zone.
- In comparing the potential fields when the robot navigates to Goal 2, a
- local minimum occurs just outside of the goal zone in the non-proxemic
- scenario.
- However, in the proxemic case, the local minimum occurs just inside the
- goal zone boundary.
- In contrast, the configuration of the clustered crew during Case 7 blocks
- the robot's access to Goal 2 for both the non-proxemic and proxemic scenarios.
+Of 24 scenarios, the robot was unable to reach one goal in 6 test scenarios
+ (4 non-proxemic, 2 proxemic) due to entrapment in local minima.
+ The configuration of the clustered crew in Case 7 blocks the robot's access
+ to Goal 2 for both the non-proxemic and proxemic scenarios.
  Similarly, Crew 1 in Case 12 creates a local minimum that prevents the
- robot from continuing to Goal 4 for both non-proxemic and proxemic scenarios
- (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Crew4"
-
-\end_inset
-
-for crew configuration).
- A plot of the potential fields indicates that the robot could have continued
- to Goal 4, if released from the local minimum; there was a possible path
- between Crew 1 and Crew 4
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-move to discussion
-\end_layout
-
-\end_inset
-
-.
- These particular results highlight the challenges of APF-based navigation,
- where the selecting the strength of the sources and sinks affects the outcome.
- As discussed in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Human-Avoidance-Models"
-
-\end_inset
-
-, the strength of the sources (a.k.a.
- crew) was based on 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kirbythesis"
-
-\end_inset
-
-and the sinks (a.k.a.
- goals) was determined from our analysis.
- Prior to the damping coefficient and sink amplitude analysis, we observed
- that the robot trajectories, mission success, and collisions varied from
- our final results.
- In our final results, there were no collisions with the crew or module.
+ robot from continuing to Goal 4 for both non-proxemic and proxemic scenarios.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2709,10 +2656,6 @@ For 11 cases, the distanced traveled was similar between non-proxemic and
  proxemic scenarios.
  The in the distance traveled from non-proxemic to proxemic across scenarios
  is less than or equal to 2.99%.
- In the one exception (Case 1), the non-proxemic model robot was not able
- to navigate around the crew and towards the goal.
- This issue resulted in a smaller distance traveled than the proxemic case
- (3.44m versus 8.37m, respectively).
  
 \end_layout
 
@@ -2749,24 +2692,14 @@ Maximum Velocity
 For non-proxemic and proxemic cases, the maximum velocity tended to reach
  similar values (within 3.58% of non-proxemic value) ranging between 18.38
  cm/s and 26.76 cm/s.
- There were four cases where a larger change in maximum velocity from non-proxem
-ic occured (7.22% to 18.02% change) (Cases 6, 10, 11, 12).
- The difference in maximum velocity can be attributed to ???
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-WHERE does v max occur on trajectory?
-\end_layout
-
-\end_inset
-
+ There were three cases where a larger change in maximum velocity from non-proxe
+mic occured (7.22% to 18.02% change) (Cases 10, 11, 12).
  In the 12 scenarios where the maximum velocity was greater than 25 cm/s,
- the widths of the Gaussian distributions describing the sources (a.k.a.
+ the widths of the Gaussian distributions describing the obstacles (a.k.a.
  crew) would have increased, resulting in a dynamically changing field during
  navigation to a goal zone.
- These results confirm that the maximum velocity never exceeded the 50 cm/s
- constraint for any scenario.
+ The results also confirm that the maximum velocity never exceeded the 50
+ cm/s constraint for any scenario.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2774,16 +2707,7 @@ Personal Space Zones and Minimum Distance
 \end_layout
 
 \begin_layout Standard
-The distance between the robot and each crew member was used to calculate
- the minimum distance and the time spent in each personal space zone 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "walters2009empirical"
-
-\end_inset
-
-.
- The change in minimum distance for four cases was within 0.28%, where in
+The change in minimum distance for four cases was within 0.28%, where in
  three of the cases (Cases 2, 3, 9) the robot's trajectory was relatively
  far from the crew members and it would be expected that the proxemic cost
  function would have an minimal effect.
@@ -2803,11 +2727,22 @@ reword clearer
 .
  These results highlight that inclusion of a proxemic model has a smaller
  effect when distances between the robot and crew are larger.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref to appendix
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The analysis also showed that a robot with a proxemic model maintained a
- smaller minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
+The analysis also showed that a proxemic model robot maintained a smaller
+ minimum distance from crew than a non-proxemic one by 6.49% to 14.72%.
  In Case 4, the maximum velocity does not exceed 25 cm/s for either scenario.
  As a result, the robot with the proxemic model passes crew from behind
  and on the side and the cost function in these cases are smaller than for
@@ -2823,16 +2758,9 @@ Ben table: std dev compares for key velocity points
 
 .
  A similar situation occurs in Case 8, where the proxemic model robot passes
- closer to Crew 1 and 2 (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Crew4"
-
-\end_inset
-
-), which are oriented away from the robot.
+ closer to Crew 1 and 2, which are oriented away from the robot.
  Again this situation is repeated for Case 10 and 11, where the robot passes
- behind and with velocities less than 25 cm/s (relevant for proxemic).
+ behind and with velocities less than 25 cm/s.
  Therefore, the overall orientation of the crew is an important factor.
  
 \end_layout
@@ -2840,7 +2768,7 @@ reference "fig:Crew4"
 \begin_layout Standard
 In two cases, the proxemic scenario yielded a larger minimum distance.
  The first case (Case 5), the robot passes in front of the crew member.
- Since passing in front is a higher cost zone, the proxemic model maintains
+ Since passing in front is a higher shape factor, the proxemic model maintains
  a larger distance from the crew, as expected.
  The robot also approaches a cluster of crew and crosses in front in Case
  7.
@@ -2858,8 +2786,6 @@ There were surprisingly few differences throughout the scenarios regarding
  the space in front of the clustered crew and at a closer distance.
  Consequently, the robot stayed longer in the personal zones for Crew 1,
  2, and 3 by 236.75 s, 194.00 s, 183.00 s, respectively.
- For all 24 scenarios, the robot never entered the close intimate or intimate
- zones.
  Overall, the non-proxemic and proxemic models behaved similarly in terms
  of personal space zones
 \begin_inset Note Note
@@ -2877,15 +2803,6 @@ for discussion, the bins have a width and people's preference may draw different
 
 \begin_layout Subsubsection
 Unique Cases
-\end_layout
-
-\begin_layout Standard
-For the APF simulations, two cases (Case 1 and 6) were identified as unique
- due to the significantly different robot paths between the non-proxemic
- and proxemic scenarios.
- As such, it may not be reasonable to compare metrics from these scenarios
- and should be discussed individually.
- 
 \end_layout
 
 \begin_layout Standard
@@ -2907,6 +2824,30 @@ reword, symm field, rounding issues (discussion)
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Standard
+For the non-proxemic Case 1, the robot came to a stop directly in front
+ of the crew.
+ From examining a plot of the potential field, it is clear that the robot
+ was pulled into a local minimum.
+ In the proxemic equivalent, the robot was able to navigate around the crew
+ and complete the mission.
+ A similar situation occured during the Case 6, where in the non-proxemic
+ scenario the robot was unable to reach the goal zone.
+ In comparing the potential fields when the robot navigates to Goal 2, a
+ local minimum occurs just outside of the goal zone in the non-proxemic
+ scenario.
+ However, in the proxemic case, the local minimum occurs just inside the
+ goal zone boundary.
+\end_layout
+
+\begin_layout Standard
+In the one exception (Case 1), the non-proxemic model robot was not able
+ to navigate around the crew and towards the goal.
+ This issue resulted in a smaller distance traveled than the proxemic case
+ (3.44m versus 8.37m, respectively).
  
 \end_layout
 
@@ -2962,6 +2903,45 @@ Fix
  or cross in front and affect more people?
 \end_layout
 
+\begin_layout Standard
+To move to discussion: A plot of the potential fields indicates that the
+ robot could have continued to Goal 4, if released from the local minimum;
+ there was a possible path between Crew 1 and Crew 4
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+move to discussion
+\end_layout
+
+\end_inset
+
+.
+ These particular results highlight the challenges of APF-based navigation,
+ where the selecting the strength of the sources and sinks affects the outcome.
+ As discussed in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Human-Avoidance-Models"
+
+\end_inset
+
+, the strength of the sources (a.k.a.
+ crew) was based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirbythesis"
+
+\end_inset
+
+and the sinks (a.k.a.
+ goals) was determined from our analysis.
+ Prior to the damping coefficient and sink amplitude analysis, we observed
+ that the robot trajectories, mission success, and collisions varied from
+ our final results.
+ In our final results, there were no collisions with the crew or module.
+\end_layout
+
 \begin_layout Subsection
 Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
@@ -2969,17 +2949,22 @@ Comparison of Non-proxemic and Proxemic A* Results
 \begin_layout Standard
 The A* implementation included restrictions on the total computational time
  (60 s) and node computational time (0.25 s) for practical purposes.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ben-is this explained elsewhere?
+\end_layout
+
+\end_inset
+
  The maximum total computational time was exceeded (> 60 s) by 9 of the
  10 scenarios with the node computational time ranging between 0.10 s and
  0.21 s.
  The remaining scenario exceeded the node computational time (> 0.25 s),
  but was within the maximum computational time (52.82 s) when the simulation
  ended.
- The cause of the increased computational times in unclear and would be
- a point for future investigation.
- The grid size and computational times were partially investigated, but
- it was out of the scope of this project to allocated enough resources for
- a full analysis.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3052,64 +3037,10 @@ Incomplete Missions
 \end_layout
 
 \begin_layout Standard
-The A* simulation included 24 test scenarioes from a full factorial analysis
- of mission type, crew configuration, and model.
- The robot was unable to navigation to all goal zones successfully in 10
+The robot was unable to navigation to all goal zones successfully in 10
  scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
  0% to 80%.
- For the non-proxemic Case 1, the robot started to navigate around the crew
- in the same direction as the proxemic scenario, but was unable to continue
- past a few steps.
- Similarily, in Case 6 the simulation times out for the non-proxemic case
- and the proxemic scenario is able to complete.
- Interestingly, the robot reaches the same coordinates and distance from
- Crew 1 en route to Goal 2 for both scenarios in this case.
- At that location, the standard deviation for the non-proxemic and proxemic
- cost functions would be 0.36m and 0.50 m, respectively.
- Yet, the robot has more difficulty navigating around a cost function with
- a smaller width and the cause is unclear.
- For the Case 10, the robot stops 0.72 m away from Crew 2 between Goal 1
- and 2 for the non-proxemic scenario.
- In the proxemic scenario, the robot moves closer to the wall earlier (x
- = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
- is able to reach all goal zones.
- Also, the width of the cost function is smaller behind the crew (sigma_r
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- approximately 0.25 m while passing) than than non-proxemic width enabling
- the robot to pass in this simulation.
-\end_layout
-
-\begin_layout Standard
-The opposite case occured for Case 2, where the robot completed the non-proxemic
- scenario and not the proxemic one.
- In the proxemic scenario, the robot approached the two crew with the maximum
- allowed velocity (50 cm/s) and started to decrease its velocity at t =
- 5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
- functions.
- The relevant portion of the crew cost functions defined by the asymmetrical
- Gaussian distribution is sigma_h = 0.5m 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
-.
- Since the distance between the crew centers is 2.44 m, the crew are facing
- each other, and the value of a Gaussian distribution is essentially zero
- after three standard deviations away from the mean (> 1.5 m), the cost functions
- overlap and may cause an occlusion .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3119,55 +3050,11 @@ In some cases, both the non-proxemic and proxemic scenarios failed to reach
  For both non-proxemic and proxemic scenarios, the robot decreased its velocity
  as it approached the clustered crew, was not able to navigate to Goal 2,
  and the simulation ended.
- As expected, the robot was able to navigate closer to the clustered crew
- in the non-proxemic scenario due to the smaller width of the relevant cost
- function
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref table
-\end_layout
-
-\end_inset
-
-.
  Similarly, Case 12 fails in the same manner for the non-proxemic and proxemic
  scenarios.
  The robot is able to reach Goal 3 and has to navigate towards a cluster
- of two crew members facing the robot (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Crew4"
-
-\end_inset
-
-).
- The robot approaches closer in the non-proxemic case, but ultimately the
- robot cannot navigate past the crew for both scenarios.
- In Case 11, the non-proxemic and proxemic scenarios appear to fail in different
- ways.
- For the non-proxemic scenario, the robot is unable to pass behind Crew
- 4 like Case 10, and fails at a similar location and time.
- This finding is consistent between Case 10 and 11, implying that a robot
- cannot pass behind a crew member facing towards the center of the module
- and 3 ft.
- away from the wall using a non-proxemic model.
- While in the proxemic scenario, the robot is able to navigate behind a
- single crew member positioned close to the wall, the robot cannot pass
- behind the cluster.
- Crew 3 is oriented so that the robot would have to pass through multiple
- cost functions 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ben contour plot to confirm - sent
-\end_layout
-
-\end_inset
-
-, therefore ??
+ of two crew members facing the robot.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -3175,15 +3062,9 @@ Distance Traveled and Average Velocity
 \end_layout
 
 \begin_layout Standard
-Unique to the proxemic scenarios is the dependence of the cost function
- on velocity.
- As the A* algorithm iterates through five potential velocities for a node,
- the cost may change for any potential velocities greater than 25 cm/s.
- It was expected that this balance would result in the robot translating
- faster over a longer distance or the inverse.
- However, for all cases the average velocity was lower for proxemic scenarios
- (35.89 cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s),
- yet the change in distance traveled was not consistent.
+For all cases the average velocity was lower for proxemic scenarios (35.89
+ cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s), but
+ the change in distance traveled did not have a consistent trend.
  The distance traveled increased for the Case 3 and Case 5, where in the
  former case the robot is perturbed from the module centerline in the proxemic
  scenario and for the latter case the robot maintains a farther distance
@@ -3202,7 +3083,7 @@ Unique to the proxemic scenarios is the dependence of the cost function
 e that the simulation ended before reaching Goal 2.
  As expected, the robot maintains a farther distance from the clustered
  crew causing the shorter distance traveled.
- The simulations for case 12 also ended before reaching the goal (Goal 4).
+ The simulations for Case 12 also ended before reaching the goal (Goal 4).
  The robot approaches closer to the crew clustered by the Goal 3 for the
  non-proxemic case.
  Compared to other cases, the percent change in average velocity for this
@@ -3251,7 +3132,7 @@ ref table
  For Case 9, the crew is positioned in the module center while the robot
  navigates around the perimeter.
  It appears at this distance that inclusion of the proxemic model does not
- affect the results, as every metric comparision is within 4.76% of the non-proxe
+ affect the results, as every comparision metric is within 4.76% of the non-proxe
 mic scenario.
 \end_layout
 
@@ -3260,17 +3141,8 @@ Maximum Velocity
 \end_layout
 
 \begin_layout Standard
-Across the 24 scenarios, the maximum allowable velocity (v = 0.5 m/s 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix notation
-\end_layout
-
-\end_inset
-
-) was achieved for 23 scenarios.
+Across the 24 scenarios, the maximum allowable velocity was achieved for
+ 23 scenarios.
  During Case 4, the proxemic scenario had a maximum velocity of 49.14 cm/s.
  This maximum velocity resulted from the tradeoff between the time penalty
  and velocity-dependent cost function.
@@ -3341,8 +3213,7 @@ In cases where the robot's trajectory brought it in front of crew, the minimum
 \end_layout
 
 \begin_layout Standard
-Overall, the robot never entered the close intimate or intimate zones and
- only one case (Case 9) had a percent change less than 5%.
+Only one case (Case 9) had a percent change less than 5%.
  For Cases 3, 5, 7, and 8, the proxemic model robot traveled slower past
  nearby crew members causing increased time in particular zones–typically
  in the closest zone the robot ever crossed for that case.
@@ -3414,6 +3285,96 @@ mission or simulation?
  (non-proxemic = 20%, proxemic = 60%).
  It is interesting to observe that the non-proxemic model robot reached
  less of the goals than the proxemic model one.
+\end_layout
+
+\begin_layout Standard
+For the non-proxemic Case 1, the robot started to navigate around the crew
+ in the same direction as the proxemic scenario, but was unable to continue
+ past a few steps.
+ Similarily, in Case 6 the simulation times out for the non-proxemic case
+ and the proxemic scenario is able to complete.
+ Interestingly, the robot reaches the same coordinates and distance from
+ Crew 1 en route to Goal 2 for both scenarios in this case.
+ At that location, the standard deviation for the non-proxemic and proxemic
+ cost functions would be 0.36m and 0.50 m, respectively.
+ Yet, the robot has more difficulty navigating around a cost function with
+ a smaller width and the cause is unclear.
+ For the Case 10, the robot stops 0.72 m away from Crew 2 between Goal 1
+ and 2 for the non-proxemic scenario.
+ In the proxemic scenario, the robot moves closer to the wall earlier (x
+ = 1.76 m and t = 7.90 s versus x = 3.04 m and t = 10.46 for non-proxemic) and
+ is able to reach all goal zones.
+ Also, the width of the cost function is smaller behind the crew (sigma_r
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+ approximately 0.25 m while passing) than than non-proxemic width enabling
+ the robot to pass in this simulation.
+\end_layout
+
+\begin_layout Standard
+The opposite case occured for Case 2, where the robot completed the non-proxemic
+ scenario and not the proxemic one.
+ In the proxemic scenario, the robot approached the two crew with the maximum
+ allowed velocity (50 cm/s) and started to decrease its velocity at t =
+ 5.66 s to less than 25 cm/s resulting in the minimum possible crew cost
+ functions.
+ The relevant portion of the crew cost functions defined by the asymmetrical
+ Gaussian distribution is sigma_h = 0.5m 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+.
+ Since the distance between the crew centers is 2.44 m, the crew are facing
+ each other, and the value of a Gaussian distribution is essentially zero
+ after three standard deviations away from the mean (> 1.5 m), the cost functions
+ overlap and may cause an occlusion .
+\end_layout
+
+\begin_layout Standard
+In Case 11, the non-proxemic and proxemic scenarios appear to fail in different
+ ways.
+ For the non-proxemic scenario, the robot is unable to pass behind Crew
+ 4 like Case 10, and fails at a similar location and time.
+ This finding is consistent between Case 10 and 11, implying that a robot
+ cannot pass behind a crew member facing towards the center of the module
+ and 3 ft.
+ away from the wall using a non-proxemic model.
+ While in the proxemic scenario, the robot is able to navigate behind a
+ single crew member positioned close to the wall, the robot cannot pass
+ behind the cluster.
+ Crew 3 is oriented so that the robot would have to pass through multiple
+ cost functions 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ben contour plot to confirm - sent
+\end_layout
+
+\end_inset
+
+, therefore ??
+\end_layout
+
+\begin_layout Standard
+To move to discussion: The cause of the increased computational times in
+ unclear and would be a point for future investigation.
+ The grid size and computational times were partially investigated, but
+ it was out of the scope of this project to allocated enough resources for
+ a full analysis.
 \end_layout
 
 \begin_layout Subsection
