@@ -2587,11 +2587,7 @@ Comparison of Non-proxemic and Proxemic APF Results
 Main concern = comparison between non-proxemic and proxemic, so analysis
  done on primarily this factor; non-proxemic and proxemic compared within
  a given case (APF x Mission Type x Crew Configuration); robot instructed
- to continue to next goal if v = 0; probably need a figure of mission x
- crew config to refer back to, labeled with goal # and crew #; talk about
- (2,2) (1,1) separately; case = path planning x mission x crew; scenario
- = proxemic or non x case; maybe table listing cases and if a metric significant
-ly varied; time?
+ to continue to next goal if v = 0; time?
 \end_layout
 
 \begin_layout Standard
@@ -3003,7 +2999,7 @@ Comparison of Non-proxemic and Proxemic A* Results
 
 \begin_layout Standard
 Same percent difference as APF; within 5% not considered large enough to
- make statements
+ make statements; time
 \end_layout
 
 \begin_layout Standard
@@ -3407,6 +3403,35 @@ discussion note: tradeoff between going slower but being closer longer
 
 \begin_layout Subsubsection
 Unique Cases
+\end_layout
+
+\begin_layout Standard
+For the A* simulations, several cases were identified as unique due to the
+ significantly different robot paths between the non-proxemic and proxemic
+ scenarios.
+ In all of these cases (Case 1, 2, 6, 10, 11), the number of goals reached
+ is different for the proxemic and non-proxemic scenarios.
+ Since the level of completion has a strong effect on the metrics, it does
+ not seem reasonable to draw any conclusions along those lines.
+ In some cases, the non-proxemic model robot is not able to reach all the
+ goals (Case 1 = 0%, Case 6 = 25%, Case 10 = 20%) and the proxemic model
+ robot can complete the mission
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+mission or simulation?
+\end_layout
+
+\end_inset
+
+.
+ The reverse ocurred in Case 2, and the proxemic model robot did not reach
+ any goals (0%) and the non-proxemic model robot completed the mission.
+ Lastly, both robots did not reach all goals in Case 11 to varying degrees
+ (non-proxemic = 20%, proxemic = 60%).
+ It is interesting to observe that the non-proxemic model robot reached
+ less of the goals than the proxemic model one.
 \end_layout
 
 \begin_layout Subsection
