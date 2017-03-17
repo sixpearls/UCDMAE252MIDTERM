@@ -2780,21 +2780,26 @@ For all cases the average velocity was lower for proxemic scenarios (35.89
  shorter distance traveled than the non-proxemic one.
  The first case (Case 4) has a relatively small difference of 8.28%.
  The robot appears to stay closer to the centerline and Crew 2 near Goal
- 2 for the proxemic case.
- Even though the quantity of direction changes in similar (36 for non-proxemic
- and 35 for proxemic), the robot in the non-proxemic case travels a shorter
- distance before changing direction with a higher average velocity, which
- may explain the increased overal distance and shorter completion time 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-figure ref, subplots
-\end_layout
+ 2 for the proxemic case (See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:case4 vel p"
 
 \end_inset
 
-.
+).
+ Even though the quantity of direction changes in similar (36 for non-proxemic
+ and 35 for proxemic), the robot in the non-proxemic case travels a shorter
+ distance before changing direction with a higher average velocity, which
+ may explain the increased overal distance and shorter completion time (See
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case4 vel np"
+
+\end_inset
+
+).
  Another case (Case 7) follows a similar pattern with a smaller average
  velocity and distance traveled for the proxemic scenario with the key differenc
 e that the simulation ended before reaching Goal 2.
@@ -2850,6 +2855,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename case4_vel.png
+	lyxscale 50
+	width 3.5in
+
+\end_inset
+
 
 \end_layout
 
@@ -2857,7 +2875,112 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Path colored with velocity ranges, where red is 12.5 cm/s 
+\begin_inset Formula $\le$
+\end_inset
 
+v 
+\begin_inset Formula $<$
+\end_inset
+
+25 cm/s, yellow is 25 cm/s 
+\begin_inset Formula $\le$
+\end_inset
+
+v 
+\begin_inset Formula $<$
+\end_inset
+
+50 cm/s, and green is v 
+\begin_inset Formula $\ge$
+\end_inset
+
+50 cm/s
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case4 vel np"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename case4_velprox.png
+	lyxscale 50
+	width 3.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Path colored with velocity ranges, where red is 12.5 cm/s 
+\begin_inset Formula $\le$
+\end_inset
+
+v 
+\begin_inset Formula $<$
+\end_inset
+
+25 cm/s and yellow is 25 cm/s 
+\begin_inset Formula $\le$
+\end_inset
+
+v 
+\begin_inset Formula $<$
+\end_inset
+
+50 cm/s
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:case4 vel p"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Case 4: Comparison of Non-Proxemic and Proxemic Robot Paths
 \end_layout
 
 \end_inset
