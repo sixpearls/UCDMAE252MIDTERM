@@ -2639,7 +2639,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Case 7
 \end_layout
 
 \end_inset
@@ -2648,13 +2648,13 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Comparison of Non-Proxemic and Proxemic Paths
 \end_layout
 
 \end_inset
@@ -2663,7 +2663,16 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename case7_apf_pair.png
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Non-proxemic path shown in green and proxemic path shown in blue.
 \end_layout
 
 \end_inset
