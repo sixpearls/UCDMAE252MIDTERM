@@ -1227,12 +1227,9 @@ The module model is an approximated rectangular cross-section of a single
 \end_inset
 
  427 cm
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-CITATION
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "destinywiki"
 
 \end_inset
 
