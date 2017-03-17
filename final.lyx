@@ -1890,66 +1890,36 @@ Robot Model
 \end_layout
 
 \begin_layout Standard
-Our Astrobee model itself was represented by a 12”x12” square with a 6kg
- mass 
+Our robot model was represented by a 12”x12” square with a 6kg mass, modeled
+ after the Astrobee robot.
+ Astrobee is able to internally update its position at ~6Hz, and it has
+ a hardware safety constraint that limits thrust at a maximum of 0.72N 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SmithAstrobeeNew"
 
 \end_inset
 
-.
- capable of 3-DOF holonomic motion (x translation, y translation, and xy
- rotation).
- 
-\end_layout
-
-\begin_layout Standard
-Astrobee plans include position estimation to within 20cm of walls
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- which shall provide the distance for our hard-constraint wall buffers.
- 
-\end_layout
-
-\end_inset
-
- and is able to internally update its position at ~6Hz.
- It has a hardware safety constraint that limits thrust at a maximum of
- 0.72N 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SmithAstrobeeNew"
-
-\end_inset
-
-.
- Our simulated robot's motion shall accomodate these Astrobee constraints,
- supplementing any lack of available information with comparable specifications
- from the motion of SPHERES
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-delete spehres reference? We really only include the max thrust
-\end_layout
-
+, so we ensured that our chosen time and velocity steps for APF and A* reflected
+ these motion limitations.
+ While in two dimensions, Astrobee should be capable of 3-DOF holonomic
+ motion (x translation, y translation, and xy rotation), we simplified our
+ simulations by considering only translation, rather than rotation, and
+ considered every direction of travel to have the same specified maximum
+ thrust.
+ For collision detection, we used the robot's working radius, defined as
+ the distance from the center of the robot to a corner of the robot, or
+ 8.49
+\begin_inset Quotes erd
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-We will treat the propulsion and battery lifetimes as irrelevant given the
+We treated the propulsion and battery lifetimes as irrelevant given the
  scope of our experiment.
  
-\end_layout
-
-\begin_layout Standard
-The robot's working radius was defined as the distance from the center of
- the robot to a corner of the robot,
 \end_layout
 
 \begin_layout Subsection
@@ -1972,6 +1942,8 @@ key "SmithAstrobeeNew"
 \end_inset
 
 .
+ We chose to model Astrobee as if it had all of the requisite information
+ available to it, and we ignored sensor noise and uncertainty.
 \end_layout
 
 \begin_layout Standard
@@ -1998,7 +1970,7 @@ key "TweddleVertigo,fourievertigo"
 \begin_layout Standard
 Due to the demonstrated feasibility of computer vision-based navigation
  for satellites on the ISS and the scope of our proposed investigation,
- we will not include the limitations of sensors in our simulation.
+ we did not include the limitations of sensors in our simulation.
  We recognize that sensors have limitations, such as noise and errors at
  small or large distances; in order for simulation results to be directly
  applied to a physical situation involving Astrobee, these limitations would
@@ -2011,10 +1983,10 @@ key "SmithAstrobeeNew,bualat2015astrobee"
 \end_inset
 
 , the sensors onboard Astrobee are highly customizable.
- Since our investigation focuses on the effects of proxemics on our path-plannin
-g algorithms, it remains more useful if the simulation stays in a generalized
+ Since our investigation focused on the effects of proxemics on our path-plannin
+g algorithms, it remained more useful if the simulation stayed in a generalized
  form, which could be modified appropriately to an individually-selected
- sensor system.
+ sensor system if necessary.
  We shall assume that with additional computer vision software or through
  supplementation with other sensors, Astrobee could have all needed information
  available to it at all times.
@@ -2030,7 +2002,7 @@ Artificial Potential Field
 \end_layout
 
 \begin_layout Standard
-In our APF implementation, the robot is modelled as a particle driven by
+In our APF implementation, the robot was modelled as a particle driven by
  a potential field.
  Potential fields are linear, so the total potential at each point is is
  the sum of the different components
@@ -2041,8 +2013,8 @@ U\left(x_{r},y_{y}\right)=\sum U_{i}\left(x_{r},y_{y}\right)
 
 \end_inset
 
-and the force acting on the robot is the partial derivative of the potential
- field with respect to each direction with the addition of a damping term
+and the force acting on the robot was the partial derivative of the potential
+ field with respect to each direction, with the addition of a damping term:
 \begin_inset Formula 
 \begin{align*}
 F_{x} & =\frac{\partial}{\partial x_{r}}U\left(x_{r},y_{y}\right)-bv_{x}\\
@@ -2051,11 +2023,11 @@ F_{y} & =\frac{\partial}{\partial y_{r}}U\left(x_{r},y_{y}\right)-bv_{y}
 
 \end_inset
 
-If the magnitude of these control forces exceed the maximum thrust of Astrobee,
- they are scaled so that the controlled force magnitude is within the thrust
- constraint, but points in the same direction.
- The motion of robot is then determined by the dynamic and kinematic constraints
- for two dimensions 
+If the magnitude of these control forces exceeded the maximum thrust of
+ Astrobee, they were scaled so that the controlled force magnitude would
+ be within the thrust constraint, but direction remained unchanged.
+ The motion of robot was then determined by the dynamic and kinematic constraint
+s for two dimensions:
 \begin_inset Formula 
 \begin{align*}
 \frac{d}{dt}v_{x} & =\frac{1}{m}F_{x}\\
@@ -2070,17 +2042,27 @@ In many APF simulations, damping in the overall system is included in the
  dynamic model of the mobile robot, caused by losses such as friction.
  We chose to consider the damping as a tunable parameter in the scheme navigatio
 n for two reasons.
- First, we did not have a good model for the drag Astrobee would encounter
+ Firstly, we did not have a good model for the drag Astrobee would encounter
  while moving in the module, making it difficult to justify the choice of
  a parameter.
- Second, since Astrobee is travelling at low velocities, additional damping
- in the navigation system may need to be added to achieve a desirable performanc
-e, so we could consider the the total damping as a design parameter.
+ Secondly, since Astrobee was travelling only at low velocities, additional
+ damping in the navigation system may have been needed to achieve a desirable
+ performance, so we could consider the the total damping as a design parameter.
  
 \end_layout
 
 \begin_layout Standard
-The repulsive potential field associated with the module boundary is a gaussian
+The repulsive potential field associated with the module boundary is a Gaussian,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Should this be in 4.3?
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 \begin{aligned}U_{\text{wall}}\left(x_{r},y_{r}\right) & =\exp\left[-\frac{\left(x_{r}-w\right)^{2}}{2\sigma_{w}^{2}}\right]+\exp\left[-\frac{\left(y_{r}-h\right)^{2}}{2\sigma_{w}^{2}}\right]\\
@@ -2098,7 +2080,7 @@ where
 \begin_inset Formula $y_{r}$
 \end_inset
 
- are the 
+ were the 
 \begin_inset Formula $x$
 \end_inset
 
@@ -2114,17 +2096,17 @@ where
 \begin_inset Formula $h$
 \end_inset
 
- are the width and height of the module, and 
+ were the width and height of the module, and 
 \begin_inset Formula $\sigma_{w}$
 \end_inset
 
- is a width normalizing constant set to 0.15 so that the potential drops
+ was a width normalizing constant set to 0.15, so that the potential drops
  off to 1% of the peak value 1.5 robot lengths from a wall.
 \end_layout
 
 \begin_layout Standard
-The attractive potential field associated with the goal position is a combinatio
-n conic and quadratic potential, two common goal models used in APF, defined
+The attractive potential field associated with the goal position was a combinati
+on conic and quadratic potential, two common goal models used in APF, defined
  as
 \begin_inset Formula 
 \[
@@ -2144,18 +2126,19 @@ d=\sqrt{\left(x_{r}-x_{g}\right)^{2}+\left(y_{r}-y_{g}\right)^{2}}
 
 \end_inset
 
- is the distance between the robot and the goal and 
+ was the distance between the robot and the goal and 
 \begin_inset Formula $l$
 \end_inset
 
- is the side length of the robot.
- This potential acts as a spring force on the robot when the robot is close
- to the goal and as a constant attractive force when the robot is far.
+ was the side length of the robot.
+ This potential acted as a spring force on the robot when the robot was
+ close to the goal and as a constant attractive force when the robot was
+ far away.
  
 \end_layout
 
 \begin_layout Standard
-The values for the constants 
+We chose the values for the constants 
 \begin_inset Formula $k$
 \end_inset
 
@@ -2163,8 +2146,8 @@ The values for the constants
 \begin_inset Formula $b$
 \end_inset
 
- were chosen by qualitatively evaluating the performance of APF for the
- first case over a range of values.
+ by qualitatively evaluating the performance of APF for the for the first
+ case over a range of values.
  The values 
 \begin_inset Formula $k=\unit[1]{N/m}$
 \end_inset
@@ -2173,14 +2156,17 @@ The values for the constants
 \begin_inset Formula $b=\unit[5]{N\cdot s/m}$
 \end_inset
 
- was chosen because the robot moved the fastest (0.25 m/s) without driving
+ were chosen because the robot moved the fastest (0.25 m/s) without driving
  through the repulsive potential associated with the crew.
- This velocity is also a velocity that was considered comfortable in the
- proxemic literature.
- This indicates that the forces associated with moving toward the goal,
- avoiding collisions with humans, and damping were acceptably tuned.
+ These parameters were kept constant over the course of our simulations
+ to enable comparison between Case Studies.
+ This velocity, 0.25 m/s, was considered comfortable in the proxemic literature.
+ These results indicated that the forces associated with moving toward the
+ goal, avoiding collisions with humans, and damping were acceptably tuned.
  However, this search was non-exhaustive and there may exist values which
  produce better path planning performance.
+ We recommended that further parameter trials be performed before extending
+ the research presented in this paper.
 \end_layout
 
 \begin_layout Subsection
@@ -2204,16 +2190,16 @@ The
 
 \begin_layout Standard
 Our general algorithm was implemented using a priority queue of potential
- paths, stored as lists of graph nodes with (x,y) coordinates and an associated
- velocity.
+ paths, stored as lists of graph nodes, each with (x,y) coordinates and
+ an associated velocity.
  As the algorithm planned our robot's path through the discretized model,
  it considered all nine possible nearest neighbors on the grid, with a range
  of possible next velocities at each location, assigning each possible next
  step a cost that depends on the relative position of the crew and the robot's
  location and velocity.
- After the proxemic cost was calculated for each newest node in a path,
- each new path was added to the priority queue with a priority equal to
- the sum of the cumalative cost and a heuristic value.
+ After the cost was calculated for each newest node in a path, each new
+ path was added to the priority queue with a priority equal to the sum of
+ the cumalative cost and a heuristic value.
  The heuristic is a function of location and velocity that estimates the
  cost  of the current path based on path length and velocity.
  The heuristic used in our simulations is described below
@@ -2226,10 +2212,9 @@ in Section 4.2.1
 
 \end_inset
 
-.
  Once each new potential path was added to the priority queue, the algorithm
  then selected the path with the lowest priority from the current queue,
- and it began the same process to extend the newly selected path.
+ and it repeated the same process to extend the newly selected path.
  The algorithm returned a path when the edge of the robot reached a distance
  of 1.2 times the grid step size, which allowed the algorithm to recognize
  when the robot had reached its destination, still allowing for some uncertainty.
@@ -2998,9 +2983,9 @@ Unique Cases
 \end_layout
 
 \begin_layout Standard
-For the APF simulations, two cases were identified as unique due to the
- significantly different robot paths between the non-proxemic and proxemic
- scenarios.
+For the APF simulations, two cases (Case 1 and 6) were identified as unique
+ due to the significantly different robot paths between the non-proxemic
+ and proxemic scenarios.
  As such, it may not be reasonable to compare metrics from these scenarios
  and should be discussed individually.
  
@@ -3085,7 +3070,7 @@ Comparison of Non-proxemic and Proxemic A* Results
 \end_layout
 
 \begin_layout Standard
-Samer percent difference as APF; within 1% not considered large enough to
+Samer percent difference as APF; within 5% not considered large enough to
  make statements
 \end_layout
 
@@ -3141,22 +3126,10 @@ Incomplete Missions and Collisions
 
 \begin_layout Standard
 The A* simulation included 24 test scenarioes from a full factorial analysis
- of mission type, crew configuration, and inclusion of proxemics.
+ of mission type, crew configuration, and model.
  The robot was unable to navigation to all goal zones successfully in 10
  scenarios (6 non-proxemic, 4 proxemic), and the success rate ranged from
  0% to 80%.
- These 10 scenarios occurred across the different combinations of mission
- type and crew configuration (see table XX
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-add table?
-\end_layout
-
-\end_inset
-
-).
  For the non-proxemic Case 1, the robot started to navigate around the crew
  in the same direction as the proxemic scenario, but was unable to continue
  past a few steps.
@@ -3304,44 +3277,31 @@ Unique to the proxemic scenarios is the dependence of the cost function
  However, for all cases the average velocity was lower for proxemic scenarios
  (35.89 cm/s to 49.03 cm/s) than non-proxemic ones (45.52 cm/s to 49.27 cm/s),
  yet the change in distance traveled was not consistent.
- The distance traveled increased for the direct mission with a clustered
- crew and the waypoints mission with one crew, where in the former case
- the robot is perturned from the module centerline in the proxemic scenario
- and for the latter case the robot maintains a farther distance from the
- crew when crossing in front.
+ The distance traveled increased for the Case 3 and Case 5, where in the
+ former case the robot is perturbed from the module centerline in the proxemic
+ scenario and for the latter case the robot maintains a farther distance
+ from the crew when crossing in front.
  In other cases, the proxemic scenario had a smaller average velocity and
  shorter distance traveled than the non-proxemic one.
- The first case (direct mission with random crew) has a relatively small
- difference of 8.28%.
- The robot appears to stay closer to the centerline and crew # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fix
-\end_layout
-
-\end_inset
-
- near the goal zone for the proxemic case.
+ The first case (Case 4) has a relatively small difference of 8.28%.
+ The robot appears to stay closer to the centerline and Crew 2 near Goal
+ 2 for the proxemic case.
  Even though the quantity of direction changes in similar (36 for non-proxemic
  and 35 for proxemic), the robot in the non-proxemic case travels a shorter
  distance before changing direction with a higher average velocity, which
  may explain the increased overal distance and shorter completion time.
- Another case (waypoints mission with clustered crew) follows a similar
- pattern with a smaller average velocity and distance traveled for the proxemic
- scenario with the key difference that the simulation ended before reaching
- the second goal.
+ Another case (Case 7) follows a similar pattern with a smaller average
+ velocity and distance traveled for the proxemic scenario with the key differenc
+e that the simulation ended before reaching Goal 2.
  As expected, the robot maintains a farther distance from the clustered
  crew causing the shorter distance traveled.
- The simulations for case # (monitoring mission with random crew) also ended
- before reaching the fourth goal.
- The robot approaches closer to the crew clustered by the third goal for
- the non-proxemic case.
+ The simulations for case 12 also ended before reaching the goal (Goal 4).
+ The robot approaches closer to the crew clustered by the Goal 3 for the
+ non-proxemic case.
  Compared to other cases, the percent change in average velocity for this
  case was relatively small (6.67%) and the decreased velocity for the proxemic
- scenario appears to be attributed to the effect of the clustered crew by
- the third goal (see figure velocity color map)
+ scenario appears to be attributed to the effect of Crew 2 and 3 by Goal
+ 3 (see figure velocity color map)
 \begin_inset Note Note
 status open
 
@@ -3357,9 +3317,8 @@ insert
 \begin_layout Standard
 In contrast, there were two cases where the distance traveled was within
  0.57% between the applicable non-proxemic scenarios.
- For the first case (waypoints mission with random crew), the closest crew
- members to the robot's trajectory are approximately facing 180 degrees
- away.
+ For Case 8, the closest crew members to the robot's trajectory are approximatel
+y facing 180 degrees away.
  Therefore, the robot in the proxemic scenario primarily experienced the
  cost from sigma_r
 \begin_inset Note Note
@@ -3376,14 +3335,14 @@ fix
 status open
 
 \begin_layout Plain Layout
-evidence for this?
+ref table
 \end_layout
 
 \end_inset
 
 .
- For the second case (monitoring mission with one crew), the crew is positioned
- in the module center while the robot navigates around the perimeter.
+ For Case 9, the crew is positioned in the module center while the robot
+ navigates around the perimeter.
  It appears at this distance that inclusion of the proxemic model does not
  affect the results, as every metric comparision is within 4.76% of the non-proxe
 mic scenario.
@@ -3405,8 +3364,7 @@ fix notation
 \end_inset
 
 ) was achieved for 23 scenarios.
- During the direct mission with random crew, the proxemic scenario had a
- maximum velocity of 49.14 cm/s.
+ During Case 4, the proxemic scenario had a maximum velocity of 49.14 cm/s.
  This maximum velocity resulted from the tradeoff between the time penalty
  and velocity-dependent cost function.
  The shortest path to the goal zone would bring the robot close to crew
@@ -3439,7 +3397,7 @@ is that okay to say?
 status open
 
 \begin_layout Plain Layout
-would a side by side comparision of the velocity plots be useful?-yes
++side by side comparision of the velocity plots
 \end_layout
 
 \end_inset
@@ -3454,30 +3412,11 @@ Personal Space Zones and Minimum Distance
 \begin_layout Standard
 The majority of cases saw a greater than 5% change from the non-proxemic
  scenario minimum distance.
- There were three cases (
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-list cases
-\end_layout
-
-\end_inset
-
-) where the percent change ranged from 0% to 4.76%, and can be attributed
- to either a) the robot passing through the center when the crew is on the
- perimeter
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-id
-\end_layout
-
-\end_inset
-
-, or b) the robot passing crew on the side or behind, or c) the robot is
- circumnavigating the module while the crew is in the center.
+ There were three cases (Cases 3, 4, 9) where the percent change ranged
+ from 0% to 4.76%, and can be attributed to either a) the robot passing through
+ the center when the crew is on the perimeter (Case 3), or b) the robot
+ passing crew on the side or behind (Case 4), or c) the robot is circumnavigatin
+g the module while the crew is in the center (Case 9).
  All these explanations converge on the situation where the proxemic cost
  function is less and closer in value to the non-proxemic one.
 \end_layout
@@ -3486,32 +3425,55 @@ id
 In cases where the robot's trajectory brought it in front of crew, the minimum
  distance for the non-proxemic scenario was smaller, as it could approach
  closer to the crew due to the decreased width of the cost function.
- This result occured for case #, #, and # 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(2,1),(2,3),(3,4)
-\end_layout
-
-\end_inset
-
-, where the percent change was 13.99%, 19.42% and 36.41%.
+ This result occured for Case 5, 7, and 12, where the percent change was
+ 13.99%, 19.42% and 36.41%.
  However, the robot occupied the same personal space zones–personal, social,
  and public–for both scenarios and the time spent in the personal zone did
  not appear significantly different.
- In contrast, there was a small percent change (-6.73%) for case # 
+ 
+\end_layout
+
+\begin_layout Standard
+Overall, the robot never entered the close intimate or intimate zones and
+ only one case (Case 9) had a percent change less than 5%.
+ For Cases 3, 5, 7, and 8, the proxemic model robot traveled slower past
+ nearby crew members causing increased time in particular zones–typically
+ in the closest zone the robot ever crossed for that case.
+ For example, the robot in Case 5 crossed in front of a crew member at velocitie
+s less than 25 cm/s (compared to upwards of 50 cm/s for non-proxemic) and
+ had increased time in the personal zone.
+ In contrast, the proxemic model robot's path by Crew 4 
+\begin_inset Quotes eld
+\end_inset
+
+bubbles out
+\begin_inset Quotes erd
+\end_inset
+
+ (see 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-fix
+ref figure
 \end_layout
 
 \end_inset
 
- that was investigated for a cause until it was determined that the percent
- change translates to 5.04 cm.
+) and the robot never enters the personal zone, whereas the non-proxemic
+ model robot does.
+ These results indicate that the robot's velocity influenced the amount
+ of time spent in each personal space zone
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+discussion note: tradeoff between going slower but being closer longer
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
