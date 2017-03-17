@@ -2838,7 +2838,7 @@ for discussion, the bins have a width and people's preference may draw different
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3350,10 +3350,7 @@ Unique Cases
 \end_layout
 
 \begin_layout Standard
-For the A* simulations, several cases were identified as unique due to the
- significantly different robot paths between the non-proxemic and proxemic
- scenarios.
- In all of these cases (Case 1, 2, 6, 10, 11), the number of goals reached
+In all of the unique cases (Case 1, 2, 6, 10, 11), the number of goals reached
  is different for the proxemic and non-proxemic scenarios.
  Since the level of completion has a strong effect on the metrics, it does
  not seem reasonable to draw any conclusions along those lines.
