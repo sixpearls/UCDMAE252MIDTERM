@@ -2717,20 +2717,44 @@ The analysis of the results was separated by path planning algorithm and
  For multiple crew members, the smallest distance overall was used.
  The completion time is the total time of the simulation, and the robot
  does not have the navigate to every goal zone for the simulation to cease.
- The simulation ended when all goals were attained, the robot was entrapped
- in a local minimum (APF), or the computational times exceeded the limits
- (A*).
- The definitions of the personal space zone used as shown in 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-insert ref
-\end_layout
+ The simulation may have ended when all goals were attained, the robot was
+ entrapped in a local minimum (APF), or the computational times exceeded
+ the limits (A*).
+ The collisions metric will not be further discussed, as there were no collision
+s across 48 simulations.
+ Finally, the definitions of the personal space zone used as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Personal-Space-Zones"
 
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Standard
+The results are presented for APF and then A*.
+ To compare between the non-proxemic and proxemic models, percent change
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $percent\:change\:=\frac{(proxemic)-(non-proxemic)}{(non-proxemic)}x100\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ was calculated.
+ Additionally, cases were separated from the main analysis and addressed
+ individually when the robots' paths between non-proxemic and proxemic scenarios
+ were significantly different and a direct, high-level comparision may not
+ be appropriate.
+ This seperation was done to direct a more focused analysis on uniques cases.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2748,6 +2772,13 @@ status open
 
 \begin_layout Plain Layout
 Personal Space Zones
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Personal-Space-Zones"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2758,7 +2789,7 @@ Personal Space Zones
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Social_Dist_Table.png
-	width 3.5in
+	width 3in
 
 \end_inset
 
@@ -2766,8 +2797,16 @@ Personal Space Zones
 \end_layout
 
 \begin_layout Plain Layout
-Personal Spaces Zones for HHI used to determine zone of robot (D_p is the
- proxemic distance between the robot and crew).
+Personal Spaces Zones for HHI used to determine zone of robot (D
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+p
+\end_layout
+
+\end_inset
+
+ is the proxemic distance between the robot and crew).
  Based on 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2788,7 +2827,22 @@ Comparison of Non-proxemic and Proxemic APF Results
 \end_layout
 
 \begin_layout Standard
-; robot instructed to continue to next goal if v = 0; time?
+The comparision of results was broken down by metric(s), and a summary is
+ provided in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Summary-of-APF"
+
+\end_inset
+
+.
+ It should be noted that in the implementation of APF, the robot was programmed
+ to progress to the next goal zone when velocity reached 0 cm/s.
+ Consequently, the robot would not be able to reach a goal zone if it encoutered
+ a local minimum elsewhere.
+ Entrapment in local minima affected multple scenarios and will be discussed
+ in the following sections.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2806,14 +2860,14 @@ status open
 
 \begin_layout Plain Layout
 Summary of APF Non-proxemic and Proxemic % Change
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Summary-of-APF"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "apf change summary"
+\end_layout
 
 \end_inset
 
@@ -2846,7 +2900,7 @@ Cases with a º symbol indicate a unique case.
 \end_layout
 
 \begin_layout Subsubsection
-Incomplete Missions and Collisions
+Incomplete Missions
 \end_layout
 
 \begin_layout Standard
@@ -2926,20 +2980,7 @@ Distance Traveled and Average Velocity
 \begin_layout Standard
 For 11 cases, the distanced traveled was similar between non-proxemic and
  proxemic scenarios.
- The percent change
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $percent\:change\:=\frac{(proxemic)-(non-proxemic)}{(non-proxemic)}x100\%$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- in the distance traveled from non-proxemic to proxemic across scenarios
+ The in the distance traveled from non-proxemic to proxemic across scenarios
  is less than or equal to 2.99%.
  In the one exception (Case 1), the non-proxemic model robot was not able
  to navigate around the crew and towards the goal.
@@ -3247,7 +3288,7 @@ Cases with a º symbol indicate a unique case.
 \end_layout
 
 \begin_layout Subsubsection
-Incomplete Missions and Collisions
+Incomplete Missions
 \end_layout
 
 \begin_layout Standard
