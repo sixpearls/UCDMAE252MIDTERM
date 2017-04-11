@@ -2152,8 +2152,8 @@ reference "tab:Summary-of-APF"
  Consequently, the robot would not be able to reach a goal zone if it encoutered
  a local minimum elsewhere.
  Entrapment in local minima affected multple scenarios and will be discussed
- in the following sections.
- 
+ in the following sections (See Appendix for all plots comparing non-proxemic
+ and proxemic model robot paths).
 \end_layout
 
 \begin_layout Standard
@@ -2414,16 +2414,6 @@ reference "fig:Case-12-Comparison"
  These results highlight that inclusion of a proxemic model has a smaller
  effect at large distances from crew.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref to appendix
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2730,18 +2720,8 @@ reference "tab:Summary-of-A*"
 
 .
  In general, the average velocity is smaller and the completion time longer
- for the proxemic scenarios.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref to appendix
-\end_layout
-
-\end_inset
-
-
+ for the proxemic scenarios (See Appendix for all plots comparing non-proxemic
+ and proxemic model robot paths).
 \end_layout
 
 \begin_layout Standard
@@ -2875,17 +2855,14 @@ y facing 180 degrees away.
 \begin_inset Formula $\sigma_{r}$
 \end_inset
 
- that is closer to the non-proxemic shape factor value 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ref table
-\end_layout
+ that is closer to the non-proxemic shape factor value (See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison-of-gaussian"
 
 \end_inset
 
-.
+).
  For Case 9, the crew is positioned in the module center while the robot
  navigates around the perimeter.
  It appears at this distance that inclusion of the proxemic model does not
